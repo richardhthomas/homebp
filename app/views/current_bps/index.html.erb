@@ -1,0 +1,37 @@
+<h1>Listing current_bps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>temp_user_id</th>
+      <th>Date</th>
+      <th>Ampm</th>
+      <th>Sysbp</th>
+      <th>Diabp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_bps.each do |current_bp| %>
+      <tr>
+      	<td><%= current_bp.user_id %></td>
+        <td><%= current_bp.temp_user_id %></td>
+        <td><%= current_bp.date %></td>
+        <td><%= current_bp.ampm %></td>
+        <td><%= current_bp.sysbp %></td>
+        <td><%= current_bp.diabp %></td>
+        <td><%= link_to 'Show', current_bp %></td>
+        <td><%= link_to 'Edit', edit_current_bp_path(current_bp) %></td>
+        <td><%= link_to 'Destroy', current_bp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Current bp', new_current_bp_path %>

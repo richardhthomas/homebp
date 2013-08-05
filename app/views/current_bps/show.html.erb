@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @current_bp.date %>
+</p>
+
+<p>
+  <strong>Ampm:</strong>
+  <%= @current_bp.ampm %>
+</p>
+
+<p>
+  <strong>Sysbp:</strong>
+  <%= @current_bp.sysbp %>
+</p>
+
+<p>
+  <strong>Diabp:</strong>
+  <%= @current_bp.diabp %>
+</p>
+
+<%= link_to 'Edit', edit_current_bp_path(@current_bp) %> |
+<%= link_to 'Back', current_bps_path %>

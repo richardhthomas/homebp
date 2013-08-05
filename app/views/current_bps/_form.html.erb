@@ -1,0 +1,25 @@
+<%= form_for(@current_bp) do |f| %>
+  <% if @current_bp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_bp.errors.count, "error") %> prohibited this current_bp from being saved:</h2>
+
+      <ul>
+      <% @current_bp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sysbp, 'Systolic value' %><br>
+    <%= f.number_field :sysbp %>
+  </div>
+  <div class="field">
+    <%= f.label :diabp, 'Diastolic value' %><br>
+    <%= f.number_field :diabp %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit blood pressure' %>
+  </div>
+<% end %>
