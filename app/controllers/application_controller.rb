@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
     session[:temp_user_id] = temp_user.id
     temp_user
   end
+  
+  def active_user
+    if current_user
+      current_user
+    else
+      get_temp_user
+    end
+  end
 end

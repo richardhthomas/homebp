@@ -1,6 +1,12 @@
 <h1>What is your blood pressure?</h1>
 
-<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>	
+<% if session[:reading_counter] == 1 %>
+	<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>	
+<% end %>
+
+<% if session[:reading_counter] == 2 %>
+	<p>Thank you. Please take a second reading and enter it in the boxes below:</p>	
+<% end %>
 	
 <%= render 'form' %>
 

@@ -11,19 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807102721) do
+ActiveRecord::Schema.define(version: 20130810203057) do
 
   create_table "current_bps", force: true do |t|
     t.date     "date"
     t.string   "ampm"
-    t.integer  "sys1"
-    t.integer  "dia1"
+    t.integer  "sysbp"
+    t.integer  "diabp"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "temp_user_id"
-    t.integer  "sys2"
-    t.integer  "dia2"
   end
 
   create_table "temp_users", force: true do |t|

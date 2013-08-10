@@ -1,7 +1,7 @@
 Homebp::Application.routes.draw do
   resources :current_bps do
-    member do
-      get 'second_bp'
+    collection do
+      get 'display_bp'
     end
   end
 

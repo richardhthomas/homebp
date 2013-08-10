@@ -1,0 +1,23 @@
+<% @current_bps.each do |current_bp| %>
+
+<p>
+  <strong>Date:</strong>
+  <%= current_bp.date %>
+</p>
+
+<p>
+  <strong>Ampm:</strong>
+  <%= current_bp.ampm %>
+</p>
+
+<p>
+  <strong>Sys1:</strong>
+  <%= current_bp.sysbp %>
+</p>
+
+<p>
+  <strong>Dia1:</strong>
+  <%= current_bp.diabp %>
+</p>
+
+<% end %>

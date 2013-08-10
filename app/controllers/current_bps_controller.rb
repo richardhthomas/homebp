@@ -1,5 +1,5 @@
 class CurrentBpsController < ApplicationController
-  before_action :set_current_bp, only: [:show, :edit, :update, :destroy, :second_bp]
+  before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -15,6 +15,19 @@ class CurrentBpsController < ApplicationController
   # GET /current_bps/new
   def new
     @current_bp = CurrentBp.new
+    
+    session[:date] = Date.today.to_s(:db)
+    if DateTime.now.seconds_since_midnight < 43200
+        session[:ampm] = "am"
+    else
+        session[:ampm] = "pm"
+    end
+    
+    if session[:reading_counter].nil?
+      session[:reading_counter] = 1
+    else
+      session[:reading_counter] += 1
+    end
   end
 
   # GET /current_bps/1/edit
@@ -24,19 +37,20 @@ class CurrentBpsController < ApplicationController
   # POST /current_bps
   # POST /current_bps.json
   def create
-    if current_user
-      @active_user = current_user
-    else
-      @active_user = get_temp_user
-    end
-    @current_bp = @active_user.current_bps.build(current_bp_params)
-    @current_bp.date = CurrentBp.todays_date
-    @current_bp.ampm = CurrentBp.get_ampm
+    @current_bp = active_user.current_bps.build(current_bp_params)
+    @current_bp.date = session[:date]
+    @current_bp.ampm = session[:ampm]
 
     respond_to do |format|
       if @current_bp.save
-        format.html { redirect_to second_bp_current_bp_path(:id => @current_bp.id) }
+        if session[:reading_counter] == 1
+          format.html { redirect_to new_current_bp_path }
+        else
+        session[:reading_counter] = nil
+        format.html { redirect_to display_bp_current_bps_path }
         format.json { render action: 'show', status: :created, location: @current_bp }
+        end
+        
       else
         format.html { render action: 'new' }
         format.json { render json: @current_bp.errors, status: :unprocessable_entity }
@@ -68,9 +82,11 @@ class CurrentBpsController < ApplicationController
     end
   end
   
-  def second_bp
+  def display_bp
+    @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
+    session[:temp_user_id] = nil
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_current_bp
@@ -79,6 +95,6 @@ class CurrentBpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_bp_params
-      params.require(:current_bp).permit(:sys1, :dia1, :sys2, :dia2)
+      params.require(:current_bp).permit(:sysbp, :diabp)
     end
 end
