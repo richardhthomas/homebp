@@ -1,5 +1,5 @@
 class CurrentBpsController < ApplicationController
-  before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_bp, only: [:show, :edit, :update, :destroy, :second_bp]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -15,14 +15,6 @@ class CurrentBpsController < ApplicationController
   # GET /current_bps/new
   def new
     @current_bp = CurrentBp.new
-    
-    #Increment reading counter. Return value in instance variable to the view
-    if session[:reading_count].nil?
-      session[:reading_count] = 1
-    else
-      session[:reading_count] += 1
-    end
-    @reading_count = session[:reading_count]
   end
 
   # GET /current_bps/1/edit
@@ -32,7 +24,6 @@ class CurrentBpsController < ApplicationController
   # POST /current_bps
   # POST /current_bps.json
   def create
-    #@current_bp = CurrentBp.new(current_bp_params)
     if current_user
       @active_user = current_user
     else
@@ -41,15 +32,10 @@ class CurrentBpsController < ApplicationController
     @current_bp = @active_user.current_bps.build(current_bp_params)
     @current_bp.date = CurrentBp.todays_date
     @current_bp.ampm = CurrentBp.get_ampm
-    
-    #Destroy reading_count if it is 2 so subsequent reading entries work
-    if session[:reading_count] == 2
-      session[:reading_count] = nil
-    end
 
     respond_to do |format|
       if @current_bp.save
-        format.html { redirect_to new_current_bp_path, notice: 'Many thanks for providing a blood pressure reading.' }
+        format.html { redirect_to second_bp_current_bp_path(:id => @current_bp.id) }
         format.json { render action: 'show', status: :created, location: @current_bp }
       else
         format.html { render action: 'new' }
@@ -81,6 +67,9 @@ class CurrentBpsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def second_bp
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -90,6 +79,6 @@ class CurrentBpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_bp_params
-      params.require(:current_bp).permit(:sysbp, :diabp)
+      params.require(:current_bp).permit(:sys1, :dia1, :sys2, :dia2)
     end
 end

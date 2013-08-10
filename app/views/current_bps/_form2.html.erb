@@ -1,4 +1,4 @@
-<%= form_for(@current_bp) do |f| %>
+<%= form_for @current_bp, :url => current_bp_path, :html => {:method => :patch} do |f| %>
   <% if @current_bp.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@current_bp.errors.count, "error") %> prohibited this current_bp from being saved:</h2>
@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sys1, 'Systolic value' %><br>
-    <%= f.number_field :sys1 %>
+    <%= f.label :sys2, 'Systolic value' %><br>
+    <%= f.number_field :sys2 %>
   </div>
   <div class="field">
-    <%= f.label :dia1, 'Diastolic value' %><br>
-    <%= f.number_field :dia1 %>
+    <%= f.label :dia2, 'Diastolic value' %><br>
+    <%= f.number_field :dia2 %>
   </div>
   <div class="actions">
     <%= f.submit 'Submit blood pressure' %>

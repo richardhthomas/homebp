@@ -1,5 +1,9 @@
 Homebp::Application.routes.draw do
-  resources :current_bps
+  resources :current_bps do
+    member do
+      get 'second_bp'
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
