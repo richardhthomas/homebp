@@ -20,4 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      current_bp: "blood pressure"
+    attributes:
+      current_bp:
+        sysbp: "systolic value"
+        diabp: "diastolic value"
+    errors:
+      models:
+        current_bp:
+          attributes:
+            sysbp:
+              not_a_number: "needs to be a number"
+            diabp:
+              not_a_number: "needs to be a number"
+      template:
+        header:
+          one:   "Error"
+          other: "Error"
+        body:    "Please check the following:"
+

@@ -25,8 +25,6 @@ class CurrentBpsController < ApplicationController
     
     if session[:reading_counter].nil?
       session[:reading_counter] = 1
-    else
-      session[:reading_counter] += 1
     end
   end
 
@@ -43,7 +41,8 @@ class CurrentBpsController < ApplicationController
 
     respond_to do |format|
       if @current_bp.save
-        if session[:reading_counter] == 1
+        session[:reading_counter] += 1
+        if session[:reading_counter] == 2
           format.html { redirect_to new_current_bp_path }
         else
         session[:reading_counter] = nil

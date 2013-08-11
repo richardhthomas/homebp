@@ -1,13 +1,7 @@
 <%= form_for(@current_bp) do |f| %>
   <% if @current_bp.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@current_bp.errors.count, "error") %> prohibited this current_bp from being saved:</h2>
-
-      <ul>
-      <% @current_bp.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <%= error_messages_for "current_bp", "sysbp" %>
     </div>
   <% end %>
 

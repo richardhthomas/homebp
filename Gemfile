@@ -45,3 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise', '~>3.0'
+
+gem 'dynamic_form'
