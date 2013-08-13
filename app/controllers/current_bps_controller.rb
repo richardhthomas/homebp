@@ -1,5 +1,6 @@
 class CurrentBpsController < ApplicationController
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_bps, only: [:display_bp, :review]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -25,6 +26,7 @@ class CurrentBpsController < ApplicationController
     
     if session[:reading_counter].nil?
       session[:reading_counter] = 1
+      session[:temp_user_id] = nil
     end
   end
 
@@ -62,7 +64,7 @@ class CurrentBpsController < ApplicationController
   def update
     respond_to do |format|
       if @current_bp.update(current_bp_params)
-        format.html { redirect_to @current_bp, notice: 'Current bp was successfully updated.' }
+        format.html { redirect_to display_bp_current_bps_path, notice: 'Current bp was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,14 +84,24 @@ class CurrentBpsController < ApplicationController
   end
   
   def display_bp
-    @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
-    session[:temp_user_id] = nil
+    @average_current_sysbp = @current_bps.average(:sysbp)
+    @average_current_diabp = @current_bps.average(:diabp)
+    @bp_set = active_user.current_bps
+    @average_set_sysbp = @bp_set.average(:sysbp)
+    @average_set_diabp = @bp_set.average(:diabp)  
+  end
+  
+  def review
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_current_bp
       @current_bp = CurrentBp.find(params[:id])
+    end
+    
+    def set_current_bps
+      @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -2,6 +2,7 @@ Homebp::Application.routes.draw do
   resources :current_bps do
     collection do
       get 'display_bp'
+      get 'review'
     end
   end
 

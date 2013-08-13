@@ -1,23 +1,26 @@
-<% @current_bps.each do |current_bp| %>
+<h2>Your average blood pressure from these two readings</h2>
 
 <p>
-  <strong>Date:</strong>
-  <%= current_bp.date %>
+  <strong>Systolic BP:</strong>
+  <%= number_with_precision(@average_current_sysbp, :precision => 0) %>
+</p>
+<p>
+  <strong>Diastolic BP:</strong>
+  <%= number_with_precision(@average_current_diabp, :precision => 0) %>
 </p>
 
 <p>
-  <strong>Ampm:</strong>
-  <%= current_bp.ampm %>
+	Made a mistake entering these blood pressure readings?<br />
+	Go <%= link_to 'back', review_current_bps_path %> and alter them.
 </p>
+
+<h2>Your average blood pressure from this set of readings</h2>
 
 <p>
-  <strong>Sys1:</strong>
-  <%= current_bp.sysbp %>
+  <strong>Systolic BP:</strong>
+  <%= number_with_precision(@average_set_sysbp, :precision => 0) %>
 </p>
-
 <p>
-  <strong>Dia1:</strong>
-  <%= current_bp.diabp %>
+  <strong>Diastolic BP:</strong>
+  <%= number_with_precision(@average_set_diabp, :precision => 0) %>
 </p>
-
-<% end %>
