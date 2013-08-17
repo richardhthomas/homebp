@@ -1,6 +1,6 @@
 class CurrentBpsController < ApplicationController
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_bps, only: [:display_bp, :review]
+  before_action :set_current_bps, only: [:display_bp, :review, :update_bp]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -92,11 +92,15 @@ class CurrentBpsController < ApplicationController
   end
   
   def review
+    @active_user = active_user
   end
   
   def update_bp
-    CurrentBp.update(params[:current_bps].keys, params[:current_bps].values)
-    redirect_to display_bp_current_bps_path
+    if (@current_bps.each do |current_bp|
+        current_bp.update(update_current_bp_params)
+      end)
+      redirect_to display_bp_current_bps_path
+    end
   end
   
   private
@@ -114,4 +118,7 @@ class CurrentBpsController < ApplicationController
       params.require(:current_bp).permit(:sysbp, :diabp)
     end
     
+    def update_current_bp_params
+      params.require(:temp_user).permit(:id, current_bps_attributes: [:sysbp, :diabp])
+    end
 end
