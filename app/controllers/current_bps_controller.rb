@@ -95,8 +95,14 @@ class CurrentBpsController < ApplicationController
   end
   
   def update_bp
-    CurrentBp.update(params[:current_bps].keys, params[:current_bps].values)
-    redirect_to display_bp_current_bps_path
+    @current_bps = CurrentBp.update(params[:current_bps].keys, params[:current_bps].values)
+    @errors = @current_bps.reject { |p| p.errors.empty?}
+    if @errors.empty?
+      redirect_to display_bp_current_bps_path
+    else
+      render action: 'review'
+    end
+    
   end
   
   private

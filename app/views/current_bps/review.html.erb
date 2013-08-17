@@ -3,13 +3,13 @@
 <%= form_tag update_bp_current_bps_path, :method => :patch do %>
 	<% @current_bps.each do |bp| %>
 		<%= fields_for "current_bps[]", bp do |f| %>
-
-  			<% if bp.errors.any? %>
-    			<div id="error_explanation">
-      				<%= error_messages_for "current_bp", "sysbp" %>
-    			</div>
-  			<% end %>
-
+			
+			<% if bp.errors.any? %>
+				<div id="error_explanation">
+					<%= f.error_messages %>
+				</div>
+			<% end %>
+			
   			<div class="field">
     			<%= f.label :sysbp, 'Systolic value' %><br>
     			<%= f.number_field :sysbp %>
