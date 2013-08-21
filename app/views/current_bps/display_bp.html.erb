@@ -24,3 +24,11 @@
   <strong>Diastolic BP:</strong>
   <%= number_with_precision(@average_set_diabp, :precision => 0) %>
 </p>
+
+<%= link_to 'Reset', reset_current_bps_path %>
+
+<div id='signup_msg'>
+	<% if !user_signed_in? %>
+		<p>Please <%= link_to 'sign-up', new_user_registration_path %> for our lovely service</p>
+	<% end %>
+</div>

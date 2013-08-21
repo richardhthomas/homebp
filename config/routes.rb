@@ -4,6 +4,8 @@ Homebp::Application.routes.draw do
       get 'display_bp'
       post 'review'
       patch 'update_bp'
+      get 'reset'
+      get 'new2'
     end
   end
 
