@@ -1,4 +1,5 @@
 class CurrentBpsController < ApplicationController
+  before_filter :set_cache_buster
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:display_bp, :review]
 
@@ -113,10 +114,30 @@ class CurrentBpsController < ApplicationController
     end
   end
   
-  def reset
-    session[:reading_counter] = nil
-    session[:temp_user_id] = nil
-    redirect_to new_current_bp_path
+  def signup_bp_migration
+    if session[:temp_user_id]
+      @saved = 0
+      @temp_bp = get_temp_user.current_bps
+      @temp_bp.each do |temp_bp|
+        @current_bp = current_user.current_bps.build
+        @current_bp.sysbp = temp_bp.sysbp
+        @current_bp.diabp = temp_bp.diabp
+        @current_bp.date = temp_bp.date
+        @current_bp.ampm = temp_bp.ampm
+        if @current_bp.save
+          @saved += 1
+        end
+      end
+      respond_to do |format|
+        if @saved == 2
+          format.html { redirect_to current_bps_path }
+        else
+          format.html { render action: 'new' }
+        end
+      end
+    else
+      redirect_to review_current_bps_path
+    end
   end
   
   private
