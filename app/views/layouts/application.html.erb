@@ -5,27 +5,64 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <script>
-  	window.onload = function()
-	  {
-	  autolayout();
-	  }
-  </script>
 </head>
 <body>
 
 <div id="container">
-
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-</div>
-
-<%= yield %>
+  <script>
+	autolayout();
+  </script>
+	<div id='header'>
+		<%= image_tag "topbanner.jpg" %>
+		<div id='topbannertitle'>
+			HomeBloodPressure.co.uk
+		</div>
+		<div id='user_nav'>
+			<% if user_signed_in? %>
+				<div id='sign_out'>
+					<%= link_to(image_tag("padlock.gif", size: '9x12') + " Sign out" + current_user.email, destroy_user_session_path, :method => :delete) %>
+				</div>
+			<% else %>
+				<div id='sign_in'>
+    				<%= link_to(image_tag("padlock.gif", size: '9x12') + " Sign in", new_user_session_path, :class => 'button1') %>
+    			</div>
+    			<div id='sign_up'>
+    				<%= link_to("Sign up", new_user_registration_path, :class => 'button1 button2') %>
+    			</div>
+  			<% end %>
+  		</div>
+	</div>
+	
+	<div id='topmenu'>
+		<div class='topmenucontent'>
+			<a href=''>Home</a>
+		</div>
+		<div class='topmenucontent'>
+			<a href=''>My account details</a>
+		</div>
+		<div class='topmenucontent'>
+			<a href=''>My medical details</a>
+		</div>
+		<div class='topmenucontent'>
+			<a href=''>My blood pressure readings</a>
+		</div>
+		<div class='topmenucontent'>
+			<a href=''>My blood test results</a>
+		</div>
+		<div class='topmenucontent'>
+			<a href=''>General advice</a>
+		</div>
+	</div>
+	
+	<%= yield %>
+	
+	<div id='bottombar'>
+		<a href=''>FAQs</a>
+		<a href=''>About us</a>
+		<a href=''>Contact us</a>
+		<a href=''>Terms & conditions</a>
+		<span>&#169; 2013</span>
+	</div>
 
 </div>
 

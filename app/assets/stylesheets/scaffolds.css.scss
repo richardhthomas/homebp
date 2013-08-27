@@ -18,15 +18,13 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+a:link, a:visited {
+  text-decoration:none;
+  color:#0000FF;
+}
+
+a:hover {
+  text-decoration:underline;
 }
 
 div {
@@ -71,6 +69,139 @@ div {
 #container {
   font-family: arial;
   font-size: 10pt;
-  width: 800px;
+  width: 950px;
+  float:left;
   visibility: hidden;
+}
+
+#header {
+  position:relative;
+  float:left;
+}
+
+#topbannertitle {
+  position:absolute;
+  top:18px;
+  left:35px;
+  font-size:20pt;
+  font-weight:bold;
+  color:#033076;
+}
+
+#user_nav {
+  float:left;
+  position:absolute;
+  top:15px;
+  left:780px;
+  font-size:8pt;
+  #sign_in {
+    width: 70px;
+    float: left;
+  }
+  #sign_up {
+    width: 70px;
+    float: left;
+    margin-left: 12px;
+  }
+  #sign_out {
+    width: 70px;
+    float: left;
+  }
+}
+
+.button1 {
+  display:block;
+  text-align:center;
+  padding:3px 6px 3px 6px;
+  border:1px solid #033076;
+  -webkit-border-radius:7px;
+  -moz-border-radius:7px;
+  border-radius:7px;
+  background-color:#D4E3FC;
+  cursor:pointer;
+}
+
+a.button1:link, a.button1:visited {
+  color:#000000;
+}
+
+a.button1:hover {
+  text-decoration:none;
+  background-color:#ffffff;
+}
+
+.button2 {
+  background-color: #72bb53;
+}
+
+a.button2:hover {
+  background-color: #92d36e;
+}
+
+#topmenu {
+  width:950px;
+  height:30px;
+  float:left;
+  background-color:#032F76;
+  background-image: linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
+  background-image: -o-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
+  background-image: -moz-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
+  background-image: -webkit-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
+  background-image: -ms-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.75, #033076),
+    color-stop(0.93, #D4E3FC),
+    color-stop(1, #FFFFFF)
+);
+}
+
+.topmenucontent {
+  float:left;
+}
+
+.topmenucontent a {
+  display:block;
+  border-right:1px solid #ffffff;
+  color:#ffffff;
+  font-size:10pt;
+  padding:7px 15px 4px 15px;
+}
+
+.topmenucontent a:link, .topmenucontent a:visited, .topmenucontent a:hover {
+  color:#ffffff;
+}
+
+.topmenucontent a:hover {
+  text-decoration:none;
+  background-color:#6882AD;
+  background-image: linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+  background-image: -o-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+  background-image: -moz-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+  background-image: -webkit-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+  background-image: -ms-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.75, #6882AD),
+    color-stop(0.93, #F0F6FF),
+    color-stop(1, #FFFFFF)
+);
+}
+
+#bottombar {
+  width:950px;
+  margin:60px 0px 10px 0px;
+  font-size:8pt;
+  text-align:center;
+  float:left;
+}
+
+#bottombar a {
+  margin:0px 20px 0px 0px;
+  color:#000000;
 }
