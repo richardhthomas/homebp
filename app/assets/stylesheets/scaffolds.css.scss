@@ -27,12 +27,6 @@ a:hover {
   text-decoration:underline;
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
 #notice {
   color: green;
 }
@@ -67,7 +61,7 @@ div {
 }
 
 #container {
-  font-family: arial;
+  font-family: arial, sans-serif;
   font-size: 10pt;
   width: 950px;
   float:left;
@@ -127,7 +121,7 @@ a.button1:link, a.button1:visited {
 
 a.button1:hover {
   text-decoration:none;
-  background-color:#ffffff;
+  background-color:#e7f0fd;
 }
 
 .button2 {
@@ -141,6 +135,7 @@ a.button2:hover {
 #topmenu {
   width:950px;
   height:30px;
+  margin-bottom: 10px;
   float:left;
   background-color:#032F76;
   background-image: linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);

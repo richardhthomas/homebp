@@ -1,3 +1,99 @@
 // Place all the styles related to the CurrentBps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  font-size: 20pt;
+  color: #0844a4;
+  font-weight: normal;
+  margin-top: 10px;
+}
+
+p {
+  margin: 0px 45px 0px 25px;
+}
+
+#content {
+  float: left;
+  width: 935px;
+  padding: 0px 0px 0px 15px;
+  background-image: linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -o-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -moz-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -webkit-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -ms-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0.05, #FFFFFF),
+    color-stop(0.61, #E5EFFF),
+    color-stop(1, #DDE5F0)
+  );
+  
+  #main {
+    float: left;
+    width: 650px;
+    
+    #input_bp {
+      margin-top: 20px;
+      
+      #input_bp_boxes {
+        margin: 0px 210px 0px 200px;
+      }
+    }
+  }
+  
+  #average_bp {
+    float: left;
+    width: 250px;
+    height: 400px;
+    margin-top: 50px;
+    border-style:solid;
+    border-width:2px;
+    border-color:#033076;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    background-color:#ffffff;
+  }
+}
+
+#current_bp_sysbp, #current_bp_diabp {
+  padding: 5px;
+  font-size: 12pt;
+  float: left;
+  border-style:solid;
+  border-width:2px;
+  border-color:#033076;
+}
+
+#slash {
+  float: left;
+  font-size: 16pt;
+  padding: 10px 10px 0px 10px;
+}
+
+#mmhg {
+  float: left;
+  font-size: 8pt;
+  padding: 10px 0px 0px 10px;
+}
+
+.actions {
+  float:left;
+  margin: 20px 0px 0px 280px;
+  
+  input {
+    padding:5px 15px 5px 15px;
+    border:1px solid #033076;
+    -webkit-border-radius:7px;
+    -moz-border-radius:7px;
+    border-radius:7px;
+    background-color:#D4E3FC;
+    font-size: 12pt;
+    
+    &:hover {
+      background-color:#ffffff;
+    }
+  }
+}
