@@ -1,7 +1,15 @@
-<h1>What is your blood pressure?</h1>
+<div id='main'>
+	<h1>Is my blood pressure too high?</h1>
+	<p>Thank you. Please take a second reading and enter it in the boxes below:</p>
+	<div id='input_bp'>	
+		<%= render 'form' %>
+	</div>
+</div>
 
-<p>Thank you. Please take a second reading and enter it in the boxes below:</p>	
+<div id='average_bp'>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', current_bps_path %>
+<div id='how_to_measure_bp'>
+	<h1>How do I measure my blood pressure?</h1>
+	<p>If you need advice on how to measure your blood pressure, please see our <a href="">blood pressure measurement guide.</a></p>
+</div>

@@ -1,10 +1,4 @@
 <%= form_for(@current_bp) do |f| %>
-	<% if @current_bp.errors.any? %>
-    	<div id="error_explanation">
-			<%= error_messages_for "current_bp", "sysbp" %>
-		</div>
-  	<% end %>
-
 	<div id='input_bp_boxes'>
     	<%= f.text_field(:sysbp, size: 4) %>
   		<div id='slash'>
@@ -15,6 +9,13 @@
   			mmHg
   		</div>
   	</div>
+  	
+  	<% if @current_bp.errors.any? %>
+    	<div id="error_explanation">
+			<%= error_messages_for "current_bp", "sysbp" %>
+		</div>
+  	<% end %>
+  	
   	<div class="actions">
 	   	<%= f.submit 'Next' %>
 	</div>

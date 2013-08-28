@@ -32,17 +32,19 @@ a:hover {
 }
 
 .field_with_errors {
-  padding: 2px;
+  float:left;
+  padding: 1px;
   background-color: red;
   display: table;
 }
 
 #error_explanation {
-  width: 450px;
+  float: left;
+  width: 350px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin-bottom: 20px;
+  margin: 10px 0px 0px 120px;
   background-color: #f0f0f0;
   h2 {
     text-align: left;
@@ -190,7 +192,7 @@ a.button2:hover {
 
 #bottombar {
   width:950px;
-  margin:60px 0px 10px 0px;
+  margin:30px 0px 10px 0px;
   font-size:8pt;
   text-align:center;
   float:left;

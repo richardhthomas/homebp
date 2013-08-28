@@ -59,8 +59,12 @@ class CurrentBpsController < ApplicationController
           format.html { redirect_to new2_current_bps_path }
         end
       else
-        format.html { render action: 'new' }
-        format.json { render json: @current_bp.errors, status: :unprocessable_entity }
+        if session[:reading_counter] == 1
+          format.html { render action: 'new' }
+          format.json { render json: @current_bp.errors, status: :unprocessable_entity }
+        else
+          format.html { render action: 'new2' }
+        end
       end
     end
   end
@@ -77,8 +81,12 @@ class CurrentBpsController < ApplicationController
           format.html { redirect_to new2_current_bps_path, notice: 'Current bp was successfully updated.' }
         end
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @current_bp.errors, status: :unprocessable_entity }
+        if session[:reading_counter] == 1
+          format.html { render action: 'new' }
+          format.json { render json: @current_bp.errors, status: :unprocessable_entity }
+        else
+          format.html { render action: 'new2' }
+        end
       end
     end
   end

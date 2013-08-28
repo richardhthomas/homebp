@@ -25,8 +25,8 @@ en:
       current_bp: "blood pressure"
     attributes:
       current_bp:
-        sysbp: "systolic value"
-        diabp: "diastolic value"
+        sysbp: "The first (systolic) value"
+        diabp: "The second (diastolic) value"
     errors:
       models:
         current_bp:
@@ -37,7 +37,7 @@ en:
               not_a_number: "needs to be a number"
       template:
         header:
-          one:   "Error"
-          other: "Error"
+          one:   ""
+          other: ""
         body:    "Please check the following:"
 

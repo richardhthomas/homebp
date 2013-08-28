@@ -10,6 +10,7 @@ h1 {
 
 p {
   margin: 0px 45px 0px 25px;
+  color: #000000;
 }
 
 #content {
@@ -46,7 +47,7 @@ p {
   #average_bp {
     float: left;
     width: 250px;
-    height: 400px;
+    height: 320px;
     margin-top: 50px;
     border-style:solid;
     border-width:2px;
@@ -55,6 +56,11 @@ p {
     -moz-border-radius:10px;
     border-radius:10px;
     background-color:#ffffff;
+  }
+  
+  #how_to_measure_bp {
+    float:left;
+    margin: 20px 0px 30px 0px;
   }
 }
 
@@ -81,7 +87,7 @@ p {
 
 .actions {
   float:left;
-  margin: 20px 0px 0px 280px;
+  margin: 20px 0px 0px 260px;
   
   input {
     padding:5px 15px 5px 15px;
@@ -91,6 +97,7 @@ p {
     border-radius:7px;
     background-color:#D4E3FC;
     font-size: 12pt;
+    cursor:pointer;
     
     &:hover {
       background-color:#ffffff;
