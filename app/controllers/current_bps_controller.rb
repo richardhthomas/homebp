@@ -2,6 +2,7 @@ class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:display_bp, :review]
+  before_action :set_average_bp, only: [:new, :new2, :display_bp]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -104,9 +105,6 @@ class CurrentBpsController < ApplicationController
   def display_bp
     @average_current_sysbp = @current_bps.average(:sysbp)
     @average_current_diabp = @current_bps.average(:diabp)
-    @bp_set = active_user.current_bps
-    @average_set_sysbp = @bp_set.average(:sysbp)
-    @average_set_diabp = @bp_set.average(:diabp)  
   end
   
   def review
@@ -166,6 +164,12 @@ class CurrentBpsController < ApplicationController
     def second_bp
       set_current_bps
       @current_bps[1]
+    end
+    
+    def set_average_bp
+      @bp_set = active_user.current_bps
+      @average_sysbp = @bp_set.average(:sysbp)
+      @average_diabp = @bp_set.average(:diabp)  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
