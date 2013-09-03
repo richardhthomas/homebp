@@ -1,3 +1,20 @@
+<div id='main'>
+	<h1>Is my blood pressure too high?</h1>
+	<p>Thank you.</p><br />
+	<% if @average_sysbp > 129 or @average_diabp > 80 %>
+		<p>Your readings so far show that you may have high blood pressure...</p>
+	<% else %>
+		<p>Your readings so far show that you have normal blood pressure...</p>
+	<% end %>
+	<br />
+	<p>... however, to get a true picture of what your blood pressure is like we need to take more readings like this over the next 4 days. Also, some other illnesses can change what is considered to be a healthy blood pressure - we will give you expert, personalised advice based on your individual health.</p>
+</div>
+
+<div id='average_bp'>
+	<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+</div>
+
+
 <h2>Your average blood pressure from these two readings</h2>
 
 <p>

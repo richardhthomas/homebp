@@ -45,9 +45,10 @@ p {
   }
   
   #average_bp {
+    position: relative;
     float: left;
     width: 250px;
-    height: 320px;
+    height: 340px;
     margin-top: 50px;
     border-style:solid;
     border-width:2px;
@@ -56,6 +57,103 @@ p {
     -moz-border-radius:10px;
     border-radius:10px;
     background-color:#ffffff;
+    
+    #title {
+      border-style:solid;
+      border-width:2px;
+      border-color:#033076;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#033076;
+      color:#ffffff;
+      font-size: 18pt;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    #bar {
+      width: 35px;
+      margin: 20px 0px 0px 60px;
+      
+      #redbar {
+        background-color:#e61610;
+        width: 35px;
+        height: 80px;
+      }
+      
+      #amberbar {
+        background-color:#ffb253;
+        width: 35px;
+        height: 80px;
+      }
+      
+      #greenbar {
+        background-color:#72bb53;
+        width: 35px;
+        height: 80px;
+      }
+    }
+    
+    #notice {
+      position: absolute;
+      top: 100px;
+      left: 120px;
+      width: 70px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#000000;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#ffffff;
+      color:#000000;
+      font-size: 10pt;
+      text-align: center;
+      padding: 5px;
+    }
+    
+    #readout {
+      z-index: 1;
+      position: absolute;
+      left: 40px;
+      
+      #line {
+        float: left;
+        border-style:solid;
+        border-width:2px;
+        border-color:#000000;
+        background-color: #000000;
+        height: 1px;
+        width: 80px;
+      }
+      
+      #reading {
+        float: left;
+        margin-top: -30px;
+        width: 70px;
+        border-style:solid;
+        border-width:2px;
+        border-color:#000000;
+        -webkit-border-radius:7px;
+        -moz-border-radius:7px;
+        border-radius:7px;
+        background-color:#ffffff;
+        color:#000000;
+        font-size: 16pt;
+        text-align: center;
+        padding: 10px;
+        
+        #mmHg {
+          font-size: 12pt;
+          text-align: center;
+        }
+      }
+    }
+    
+    #learn_more {
+      margin: 5px 0px 0px 50px;
+    }
   }
   
   #how_to_measure_bp {
