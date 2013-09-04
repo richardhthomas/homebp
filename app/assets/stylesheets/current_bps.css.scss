@@ -42,6 +42,22 @@ p {
         margin: 0px 210px 0px 200px;
       }
     }
+    
+    #sign_up {
+      float: left;
+      margin: 30px 0px 10px 40px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#033076;
+      -webkit-border-radius:10px;
+      -moz-border-radius:10px;
+      border-radius:10px;
+      background-color:#ffffff;
+    }
+    
+    #form {
+      padding: 20px;
+    }
   }
   
   #average_bp {
@@ -57,20 +73,6 @@ p {
     -moz-border-radius:10px;
     border-radius:10px;
     background-color:#ffffff;
-    
-    #title {
-      border-style:solid;
-      border-width:2px;
-      border-color:#033076;
-      -webkit-border-radius:7px;
-      -moz-border-radius:7px;
-      border-radius:7px;
-      background-color:#033076;
-      color:#ffffff;
-      font-size: 18pt;
-      text-align: center;
-      padding: 8px;
-    }
     
     #bar {
       width: 35px;
@@ -161,6 +163,20 @@ p {
     margin: 20px 0px 30px 0px;
   }
 }
+
+#title {
+      border-style:solid;
+      border-width:2px;
+      border-color:#033076;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#033076;
+      color:#ffffff;
+      font-size: 18pt;
+      text-align: center;
+      padding: 8px;
+    }
 
 #current_bp_sysbp, #current_bp_diabp {
   padding: 5px;

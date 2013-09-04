@@ -20,7 +20,12 @@
 		<div id='user_nav'>
 			<% if user_signed_in? %>
 				<div id='sign_out'>
-					<%= link_to(image_tag("padlock.gif", size: '9x12') + " Sign out" + current_user.email, destroy_user_session_path, :method => :delete) %>
+					<%= link_to(destroy_user_session_path, :class => 'button1', :method => :delete) do %>
+						<%= image_tag("padlock.gif", size: '9x12') %>
+						Sign out
+						<br />
+						<%= truncate(current_user.email, :length => 12) %>
+					<% end %>
 				</div>
 			<% else %>
 				<div id='sign_in'>

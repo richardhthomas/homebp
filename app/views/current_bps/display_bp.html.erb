@@ -8,42 +8,15 @@
 	<% end %>
 	<br />
 	<p>... however, to get a true picture of what your blood pressure is like we need to take more readings like this over the next 4 days. Also, some other illnesses can change what is considered to be a healthy blood pressure - we will give you expert, personalised advice based on your individual health.</p>
+	<br />
+	<% if !user_signed_in? %>
+		<p>Sign up so you can check your blood pressure over the next 4 days and receive free personalised advice on how best to control it. We cover everything from lifestyle advice through to supplying prescriptions for medications.</p>
+		<div id='sign_up'>
+			<%= render :partial => 'devise/registrations/new' %>
+		</div>
+	<% end %>
 </div>
 
 <div id='average_bp'>
 	<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
-</div>
-
-
-<h2>Your average blood pressure from these two readings</h2>
-
-<p>
-  <strong>Systolic BP:</strong>
-  <%= number_with_precision(@average_current_sysbp, :precision => 0) %>
-</p>
-<p>
-  <strong>Diastolic BP:</strong>
-  <%= number_with_precision(@average_current_diabp, :precision => 0) %>
-</p>
-
-<p>
-	Made a mistake entering these blood pressure readings?<br />
-	Go <%= link_to 'back', review_current_bps_path, method: :post %> and alter them.
-</p>
-
-<h2>Your average blood pressure from this set of readings</h2>
-
-<p>
-  <strong>Systolic BP:</strong>
-  <%= number_with_precision(@average_sysbp, :precision => 0) %>
-</p>
-<p>
-  <strong>Diastolic BP:</strong>
-  <%= number_with_precision(@average_diabp, :precision => 0) %>
-</p>
-
-<div id='signup_msg'>
-	<% if !user_signed_in? %>
-		<p>Please <%= link_to 'sign-up', new_user_registration_path %> for our lovely service</p>
-	<% end %>
 </div>
