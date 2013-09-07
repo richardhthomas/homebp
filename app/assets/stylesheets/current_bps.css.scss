@@ -41,10 +41,15 @@ p {
       #input_bp_boxes {
         margin: 0px 210px 0px 200px;
       }
+      
+      #error_wrapper {
+        margin-left: 120px;
+      }
     }
     
     #sign_up {
       float: left;
+      width: 400px;
       margin: 30px 0px 10px 40px;
       border-style:solid;
       border-width:2px;
@@ -57,6 +62,21 @@ p {
     
     #form {
       padding: 20px;
+      
+      #tac_msg {
+        vertical-align: top;
+      }
+      
+      #tac_error_msg {
+        text-align: center;
+        margin: 5px 0px 5px 0px;
+        color: #ff0000;
+      }
+      
+      #submit_button {
+        float:left;
+        padding: 10px 0px 20px 50px;
+      }
     }
   }
   

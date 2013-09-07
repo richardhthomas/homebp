@@ -3,8 +3,7 @@
 </div>
 
 <div id='form'>
-	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  		<%= devise_error_messages! %>
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :onsubmit => "return checktc();"}) do |f| %>
 	<table>
 		<tr>
 			<td><%= f.label :email %></td>
@@ -19,10 +18,25 @@
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
 	</table>
-	<%=# f.label :tc_agreed, 'I agree'
-	%>
-	<%=# f.check_box :tc_agreed
-	%>
-  	<div><%= f.submit "Sign up" %></div>
+	<table>
+		<tr id='tac_msg'>
+			<td><%= check_box_tag 'tac' %></td>
+			<td>Please tick this box to confirm you accept our <%= link_to('terms and conditions', display_bp_current_bps_path) %></td>
+		</tr>
+	</table>
+	<% if resource.errors.any? %>
+		<div id="error_explanation">
+			<%= error_messages_for resource %>
+		</div>
+	<% end %>
+	<div id='tac_error_msg'>
+	</div>
+  	<div id='submit_button'>
+  		<button type='submit' class='button3'>
+  			<span>Sign up</span>
+  			<br />
+  			Control your blood pressure at home
+  		</button>
+  	</div>
 	<% end %>
 </div>
