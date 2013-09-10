@@ -40,7 +40,7 @@
 	
 	<div id='topmenu'>
 		<div class='topmenucontent'>
-			<a href=''>Home</a>
+			<%= link_to 'Home', static_pages_home_path %>
 		</div>
 		<div class='topmenucontent'>
 			<a href=''>My account details</a>
@@ -49,7 +49,7 @@
 			<a href=''>My medical details</a>
 		</div>
 		<div class='topmenucontent'>
-			<a href=''>My blood pressure readings</a>
+			<%= link_to 'My blood pressure readings', new_current_bp_path %>
 		</div>
 		<div class='topmenucontent'>
 			<a href=''>My blood test results</a>
@@ -64,10 +64,9 @@
 	</div>
 	
 	<div id='bottombar'>
-		<a href=''>FAQs</a>
-		<a href=''>About us</a>
-		<a href=''>Contact us</a>
-		<a href=''>Terms & conditions</a>
+		<%= link_to 'About us', static_pages_about_path %>
+		<%= link_to 'Contact us', static_pages_contact_us_path %>
+		<%= link_to 'Terms & Conditions', static_pages_tac_path %>
 		<span>&#169; 2013</span>
 	</div>
 

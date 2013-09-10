@@ -1,4 +1,8 @@
 Homebp::Application.routes.draw do
+  get "static_pages/home"
+  get "static_pages/about"
+  get "static_pages/contact_us"
+  get "static_pages/tac"
   resources :current_bps do
     collection do
       get 'display_bp'

@@ -2,7 +2,8 @@ class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:display_bp, :review]
-  before_action :set_average_bp, only: [:new, :new2, :display_bp]
+  before_action :set_average_bp, only: [:display_bp]
+  before_action :set_average_bp_old, only: [:new, :new2]
 
   # GET /current_bps
   # GET /current_bps.json
@@ -76,10 +77,10 @@ class CurrentBpsController < ApplicationController
     respond_to do |format|
       if @current_bp.update(current_bp_params)
         if session[:reading_counter] == 2
-          format.html { redirect_to display_bp_current_bps_path, notice: 'Current bp was successfully updated.' }
+          format.html { redirect_to display_bp_current_bps_path }
           format.json { head :no_content }
         else
-          format.html { redirect_to new2_current_bps_path, notice: 'Current bp was successfully updated.' }
+          format.html { redirect_to new2_current_bps_path }
         end
       else
         if session[:reading_counter] == 1
@@ -105,6 +106,18 @@ class CurrentBpsController < ApplicationController
   def display_bp
     @average_current_sysbp = @current_bps.average(:sysbp)
     @average_current_diabp = @current_bps.average(:diabp)
+    
+    if @average_current_sysbp > 179 or @average_current_diabp > 109
+      @warning_message = "This last pair of blood pressure readings are very high. We recommend that you see a healthcare professional to discuss this within the next 24 hours."
+    elsif @average_current_sysbp < 90 or @average_current_diabp < 60
+      @warning_message = "This last pair of blood pressure readings are quite low. This can be normal, especially for young women, but if you feel unwell at all you should see a doctor as soon as possible."
+    end
+    
+    if @average_sysbp > 129 or @average_diabp > 80
+      @message = "Your readings so far show that you may have high blood pressure..."
+    else
+      @message = "Your readings so far show that you have normal blood pressure..."
+    end
   end
   
   def review
@@ -121,7 +134,8 @@ class CurrentBpsController < ApplicationController
   end
   
   def signup_bp_migration
-    if session[:temp_user_id]
+    @current_bps = get_temp_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
+    if @current_bps[1] #checks whether a second BP has been entered before migrating readings to new user account
       @saved = 0
       @temp_bp = get_temp_user.current_bps
       @temp_bp.each do |temp_bp|
@@ -136,13 +150,13 @@ class CurrentBpsController < ApplicationController
       end
       respond_to do |format|
         if @saved == 2
-          format.html { redirect_to current_bps_path }
+          format.html { redirect_to display_bp_current_bps_path, notice: 'Welcome to HomeBloodPressure.co.uk' }
         else
           format.html { render action: 'new' }
         end
       end
     else
-      redirect_to review_current_bps_path
+      redirect_to new_current_bp_path, notice: 'Welcome to HomeBloodPressure.co.uk'
     end
   end
   
@@ -166,8 +180,32 @@ class CurrentBpsController < ApplicationController
       @current_bps[1]
     end
     
+    # set_average_bp_old sets @average_sysbp and @average_diabp but only using values from prior to this session. set_average_bp uses all values.
+    # The first is used for the new and new2 views when we don't want the display updating until a pair of new readings has been entered.
+    
     def set_average_bp
       @bp_set = active_user.current_bps
+      @average_sysbp = @bp_set.average(:sysbp)
+      @average_diabp = @bp_set.average(:diabp)
+      if !@average_sysbp.nil?
+        @sys_position = 70 + ((170 - @average_sysbp)*3.5)
+        @dia_position = 70 + ((110 - @average_diabp)*4.66)
+        if @sys_position < @dia_position
+          @bp_position = @sys_position
+        else
+          @bp_position = @dia_position
+        end
+        if @bp_position < 70
+          @bp_position = 70
+        end
+        if @bp_position > 280
+          @bp_position = 280
+        end
+      end
+    end
+    
+    def set_average_bp_old
+      @bp_set = active_user.current_bps.where('(date != ? AND ampm != ?)', session[:date], session[:ampm])
       @average_sysbp = @bp_set.average(:sysbp)
       @average_diabp = @bp_set.average(:diabp)
       if !@average_sysbp.nil?

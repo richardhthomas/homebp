@@ -1,13 +1,16 @@
+<% if flash[:notice] %>
+	<div id="notice"><%= notice %></div>
+<% end %>
+
 <div id='main'>
 	<h1>Is my blood pressure too high?</h1>
 	<p>Thank you.</p><br />
-	<% if @average_sysbp > 129 or @average_diabp > 80 %>
-		<p>Your readings so far show that you may have high blood pressure...</p>
-	<% else %>
-		<p>Your readings so far show that you have normal blood pressure...</p>
+	<% if @warning_message %>
+		<p id='warning_msg'><%= @warning_message %></p><br />
 	<% end %>
+	<p><%= @message %></p>
 	<br />
-	<p>... however, to get a true picture of what your blood pressure is like we need to take more readings like this over the next 4 days. Also, some other illnesses can change what is considered to be a healthy blood pressure - we will give you expert, personalised advice based on your individual health.</p>
+	<p>...However, to get a more accurate picture of what your blood pressure is like we need to take more readings like this over the next 4 days. Also, some other illnesses can change what is considered to be a healthy blood pressure - we will give you expert, personalised advice based on your individual health.</p>
 	<br />
 	<% if !user_signed_in? %>
 		<p>Sign up so you can check your blood pressure over the next 4 days and receive free personalised advice on how best to control it. We cover everything from lifestyle advice through to supplying prescriptions for medications.</p>
