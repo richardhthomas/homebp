@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -47,3 +47,10 @@ end
 gem 'devise', '~>3.0'
 
 gem 'dynamic_form'
+
+# needed by Heroku
+gem 'rails_12factor', group: :production
+ruby "2.0.0"
+
+# use postgresql
+gem 'pg'

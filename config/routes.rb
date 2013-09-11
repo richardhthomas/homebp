@@ -10,6 +10,7 @@ Homebp::Application.routes.draw do
       patch 'update_bp'
       get 'new2'
       get 'signup_bp_migration'
+      get 'router'
     end
   end
 
@@ -69,6 +70,6 @@ Homebp::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "current_bps#new"
+  root :to => "current_bps#router"
   
 end

@@ -4,7 +4,23 @@ class CurrentBpsController < ApplicationController
   before_action :set_current_bps, only: [:display_bp, :review]
   before_action :set_average_bp, only: [:display_bp]
   before_action :set_average_bp_old, only: [:new, :new2]
-
+  
+  def router
+    session[:date] = Date.today.to_s(:db)
+    if DateTime.now.seconds_since_midnight < 43200
+      session[:ampm] = "am"
+    else
+      session[:ampm] = "pm"
+    end
+    #@last_bp = active_user.current_bps.limit(1).order('id desc') This may work, but was returning an object which wasn't nil even when the active_user had no bps
+    @count = active_user.current_bps.count # so for now this is just a count of the number of BPs associated with the user
+    if @count > 1 #or last_bp is not from previous 12 hour slot
+      redirect_to static_pages_home_path #to be replaced by code to determine if user is too early or too late
+    else
+      redirect_to new_current_bp_path
+    end
+  end
+  
   # GET /current_bps
   # GET /current_bps.json
   def index
@@ -22,13 +38,7 @@ class CurrentBpsController < ApplicationController
     if first_bp
       @current_bp = first_bp
     else
-      @current_bp = CurrentBp.new  
-      session[:date] = Date.today.to_s(:db)
-      if DateTime.now.seconds_since_midnight < 43200
-        session[:ampm] = "am"
-      else
-        session[:ampm] = "pm"
-      end
+      @current_bp = CurrentBp.new
     end
   end
 
