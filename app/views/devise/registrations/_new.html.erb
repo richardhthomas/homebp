@@ -21,7 +21,7 @@
 	<table>
 		<tr id='tac_msg'>
 			<td><%= check_box_tag 'tac' %></td>
-			<td>Please tick this box to confirm you accept our <%= link_to('terms and conditions', display_bp_current_bps_path) %></td>
+			<td>Please tick this box to confirm you accept our <%= link_to('terms and conditions', static_pages_tac_path) %></td>
 		</tr>
 	</table>
 	<% if resource.errors.any? %>
