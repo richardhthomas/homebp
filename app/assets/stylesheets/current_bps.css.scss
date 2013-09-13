@@ -64,7 +64,7 @@ p {
       border-radius:10px;
       background-color:#ffffff;
       
-      #form {
+      #nav_form {
       padding: 20px;
       
         td {
@@ -96,6 +96,10 @@ p {
       
         #forgot_pwd_txt {
           text-align:center;
+        }
+        
+        #user_email, #user_password, #user_password_confirmation {
+          width: 160px;
         }
       }
     }
@@ -228,6 +232,7 @@ p {
     }
 
 #current_bp_sysbp, #current_bp_diabp {
+  width: 70px;
   padding: 5px;
   font-size: 12pt;
   float: left;
