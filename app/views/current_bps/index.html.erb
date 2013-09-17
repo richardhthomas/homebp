@@ -35,3 +35,37 @@
 <br>
 
 <%= link_to 'New Current bp', new_current_bp_path %>
+
+<br />
+
+<h1>Listing average_bps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>temp_user_id</th>
+      <th>Date</th>
+      <th>Ampm</th>
+      <th>Sysbp</th>
+      <th>Diabp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_bps.each do |average_bp| %>
+      <tr>
+      	<td><%= average_bp.user_id %></td>
+        <td><%= average_bp.temp_user_id %></td>
+        <td><%= average_bp.date %></td>
+        <td><%= average_bp.ampm %></td>
+        <td><%= average_bp.sysbp %></td>
+        <td><%= average_bp.diabp %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -1,9 +1,8 @@
 class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_bps, only: [:display_bp, :review]
-  before_action :set_average_bp, only: [:display_bp]
-  before_action :set_average_bp_old, only: [:new, :new2]
+  before_action :set_current_bps, only: [:create_average_bp, :display_bp, :review]
+  before_action :set_average_bp, only: [:display_bp, :new, :new2]
   
   def router
     session[:date] = Date.today.to_s(:db)
@@ -13,8 +12,8 @@ class CurrentBpsController < ApplicationController
       session[:ampm] = "pm"
     end
     #@last_bp = active_user.current_bps.limit(1).order('id desc') This may work, but was returning an object which wasn't nil even when the active_user had no bps
-    @count = active_user.current_bps.count # so for now this is just a count of the number of BPs associated with the user
-    if @count > 1 #or last_bp is not from previous 12 hour slot
+    @count = active_user.average_bps.count # so for now this is just a count of the number of BPs associated with the user
+    if @count > 0 #or last_bp is not from previous 12 hour slot
       redirect_to static_pages_home_path #to be replaced by code to determine if user is too early or too late
     else
       redirect_to new_current_bp_path
@@ -25,6 +24,7 @@ class CurrentBpsController < ApplicationController
   # GET /current_bps.json
   def index
     @current_bps = CurrentBp.all
+    @average_bps = AverageBp.all
   end
 
   # GET /current_bps/1
@@ -65,7 +65,7 @@ class CurrentBpsController < ApplicationController
     respond_to do |format|
       if @current_bp.save
         if session[:reading_counter] == 2
-          format.html { redirect_to display_bp_current_bps_path }
+          format.html { redirect_to create_average_bp_current_bps_path }
           format.json { render action: 'show', status: :created, location: @current_bp }
         else
           format.html { redirect_to new2_current_bps_path }
@@ -87,7 +87,7 @@ class CurrentBpsController < ApplicationController
     respond_to do |format|
       if @current_bp.update(current_bp_params)
         if session[:reading_counter] == 2
-          format.html { redirect_to display_bp_current_bps_path }
+          format.html { redirect_to create_average_bp_current_bps_path }
           format.json { head :no_content }
         else
           format.html { redirect_to new2_current_bps_path }
@@ -113,13 +113,33 @@ class CurrentBpsController < ApplicationController
     end
   end
   
-  def display_bp
+  def create_average_bp
     @average_current_sysbp = @current_bps.average(:sysbp)
     @average_current_diabp = @current_bps.average(:diabp)
     
-    if @average_current_sysbp > 179 or @average_current_diabp > 109
+    @current_average_bp = active_user.average_bps.where(:date => @current_bps[0].date, :ampm => @current_bps[0].ampm).take #holds current average bp if one has already been created
+    
+    if !@current_average_bp.nil? # detects if already have an average bp, so can be overwritten in the case that user has gone back and altered values
+      @current_average_bp.sysbp = @average_current_sysbp
+      @current_average_bp.diabp = @average_current_diabp
+      @current_average_bp.save
+    else # create average bp
+      @average_bp = active_user.average_bps.build
+      @average_bp.sysbp = @average_current_sysbp
+      @average_bp.diabp = @average_current_diabp
+      @average_bp.date = @current_bps[0].date
+      @average_bp.ampm = @current_bps[0].ampm
+      @average_bp.save
+    end
+    
+    redirect_to display_bp_current_bps_path
+  end
+  
+  def display_bp
+    @current_average_bp = active_user.average_bps.last
+    if @current_average_bp.sysbp > 179 or @current_average_bp.diabp > 109
       @warning_message = "This last pair of blood pressure readings are very high. We recommend that you see a healthcare professional to discuss this within the next 24 hours."
-    elsif @average_current_sysbp < 90 or @average_current_diabp < 60
+    elsif @current_average_bp.sysbp < 90 or @current_average_bp.diabp < 60
       @warning_message = "This last pair of blood pressure readings are quite low. This can be normal, especially for young women, but if you feel unwell at all you should see a doctor as soon as possible."
     end
     
@@ -144,22 +164,15 @@ class CurrentBpsController < ApplicationController
   end
   
   def signup_bp_migration
-    @current_bps = get_temp_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
-    if @current_bps[1] #checks whether a second BP has been entered before migrating readings to new user account
-      @saved = 0
-      @temp_bp = get_temp_user.current_bps
-      @temp_bp.each do |temp_bp|
-        @current_bp = current_user.current_bps.build
-        @current_bp.sysbp = temp_bp.sysbp
-        @current_bp.diabp = temp_bp.diabp
-        @current_bp.date = temp_bp.date
-        @current_bp.ampm = temp_bp.ampm
-        if @current_bp.save
-          @saved += 1
-        end
-      end
+    @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take
+    if !@current_average_bp.nil? #checks whether an average BP has been created before migrating readings to new user account
+      @average_bp = current_user.average_bps.build
+      @average_bp.sysbp = @current_average_bp.sysbp
+      @average_bp.diabp = @current_average_bp.diabp
+      @average_bp.date = @current_average_bp.date
+      @average_bp.ampm = @current_average_bp.ampm
       respond_to do |format|
-        if @saved == 2
+        if @average_bp.save
           format.html { redirect_to display_bp_current_bps_path, notice: 'Welcome to HomeBloodPressure.co.uk' }
         else
           format.html { render action: 'new' }
@@ -190,32 +203,8 @@ class CurrentBpsController < ApplicationController
       @current_bps[1]
     end
     
-    # set_average_bp_old sets @average_sysbp and @average_diabp but only using values from prior to this session. set_average_bp uses all values.
-    # The first is used for the new and new2 views when we don't want the display updating until a pair of new readings has been entered.
-    
     def set_average_bp
-      @bp_set = active_user.current_bps
-      @average_sysbp = @bp_set.average(:sysbp)
-      @average_diabp = @bp_set.average(:diabp)
-      if !@average_sysbp.nil?
-        @sys_position = 70 + ((170 - @average_sysbp)*3.5)
-        @dia_position = 70 + ((110 - @average_diabp)*4.66)
-        if @sys_position < @dia_position
-          @bp_position = @sys_position
-        else
-          @bp_position = @dia_position
-        end
-        if @bp_position < 70
-          @bp_position = 70
-        end
-        if @bp_position > 280
-          @bp_position = 280
-        end
-      end
-    end
-    
-    def set_average_bp_old
-      @bp_set = active_user.current_bps.where('(date != ? AND ampm != ?)', session[:date], session[:ampm])
+      @bp_set = active_user.average_bps
       @average_sysbp = @bp_set.average(:sysbp)
       @average_diabp = @bp_set.average(:diabp)
       if !@average_sysbp.nil?

@@ -11,6 +11,7 @@ Homebp::Application.routes.draw do
       get 'new2'
       get 'signup_bp_migration'
       get 'router'
+      get 'create_average_bp'
     end
   end
 
