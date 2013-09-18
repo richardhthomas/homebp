@@ -60,6 +60,9 @@
 	</div>
 	
 	<div id='content'>
+		<% if flash[:notice] %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
 		<%= yield %>
 	</div>
 	

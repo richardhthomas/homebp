@@ -1,7 +1,3 @@
-<% if flash[:notice] %>
-	<div id="notice"><%= notice %></div>
-<% end %>
-
 <div id='main'>
 	<h1>Is my blood pressure too high?</h1>
 	<p>Thank you.</p><br />
@@ -20,6 +16,10 @@
 	<% end %>
 </div>
 
-<div id='average_bp'>
-	<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+<div id='average_bp_container'>
+	<% if !@average_sysbp.nil? %>
+		<div id='average_bp'>
+			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+		</div>
+	<% end %>
 </div>
