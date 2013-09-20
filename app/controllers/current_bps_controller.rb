@@ -11,10 +11,10 @@ class CurrentBpsController < ApplicationController
     else
       session[:ampm] = "pm"
     end
-    #@last_bp = active_user.current_bps.limit(1).order('id desc') This may work, but was returning an object which wasn't nil even when the active_user had no bps
-    @count = active_user.average_bps.count # so for now this is just a count of the number of BPs associated with the user
-    if @count > 0 #or last_bp is not from previous 12 hour slot
-      redirect_to static_pages_home_path #to be replaced by code to determine if user is too early or too late
+    #see static pages controller for code that can return the last BP for a user
+    @count = active_user.average_bps.count # this is just a count of the number of BPs associated with the user
+    if @count > 0
+      redirect_to display_bp_current_bps_path
     else
       redirect_to new_current_bp_path
     end

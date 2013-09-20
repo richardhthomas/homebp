@@ -8,10 +8,7 @@ h1 {
   margin-top: 10px;
 }
 
-p {
-  margin: 0px 45px 0px 25px;
-  color: #000000;
-}
+
 
 #content {
   float: left;
@@ -34,6 +31,11 @@ p {
   #main {
     float: left;
     width: 650px;
+    
+    p {
+      margin: 0px 45px 0px 25px;
+      color: #000000;
+    }
     
     #input_bp {
       margin-top: 20px;
@@ -202,6 +204,11 @@ p {
   #how_to_measure_bp {
     float:left;
     margin: 20px 0px 30px 0px;
+    
+    p {
+      margin: 0px 45px 0px 25px;
+      color: #000000;
+    }
   }
 }
 
