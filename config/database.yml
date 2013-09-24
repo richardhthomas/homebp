@@ -46,6 +46,6 @@ production:
 
 staging:
   adapter: postgresql
-  database: HomeBloodPressure_production
+  database: HomeBloodPressure_staging
   pool: 5
   timeout: 5000

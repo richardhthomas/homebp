@@ -80,6 +80,6 @@ Homebp::Application.configure do
   
   # I added this so log-in is required for staging app on Heroku
   config.middleware.use '::Rack::Auth::Basic' do |u, p|
-      [u, p] == [USER, PASSWORD]
-    end
+      [u, p] == ['testing', 'Develop93']
+  end
 end
