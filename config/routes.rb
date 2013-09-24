@@ -3,6 +3,8 @@ Homebp::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/contact_us"
   get "static_pages/tac"
+  get "static_pages/sign_in_msg"
+  get "static_pages/landing_page"
   resources :current_bps do
     collection do
       get 'display_bp'
@@ -71,6 +73,6 @@ Homebp::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "current_bps#router"
+  root :to => "static_pages#landing_page"
   
 end

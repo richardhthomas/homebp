@@ -11,4 +11,10 @@ class StaticPagesController < ApplicationController
 
   def tac
   end
+  
+  def sign_in_msg
+  end
+  
+  def landing_page
+  end
 end
