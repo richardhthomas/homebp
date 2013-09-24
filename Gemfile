@@ -49,7 +49,7 @@ gem 'devise', '~>3.0.0.rc'
 gem 'dynamic_form'
 
 # needed by Heroku
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production, :staging
 ruby "2.0.0"
 
 # use postgresql
