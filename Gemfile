@@ -57,3 +57,6 @@ ruby "2.0.0"
 
 # use postgresql
 gem 'pg'
+
+# use unicorn as webserver
+gem 'unicorn'
