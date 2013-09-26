@@ -6,9 +6,9 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.sign_up.subject
   #
-  def sign_up
-    @greeting = "Hi " + current_user.email
+  def sign_up(email)
+    @greeting = "Hi " + email
 
-    mail to: "richardhthomas@yahoo.com", subject: "Welcome to HomeBloodPRessure.co.uk"
+    mail to: "richardhthomas@yahoo.com", subject: "Welcome to HomeBloodPressure.co.uk"
   end
 end
