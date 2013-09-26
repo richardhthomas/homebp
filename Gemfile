@@ -60,3 +60,6 @@ gem 'pg'
 
 # use unicorn as webserver
 gem 'unicorn'
+
+# use postmark for email
+gem 'postmark-rails'
