@@ -1,10 +1,12 @@
-<p><%= @greeting %></p>
+<div id='mailer_sign_up'>
 
-<h3>Welcome to HomeBloodPressure.co.uk!</h3>
+<h1>Welcome to HomeBloodPressure.co.uk</h1>
+
+<p><%= @greeting %></p>
 
 <p>You have taken the first step to taking control of your own blood pressure from the convenience of your own home.</p>
 
-<p><%= @next_reading_1 %>.</p>
+<p>Please go to <%= link_to('HomeBloodPressure.co.uk', new_user_session_path) %> to take <%= @a_another_reading %> pair of blood pressure readings <%= @when_next_reading %>.</p>
 
 <p>Your blood pressure tends to go up and down depending on what you’ve been doing. This means that when you measure it at different times of day, you’ll get different readings. Your blood pressure can go up during exercise, after you drink a cup of coffee, or when you are stressed about something.</p>
 
@@ -18,9 +20,10 @@
 
 <p>You may feel that this is quite complicated. We agree, which is why we have designed and built this website to help you. Now you have registered with us, we’ll send you reminders to check your blood pressure, and help you keep track of your measurements.</p>
 
-<p><%= @next_reading_2 %></p>
+<p>So, <%= @when_next_reading %>, please go to <%= link_to 'HomeBloodPressure.co.uk', new_user_session_path %> to take <%= @a_another_reading %> pair of blood pressure readings.</p>
 
 <p>Stay healthy!</p>
 
 <p>The HomeBloodPressure.co.uk team</p>
 
+</div>
