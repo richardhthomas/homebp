@@ -164,7 +164,6 @@ class CurrentBpsController < ApplicationController
   end
   
   def signup_bp_migration
-    Notifier.sign_up(current_user.email).deliver #send sign_up email
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take
     if !@current_average_bp.nil? #checks whether an average BP has been created before migrating readings to new user account
       @average_bp = current_user.average_bps.build
@@ -174,12 +173,15 @@ class CurrentBpsController < ApplicationController
       @average_bp.ampm = @current_average_bp.ampm
       respond_to do |format|
         if @average_bp.save
+          Notifier.sign_up(current_user, @average_bp.ampm).deliver #send sign_up email
           format.html { redirect_to display_bp_current_bps_path, notice: 'Welcome to HomeBloodPressure.co.uk' }
         else
+          Notifier.sign_up(current_user, nil).deliver #send sign_up email
           format.html { render action: 'new' }
         end
       end
     else
+      Notifier.sign_up(current_user, nil).deliver #send sign_up email
       redirect_to new_current_bp_path, notice: 'Welcome to HomeBloodPressure.co.uk'
     end
   end
