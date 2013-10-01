@@ -9,15 +9,15 @@ class Notifier < ActionMailer::Base
   #   en.notifier.sign_up.subject
   #
   
-  def confirmation_instructions(record)
+  def confirmation_instructions(record, opts={})
     devise_mail(record, :confirmation_instructions)
   end
 
-  def reset_password_instructions(record)
+  def reset_password_instructions(record, opts={})
     devise_mail(record, :reset_password_instructions)
   end
 
-  def unlock_instructions(record)
+  def unlock_instructions(record, opts={})
     devise_mail(record, :unlock_instructions)
   end
   
