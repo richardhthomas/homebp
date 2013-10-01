@@ -167,7 +167,7 @@ a.button2:hover {
   }
 }
 
-.button4 {
+.button4, .button5 {
   display:block;
   text-align:center;
   padding:5px 15px 5px 15px;
@@ -181,6 +181,10 @@ a.button2:hover {
   &:hover {
     background-color:#ffffff;
   }
+}
+
+.button5 {
+  font-size: 10pt;
 }
 
 #topmenu {
