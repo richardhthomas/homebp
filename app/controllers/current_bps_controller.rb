@@ -138,15 +138,23 @@ class CurrentBpsController < ApplicationController
   def display_bp
     @current_average_bp = active_user.average_bps.last
     if @current_average_bp.sysbp > 179 or @current_average_bp.diabp > 109
-      @warning_message = "This last pair of blood pressure readings are very high. We recommend that you see a healthcare professional to discuss this within the next 24 hours."
+      @warning_message = "This last pair of blood pressure readings were very high. We recommend that you see a healthcare professional to discuss this within the next 24 hours."
     elsif @current_average_bp.sysbp < 90 or @current_average_bp.diabp < 60
-      @warning_message = "This last pair of blood pressure readings are quite low. This can be normal, especially for young women, but if you feel unwell at all you should see a doctor as soon as possible."
+      @warning_message = "This last pair of blood pressure readings were quite low. This can be normal, especially for young women, but if you feel unwell at all you should see a doctor as soon as possible."
     end
     
     if @average_sysbp > 129 or @average_diabp > 80
-      @message = "Your readings so far show that you may have high blood pressure..."
+      @average_bp_message = "Your average readings so far show that you may have high blood pressure..."
+    elsif @average_sysbp < 90 or @average_diabp < 60
+      @average_bp_message = "Your average readings so far show that your blood pressure is quite low..."
     else
-      @message = "Your readings so far show that you have normal blood pressure..."
+      @average_bp_message = "Your readings so far show that you have normal blood pressure..."
+    end
+    
+    if @current_average_bp.ampm == 'am'
+      @when_next_reading = "this evening"
+    else
+      @when_next_reading = "tomorrow morning"
     end
   end
   

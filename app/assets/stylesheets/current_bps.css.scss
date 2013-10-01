@@ -35,6 +35,10 @@ h1 {
     p {
       margin: 0px 45px 0px 25px;
       color: #000000;
+      
+      span {
+        font-weight: bold;
+      }
     }
     
     #input_bp {
@@ -118,7 +122,7 @@ h1 {
   #average_bp_container {
     width: 250px;
     height: 340px;
-    margin-top: 50px;
+    margin: 50px 0px 20px 0px;
     float: left;
     
     #average_bp {
