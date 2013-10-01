@@ -243,6 +243,37 @@ a.button2:hover {
 );
 }
 
+#contact_us {
+  float: left;
+  width: 600px;
+  margin: 30px 0px 10px 40px;
+  border-style:solid;
+  border-width:2px;
+  border-color:#033076;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  background-color:#ffffff;
+      
+  #contact_form {
+    padding: 20px;
+      
+    td {
+      padding-right: 20px;
+    }
+    
+    #message_content {
+      width: 450px;
+      font-size: 10pt;
+    }
+      
+    #submit {
+      float:left;
+      margin: 20px 0px 20px 200px;
+    }
+  }
+}
+
 #bottombar {
   width:950px;
   margin:30px 0px 10px 0px;

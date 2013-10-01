@@ -63,3 +63,6 @@ gem 'unicorn'
 
 # use postmark for email
 gem 'postmark-rails'
+
+# use active_attr gem - this allows you to operate on model objects without them having to be backed by a database 
+gem 'active_attr'
