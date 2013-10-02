@@ -15,17 +15,67 @@
       text-decoration:none;
     }
   }
+  
+  #about_us {
+    
+    .about_us_box {
+      float: left;
+      width: 380px;
+      height: 150px;
+      margin: 10px 0px 10px 40px;
+      padding: 10px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#033076;
+      -webkit-border-radius:10px;
+      -moz-border-radius:10px;
+      border-radius:10px;
+      background-color:#ffffff;
+  
+      h3 {
+        font-size: 16pt;
+        color: #0844a4;
+        font-weight: normal;
+        margin: 5px 0px 0px 10px;
+      }
+  
+      .content {
+        margin: 10px;
+      }
+    
+      .qualifications {
+        font-size: 10pt;
+        margin: 0px 0px 0px 10px;
+      }
+    
+      .gmcno {
+        font-size: 8pt;
+        margin: 0px 0px 0px 10px;
+      }
+    }
+    
+    .indent {
+      padding-left: 30px;
+      font-weight: bold; 
+    }
+  }
+  
+  
+  #tac {
+    h3 {
+      font-size: 16pt;
+      color: #0844a4;
+      font-weight: normal;
+      margin: 30px 0px 10px 0px;
+    }
+
+    h4 {
+      font-size: 12pt;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  }
 }
 
-h3 {
-  font-size: 16pt;
-  color: #0844a4;
-  font-weight: normal;
-  margin: 30px 0px 10px 0px;
-}
 
-h4 {
-  font-size: 12pt;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+
