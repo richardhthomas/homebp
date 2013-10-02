@@ -36,4 +36,11 @@ class Notifier < ActionMailer::Base
 
     mail to: user.email, subject: "Welcome to HomeBloodPressure.co.uk"
   end
+  
+  def contact_us(message)
+    @name = message.name
+    @email = message.email
+    @content = message.content
+    mail to: "richardhthomas@yahoo.com", subject: "HomeBloodPressure.co.uk contact us"
+  end
 end
