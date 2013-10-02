@@ -190,7 +190,6 @@ a.button2:hover {
 #topmenu {
   width:950px;
   height:30px;
-  margin-bottom: 10px;
   float:left;
   background-color:#032F76;
   background-image: linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
@@ -241,6 +240,10 @@ a.button2:hover {
     color-stop(0.93, #F0F6FF),
     color-stop(1, #FFFFFF)
 );
+}
+
+#back {
+  padding-left: 910px;
 }
 
 #contact_us {

@@ -61,6 +61,10 @@
 		-->
 	</div>
 	
+	<div id='back'>
+		<%= link_to_function "Back", "history.back()" %>
+	</div>
+	
 	<div id='content'>
 		<% if flash[:notice] %>
 			<div id="notice"><%= notice %></div>
