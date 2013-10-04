@@ -1,7 +1,27 @@
 <div id='main_full_width'>
-	<h3>Some interesting stuff...</h3>
-		<p>Blah blah blah blah...</p>
-	<div id='call_to_action'>
-		<%= link_to('Enter some BP readings NOW!', router_current_bps_path, :class => 'button3') %>
+	<div id='landing_page_bp_treatment'>
+		<div id='heart_bp_monitor_pic'>
+			<%= image_tag("heart_bp_monitor.jpg", size: '150x120') %>
+		</div>
+		
+		<div id='questions'>
+			<h3>Are you worried about your blood pressure?</h3>
+			<h4>Do you want to know the best way to treat it?</h4>
+			<h5>Are you worried about side effects from blood pressure medication?</h5>
+		</div>
+		
+		<div id='the_right_place'>
+			<h3>If so, you've come to the right place...</h3>
+		</div>
+		
+		<div id='landing_page_content'>
+			<p>To make things simple we’ve broken the advice down into three broad groups...</p>
+			<p>First comes information about the lifestyle changes that you can make in order to lower your blood pressure and lead a healthier life. Second is information about complementary healthcare treatments that you may have considered using, such as supplements or acupuncture.</p>
+			<p>And finally is information about the different medications that you might be prescribed by your doctor, or even better, that you may choose to have prescribed yourself, through our easy to use service.</p>
+		</div>
+		
+		<div id='call_to_action'>
+			<%= link_to('Enter some BP readings NOW!', router_current_bps_path, :class => 'button3') %>
+		</div>
 	</div>
 </div>
