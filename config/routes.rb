@@ -5,6 +5,10 @@ Homebp::Application.routes.draw do
   get "static_pages/tac"
   get "static_pages/sign_in_msg"
   get "static_pages/landing_page"
+  get "static_pages/how_to_monitor_bp"
+  get "static_pages/choosing_a_monitor"
+  get "static_pages/how_to_measure_bp"
+  get "static_pages/when_to_measure_bp"
   resources :current_bps do
     collection do
       get 'display_bp'

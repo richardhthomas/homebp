@@ -62,6 +62,7 @@
   
   
   #tac {
+    
     h3 {
       font-size: 16pt;
       color: #0844a4;
@@ -73,6 +74,29 @@
       font-size: 12pt;
       margin-bottom: 5px;
       font-weight: bold;
+    }
+  }
+  
+  #how_to_monitor_bp, #choosing_a_monitor {
+    
+    h3 {
+      font-size: 16pt;
+      color: #0844a4;
+      font-weight: normal;
+      margin: 30px 0px 10px 0px;
+    }
+    
+    #cufftable {
+      margin: 0px 0px 10px 100px;
+      
+      td {
+        text-align:center;
+      }
+      
+      td.bold {
+        padding: 5px 10px 2px 10px;
+        font-weight: bold;
+      }
     }
   }
 }
