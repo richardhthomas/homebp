@@ -269,7 +269,7 @@ h1 {
       float: left;
       width: 155px;
       height: 125px;
-      margin: 10px 0px 10px 25px;
+      margin: 10px 0px 10px 50px;
       padding: 3px;
       border-style:solid;
       border-width:2px;
@@ -310,7 +310,7 @@ h1 {
       }
       
       p {
-        margin: 0px 40px 30px 25px;
+        margin: 0px 40px 30px 50px;
       }
     }
     
@@ -363,17 +363,22 @@ h1 {
       float: left;
       width: 900px;
       
-     h3 {
+      h3 {
+        margin: 40px 0px 15px 0px;
         font-size: 14pt;
+        color: #0844a4;
+        font-weight: bold;
+      }
+      
+      h4 {
+        margin: 0px 0px 5px 20px;
+        font-size: 12pt;
         color: #0844a4;
         font-weight: normal;
       }
       
-      h4 {
-        margin-bottom: 5px;
-        font-size: 12pt;
-        color: #0844a4;
-        font-weight: normal;
+      p {
+        margin: 0px 40px 15px 50px;
       }
     }
   }
