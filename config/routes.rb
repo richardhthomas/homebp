@@ -1,14 +1,9 @@
 Homebp::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/about"
-  get "static_pages/contact_us"
   get "static_pages/tac"
   get "static_pages/sign_in_msg"
-  get "static_pages/landing_page"
-  get "static_pages/how_to_monitor_bp"
-  get "static_pages/choosing_a_monitor"
-  get "static_pages/how_to_measure_bp"
-  get "static_pages/when_to_measure_bp"
+  
   resources :current_bps do
     collection do
       get 'display_bp'
@@ -18,8 +13,14 @@ Homebp::Application.routes.draw do
       get 'signup_bp_migration'
       get 'router'
       get 'create_average_bp'
+      get 'landing_page'
+      get 'how_to_monitor_bp'
+      get 'choosing_a_monitor'
+      get 'how_to_measure_bp'
+      get 'when_to_measure_bp'
     end
   end
+  
   resources :messages
   
   devise_for :users, :controllers => {:registrations => "registrations"}
@@ -78,6 +79,6 @@ Homebp::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "static_pages#landing_page"
+  root :to => "current_bps#landing_page"
   
 end

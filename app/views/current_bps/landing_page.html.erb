@@ -20,8 +20,16 @@
 			<p>And finally is information about the different medications that you might be prescribed by your doctor, or even better, that you may choose to have prescribed yourself, through our easy to use service.</p>
 		</div>
 		
-		<div id='call_to_action'>
-			<%= link_to('Enter some BP readings NOW!', router_current_bps_path, :class => 'button3') %>
+		<div id='cta_bp_entry'>
+			<div id='title'>
+				Is my blood pressure too high?
+			</div>
+			<p>Provide us with some blood pressure readings and we'll answer that question right away!</p>
+			<div id='input_bp'>
+				<%= render 'form' %>
+			</div>
+			<p>If you need advice on how to measure your blood pressure, please see our <%= link_to "blood pressure measurement guide.", how_to_monitor_bp_current_bps_path %></p>
 		</div>
+		
 	</div>
 </div>

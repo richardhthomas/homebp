@@ -1,22 +1,23 @@
 class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
+  before_action :collect_first_bp, only: [:new, :landing_page]
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:create_average_bp, :display_bp, :review]
   before_action :set_average_bp, only: [:display_bp, :new, :new2]
   
   def router
-    session[:date] = Date.today.to_s(:db)
-    if DateTime.now.seconds_since_midnight < 43200
-      session[:ampm] = "am"
-    else
-      session[:ampm] = "pm"
-    end
     #see static pages controller for code that can return the last BP for a user
     @count = active_user.average_bps.count # this is just a count of the number of BPs associated with the user
     if @count > 0
       redirect_to display_bp_current_bps_path
     else
-      redirect_to new_current_bp_path
+      session[:date] = Date.today.to_s(:db)
+      if DateTime.now.seconds_since_midnight < 43200
+        session[:ampm] = "am"
+      else
+        session[:ampm] = "pm"
+      end
+      redirect_to landing_page_current_bps_path
     end
   end
   
@@ -34,12 +35,6 @@ class CurrentBpsController < ApplicationController
 
   # GET /current_bps/new
   def new
-    session[:reading_counter] = 1
-    if first_bp
-      @current_bp = first_bp
-    else
-      @current_bp = CurrentBp.new
-    end
   end
 
   def new2
@@ -72,7 +67,7 @@ class CurrentBpsController < ApplicationController
         end
       else
         if session[:reading_counter] == 1
-          format.html { render action: 'new' }
+          format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
           format.json { render json: @current_bp.errors, status: :unprocessable_entity }
         else
           format.html { render action: 'new2' }
@@ -94,7 +89,7 @@ class CurrentBpsController < ApplicationController
         end
       else
         if session[:reading_counter] == 1
-          format.html { render action: 'new' }
+          format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
           format.json { render json: @current_bp.errors, status: :unprocessable_entity }
         else
           format.html { render action: 'new2' }
@@ -194,6 +189,21 @@ class CurrentBpsController < ApplicationController
     end
   end
   
+  def landing_page
+  end
+  
+  def how_to_monitor_bp
+  end
+  
+  def choosing_a_monitor
+  end
+  
+  def how_to_measure_bp
+  end
+  
+  def when_to_measure_bp
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_current_bp
@@ -232,6 +242,15 @@ class CurrentBpsController < ApplicationController
         if @bp_position > 280
           @bp_position = 280
         end
+      end
+    end
+    
+    def collect_first_bp
+      session[:reading_counter] = 1
+      if first_bp
+        @current_bp = first_bp
+      else
+        @current_bp = CurrentBp.new
       end
     end
 

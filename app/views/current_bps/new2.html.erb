@@ -1,6 +1,6 @@
 <div id='main'>
 	<h1>Is my blood pressure too high?</h1>
-	<p>Thank you. Please stay setaed and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
+	<p>Thank you. Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
 	<div id='input_bp'>	
 		<%= render 'form' %>
 	</div>
@@ -16,5 +16,5 @@
 
 <div id='how_to_measure_bp_guide'>
 	<h1>How do I measure my blood pressure?</h1>
-	<p>If you need advice on how to measure your blood pressure, please see our <a href="">blood pressure measurement guide.</a></p>
+	<p>If you need advice on how to measure your blood pressure, please see our <%= link_to "blood pressure measurement guide.", how_to_monitor_bp_current_bps_path %></p>
 </div>
