@@ -10,11 +10,9 @@
 			<h5>Are you worried about side effects from blood pressure medication?</h5>
 		</div>
 		
-		<div id='the_right_place'>
+		<div id='landing_page_content_1'>
 			<h3>If so, you've come to the right place...</h3>
-		</div>
-		
-		<div id='landing_page_content'>
+			
 			<p>To make things simple we’ve broken the advice down into three broad groups...</p>
 			<p>First comes information about the lifestyle changes that you can make in order to lower your blood pressure and lead a healthier life. Second is information about complementary healthcare treatments that you may have considered using, such as supplements or acupuncture.</p>
 			<p>And finally is information about the different medications that you might be prescribed by your doctor, or even better, that you may choose to have prescribed yourself, through our easy to use service.</p>
@@ -24,12 +22,40 @@
 			<div id='title'>
 				Is my blood pressure too high?
 			</div>
-			<p>Provide us with some blood pressure readings and we'll answer that question right away!</p>
+			<p>Enter some blood pressure readings and we'll answer that question right away!</p>
 			<div id='input_bp'>
 				<%= render 'form' %>
 			</div>
-			<p>If you need advice on how to measure your blood pressure, please see our <%= link_to "blood pressure measurement guide.", how_to_monitor_bp_current_bps_path %></p>
+			<%= link_to "How do I measure my blood pressure?", how_to_measure_bp_current_bps_path, :class => 'how_to_measure_bp' %>
 		</div>
 		
+		<div id='landing_page_content_2'>
+			<h3>Lifestyle</h3>
+				<p>Are you one of the many people who’ve been told at some point that you need to change your lifestyle for the better? Have you found the advice confusing and contradictory?</p>
+				<p>If so then let us take you through the various changes that you can make in your life to lower your blood pressure...</p>
+				
+			<h4>What can I do about my diet?</h4>
+				<p>If you have high blood pressure, then there are two simple things that you can change that will help lower it. They are to lose some weight, and reduce the amount of salt in your diet.</p>
+				<p>If you’re overweight, losing even a bit of weight can help your blood pressure. There’s lots of exciting research going on at the moment to find the best way for you to do this. </p>
+				<p>However the current most successful advice remains to eat a high fibre and low fat diet. You should also try to reduce the size of your portions. Cutting down on red meat and eating more green leafy vegetables will also help with your health.</p>
+				<p>The second is to control the amount of salt that you get in your diet. You may find this difficult, especially if you don’t get the chance to cook from scratch. This is because processed foods tend to have a lot of hidden salt in them. So do foods such as cereals, cheese and bread. Reducing the amount of salt in your diet can help to reduce your blood pressure.</p>
+				<p>Unfortunately it is unlikely that using salt substitutes are affective in controlling blood pressure.</p>
+			
+			<h4>What about the things that I drink?</h4>
+				<p>The best thing that you can do to help with your blood pressure is to cut down the amount of alcohol that you drink. This can also help you to lose weight which will also help with your blood pressure.</p>
+				<p>Another drink that can affect your blood pressure is coffee. However as long as you drink it in moderation it is unlikely to be harmful. “In moderation” means less than 5 cups a day.</p>
+				
+			<h4>What exercise do I need to do?</h4>
+				<p>In the past you may have found the advice about exercise very confusing. This is because we actually know very little about the effects of exercise on your blood pressure. There is not much good evidence that exercise helps your blood pressure.</p>
+				<p>This ignores all the other benefits of exercise on your physical and mental health.  Exercise helps with your coordination and strength. It can also be sociable and fun if you choose the right activity.</p>
+				<p>The current best advice about exercise and blood pressure is that if you exercise for 50 to 60 minutes,  3 or 4 times a week, it probably helps to lower your blood pressure.</p>
+				
+			<h4>Would relaxation therapy or meditation help me?</h4>
+				<p>You may like to try relaxation therapy or meditation to lower your blood pressure. Many people find these beneficial. They are not routinely available on the NHS so you will have to find a private supplier. You will find them on our links page.</p>
+				
+			<h4>What about smoking?</h4>
+				<p>You may be amazed to find that there is no direct link between smoking and high blood pressure. However smoking does make you more at risk of heart attacks and strokes.</p>
+				<p>The single best thing that you can do to make you live longer is to stop smoking. You will find links to helpful sites on our links page.</p>
+		</div>
 	</div>
 </div>

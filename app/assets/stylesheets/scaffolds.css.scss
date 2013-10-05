@@ -144,7 +144,7 @@ a.button2:hover {
   background-color: #92d36e;
 }
 
-.button3 {
+.button3, .button6 {
   display:block;
   text-align:center;
   padding:10px 20px 10px 20px;
@@ -161,6 +161,10 @@ a.button2:hover {
   span {
     font-size: 14pt;
   }
+}
+
+.button6 {
+  font-size:12pt;
 }
 
 .button4, .button5 {

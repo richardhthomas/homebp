@@ -269,7 +269,7 @@ h1 {
       float: left;
       width: 155px;
       height: 125px;
-      margin: 10px 0px 10px 10px;
+      margin: 10px 0px 10px 25px;
       padding: 3px;
       border-style:solid;
       border-width:2px;
@@ -298,20 +298,20 @@ h1 {
       }
     }
     
-    #the_right_place {
+    #landing_page_content_1 {
       float: left;
-      margin: 0px 0px 0px 120px;
+      width: 600px;
       
       h3 {
+        margin: 30px 0px 35px 120px;
         font-size: 16pt;
         color: #0844a4;
         font-weight: normal;
       }
-    }
-    
-    #landing_page_content {
-      float: left;
-      width: 600px;
+      
+      p {
+        margin: 0px 40px 30px 25px;
+      }
     }
     
     #cta_bp_entry {
@@ -333,7 +333,7 @@ h1 {
       }
       
       p {
-        margin: 10px;
+        margin: 10px 20px 10px 20px;
         text-align: center;
         float:left;
       }
@@ -350,6 +350,30 @@ h1 {
           float:left;
           margin: 20px 0px 20px 80px;
         }
+      }
+      
+      .how_to_measure_bp {
+        display:block;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+    
+    #landing_page_content_2 {
+      float: left;
+      width: 900px;
+      
+     h3 {
+        font-size: 14pt;
+        color: #0844a4;
+        font-weight: normal;
+      }
+      
+      h4 {
+        margin-bottom: 5px;
+        font-size: 12pt;
+        color: #0844a4;
+        font-weight: normal;
       }
     }
   }
