@@ -30,10 +30,10 @@ h1 {
   
   #main {
     float: left;
-    width: 650px;
+    width:930px;
     
     p {
-      margin: 0px 45px 0px 25px;
+      margin: 0px 40px 25px 50px;
       color: #000000;
       
       span {
@@ -41,7 +41,25 @@ h1 {
       }
     }
     
-    #input_bp {
+    p.more_space {
+      margin-bottom: 30px;
+    }
+    
+    h3 {
+      margin: 40px 0px 15px 0px;
+      font-size: 14pt;
+      color: #0844a4;
+      font-weight: bold;
+    }
+      
+    h4 {
+      margin: 0px 0px 5px 20px;
+      font-size: 12pt;
+      color: #0844a4;
+      font-weight: normal;
+    }
+    
+    #wizard_input_bp {
       margin-top: 20px;
       
       #input_bp_boxes {
@@ -129,135 +147,90 @@ h1 {
     #warning_msg {
       color: #ff0000;
     }
-  }
-  
-  #average_bp_container {
-    width: 250px;
-    height: 340px;
-    margin: 50px 0px 20px 0px;
-    float: left;
     
-    #average_bp {
-    position: relative;
-    float: left;
-    width: 100%;
-    height: 100%;
-    border-style:solid;
-    border-width:2px;
-    border-color:#033076;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
-    background-color:#ffffff;
+    #average_bp_container {
+      width: 250px;
+      height: 340px;
+      margin: 0px 40px 20px 40px;
+      float: right;
     
-      #bar {
-        width: 35px;
-        margin: 20px 0px 0px 60px;
-      
-        #redbar {
-          background-color:#e61610;
-          width: 35px;
-          height: 80px;
-        }
-      
-        #amberbar {
-          background-color:#ffb253;
-          width: 35px;
-          height: 80px;
-        }
-      
-        #greenbar {
-          background-color:#72bb53;
-          width: 35px;
-          height: 80px;
-        }
-      }
+      #average_bp {
+        position: relative;
+        float: right;
+        width: 100%;
+        height: 100%;
+        border-style:solid;
+        border-width:2px;
+        border-color:#033076;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;
+        background-color:#ffffff;
     
-      #readout {
-        z-index: 1;
-        position: absolute;
-        left: 40px;
+        #bar {
+          width: 35px;
+          margin: 20px 0px 0px 60px;
       
-        #line {
-          float: left;
-          border-style:solid;
-          border-width:2px;
-          border-color:#000000;
-          background-color: #000000;
-          height: 1px;
-          width: 80px;
-        }
+          #redbar {
+            background-color:#e61610;
+            width: 35px;
+            height: 80px;
+          }
       
-        #reading {
-          float: left;
-          margin-top: -30px;
-          width: 70px;
-          border-style:solid;
-          border-width:2px;
-          border-color:#000000;
-          -webkit-border-radius:7px;
-          -moz-border-radius:7px;
-          border-radius:7px;
-          background-color:#ffffff;
-          color:#000000;
-          font-size: 16pt;
-          text-align: center;
-          padding: 10px;
-        
-          #mmHg {
-            font-size: 12pt;
-            text-align: center;
+          #amberbar {
+            background-color:#ffb253;
+            width: 35px;
+            height: 80px;
+          }
+      
+          #greenbar {
+            background-color:#72bb53;
+            width: 35px;
+            height: 80px;
           }
         }
-      }
     
-      #learn_more {
-        margin: 5px 0px 0px 50px;
-      }
-    }
-  }
-  
-  #how_to_measure_bp_guide {
-    float:left;
-    margin: 20px 0px 30px 0px;
-    
-    p {
-      margin: 0px 45px 0px 25px;
-      color: #000000;
-    }
-  }
-}
-
-#main_full_width {
-  width: 930px;
-  
-  p {
-    margin: 0px 45px 10px 25px;
-    color: #000000;
-  }
-    
-  #choosing_a_monitor, #how_to_measure_bp {
-    
-    h3 {
-      font-size: 16pt;
-      color: #0844a4;
-      font-weight: normal;
-      margin: 30px 0px 10px 0px;
-    }
-  }
-  
-  #choosing_a_monitor {
-    
-    #cufftable {
-      margin: 0px 0px 10px 100px;
+        #readout {
+          z-index: 1;
+          position: absolute;
+          left: 40px;
       
-      td {
-        text-align:center;
-      }
+          #line {
+            float: left;
+            border-style:solid;
+            border-width:2px;
+            border-color:#000000;
+            background-color: #000000;
+            height: 1px;
+            width: 80px;
+          }
       
-      td.bold {
-        padding: 5px 10px 2px 10px;
-        font-weight: bold;
+          #reading {
+            float: left;
+            margin-top: -30px;
+            width: 70px;
+            border-style:solid;
+            border-width:2px;
+            border-color:#000000;
+            -webkit-border-radius:7px;
+            -moz-border-radius:7px;
+            border-radius:7px;
+            background-color:#ffffff;
+            color:#000000;
+            font-size: 16pt;
+            text-align: center;
+            padding: 10px;
+        
+            #mmHg {
+              font-size: 12pt;
+              text-align: center;
+            }
+          }
+        }
+    
+        #learn_more {
+          margin: 5px 0px 0px 50px;
+        }
       }
     }
   }
@@ -307,28 +280,6 @@ h1 {
         color: #0844a4;
         font-weight: normal;
       }
-      
-      p {
-        margin: 0px 40px 25px 50px;
-      }
-      
-      p.more_space {
-        margin-bottom: 30px;
-      }
-    
-      h3 {
-        margin: 40px 0px 15px 0px;
-        font-size: 14pt;
-        color: #0844a4;
-        font-weight: bold;
-      }
-      
-      h4 {
-        margin: 0px 0px 5px 20px;
-        font-size: 12pt;
-        color: #0844a4;
-        font-weight: normal;
-      }
      
       .picture_left {
         float: left;
@@ -348,6 +299,91 @@ h1 {
       }
     }
   }
+  
+  #landing_page_bp_treatment, #how_to_measure_bp {
+    
+    #cta_bp_entry {
+      float: right;
+      width: 300px;
+      margin: 0px 40px 10px 40px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#033076;
+      -webkit-border-radius:10px;
+      -moz-border-radius:10px;
+      border-radius:10px;
+      background-color:#ffffff;
+      
+      #title {
+        padding: 5px 20px 5px 20px;
+        line-height: 28px;
+        float:left;
+      }
+      
+      p {
+        margin: 10px 20px 10px 20px;
+        text-align: center;
+        float:left;
+      }
+      
+      #input_bp {
+        margin: 10px 25px 0px 35px;
+        float: left;
+        
+        #input_bp_boxes {
+          float:left;
+        }
+        
+        #submit {
+          float:left;
+          margin: 20px 0px 20px 80px;
+        }
+      }
+      
+      .how_to_measure_bp {
+        display:block;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+
+#main_full_width {
+  width: 930px;
+  
+  p {
+    margin: 0px 45px 10px 25px;
+    color: #000000;
+  }
+    
+  #choosing_a_monitor, #how_to_measure_bp {
+    
+    h3 {
+      font-size: 16pt;
+      color: #0844a4;
+      font-weight: normal;
+      margin: 30px 0px 10px 0px;
+    }
+  }
+  
+  #choosing_a_monitor {
+    
+    #cufftable {
+      margin: 0px 0px 10px 100px;
+      
+      td {
+        text-align:center;
+      }
+      
+      td.bold {
+        padding: 5px 10px 2px 10px;
+        font-weight: bold;
+      }
+    }
+  }
+  
   
   #landing_page_bp_treatment, #how_to_measure_bp {
     

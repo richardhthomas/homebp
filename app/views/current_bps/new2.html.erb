@@ -1,20 +1,26 @@
 <div id='main'>
 	<h1>Is my blood pressure too high?</h1>
-	<p>Thank you. Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
-	<div id='input_bp'>	
-		<%= render 'form' %>
-	</div>
-</div>
-
-<div id='average_bp_container'>
+	
+	<div id='average_bp_container'>
 	<% if !@average_sysbp.nil? %>
 		<div id='average_bp'>
 			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
 		</div>
 	<% end %>
-</div>
+	</div>
+	
+	<p>Thank you.</p>
+	<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
 
-<div id='how_to_measure_bp_guide'>
-	<h1>How do I measure my blood pressure?</h1>
+	<div id='wizard_input_bp'>	
+		<%= render 'form' %>
+	</div>
+	
+	
+	<div style='height:300px;'>
+	</div>
+	
+	<h4>How do I measure my blood pressure?</h4>
 	<p>If you need advice on how to measure your blood pressure, please see our <%= link_to "blood pressure measurement guide.", how_to_measure_bp_current_bps_path %></p>
+
 </div>

@@ -1,13 +1,24 @@
 <div id='main'>
 	<h1>Is my blood pressure too high?</h1>
-	<p>Thank you.</p><br />
-	<% if @warning_message %>
-		<p id='warning_msg'><%= @warning_message %></p><br />
+	
+	<div id='average_bp_container'>
+	<% if !@average_sysbp.nil? %>
+		<div id='average_bp'>
+			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+		</div>
 	<% end %>
+	</div>
+	
+	<p>Thank you.</p>
+	
+	<% if @warning_message %>
+		<p id='warning_msg'><%= @warning_message %></p>
+	<% end %>
+	
 	<p><%= @average_bp_message %></p>
-	<br />
+	
 	<p>...However, to get a more accurate picture of what your blood pressure is like we need to take more readings like this over the next 4 days. Some other illnesses also affect what is considered to be a healthy blood pressure - we will give you expert, personalised advice based on your individual health.</p>
-	<br />
+	
 	<% if user_signed_in? %>
 		<p>Please come back to HomeBloodPressure.co.uk to take another pair of readings <span><%= @when_next_reading %></span>.</p>
 	<% else %>
@@ -18,10 +29,4 @@
 	<% end %>
 </div>
 
-<div id='average_bp_container'>
-	<% if !@average_sysbp.nil? %>
-		<div id='average_bp'>
-			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
-		</div>
-	<% end %>
-</div>
+
