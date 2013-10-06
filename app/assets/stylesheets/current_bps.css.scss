@@ -272,13 +272,13 @@ h1 {
       margin: 10px 0px 10px 50px;
       padding: 3px;
       border-style:solid;
-      border-width:2px;
+      border-width:1px;
       border-color:#033076;
     }
     
     #questions {
       float: left;
-      margin: 5px 0px 20px 20px;
+      margin: 5px 0px 20px 0px;
       width: 600px;
       
       h3, h4 ,h5 {
@@ -379,6 +379,23 @@ h1 {
       
       p {
         margin: 0px 40px 15px 50px;
+      }
+      
+      .picture_left {
+        float: left;
+        margin: 0px 10px 0px 50px;
+      }
+      
+      .picture_right {
+        float: right;
+        margin: 0px 40px 0px 10px;
+      }
+      
+      .picture_left, .picture_right {
+        padding: 3px;
+        border-style:solid;
+        border-width:1px;
+        border-color:#033076;
       }
     }
   }

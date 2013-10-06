@@ -14,10 +14,8 @@ Homebp::Application.routes.draw do
       get 'router'
       get 'create_average_bp'
       get 'landing_page'
-      get 'how_to_monitor_bp'
       get 'choosing_a_monitor'
       get 'how_to_measure_bp'
-      get 'when_to_measure_bp'
     end
   end
   

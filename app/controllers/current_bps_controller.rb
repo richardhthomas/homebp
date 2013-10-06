@@ -192,16 +192,10 @@ class CurrentBpsController < ApplicationController
   def landing_page
   end
   
-  def how_to_monitor_bp
-  end
-  
   def choosing_a_monitor
   end
   
   def how_to_measure_bp
-  end
-  
-  def when_to_measure_bp
   end
   
   private
