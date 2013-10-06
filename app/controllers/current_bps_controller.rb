@@ -1,6 +1,6 @@
 class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
-  before_action :collect_first_bp, only: [:new, :landing_page]
+  before_action :collect_first_bp, only: [:new, :landing_page, :how_to_measure_bp]
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:create_average_bp, :display_bp, :review]
   before_action :set_average_bp, only: [:display_bp, :new, :new2]

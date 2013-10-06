@@ -4,9 +4,20 @@
 	
 	<p>A few simple steps will ensure that you get an accurate reading.</p>
 	
+	<div id='cta_bp_entry'>
+			<div id='title'>
+				Is my blood pressure too high?
+			</div>
+			<p>Enter some blood pressure readings and we'll answer that question right away!</p>
+			<div id='input_bp'>
+				<%= render 'form' %>
+			</div>
+			<%= link_to "How do I measure my blood pressure?", how_to_measure_bp_current_bps_path, :class => 'how_to_measure_bp' %>
+	</div>
+	
 	<h3>Make sure you are relaxed</h3>
 		<p>Rest for five minutes before taking a blood pressure reading. Make sure you are sat down in a quiet place with your feet resting on the floor. Don't take readings when you need the toilet or have just eaten a big meal, or within thirty minutes of smoking or drinking caffeine.</p>
-
+	
 	<h3>Choose an arm</h3>
 		<p>Use the same arm each time you measure your blood pressure. It doesn't matter which arm you choose UNLESS there is more than a 20mmHg difference in the readings between the two sides, in which case use the side which gives the higher reading.</p>
 
