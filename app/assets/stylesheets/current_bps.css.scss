@@ -59,6 +59,13 @@ h1 {
       font-weight: normal;
     }
     
+    h5 {
+      margin: 0px 0px 5px 50px;
+      font-size: 10pt;
+      color: #0844a4;
+      font-weight: bold;
+    }
+    
     #wizard_input_bp {
       margin-top: 20px;
       
@@ -296,6 +303,25 @@ h1 {
         border-style:solid;
         border-width:1px;
         border-color:#033076;
+      }
+      
+      table {
+        margin: 0px 40px 25px 50px;
+        
+        th {
+          font-size: 10pt;
+          color: #0844a4;
+          font-weight: bold;
+        }
+        
+        td {
+          vertical-align: top;
+        }
+        
+        td, th {
+          padding: 5px;
+          border: 1px solid #000000;
+        }
       }
     }
   }
