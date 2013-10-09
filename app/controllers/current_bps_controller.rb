@@ -190,6 +190,15 @@ class CurrentBpsController < ApplicationController
   end
   
   def landing_page
+    @drugs = Drug.all
+    @medications = Hash.new
+    @drugs.each do |drug|
+      if @medications[drug.generic].nil?
+        @medications[drug.generic] = drug.brand
+      else
+        @medications[drug.generic] += ", " + drug.brand
+      end
+    end
   end
   
   def choosing_a_monitor

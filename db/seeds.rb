@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# List of drugs and their generic / brand names
+drug_names = [
+  [ "Istin", "Amlodipine" ],
+  [ "Adizem-SR", "Diltiazem" ],
+  [ "Adizem-XL", "Diltiazem" ],
+  [ "Angitil SR", "Diltiazem" ]
+]
+
+drug_names.each do |brand, generic|
+  Drug.create( brand: brand, generic: generic )
+end

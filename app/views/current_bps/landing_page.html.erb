@@ -60,7 +60,7 @@
 			<h3>Complementary Medicine</h3>
 				<p>You may wish to try supplements to control your blood pressure. Unfortunately calcium and magnesium supplements have not been shown to have a clinically significant effect on your blood pressure. And contrary to popular belief, potassium supplements have no effect on your blood pressure at all.</p>
 			
-			<h4>Acupuncture</h4>
+			<h4>How about acupuncture?</h4>
 				<p>Although you may wish to try acupuncture to see if it helps with your blood pressure, at the moment we do not know whether it is helpful.</p>
 				
 			<h3>Which medication should I take?</h3>
@@ -78,7 +78,7 @@
 				<p>If you do need medication, then you will probably end up using more than one drug in combination. Most people need to do this because drugs for high blood pressure often have a 'synergistic' effect when used in combination. Synergy is when the good effects of two or more drugs used at the same time is greater than the effects of those drugs when they are used individually.</p>
 				<p>Because of this you will hear drugs referred to as first line and second line choices. These first and second line choices vary according to your age. They also vary according to your ethnicity. This is because some studies have shown that some medications do not work as well in people with an African or Caribbean background.</p>
 			
-			<h4>Combination tablets</h4>
+			<h4>What are combination tablets?</h4>
 				<p>You may have been prescribed combination tablets in the past. These are tablets that contain more than one active ingredient. You can tell if you’re taking a combination tablet as their name starts with Co-. The advantage of a combination tablet is that it means that you have to take less tablets each day. The disadvantage is that they are often much more expensive than taking each medication separately.</p>
 				
 			<h4>What medications are available to lower my blood pressure?</h4>
@@ -98,6 +98,15 @@
 						<td>Diltiazem</td>
 						<td>Adizem-SR, Adizem-XL, Angitil SR, Angitil XL, Calcicard CR, Dilcardia SR, Dilzem SR, Dilzem XL, Slozem, Tildiem LA, Tildiem Retard, Viazem XL, Zemtard</td>
 					</tr>
+				</table>
+				
+				<table>
+					<% @medications.each do |generic, brands| %>
+					<tr>
+						<td><%= generic %></td>
+						<td><%= brands %></td>
+					</tr>
+					<% end %>
 				</table>
 		</div>
 	</div>
