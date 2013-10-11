@@ -48,8 +48,76 @@ drug_names = {
     "Verapress MR" => "Verapamil Hydrochloride",
     "Vertab SR 240" => "Verapamil Hydrochloride"
   },
+  
   "ACE inhibitors" => {
-    "Tritace" => "Ramipril"
+    "Capoten" => "Captopril",
+    "Vascace" => "Cilazapril",
+    "Innovace" => "Enalapril Maleate",
+    "Fosinopril Sodium" => "Fosinopril Sodium",
+    "Tanatril" => "Imidapril Hydrochloride",
+    "Zestril" => "Lisinopril",
+    "Perdix" => "Moexipril Hydrochloride",
+    "Perindopril Erbumine" => "Perindopril Erbumine",
+    "Coversyl Arginine" => "Perindopril Arginine",
+    "Accuretic" => "Quinapril",
+    "Accupro" => "Quinapril",
+    "Tritace" => "Ramipril",
+    "Gopten" => "Trandolapril" 
+  },
+  
+  "Angiotensin II receptor antagonists" => {
+    "Erdabi" => "Azilsartan Medoxomil",
+    "Amias" => "Candesartan Cilexitil",
+    "Teveten" => "Eprosartan",
+    "Aprovel" => "Irbesartan",
+    "Cozaar" => "Losartan Potassium",
+    "Olmetec" => "Olmesartan Medoxomil",
+    "Micardis" => "Telmisartan",
+    "Diovan" => "Valsartan"
+  },
+  
+  "Diuretics" => {
+    "Bendroflumethiazide" => "Bendroflumethiazide",
+    "Hygroton" => "Chlortalidone",
+    "Navidrex" => "Cyclopenthiazide",
+    "Natrilix" => "Indapamide",
+    "Ethibide" => "Indapamide", 
+    "Natrilix SR" => "Indapamide",
+    "Tensaid XL" => "Indapamide",
+    "Metenix 5" => "Metolozone",
+    "Diurexan" => "Xipamide"
+  },
+  
+  "Beta-blockers" => {
+    "Half-Inderal LA" => "Propranalol",
+    "Inderal LA" => "Propranalol",
+    "Sectral" => "Acebutolol",
+    "Tenormin" => "Atenolol",
+    "Cardicor" => "Bisoprolol Fumarate",
+    "Emcor" => "Bisoprolol Fumarate",
+    "Eucardic" => "Carvedilol",
+    "Celectol" => "Celiprolol Hydrochloride",
+    "Brevibloc" => "Esmolol Hydrochloride",
+    "Trandate" => "Labetolol Hydrochloride",
+    "Betaloc" => "Metoprolol Tartrate",
+    "Lopresor" => "Metoprolol Tartrate",
+    "Lopresor SL" => "Metoprolol Tartrate",
+    "Corgard" => "Nadolol",
+    "Nebilet" => "Nebivolol",
+    "Trasicor" => "Oxprenolol Hydrochloride",
+    "Slow-Trasicor" => "Oxprenolol Hydrochloride",
+    "Visken" => "Pindolol",
+    "Beta-cardone" => "Sotalol Hydrochloride",
+    "Sotacor" => "Sotalol Hydrochloride",
+    "Betim" => "Timolol"
+  },
+  
+  "Alpha-blockers" => {
+    "Cardura" => "Doxazosin",
+    "Cardura XL" => "Doxazosin",
+    "Doralese" => "Indoramin",
+    "Hypovase" => "Prazosin",
+    "Hytrin" => "Terazosin"
   }
 }
 
