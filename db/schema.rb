@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009163053) do
+ActiveRecord::Schema.define(version: 20131011103959) do
 
   create_table "average_bps", force: true do |t|
     t.date     "date"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131009163053) do
     t.text     "generic"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "group"
   end
 
   create_table "temp_users", force: true do |t|

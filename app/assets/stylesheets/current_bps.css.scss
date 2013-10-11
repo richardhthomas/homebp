@@ -45,6 +45,10 @@ h1 {
       margin-bottom: 30px;
     }
     
+    p.extra_indent {
+      margin-left: 70px;
+    }
+    
     h3 {
       margin: 40px 0px 15px 0px;
       font-size: 14pt;
@@ -306,21 +310,34 @@ h1 {
       }
       
       table {
-        margin: 0px 40px 25px 50px;
+        margin: 10px 40px 25px 70px;
+        border: 1px solid #000000;
         
         th {
           font-size: 10pt;
-          color: #0844a4;
+          color: #ffffff;
           font-weight: bold;
+          background-color: #033076;
         }
         
         td {
           vertical-align: top;
         }
         
+        .line1 {
+          background-color: #ffffff;
+        }
+        
+        .line2 {
+          background-color: #d0d0d0;
+        }
+        
+        #generic {
+          width: 200px;
+        }
+        
         td, th {
           padding: 5px;
-          border: 1px solid #000000;
         }
       }
     }

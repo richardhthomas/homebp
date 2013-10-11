@@ -191,14 +191,17 @@ class CurrentBpsController < ApplicationController
   
   def landing_page
     @drugs = Drug.all
-    @medications = Hash.new
+    @medications = Hash.new { |hash, key| hash[key] = Hash.new }
     @drugs.each do |drug|
-      if @medications[drug.generic].nil?
-        @medications[drug.generic] = drug.brand
+      if @medications[drug.group][drug.generic].nil?
+        @medications[drug.group][drug.generic] = drug.brand
       else
-        @medications[drug.generic] += ", " + drug.brand
+        @medications[drug.group][drug.generic] += ", " + drug.brand
       end
     end
+    @groups = @medications.keys
+    @medication_explanation = Hash.new
+    @medication_explanation["Calcium channel blockers"] = "If you’re of African or Caribbean origin, or any ethnicity and over 55 years old, then calcium channel blockers will be the first choice medication for you. If you are using them at higher doses then sometimes they can cause swelling around the ankles. If you reduce the dose then this usually gets better."
   end
   
   def choosing_a_monitor

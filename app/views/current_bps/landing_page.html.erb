@@ -84,30 +84,24 @@
 			<h4>What medications are available to lower my blood pressure?</h4>
 				<p>Drugs are put in groups according to the way that they work on your body. Usually, you shouldn’t take more than one drug from each group. To simplify things for you, we have listed all the common drugs below, ordered into their groups, with both their generic names and their brand names shown.</p>
 			
-			<h5>Group: Calcium channel blockers</h5>
-				<table>
-					<tr>
-						<th>Generic name</th>
-						<th>Brand names</th>
-					</tr>
-					<tr>
-						<td>Amlodipine</td>
-						<td>Istin</td>
-					</tr>
-					<tr>
-						<td>Diltiazem</td>
-						<td>Adizem-SR, Adizem-XL, Angitil SR, Angitil XL, Calcicard CR, Dilcardia SR, Dilzem SR, Dilzem XL, Slozem, Tildiem LA, Tildiem Retard, Viazem XL, Zemtard</td>
-					</tr>
-				</table>
+			<% @groups.each do |group| %>
+			<h5>Group: <%= group %></h5>
 				
 				<table>
-					<% @medications.each do |generic, brands| %>
 					<tr>
-						<td><%= generic %></td>
+						<th>Generic drug name</th>
+						<th>Brand names</th>
+					</tr>
+					<% @medications[group].each do |generic, brands| %>
+					<tr class=" <%= cycle('line1' , 'line2' ) %>" >
+						<td id="generic"><%= generic %></td>
 						<td><%= brands %></td>
 					</tr>
 					<% end %>
 				</table>
+				<p class="extra_indent"><%= @medication_explanation[group]%></p>
+			<% end %>
+				
 		</div>
 	</div>
 </div>
