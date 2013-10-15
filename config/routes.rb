@@ -77,6 +77,6 @@ Homebp::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "current_bps#landing_page"
+  root :to => "current_bps#router"
   
 end

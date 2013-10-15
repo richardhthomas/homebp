@@ -11,8 +11,8 @@ class CurrentBpsController < ApplicationController
     if @count > 0
       redirect_to display_bp_current_bps_path
     else
-      session[:date] = Date.today.to_s(:db)
-      if DateTime.now.seconds_since_midnight < 43200
+      session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
+      if DateTime.now.seconds_since_midnight < 50400 #now 2pm is the start of pm!
         session[:ampm] = "am"
       else
         session[:ampm] = "pm"
@@ -67,6 +67,7 @@ class CurrentBpsController < ApplicationController
         end
       else
         if session[:reading_counter] == 1
+          landing_page_setup
           format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
           format.json { render json: @current_bp.errors, status: :unprocessable_entity }
         else
@@ -89,6 +90,7 @@ class CurrentBpsController < ApplicationController
         end
       else
         if session[:reading_counter] == 1
+          landing_page_setup
           format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
           format.json { render json: @current_bp.errors, status: :unprocessable_entity }
         else
@@ -190,23 +192,11 @@ class CurrentBpsController < ApplicationController
   end
   
   def landing_page
-    @drugs = Drug.all
-    @medications = Hash.new { |hash, key| hash[key] = Hash.new }
-    @drugs.each do |drug|
-      if @medications[drug.group][drug.generic].nil?
-        @medications[drug.group][drug.generic] = drug.brand
-      else
-        @medications[drug.group][drug.generic] += ", " + drug.brand
-      end
-    end
-    @groups = @medications.keys
-    @medication_explanation = Hash.new
-    @medication_explanation["Calcium channel blockers"] = "If you’re of African or Caribbean origin, or any ethnicity and over 55 years old, then calcium channel blockers will be the first choice medication for you. If you are using them at higher doses then sometimes they can cause swelling around the ankles. If you reduce the dose then this usually gets better."
-    @medication_explanation["ACE inhibitors"] = "If you are under 55 and not from an African or Caribbean background then these are likely to be the first choice medication for you. The most common side effect that you may get is a dry cough. Many people are able to tolerate this side effect, as the alternative medications can be less effective. If you are started on these medications you need to have blood tests to monitor your kidney function. Although these drugs usually protect the kidneys in people with high blood pressure, on rare occasions they can make them worse. Sometimes when you first start taking them, these medications can make you feel dizzy, but this usually gets better after you’ve been taking them for a couple of days."
-    @medication_explanation["Angiotensin II receptor antagonists"] = "You will generally only be started on these medications if you cannot tolerate the dry cough from being on an ACE inhibitor. Although they have less side effects, there is not as much evidence as to their effectiveness as there is for ACE inhibitors. Like their close relations ACE inhibitors, sometimes when you first start taking them, these medications can make you feel dizzy, but this usually gets better after you’ve been taking them for a couple of days."
-    @medication_explanation["Diuretics"] = "You may know diuretics as 'water tablets'. Unsurprisingly their common side effects include making you pass urine more often. These days they are most commonly used as a second line or additional treatment for blood pressure. If you are taking diuretics then your kidney function should be monitored."
-    @medication_explanation["Beta-blockers"] = "These days beta-blockers are only used to add to other medications if they haven’t brought your blood pressure down. The most common side effect is that they may make you feel drowsy."
-    @medication_explanation["Alpha-blockers"] = "These also are reserved as third or fourth line drugs to be used if your blood pressure is not adequately controlled with one or two other medications. Their main side effect is that when  you first start taking them they can cause dizziness. This usually gets better when you’ve been taking them for a few days."
+    landing_page_setup
+    # This was a test of date arithmetic
+    #@record = CurrentBp.find(5)
+    #@date = @record.date
+    #@test = (session[:date] - @date).to_i
   end
   
   def choosing_a_monitor
@@ -263,6 +253,26 @@ class CurrentBpsController < ApplicationController
       else
         @current_bp = CurrentBp.new
       end
+    end
+    
+    def landing_page_setup
+      @drugs = Drug.all
+      @medications = Hash.new { |hash, key| hash[key] = Hash.new }
+      @drugs.each do |drug|
+        if @medications[drug.group][drug.generic].nil?
+          @medications[drug.group][drug.generic] = drug.brand
+        else
+          @medications[drug.group][drug.generic] += ", " + drug.brand
+        end
+      end
+      @groups = @medications.keys
+      @medication_explanation = Hash.new
+      @medication_explanation["Calcium channel blockers"] = "If you’re of African or Caribbean origin, or any ethnicity and over 55 years old, then calcium channel blockers will be the first choice medication for you. If you are using them at higher doses then sometimes they can cause swelling around the ankles. If you reduce the dose then this usually gets better."
+      @medication_explanation["ACE inhibitors"] = "If you are under 55 and not from an African or Caribbean background then these are likely to be the first choice medication for you. The most common side effect that you may get is a dry cough. Many people are able to tolerate this side effect, as the alternative medications can be less effective. If you are started on these medications you need to have blood tests to monitor your kidney function. Although these drugs usually protect the kidneys in people with high blood pressure, on rare occasions they can make them worse. Sometimes when you first start taking them, these medications can make you feel dizzy, but this usually gets better after you’ve been taking them for a couple of days."
+      @medication_explanation["Angiotensin II receptor antagonists"] = "You will generally only be started on these medications if you cannot tolerate the dry cough from being on an ACE inhibitor. Although they have less side effects, there is not as much evidence as to their effectiveness as there is for ACE inhibitors. Like their close relations ACE inhibitors, sometimes when you first start taking them, these medications can make you feel dizzy, but this usually gets better after you’ve been taking them for a couple of days."
+      @medication_explanation["Diuretics"] = "You may know diuretics as 'water tablets'. Unsurprisingly their common side effects include making you pass urine more often. These days they are most commonly used as a second line or additional treatment for blood pressure. If you are taking diuretics then your kidney function should be monitored."
+      @medication_explanation["Beta-blockers"] = "These days beta-blockers are only used to add to other medications if they haven’t brought your blood pressure down. The most common side effect is that they may make you feel drowsy."
+      @medication_explanation["Alpha-blockers"] = "These also are reserved as third or fourth line drugs to be used if your blood pressure is not adequately controlled with one or two other medications. Their main side effect is that when  you first start taking them they can cause dizziness. This usually gets better when you’ve been taking them for a few days."  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
