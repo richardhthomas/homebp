@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
   
   def after_sign_out_path_for(resource_or_scope)
     session[:temp_user_id] = nil #kill the temp_user in the session so the router doesn't rediscover it after signing out.
+    session[:date] = nil
+    session[:ampm] = nil
     root_path
   end
   

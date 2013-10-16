@@ -17,20 +17,8 @@ class CurrentBpsController < ApplicationController
       else
         session[:ampm] = "pm"
       end
-      redirect_to landing_page_current_bps_path
+      redirect_to blood_pressure_treatment_path
     end
-  end
-  
-  # GET /current_bps
-  # GET /current_bps.json
-  def index
-    @current_bps = CurrentBp.all
-    @average_bps = AverageBp.all
-  end
-
-  # GET /current_bps/1
-  # GET /current_bps/1.json
-  def show
   end
 
   # GET /current_bps/new
@@ -44,10 +32,6 @@ class CurrentBpsController < ApplicationController
     else
       @current_bp = CurrentBp.new
     end
-  end
-
-  # GET /current_bps/1/edit
-  def edit
   end
 
   # POST /current_bps
@@ -99,16 +83,6 @@ class CurrentBpsController < ApplicationController
       end
     end
   end
-
-  # DELETE /current_bps/1
-  # DELETE /current_bps/1.json
-  def destroy
-    @current_bp.destroy
-    respond_to do |format|
-      format.html { redirect_to current_bps_url }
-      format.json { head :no_content }
-    end
-  end
   
   def create_average_bp
     @average_current_sysbp = @current_bps.average(:sysbp)
@@ -128,7 +102,6 @@ class CurrentBpsController < ApplicationController
       @average_bp.ampm = @current_bps[0].ampm
       @average_bp.save
     end
-    
     redirect_to display_bp_current_bps_path
   end
   
@@ -153,21 +126,8 @@ class CurrentBpsController < ApplicationController
     else
       @when_next_reading = "tomorrow morning"
     end
-  end
-  
-  def review
-  end
-  
-  def update_bp
-    @current_bps = CurrentBp.update(params[:current_bps].keys, params[:current_bps].values)
-    @errors = @current_bps.reject { |p| p.errors.empty?}
-    if @errors.empty?
-      redirect_to display_bp_current_bps_path
-    else
-      render action: 'review'
-    end
-  end
-  
+  end  
+
   def signup_bp_migration
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take
     if !@current_average_bp.nil? #checks whether an average BP has been created before migrating readings to new user account
@@ -198,10 +158,7 @@ class CurrentBpsController < ApplicationController
     #@date = @record.date
     #@test = (session[:date] - @date).to_i
   end
-  
-  def choosing_a_monitor
-  end
-  
+    
   def how_to_measure_bp
   end
   
@@ -280,4 +237,48 @@ class CurrentBpsController < ApplicationController
       params.require(:current_bp).permit(:sysbp, :diabp)
     end
     
+    
+    ## Below are actions that may be useful occasionally in development, or are just not currently being used
+  # GET /current_bps
+  # GET /current_bps.json
+  def index
+    @current_bps = CurrentBp.all
+    @average_bps = AverageBp.all
+  end
+
+  # GET /current_bps/1
+  # GET /current_bps/1.json
+  def show
+  end
+  
+  # GET /current_bps/1/edit
+  def edit
+  end
+  
+  def review
+  end
+  
+  def update_bp
+    @current_bps = CurrentBp.update(params[:current_bps].keys, params[:current_bps].values)
+    @errors = @current_bps.reject { |p| p.errors.empty?}
+    if @errors.empty?
+      redirect_to display_bp_current_bps_path
+    else
+      render action: 'review'
+    end
+  end
+  
+  def choosing_a_monitor
+  end
+  
+  # DELETE /current_bps/1
+  # DELETE /current_bps/1.json
+  def destroy
+    @current_bp.destroy
+    respond_to do |format|
+      format.html { redirect_to current_bps_url }
+      format.json { head :no_content }
+    end
+  end
+  
 end

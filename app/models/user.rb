@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :rememberable
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :trackable, :validatable
+         :recoverable, :trackable, :validatable, :timeoutable
   
   has_many :current_bps
   has_many :average_bps

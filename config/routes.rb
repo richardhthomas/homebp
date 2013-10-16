@@ -3,18 +3,18 @@ Homebp::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/tac"
   get "static_pages/sign_in_msg"
+  get "/blood_pressure_treatment" => 'current_bps#landing_page'  
   
   resources :current_bps do
     collection do
       get 'display_bp'
-      post 'review'
-      patch 'update_bp'
+      #post 'review'
+      #patch 'update_bp'
       get 'new2'
       get 'signup_bp_migration'
       get 'router'
       get 'create_average_bp'
-      get 'landing_page'
-      get 'choosing_a_monitor'
+      #get 'choosing_a_monitor'
       get 'how_to_measure_bp'
     end
   end
