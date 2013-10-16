@@ -8,7 +8,16 @@
 
 <p style='margin: 10px 45px 0px 25px;'>You have taken the first step to taking control of your own blood pressure from the convenience of your own home.</p>
 
-<p style='margin: 10px 45px 0px 25px;'>Please go to <%= link_to('HomeBloodPressure.co.uk', new_user_session_url) %> to take <%= @a_another_reading %> pair of blood pressure readings <%= @when_next_reading %>.</p>
+<p style='padding: 5px 10px 5px 10px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#aedd94;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#aedd94;
+      text-align: center;
+      font-size:12pt;'>Please go to <%= link_to('HomeBloodPressure.co.uk', new_user_session_url) %> to take <%= @a_another_reading %> pair of blood pressure readings <span style='font-weight: bold;'><%= @when_next_reading %></span>.</p>
 
 <p style='margin: 10px 45px 0px 25px;'>Your blood pressure tends to go up and down depending on what you’ve been doing. This means that when you measure it at different times of day, you’ll get different readings. Your blood pressure can go up during exercise, after you drink a cup of coffee, or when you are stressed about something.</p>
 
@@ -18,11 +27,20 @@
 
 <p style='margin: 10px 45px 0px 25px;'>For the same reason, because your blood pressure goes up and down, it is better to take an average of a number of readings. This is because an average blood pressure gives a better idea of your risk of having a heart attack or stroke than any single reading.</p>
 
-<p style='margin: 10px 45px 0px 25px;'>To get the best possible measure of your average blood pressure, you should take the best of two readings. They should be two minutes apart. This should be done in the morning (or when you get up) and in the evening (or just before you go to bed). The more readings that you take, the better the result. You should aim to measure your blood pressure for 7 days. The minimum that you need to get an accurate result is 4 days of measurements.</p>
+<p style='margin: 10px 45px 0px 25px;'>To get the most accurate recording of your average blood pressure, you should take two readings each time it is measured. They should be one minute apart. This should be done in the morning (or when you get up) and in the evening (or just before you go to bed). The more readings that you take, the better the result. You should aim to measure your blood pressure for 7 days. The minimum that you need to get an accurate result is 4 days of measurements.</p>
 
-<p style='margin: 10px 45px 0px 25px;'>You may feel that this is quite complicated. We agree, which is why we have designed and built this website to help you. Now you have registered with us, we’ll send you reminders to check your blood pressure, and help you keep track of your measurements.</p>
+<p style='margin: 10px 45px 0px 25px;'>You may feel that this is quite complicated. We agree, which is why we have designed and built our website to help you. Now you have registered with us, we’ll send you reminders to check your blood pressure, and help you keep track of your measurements.</p>
 
-<p style='margin: 10px 45px 0px 25px;'>So, <%= @when_next_reading %>, please go to <%= link_to 'HomeBloodPressure.co.uk', new_user_session_url %> to take <%= @a_another_reading %> pair of blood pressure readings.</p>
+<p style='padding: 5px 10px 5px 10px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#aedd94;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#aedd94;
+      text-align: center;
+      font-size:12pt;'>So, <span style='font-weight: bold;'><%= @when_next_reading %></span>, please go to <%= link_to 'HomeBloodPressure.co.uk', new_user_session_url %> to take <%= @a_another_reading %> pair of blood pressure readings.</p>
 
 <p style='margin: 10px 45px 0px 25px;'>Stay healthy!</p>
 

@@ -87,9 +87,16 @@ a:hover {
   position:absolute;
   top:18px;
   left:35px;
-  font-size:20pt;
-  font-weight:bold;
-  color:#033076;
+  
+  a {
+    font-size:20pt;
+    font-weight:bold;
+    
+    &:link, &:hover, &:visited {
+      color:#033076;
+      text-decoration:none;
+    }
+  }
 }
 
 #user_nav {

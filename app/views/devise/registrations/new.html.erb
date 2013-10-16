@@ -1,13 +1,24 @@
 <div id='main'>
-	<p>Sign up to get personalised advice about your blood pressure.</p>
-	<br />
-	<p>We cover all aspects of blood pressure care and will answer any questions, such as:</p>
-	<ul>
-		<li>Is my blood pressure too high or low?</li>
-		<li>How can I control my blood pressure?</li>
-		<li>Do I need any other tests?</li>
-	</ul>
 	<div id='sign_up'>
+		<div id='heart_bp_monitor_pic'>
+			<%= image_tag("heart_bp_monitor_small.jpg", size: '150x120') %>
+		</div>
+		
+		<div id='questions'>
+			<div id='q1'><h3>Are you worried about your blood pressure?</h3></div>
+			<div id='q2'><h3>Do you want to know the best way to treat it?</h3></div>
+			<div id='q3'><h3>Are you worried about side effects from blood pressure</h3></div>
+			<div id='q4'><h3>medication?</h3></div>
+		</div>
+		
+		<div style="height:150px;"></div>
+		
+		<h2>If so, you've come to the right place...</h2>
+	</div>
+	
+	<div style ="float:left; height:300px; width:220px;"></div>
+	
+	<div id='sign_up_partial'>
 		<%= render :partial => 'devise/registrations/new' %>
 	</div>
 </div>

@@ -49,6 +49,21 @@ h1 {
       margin-left: 70px;
     }
     
+    p.big_notice {
+      width: 400px;
+      margin-left:100px;
+      padding: 5px 10px 5px 10px;
+      border-style:solid;
+      border-width:2px;
+      border-color:#aedd94;
+      -webkit-border-radius:7px;
+      -moz-border-radius:7px;
+      border-radius:7px;
+      background-color:#aedd94;
+      text-align: center;
+      font-size:12pt;
+    }
+    
     h3 {
       margin: 40px 0px 15px 0px;
       font-size: 14pt;
@@ -94,7 +109,7 @@ h1 {
       }
     }
     
-    #sign_up, #sign_in, #forgot_pwd, #change_pwd {
+    #sign_up_partial, #sign_in_partial, #forgot_pwd, #change_pwd {
       float: left;
       width: 400px;
       margin: 30px 0px 10px 40px;
@@ -154,7 +169,7 @@ h1 {
       }
     }
     
-    #sign_in {
+    #sign_in_partial {
       width: 300px;
     }
     
@@ -249,7 +264,7 @@ h1 {
     }
   }
   
-  #landing_page_bp_treatment {
+  #landing_page_bp_treatment, #sign_in, #sign_up {
     float:left;
     
     #heart_bp_monitor_pic {
@@ -292,15 +307,15 @@ h1 {
       }
     }
     
+    h2 {
+      margin: 30px 0px 35px 120px;
+      font-size: 16pt;
+      color: #0844a4;
+      font-weight: normal;
+    }
+    
     #landing_page_content {
       float: left;
-      
-      h2 {
-        margin: 30px 0px 35px 120px;
-        font-size: 16pt;
-        color: #0844a4;
-        font-weight: normal;
-      }
      
       .picture_left {
         float: left;
