@@ -19,7 +19,9 @@
 		<p class='big_notice'>Please come back to HomeBloodPressure.co.uk to take another pair of readings <span><%= @when_next_reading %></span>.</p>
 	<% end %>
 	
-	<p><%= @average_bp_message %></p>
+	<% if !@warning_message %>
+		<p><%= @average_bp_message %></p>
+	<% end %>
 	
 	<p>...However, to get a more accurate picture of what your blood pressure is like we need to take more readings like this over the next 4 days. This is because your blood pressure will vary from hour to hour and day to day, so one or two readings can be misleading. We want to give you accurate advice based on sound evidence!</p>
 	<p>Some illnesses may also affect what is considered to be a healthy blood pressure - after taking some readings we may need to ask you more questions about your health to allow us to give you accurate, personalised advice.</p>

@@ -15,7 +15,7 @@
 	<div id='header'>
 		<%= image_tag "topbanner.jpg" %>
 		<div id='topbannertitle'>
-			<%= link_to("HomeBloodPressure.co.uk", root_path) %>
+			<%= link_to("HomeBloodPressure.co.uk", blood_pressure_treatment_path) %>
 		</div>
 		<div id='user_nav'>
 			<% if user_signed_in? %>
@@ -41,7 +41,7 @@
 	<div id='topmenu'>
 		<!--
 		<div class='topmenucontent'>
-			<%= link_to 'Home', static_pages_home_path %>
+			<%= link_to 'Home', blood_pressure_treatment_path %>
 		</div>
 		<div class='topmenucontent'>
 			<a href=''>My account details</a>

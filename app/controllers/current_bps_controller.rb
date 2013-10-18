@@ -169,7 +169,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def set_current_bps
-      @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm])
+      @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm]).order("id")
     end
     
     def first_bp

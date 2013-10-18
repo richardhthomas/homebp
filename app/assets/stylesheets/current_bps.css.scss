@@ -133,6 +133,7 @@ h1 {
         }
       
         #tac_error_msg {
+          float:left;
           text-align: center;
           margin: 5px 0px 5px 0px;
           color: #ff0000;
@@ -165,6 +166,10 @@ h1 {
         
         #user_email, #user_password, #user_password_confirmation {
           width: 160px;
+        }
+        
+        #error_explanation {
+          width: 390px;
         }
       }
     }

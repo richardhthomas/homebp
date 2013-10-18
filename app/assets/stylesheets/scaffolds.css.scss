@@ -63,7 +63,7 @@ a:hover {
     background-color: #c00;
     color: #fff;
   }
-  ul li {
+  ul {
     float:left;
     font-size: 12px;
     list-style: square;
@@ -211,43 +211,43 @@ a.button2:hover {
     color-stop(0.75, #033076),
     color-stop(0.93, #D4E3FC),
     color-stop(1, #FFFFFF)
-);
+  );
+
+  .topmenucontent {
+    float:left;
+    
+    a {
+      display:block;
+      border-right:1px solid #ffffff;
+      color:#ffffff;
+      font-size:10pt;
+      padding:7px 15px 4px 15px;
+      
+      &:link, &:visited, &:hover {
+        color:#ffffff;
+      }
+      
+      &:hover {
+        text-decoration:none;
+        background-color:#6882AD;
+        background-image: linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+        background-image: -o-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+        background-image: -moz-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+        background-image: -webkit-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+        background-image: -ms-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
+        background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.75, #6882AD),
+          color-stop(0.93, #F0F6FF),
+          color-stop(1, #FFFFFF)
+        );
+      }
+    }
+  }
 }
 
-.topmenucontent {
-  float:left;
-}
-
-.topmenucontent a {
-  display:block;
-  border-right:1px solid #ffffff;
-  color:#ffffff;
-  font-size:10pt;
-  padding:7px 15px 4px 15px;
-}
-
-.topmenucontent a:link, .topmenucontent a:visited, .topmenucontent a:hover {
-  color:#ffffff;
-}
-
-.topmenucontent a:hover {
-  text-decoration:none;
-  background-color:#6882AD;
-  background-image: linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-  background-image: -o-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-  background-image: -moz-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-  background-image: -webkit-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-  background-image: -ms-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-
-  background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.75, #6882AD),
-    color-stop(0.93, #F0F6FF),
-    color-stop(1, #FFFFFF)
-);
-}
 
 #back {
   padding-left: 910px;
