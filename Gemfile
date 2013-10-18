@@ -69,3 +69,6 @@ gem 'active_attr'
 
 # needed to store session in db rather than in cookies
 gem 'activerecord-session_store'
+
+# provides a package of security features
+gem 'secure_headers'
