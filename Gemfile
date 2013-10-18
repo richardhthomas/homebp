@@ -66,3 +66,6 @@ gem 'postmark-rails'
 
 # use active_attr gem - this allows you to operate on model objects without them having to be backed by a database 
 gem 'active_attr'
+
+# needed to store session in db rather than in cookies
+gem 'activerecord-session_store'
