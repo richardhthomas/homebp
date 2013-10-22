@@ -14,16 +14,17 @@ h1 {
   float: left;
   width: 935px;
   padding: 0px 0px 0px 15px;
-  background-image: linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
-  background-image: -o-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
-  background-image: -moz-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
-  background-image: -webkit-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
-  background-image: -ms-linear-gradient(left top, #FFFFFF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-color: #F1F6FF;
+  background-image: linear-gradient(left top, #F1F6FF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -o-linear-gradient(left top, #F1F6FF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -moz-linear-gradient(left top, #F1F6FF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -webkit-linear-gradient(left top, #F1F6FF 5%, #E5EFFF 61%, #DDE5F0 100%);
+  background-image: -ms-linear-gradient(left top, #F1F6FF 5%, #E5EFFF 61%, #DDE5F0 100%);
   background-image: -webkit-gradient(
     linear,
     left top,
     right bottom,
-    color-stop(0.05, #FFFFFF),
+    color-stop(0.05, #F1F6FF),
     color-stop(0.61, #E5EFFF),
     color-stop(1, #DDE5F0)
   );
@@ -274,8 +275,8 @@ h1 {
     
     #heart_bp_monitor_pic {
       float: left;
-      width: 155px;
-      height: 125px;
+      width: 150px;
+      height: 120px;
       margin: 10px 0px 10px 50px;
       padding: 3px;
       border-style:solid;
