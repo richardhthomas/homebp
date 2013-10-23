@@ -41,6 +41,6 @@ class Notifier < ActionMailer::Base
     @name = message.name
     @email = message.email
     @content = message.content
-    mail to: "admin@homebloodpressure.co.uk", subject: "HomeBloodPressure.co.uk contact us"
+    mail to: "admin@HomeBloodPressure.co.uk", subject: "HomeBloodPressure.co.uk contact us"
   end
 end
