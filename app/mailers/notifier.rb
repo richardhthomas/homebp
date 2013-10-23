@@ -1,7 +1,7 @@
 class Notifier < ActionMailer::Base
   include Devise::Mailers::Helpers
   
-  default from: "richard.thomas@itamus.com"
+  default from: "admin@HomeBloodPressure.co.uk"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -41,6 +41,6 @@ class Notifier < ActionMailer::Base
     @name = message.name
     @email = message.email
     @content = message.content
-    mail to: "richardhthomas@yahoo.com", subject: "HomeBloodPressure.co.uk contact us"
+    mail to: "admin@homebloodpressure.co.uk", subject: "HomeBloodPressure.co.uk contact us"
   end
 end
