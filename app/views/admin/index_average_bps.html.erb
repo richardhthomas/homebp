@@ -1,0 +1,28 @@
+<h1>Listing average blood pressures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User id</th>
+      <th>Date</th>
+      <th>Am or pm</th>
+      <th>Systolic BP</th>
+      <th>Diastolic BP</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_bps.each do |average_bp| %>
+      <tr>
+      	<td><%= average_bp.user_id %></td>
+        <td><%= average_bp.date %></td>
+        <td><%= average_bp.ampm %></td>
+        <td><%= average_bp.sysbp %></td>
+        <td><%= average_bp.diabp %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

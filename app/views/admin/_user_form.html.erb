@@ -1,0 +1,17 @@
+<%= form_for(@user, :url => user_path(@user)) do |f| %>
+	<div>
+    	<%= f.text_field(:email) %>
+
+  	</div>
+  	
+  	<% if @user.errors.any? %>
+  		<div id='error_wrapper'>
+			<%= error_messages_for "user" %>
+		</div>
+  	<% end %>
+  	
+  	<div id="submit">
+	   	<%= f.submit 'Update' %>
+	</div>
+	
+<% end %>
