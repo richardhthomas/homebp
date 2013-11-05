@@ -161,6 +161,7 @@ class CurrentBpsController < ApplicationController
     
   def how_to_measure_bp
   end
+
   
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -251,10 +252,6 @@ class CurrentBpsController < ApplicationController
   def show
   end
   
-  # GET /current_bps/1/edit
-  def edit
-  end
-  
   def review
   end
   
@@ -269,6 +266,10 @@ class CurrentBpsController < ApplicationController
   end
   
   def choosing_a_monitor
+  end
+  
+  # GET /current_bps/1/edit
+  def edit
   end
   
   # DELETE /current_bps/1

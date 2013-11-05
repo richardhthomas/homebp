@@ -22,6 +22,8 @@
         <td><%= average_bp.ampm %></td>
         <td><%= average_bp.sysbp %></td>
         <td><%= average_bp.diabp %></td>
+        <td><%= link_to 'Edit', edit_admin_average_bp_path(average_bp) %></td>
+        <td><%= link_to 'Destroy', admin_average_bp_path(average_bp), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,19 @@
+<%= form_for(@average_bp, :url => admin_average_bp_path(@average_bp)) do |f| %>
+	<div>
+    	<%= f.text_field(:sysbp) %>
+  			/
+	    <%= f.text_field(:diabp) %>
+  			mmHg
+  	</div>
+  	
+  	<% if @average_bp.errors.any? %>
+  		<div id='error_wrapper'>
+			<%= error_messages_for "average_bp", "sysbp" %>
+		</div>
+  	<% end %>
+  	
+  	<div id="submit">
+	   	<%= f.submit 'Update' %>
+	</div>
+	
+<% end %>

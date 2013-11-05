@@ -1,9 +1,5 @@
 Homebp::Application.routes.draw do
   get "admin/menu"
-  get "admin/index_current_bps"
-  get "admin/index_average_bps"
-  get "admin/delete_current_bp"
-  get "admin/delete_average_bp"
   get "admin/mail"
   get "static_pages/home"
   get "static_pages/about"
@@ -28,8 +24,11 @@ Homebp::Application.routes.draw do
   resources :messages
   
   devise_for :users, :controllers => {:registrations => "registrations"}
-  scope "/admin" do
-    resources :users, :controller => "admin"
+  
+  namespace :admin do
+    resources :users, :controller => "user_admin"
+    resources :current_bps, :controller => "current_bps_admin"
+    resources :average_bps, :controller => "average_bps_admin"
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
