@@ -28,15 +28,17 @@
 	
 	<% if !user_signed_in? %>
 		<p>Sign up so you can check your blood pressure over the next 4 days.</p>
-		<p>You will then receive free personalised advice on how best to control your blood pressure.</p>
-		<p>You will receive advice on all aspects of controlling your blood pressure from lifestyle changes through to medications.</p>
-		<p>If you need to take medication, then you can use our service to receive it. You’ll find out just how cheap and easy it is to manage your own blood pressure and get prescriptions delivered to your door.</p>
-		
-		<div style ="float:left; height:300px; width:220px;"></div>
 		
 		<div id='sign_up_partial'>
 			<%= render :partial => 'devise/registrations/new' %>
 		</div>
+		
+		<div id='sign_up_benefits'>
+			<p>You will receive free personalised advice on how best to control your blood pressure.</p>
+			<p>You will receive advice on all aspects of controlling your blood pressure from lifestyle changes through to medications.</p>
+			<p>If you need to take medication, then you can use our service to receive it. You’ll find out just how cheap and easy it is to manage your own blood pressure and get prescriptions delivered to your door.</p>
+		</div>
+		
 	<% end %>
 </div>
 

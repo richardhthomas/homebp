@@ -42,7 +42,7 @@
 				</div>
 			<% else %>
 				<div id='sign_in'>
-    				<%= link_to(image_tag("padlock.gif", size: '9x12') + " Sign in", new_user_session_path, :class => 'button1') %>
+    				<%= link_to(image_tag("padlock.gif", size: '9x12', :class => 'borderless_img') + " Sign in", new_user_session_path, :class => 'button1') %>
     			</div>
     			<div id='sign_up'>
     				<%= link_to("Sign up", new_user_registration_path, :class => 'button1 button2') %>
