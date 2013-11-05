@@ -187,8 +187,8 @@ class CurrentBpsController < ApplicationController
       @average_sysbp = @bp_set.average(:sysbp)
       @average_diabp = @bp_set.average(:diabp)
       if !@average_sysbp.nil?
-        @sys_position = 70 + ((170 - @average_sysbp)*3.5)
-        @dia_position = 70 + ((110 - @average_diabp)*4.66)
+        @sys_position = 70 + ((170 - @average_sysbp)*3)
+        @dia_position = 70 + ((110 - @average_diabp)*4)
         if @sys_position < @dia_position
           @bp_position = @sys_position
         else
@@ -197,8 +197,8 @@ class CurrentBpsController < ApplicationController
         if @bp_position < 70
           @bp_position = 70
         end
-        if @bp_position > 280
-          @bp_position = 280
+        if @bp_position > 250
+          @bp_position = 250
         end
       end
     end
