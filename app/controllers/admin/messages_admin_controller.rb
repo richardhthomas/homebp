@@ -18,7 +18,7 @@ class Admin::MessagesAdminController < ApplicationController
       Notifier.admin_mail(@admin_message).deliver
       redirect_to admin_menu_path, notice: "Message sent!"
     else
-      render "new_individual"
+      render Rails.application.routes.recognize_path(request.referer)[:action]
     end
   end
 end

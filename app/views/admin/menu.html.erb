@@ -1,7 +1,11 @@
 <div id="main">
 	<h1>Admin menu</h1>
-	<%= link_to("Users", admin_users_path) %><br /><br />
-	<%= link_to("Current BPs", admin_current_bps_path) %><p>These are the individual blood pressure readings.</p>
-	<%= link_to("Average BPs", admin_average_bps_path) %><p>These are the average of each pair of readings.</p>
+	<%= link_to("Users", admin_users_path) %>
+		<p>A list of our users. Edit emails, delete users and send emails to individual users.</p>
+	<%= link_to("Current BPs", admin_current_bps_path) %>
+		<p>A list of individual blood pressure readings. These are deleted after a full set has been taken. Readings can be edited or deleted.</p>
+	<%= link_to("Average BPs", admin_average_bps_path) %>
+		<p>A list of the average of each pair of readings. These are deleted after a full set has been taken. Readings can be edited or deleted.</p>
 	<%= link_to("Mail all users", new_admin_message_path) %>
+		<p>Send an email to all users. Be careful!!!</p>
 </div>
