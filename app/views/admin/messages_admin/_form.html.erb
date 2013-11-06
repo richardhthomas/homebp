@@ -1,6 +1,7 @@
 	<div id='contact_form'>
 	<%= form_for @admin_message do |f| %>
 	<%= f.hidden_field :email, :value => @admin_message_email %>
+	<%= f.hidden_field :greeting, :value => @greeting %>
 	<table>
 		<tr>
 			<td><%= f.label :subject %></td>

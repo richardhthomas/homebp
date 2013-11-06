@@ -45,14 +45,8 @@ class Notifier < ActionMailer::Base
   end
   
   def admin_mail(admin_message)
-    if admin_message.email.kind_of?(Array)
-      @greeting = "Hello from HomeBloodPressure.co.uk,"
-    else
-      @greeting = "Hello" + admin_message.email
-    end
+    @greeting = admin_message.greeting
     @content = admin_message.content
-    
-    #mail to: admin_message.email, subject: admin_message.subject, bcc: @bcc
-    mail subject: admin_message.subject, bcc: admin_message.email
+    mail to:, subject: admin_message.subject, bcc: admin_message.email
   end
 end
