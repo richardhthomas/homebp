@@ -6,7 +6,8 @@ class Admin::MessagesAdminController < ApplicationController
   
   def new
     @admin_message = AdminMessage.new
-    @admin_message_email = User.pluck(:email)
+    @emails = User.pluck(:email)
+    @admin_message_email = @emails.join(", ")
   end
   
   def create
