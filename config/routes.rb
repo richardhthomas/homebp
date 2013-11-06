@@ -1,5 +1,6 @@
 Homebp::Application.routes.draw do
   get "admin/menu"
+  get "admin/mail"
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/tac"
