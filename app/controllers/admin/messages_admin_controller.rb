@@ -5,12 +5,12 @@ class Admin::MessagesAdminController < ApplicationController
   end
 
   def create
-    @admin_message = AdminMessage.new(params[:message])
+    @admin_message = AdminMessage.new(params[:admin_message])
     if @admin_message.valid?
       Notifier.admin_mail(@admin_message).deliver
       redirect_to admin_menu_path, notice: "Message sent!"
     else
-      render "new"
+      render "new_individual"
     end
   end
 end
