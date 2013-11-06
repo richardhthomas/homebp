@@ -9,7 +9,7 @@
 	
 	<div id='contact_form'>
 	<%= form_for @admin_message do |f| %>
-	<%= f.hidden_field :email, :value => @admin_message.email %>
+	<%= f.hidden_field :email, :value => @admin_message_email %>
 	<table>
 		<tr>
 			<td><%= f.label :subject %></td>

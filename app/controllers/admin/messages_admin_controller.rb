@@ -1,7 +1,7 @@
 class Admin::MessagesAdminController < ApplicationController
   def new(user)
     @admin_message = AdminMessage.new
-    @admin_message.email = user.email
+    @admin_message_email = user.email
   end
 
   def create

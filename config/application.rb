@@ -23,6 +23,6 @@ module Homebp
     # postmark settings
     config.action_mailer.delivery_method   = :postmark
     config.action_mailer.postmark_settings = { :api_key => ENV['POSTMARK_API_KEY'] }
-    config.action_mailer.default_url_options = { host: "https://www.HomeBloodPressure.co.uk" }
+    
   end
 end

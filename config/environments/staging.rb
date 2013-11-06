@@ -82,4 +82,7 @@ Homebp::Application.configure do
   config.middleware.use '::Rack::Auth::Basic' do |u, p|
       [u, p] == ['testing', 'Develop93']
   end
+  
+  # postmark settings
+  config.action_mailer.default_url_options = { host: "http://guarded-thicket-5724.herokuapp.com" }
 end
