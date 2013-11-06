@@ -47,6 +47,6 @@ class Notifier < ActionMailer::Base
   def admin_mail(admin_message)
     @greeting = admin_message.greeting
     @content = admin_message.content
-    mail to:, subject: admin_message.subject, bcc: admin_message.email
+    mail subject: admin_message.subject, bcc: admin_message.email
   end
 end
