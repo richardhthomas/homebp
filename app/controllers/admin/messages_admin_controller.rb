@@ -3,7 +3,12 @@ class Admin::MessagesAdminController < ApplicationController
     @admin_message = AdminMessage.new
     @admin_message_email = User.find(params[:id]).email
   end
-
+  
+  def new
+    @admin_message = AdminMessage.new
+    @admin_message_email = User.pluck(:email)
+  end
+  
   def create
     @admin_message = AdminMessage.new(params[:admin_message])
     if @admin_message.valid?

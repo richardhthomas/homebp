@@ -45,10 +45,14 @@ class Notifier < ActionMailer::Base
   end
   
   def admin_mail(admin_message)
-    @email = admin_message.email
+    if admin_message.email.kind_of?(Array)
+      @greeting = "Hello from HomeBloodPressure.co.uk,"
+    else
+      @greeting = "Hello" + admin_message.email
+    end
     @content = admin_message.content
-    @bcc = ["richardhthomas@yahoo.com", "rhtbiscuit@gmail.com", "richardhthomas@yahoo.com"]
     
-    mail to: admin_message.email, subject: admin_message.subject, bcc: @bcc
+    #mail to: admin_message.email, subject: admin_message.subject, bcc: @bcc
+    mail subject: admin_message.subject, bcc: admin_message.email
   end
 end
