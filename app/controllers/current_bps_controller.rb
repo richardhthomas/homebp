@@ -108,17 +108,17 @@ class CurrentBpsController < ApplicationController
   def display_bp
     @current_average_bp = active_user.average_bps.last
     if @current_average_bp.sysbp > 179 or @current_average_bp.diabp > 109
-      @warning_message = "The readings you have just taken were very high. We recommend that you see a healthcare professional to discuss this within the next 24 hours."
+      @warning_message = "Your blood pressure readings were very high. You should see a healthcare professional within the next 24 hours. They will check that they are accurate readings. If they are accurate, you may need to start treatment immediately."
     elsif @current_average_bp.sysbp < 90 or @current_average_bp.diabp < 60
-      @warning_message = "The readings you have just taken were quite low. This can be normal, especially for young women, but if you feel unwell at all you should see a doctor as soon as possible."
+      @warning_message = "Your blood pressure readings were low. This is more common in young women. If you feel well then this is normal. If you are having dizziness, fainting episodes or feel nauseous you should make an appointment to see a healthcare professional."
     end
     
     if @average_sysbp > 129 or @average_diabp > 80
-      @average_bp_message = "Your average readings so far show that you may have high blood pressure..."
+      @average_bp_message = "Your blood pressure readings so far show that you may have high blood pressure..."
     elsif @average_sysbp < 90 or @average_diabp < 60
-      @average_bp_message = "Your average readings so far show that your blood pressure is quite low..."
+      @average_bp_message = "Your blood pressure readings so far show that your blood pressure is quite low..."
     else
-      @average_bp_message = "Your readings so far show that you have normal blood pressure..."
+      @average_bp_message = "Your blood pressure readings so far show that you have normal blood pressure..."
     end
     
     if @current_average_bp.ampm == 'am'
@@ -188,8 +188,8 @@ class CurrentBpsController < ApplicationController
       @average_sysbp = @bp_set.average(:sysbp)
       @average_diabp = @bp_set.average(:diabp)
       if !@average_sysbp.nil?
-        @sys_position = 70 + ((170 - @average_sysbp)*3.5)
-        @dia_position = 70 + ((110 - @average_diabp)*4.66)
+        @sys_position = 70 + ((170 - @average_sysbp)*3)
+        @dia_position = 70 + ((110 - @average_diabp)*4)
         if @sys_position < @dia_position
           @bp_position = @sys_position
         else
@@ -198,8 +198,8 @@ class CurrentBpsController < ApplicationController
         if @bp_position < 70
           @bp_position = 70
         end
-        if @bp_position > 280
-          @bp_position = 280
+        if @bp_position > 250
+          @bp_position = 250
         end
       end
     end
