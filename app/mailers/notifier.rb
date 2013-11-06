@@ -47,6 +47,8 @@ class Notifier < ActionMailer::Base
   def admin_mail(admin_message)
     @email = admin_message.email
     @content = admin_message.content
-    mail to: admin_message.email, subject: admin_message.subject
+    @bcc = ["richardhthomas@yahoo.com", "rhtbiscuit@gmail.com", "richardhthomas@yahoo.com"]
+    
+    mail to: admin_message.email, subject: admin_message.subject, bcc: @bcc
   end
 end
