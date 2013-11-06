@@ -1,0 +1,40 @@
+<div id='main_full_width'>
+	<h1>Contact user</h1>
+
+	<div id='contact_us'>
+	
+	<div id='title'>
+		Contact user
+	</div>
+	
+	<div id='contact_form'>
+	<%= form_for @admin_message do |f| %>
+	<%= f.hidden_field :email, :value => @admin_message.email %>
+	<table>
+		<tr>
+			<td><%= f.label :subject %></td>
+			<td><%= f.text_field :subject %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :content, "Message" %></td>
+			<td><%= f.text_area :content, :rows => 5 %></td>
+		</tr>
+	</table>
+  
+	  <% if @admin_message.errors.any? %>
+  			<div id='error_wrapper'>
+	    	<div id="error_explanation">
+				<%= error_messages_for "message" %>
+			</div>
+			</div>
+  	<% end %>
+  
+  	<div id="submit">
+		<%= f.submit "Send Message", :class => 'button4' %>
+	</div>
+	</div>
+<% end %>
+</div>
+</div>
+
+

@@ -43,4 +43,10 @@ class Notifier < ActionMailer::Base
     @content = message.content
     mail to: "admin@HomeBloodPressure.co.uk", subject: "HomeBloodPressure.co.uk contact us"
   end
+  
+  def admin_mail(admin_message)
+    @email = admin_message.email
+    @content = admin_message.content
+    mail to: admin_message.email, subject: admin_message.subject
+  end
 end
