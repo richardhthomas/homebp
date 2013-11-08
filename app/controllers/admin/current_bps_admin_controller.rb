@@ -1,4 +1,4 @@
-class Admin::CurrentBpsAdminController < ApplicationController
+class Admin::CurrentBpsAdminController < Admin::AdminController
   before_action :set_current_bp, only: [:edit, :update, :destroy]
 
   def index

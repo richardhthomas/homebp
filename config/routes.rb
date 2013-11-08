@@ -1,5 +1,4 @@
 Homebp::Application.routes.draw do
-  get "admin/menu"
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/tac"
@@ -25,6 +24,7 @@ Homebp::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   
   namespace :admin do
+    get "menu", :controller => "admin"
     resources :users, :controller => "user_admin"
     resources :current_bps, :controller => "current_bps_admin"
     resources :average_bps, :controller => "average_bps_admin"
@@ -33,6 +33,7 @@ Homebp::Application.routes.draw do
         get 'new_individual'
       end
     end
+    root :to => "admin#menu"
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

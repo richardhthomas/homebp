@@ -1,4 +1,4 @@
-class Admin::MessagesAdminController < ApplicationController
+class Admin::MessagesAdminController < Admin::AdminController
   def new_individual
     @admin_message = AdminMessage.new
     @admin_message_email = User.find(params[:id]).email

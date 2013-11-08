@@ -1,4 +1,4 @@
-class Admin::AverageBpsAdminController < ApplicationController
+class Admin::AverageBpsAdminController < Admin::AdminController
   before_action :set_average_bp, only: [:edit, :update, :destroy]
 
   def index
