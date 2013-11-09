@@ -2,7 +2,7 @@ class Admin::AverageBpsAdminController < Admin::AdminController
   before_action :set_average_bp, only: [:edit, :update, :destroy]
 
   def index
-    @average_bps = AverageBp.all
+    @average_bps = AverageBp.all.where("user_id IS NOT NULL").order("user_id")
   end
 
   def edit

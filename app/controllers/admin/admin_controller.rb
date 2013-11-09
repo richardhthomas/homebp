@@ -1,6 +1,6 @@
 class Admin::AdminController < ApplicationController
 
-  layout "application"
+  layout "admin"
   before_filter :admin_required
   
   def menu
