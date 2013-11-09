@@ -79,9 +79,9 @@ Homebp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   # I added this so log-in is required for staging app on Heroku
-  config.middleware.use '::Rack::Auth::Basic' do |u, p|
-      [u, p] == ['testing', 'Develop93']
-  end
+  #config.middleware.use '::Rack::Auth::Basic' do |u, p|
+  #    [u, p] == ['testing', 'Develop93']
+  #end
   
   # postmark settings
   config.action_mailer.default_url_options = { host: "http://guarded-thicket-5724.herokuapp.com" }
