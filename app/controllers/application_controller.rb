@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
   protected
   
   def admin_required
-    authenticate_or_request_with_http_basic do |user_name, password|
-      user_name == 'admin' && password == '98Haz3llvill3Rd'
-    end if RAILS_ENV == 'production' || RAILS_ENV == 'development' #|| params[:admin_http]
+    if (Rails.env == 'production' || Rails.env == 'development') #|| params[:admin_http]
+      authenticate_or_request_with_http_basic do |user_name, password|
+        user_name == 'admin' && password == '98Haz3llvill3Rd'
+      end
+    end
   end
   
   
