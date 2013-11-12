@@ -1,4 +1,4 @@
-<div id='main_full_width'>
+<div id='main'>
 	<h1>Contact us</h1>
 	
 	<p>Please use the form below to contact us with any queries. However, be aware that although we frequently check for messages, this service is not able to provide any emergency medical advice. If you are feeling seriously unwell then please seek medical attention with your local doctor and do not await a response from us.</p>
@@ -26,11 +26,9 @@
 		</tr>
 	</table>
   
-	  <% if @message.errors.any? %>
-  			<div id='error_wrapper'>
+	  <% if @message.errors.any? %>	
 	    	<div id="error_explanation">
 				<%= error_messages_for "message" %>
-			</div>
 			</div>
   	<% end %>
   

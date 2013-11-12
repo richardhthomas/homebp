@@ -171,6 +171,7 @@ h1 {
         
         #error_explanation {
           width: 390px;
+          margin-left: 40px;
         }
       }
     }
@@ -180,7 +181,15 @@ h1 {
     }
     
     #sign_up_benefits {
-      margin: 70px 0px 0px 430px;
+      margin: 90px 0px 0px 430px;
+      
+      ul {
+        margin: 0px 40px 25px 50px;
+        
+        li {
+          margin-bottom:20px;
+        }
+      }
     }
     
     #warning_msg {
