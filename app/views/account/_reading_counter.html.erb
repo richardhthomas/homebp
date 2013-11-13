@@ -1,0 +1,19 @@
+<div id='title'>
+	My reading counter
+</div>
+
+<p>How many pairs of blood pressure readings have I taken?</p>
+
+<div id='reading_counter_bar'>
+	<% 8.times do |x| %>
+		<% if (x+1) <= @set_average_bp_count %>
+			<div class='reading_taken'>
+				<%= (x+1) %>
+			</div>
+		<% else %>
+			<div class='reading_not_taken'>
+				<%= (x+1)%>
+			</div>
+		<% end %>
+	<% end %>
+</div>

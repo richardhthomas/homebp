@@ -252,9 +252,14 @@ a.button2:hover {
   }
 }
 
+#breadcrumb {
+  float:left;
+  padding-left: 10px;
+}
 
 #back {
-  padding-left: 910px;
+  float: right;
+  padding-right: 10px;
 }
 
 

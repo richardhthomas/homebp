@@ -74,6 +74,12 @@
 		-->
 	</div>
 	
+	<% if user_signed_in? %>
+		<div id='breadcrumb'>
+			<%= breadcrumb %>
+		</div>
+	<% end %>
+	
 	<div id='back'>
 		<%= link_to_function "Back", "history.back()" %>
 	</div>

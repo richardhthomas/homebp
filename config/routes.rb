@@ -3,7 +3,10 @@ Homebp::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/tac"
   get "static_pages/sign_in_msg"
+  
   get "/blood_pressure_treatment" => 'current_bps#landing_page'  
+  
+  get "account/home"
   
   resources :current_bps do
     collection do

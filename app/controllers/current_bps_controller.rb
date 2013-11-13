@@ -6,9 +6,8 @@ class CurrentBpsController < ApplicationController
   before_action :set_average_bp, only: [:display_bp, :new, :new2]
   
   def router
-    #see static pages controller for code that can return the last BP for a user
-    @count = active_user.average_bps.count # this is just a count of the number of BPs associated with the user
-    if @count > 0
+    #see static pages controller for code that can return the last BP for a user    
+    if set_average_bp_count > 0 # this is just a count of the number of BPs associated with the user
       redirect_to display_bp_current_bps_path
     else
       session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
@@ -181,27 +180,6 @@ class CurrentBpsController < ApplicationController
     def second_bp
       set_current_bps
       @current_bps[1]
-    end
-    
-    def set_average_bp
-      @bp_set = active_user.average_bps
-      @average_sysbp = @bp_set.average(:sysbp)
-      @average_diabp = @bp_set.average(:diabp)
-      if !@average_sysbp.nil?
-        @sys_position = 70 + ((170 - @average_sysbp)*3)
-        @dia_position = 70 + ((110 - @average_diabp)*4)
-        if @sys_position < @dia_position
-          @bp_position = @sys_position
-        else
-          @bp_position = @dia_position
-        end
-        if @bp_position < 70
-          @bp_position = 70
-        end
-        if @bp_position > 250
-          @bp_position = 250
-        end
-      end
     end
     
     def collect_first_bp

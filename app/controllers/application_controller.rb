@@ -57,4 +57,31 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  #return the number of average bp readings in the set
+  def set_average_bp_count
+    active_user.average_bps.count
+  end
+  
+  # define the average BP for the current set of readings as well as the coordinates for the graphic display
+  def set_average_bp
+    @bp_set = active_user.average_bps
+    @average_sysbp = @bp_set.average(:sysbp)
+    @average_diabp = @bp_set.average(:diabp)
+    if !@average_sysbp.nil?
+      @sys_position = 70 + ((170 - @average_sysbp)*3)
+      @dia_position = 70 + ((110 - @average_diabp)*4)
+      if @sys_position < @dia_position
+        @bp_position = @sys_position
+      else
+        @bp_position = @dia_position
+      end
+      if @bp_position < 70
+        @bp_position = 70
+      end
+      if @bp_position > 250
+        @bp_position = 250
+      end
+    end
+  end
+  
 end
