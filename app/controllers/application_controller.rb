@@ -49,8 +49,7 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource)
-    @count = active_user.average_bps.count # this is just a count of the number of BPs associated with the user
-    if @count > 0
+    if set_average_bp_count > 0 # this is just a count of the number of BPs associated with the user
       static_pages_sign_in_msg_path
     else
       new_current_bp_path

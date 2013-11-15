@@ -32,6 +32,14 @@ class CurrentBpsController < ApplicationController
       @current_bp = CurrentBp.new
     end
   end
+  
+  def old_bp_new
+    
+  end
+  
+  def old_bp_new2
+    
+  end
 
   # POST /current_bps
   # POST /current_bps.json
