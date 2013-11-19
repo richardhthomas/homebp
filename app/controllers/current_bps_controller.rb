@@ -1,24 +1,10 @@
 class CurrentBpsController < ApplicationController
   before_filter :set_cache_buster
+  before_action :set_date_ampm
   before_action :collect_first_bp, only: [:new, :landing_page, :how_to_measure_bp]
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
   before_action :set_current_bps, only: [:create_average_bp, :display_bp, :review]
-  before_action :set_average_bp, only: [:display_bp, :new, :new2]
-  
-  def router
-    #see static pages controller for code that can return the last BP for a user    
-    if set_average_bp_count > 0 # this is just a count of the number of BPs associated with the user
-      redirect_to display_bp_current_bps_path
-    else
-      session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
-      if DateTime.now.seconds_since_midnight < 50400 #now 2pm is the start of pm!
-        session[:ampm] = "am"
-      else
-        session[:ampm] = "pm"
-      end
-      redirect_to blood_pressure_treatment_path
-    end
-  end
+  before_action :batch_average_bp, only: [:display_bp, :new, :new2]
 
   # GET /current_bps/new
   def new
@@ -32,21 +18,13 @@ class CurrentBpsController < ApplicationController
       @current_bp = CurrentBp.new
     end
   end
-  
-  def old_bp_new
-    
-  end
-  
-  def old_bp_new2
-    
-  end
 
   # POST /current_bps
   # POST /current_bps.json
   def create
     @current_bp = active_user.current_bps.build(current_bp_params)
-    @current_bp.date = session[:date]
-    @current_bp.ampm = session[:ampm]
+    @current_bp.date = session[:date_for_bp_entry]
+    @current_bp.ampm = session[:ampm_for_bp_entry]
 
     respond_to do |format|
       if @current_bp.save
@@ -109,7 +87,7 @@ class CurrentBpsController < ApplicationController
       @average_bp.ampm = @current_bps[0].ampm
       @average_bp.save
     end
-    redirect_to display_bp_current_bps_path
+      redirect_to router_account_path
   end
   
   def display_bp
@@ -177,7 +155,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def set_current_bps
-      @current_bps = active_user.current_bps.where(:date => session[:date], :ampm => session[:ampm]).order("id")
+      @current_bps = active_user.current_bps.where(:date => session[:date_for_bp_entry], :ampm => session[:ampm_for_bp_entry]).order("id")
     end
     
     def first_bp
@@ -225,19 +203,7 @@ class CurrentBpsController < ApplicationController
     end
     
     
-    ## Below are actions that may be useful occasionally in development, or are just not currently being used
-  # GET /current_bps
-  # GET /current_bps.json
-  def index
-    @current_bps = CurrentBp.all
-    @average_bps = AverageBp.all
-  end
-
-  # GET /current_bps/1
-  # GET /current_bps/1.json
-  def show
-  end
-  
+    ## Below are actions that may be useful occasionally in development, or are just not currently being used 
   def review
   end
   
@@ -252,20 +218,6 @@ class CurrentBpsController < ApplicationController
   end
   
   def choosing_a_monitor
-  end
-  
-  # GET /current_bps/1/edit
-  def edit
-  end
-  
-  # DELETE /current_bps/1
-  # DELETE /current_bps/1.json
-  def destroy
-    @current_bp.destroy
-    respond_to do |format|
-      format.html { redirect_to current_bps_url }
-      format.json { head :no_content }
-    end
   end
   
 end

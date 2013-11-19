@@ -10,7 +10,12 @@
 	</div>
 	
 	<p>Thank you.</p>
-	<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
+	
+	<% if session[:old_bp_text] == "" %>
+		<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
+	<% else %>
+		<p>Please enter the sedonf blood pressure reading from <%= session[:old_bp_text] %> into the boxes below:</p>
+	<% end %>
 
 	<div id='wizard_input_bp'>	
 		<%= render 'form' %>

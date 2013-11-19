@@ -93,6 +93,6 @@ Homebp::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "current_bps#router"
+  root :to => "account#router"
   
 end

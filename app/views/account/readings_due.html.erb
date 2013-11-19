@@ -12,19 +12,24 @@
 	<% end %>
 	</div>
 	
-	<p>Welcome back <%= current_user.email %></p>
+	<% if session[:reading_counter] %> <!-- This identifies if the user has already entered some readings during this session-->
+		<p>Thank you for entering your recent blood pressure readings.</p>
+		<% if session[:old_bp_text] == "" %>
+			<p>Now it's time to take an up to date pair of readings</p>
+		<% end %>
+	<% else %>
+		<p>Welcome back <%= current_user.email %></p>
 	
-	<p>It's time to take some more readings to find out if your blood pressure really is too high. Taking a set of readings over several days will give you an accurate measure of your blood pressure. From an accurate measure you'll get reliable advice. That way you will know whether your blood pressure really is too high.</p>
+		<p>It's time to take some more readings to find out if your blood pressure really is too high. Taking a set of readings over several days will give you an accurate measure of your blood pressure. From an accurate measure you'll get reliable advice. That way you will know whether your blood pressure really is too high.</p>
+	<% end %>
 	
-	<% if @old_time_text == "" %>
+	<% if session[:old_bp_text] == "" %>
 		<%= link_to 'Next', new_current_bps_path %>
 	<% else %>
-		<p>Do you have a pair of blood pressure readings from <%= @old_time_text %> that you haven't entered into your account yet?</p>
+		<p>Do you have a pair of blood pressure readings from <%= session[:old_bp_text] %> that you need to enter into your account?</p>
 		<%= link_to 'No', is_bp_set_completable_path %>
-		<%= form_tag(controller: "current_bps", action: "old_bp_new") %>
-		<%= hidden_field_tag(:old_bp_date, @old_bp_date) %>
-		<%= hidden_field_tag(:old_bp_ampm, @old_bp_ampm) %>
-		<%= submit_tag("Yes") %>
+		<%= link_to 'Yes', new_current_bps_path %>
+
 	<% end %>
 
 </div>

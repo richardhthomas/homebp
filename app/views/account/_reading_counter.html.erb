@@ -6,7 +6,7 @@
 
 <div id='reading_counter_bar'>
 	<% 8.times do |x| %>
-		<% if (x+1) <= @set_average_bp_count %>
+		<% if (x+1) <= @batch_average_bp_count %>
 			<div class='reading_taken'>
 				<%= (x+1) %>
 			</div>
