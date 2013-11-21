@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   before_action :set_date_ampm
-  before_action :set_average_bp, only: [:home, :readings_due]
+  before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_last_average_bp, only: [:router, :readings_due]
   
   def home
@@ -48,69 +48,43 @@ class AccountController < ApplicationController
       end
       
     else
-      if batch_average_bp_count < 1
+      if batch_average_bp_count < 1 # not signed in and no readings - go to landing page
         redirect_to blood_pressure_treatment_path
       
-      else
+      else # not signed in but given a reading - go to home page
         redirect_to home_account_path
       end
     end 
   end
   
   def readings_due 
-    # First check if next reading is due now
-    if (session[:date] == @last_average_bp.date && @last_average_bp.ampm == "am" && session[:ampm] == "pm") || (session[:date] == (@last_average_bp.date + 1) && @last_average_bp.ampm == "pm" && session[:ampm] == "am")
-      session[:old_bp_text] = ""
-      session[:date_for_bp_entry] = session[:date]
-      session[:ampm_for_bp_entry] = session[:ampm]
-    
-    #otherwise there are missing readings so set up text and time variables to ask if they have any to enter from the next time slot
-    else
-      if session[:date] - @last_average_bp.date > 2
-        if @last_average_bp.ampm == "am"
-          session[:old_bp_text] = "the evening of" + @last_average_bp.date
-          session[:date_for_bp_entry] = @last_average_bp.date
-          session[:ampm_for_bp_entry] = "pm"
-        else
-          session[:old_bp_text] = "the morning of" + @last_average_bp.date + 1
-          session[:date_for_bp_entry] = @last_average_bp.date + 1
-          session[:ampm_for_bp_entry] = "am"
-        end
-      elsif session[:date] - @last_average_bp.date == 2
-        if @last_average_bp.ampm == "am"
-          session[:old_bp_text] = "the evening of" + @last_average_bp.date
-          session[:date_for_bp_entry] = @last_average_bp.date
-          session[:ampm_for_bp_entry] = "pm"
-        else
-          session[:old_bp_text] = "yesterday morning"
-          session[:date_for_bp_entry] = @last_average_bp.date + 1
-          session[:ampm_for_bp_entry] = "am"
-        end
+    # first check if have started giving readings this session by using the :reading_counter variable
+    if session[:reading_counter] # if started giving readings already then increment to next time slot
+      if session[:ampm_for_bp_entry] == "am"
+        session[:ampm_for_bp_entry] = "pm"
       else
-        if @last_average_bp.ampm == "am"
-          session[:old_bp_text] = "yesterday evening"
-          session[:date_for_bp_entry] = @last_average_bp.date
-          session[:ampm_for_bp_entry] = "pm"
-        else
-          session[:old_bp_text] = "this morning"
-          session[:date_for_bp_entry] = @last_average_bp.date + 1
-          session[:ampm_for_bp_entry] = "am"
-        end
+        session[:date_for_bp_entry] += 1
+        session[:ampm_for_bp_entry] = "am"
+      end
+    else # otherwise define timeslot based on last reading in the database
+      if @last_average_bp.ampm == "am"
+        session[:date_for_bp_entry] = @last_average_bp.date
+        session[:ampm_for_bp_entry] = "pm"
+      else
+        session[:date_for_bp_entry] = @last_average_bp.date + 1
+        session[:ampm_for_bp_entry] = "am"
       end
     end
   end
   
   def is_bp_set_completable
     # check if has taken too long to collect readings
+    session[:reading_counter] = 1 # set :reading_counter so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
-    if ((7-((session[:date] - @first_average_bp.date).to_i)) * 2) < (8 - set_average_bp_count)
+    if ((7-((session[:date_for_bp_entry] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
       redirect_to #NEED TO RESTART TAKING READINGS
     else
-      session[:old_bp_text] = ""
-      session[:date_for_bp_entry] = session[:date]
-      session[:ampm_for_bp_entry] = session[:ampm]
-      redirect_to new_current_bps_path
-      ### NOPE - THIS IS WRONG. ACTUALLY NEED TO INCREMENT TO NEXT TIME SLOT AND CARRY ON, NOT SKIP TO CURRENT READING. Logic needs to be same as above but not referencing the last_average_bp.
+      redirect_to readings_due_account_path
     end
   end
   
