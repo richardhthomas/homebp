@@ -3,8 +3,8 @@ class CurrentBpsController < ApplicationController
   before_action :set_date_ampm
   before_action :collect_first_bp, only: [:new, :landing_page, :how_to_measure_bp]
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_bps, only: [:create_average_bp, :display_bp, :review]
-  before_action :batch_average_bp, only: [:display_bp, :new, :new2]
+  before_action :set_current_bps, only: [:create_average_bp, :review]
+  before_action :batch_average_bp, only: [:new, :new2]
 
   # GET /current_bps/new
   def new
@@ -88,30 +88,7 @@ class CurrentBpsController < ApplicationController
       @average_bp.save
     end
       redirect_to router_account_path
-  end
-  
-  def display_bp
-    @current_average_bp = active_user.average_bps.last
-    if @current_average_bp.sysbp > 179 or @current_average_bp.diabp > 109
-      @warning_message = "Your blood pressure readings were very high. You should see a healthcare professional within the next 24 hours. They will check that they are accurate readings. If they are accurate, you may need to start treatment immediately."
-    elsif @current_average_bp.sysbp < 90 or @current_average_bp.diabp < 60
-      @warning_message = "Your blood pressure readings were low. This is more common in young women. If you feel well then this is normal. If you are having dizziness, fainting episodes or feel nauseous you should make an appointment to see a healthcare professional."
-    end
-    
-    if @average_sysbp > 129 or @average_diabp > 80
-      @average_bp_message = "Your blood pressure readings so far show that you may have high blood pressure..."
-    elsif @average_sysbp < 90 or @average_diabp < 60
-      @average_bp_message = "Your blood pressure readings so far show that your blood pressure is quite low..."
-    else
-      @average_bp_message = "Your blood pressure readings so far show that you have normal blood pressure..."
-    end
-    
-    if @current_average_bp.ampm == 'am'
-      @when_next_reading = "this evening"
-    else
-      @when_next_reading = "tomorrow morning"
-    end
-  end  
+  end 
 
   def signup_bp_migration
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take

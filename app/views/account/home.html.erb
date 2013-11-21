@@ -14,16 +14,16 @@
 	<% end %>
 	</div>
 	
-	<% if @warning_message %>
-		<p id='warning_msg'><%= @warning_message %></p>
+	<% if bp_warning_message(@current_average_bp) %>
+		<p id='warning_msg'><%= bp_warning_message(@current_average_bp) %></p>
 	<% end %>
 	
 	<% if user_signed_in? %>
-		<p class='big_notice'>Please come back to HomeBloodPressure.co.uk <span><%= @when_next_reading %></span> to take another pair of blood pressure readings.</p>
+		<p class='big_notice'>Please come back to HomeBloodPressure.co.uk <span><%= when_next_bp_reading(@current_average_bp.ampm) %></span> to take another pair of blood pressure readings.</p>
 	<% end %>
 	
-	<% if !@warning_message %>
-		<p><%= @average_bp_message %></p>
+	<% if !bp_warning_message(@current_average_bp) %>
+		<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
 	<% end %>
 	
 	<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this over the next 4 days. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from this site.</p>

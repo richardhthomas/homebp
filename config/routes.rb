@@ -10,12 +10,12 @@ Homebp::Application.routes.draw do
   
   resources :current_bps do
     collection do
-      get 'display_bp'
+      #get 'display_bp'
       #post 'review'
       #patch 'update_bp'
       get 'new2'
       get 'signup_bp_migration'
-      get 'router'
+      #get 'router'
       get 'create_average_bp'
       #get 'choosing_a_monitor'
       get 'how_to_measure_bp'

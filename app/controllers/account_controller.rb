@@ -4,27 +4,7 @@ class AccountController < ApplicationController
   before_action :set_last_average_bp, only: [:router, :readings_due]
   
   def home
-    @current_average_bp = active_user.average_bps.last
-    if @current_average_bp.sysbp > 179 or @current_average_bp.diabp > 109
-      @warning_message = "Your blood pressure readings were very high. You should see a healthcare professional within the next 24 hours. They will check that they are accurate readings. If they are accurate, you may need to start treatment immediately."
-    elsif @current_average_bp.sysbp < 90 or @current_average_bp.diabp < 60
-      @warning_message = "Your blood pressure readings were low. This is more common in young women. If you feel well then this is normal. If you are having dizziness, fainting episodes or feel nauseous you should make an appointment to see a healthcare professional."
-    end
-    
-    if @average_sysbp > 129 or @average_diabp > 80
-      @average_bp_message = "Your blood pressure readings so far show that you may have high blood pressure..."
-    elsif @average_sysbp < 90 or @average_diabp < 60
-      @average_bp_message = "Your blood pressure readings so far show that your blood pressure is quite low..."
-    else
-      @average_bp_message = "Your blood pressure readings so far show that you have normal blood pressure..."
-    end
-    
-    if @current_average_bp.ampm == 'am'
-      @when_next_reading = "this evening"
-    else
-      @when_next_reading = "tomorrow morning"
-    end
-    
+    @current_average_bp = active_user.average_bps.last    
     @batch_average_bp_count = batch_average_bp_count
   end
   
@@ -82,9 +62,21 @@ class AccountController < ApplicationController
     session[:reading_counter] = 1 # set :reading_counter so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
     if ((7-((session[:date_for_bp_entry] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
-      redirect_to #NEED TO RESTART TAKING READINGS
+      redirect_to restart_account_path
     else
       redirect_to readings_due_account_path
+    end
+  end
+  
+  def restart
+    session[:reading_counter] = nil
+    session[:date] = nil
+    session[:ampm] = nil
+    active_user.average_bps.each do |average_bp|
+      average_bp.destroy
+    end
+    active_user.current_bps.each do |current_bp|
+      current_bp.destroy
     end
   end
   

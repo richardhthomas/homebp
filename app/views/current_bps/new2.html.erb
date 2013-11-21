@@ -4,17 +4,17 @@
 	<div id='right_side_boxes_container'>
 	<% if !@average_sysbp.nil? %>
 		<div id='average_bp'>
-			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+			<%= render :partial => 'account/average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
 		</div>
 	<% end %>
 	</div>
 	
 	<p>Thank you.</p>
 	
-	<% if session[:old_bp_text] == "" %>
+	<% if old_bp_date_time == "" %>
 		<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
 	<% else %>
-		<p>Please enter the sedonf blood pressure reading from <%= session[:old_bp_text] %> into the boxes below:</p>
+		<p>Please enter the sedonf blood pressure reading from <%= old_bp_date_time %> into the boxes below:</p>
 	<% end %>
 
 	<div id='wizard_input_bp'>	
