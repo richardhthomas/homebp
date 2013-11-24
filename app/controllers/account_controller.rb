@@ -1,11 +1,11 @@
 class AccountController < ApplicationController
   before_action :set_date_ampm
   before_action :batch_average_bp, only: [:home, :readings_due]
+  before_action :set_batch_average_bp_count, only: [:home, :readings_due]
   before_action :set_last_average_bp, only: [:router, :readings_due]
   
   def home
-    @current_average_bp = active_user.average_bps.last    
-    @batch_average_bp_count = batch_average_bp_count
+    @current_average_bp = active_user.average_bps.last
   end
   
   def router
@@ -16,15 +16,15 @@ class AccountController < ApplicationController
     
       # check if has full set of bp readings
       elsif batch_average_bp_count >=8
-        redirect_to #SUBMIT READINGS
+        redirect_to account_submit_readings_path
     
       #check if they are too early for next reading
       elsif (session[:date] == @last_average_bp.date && session[:ampm] == @last_average_bp.ampm)
-        redirect_to home_account_path #COME BACK AT TIME X FOR NEXT READING
+        redirect_to account_home_path
     
       #so otherwise, readings are due
       else
-        redirect_to readings_due_account_path
+        redirect_to account_readings_due_path
       end
       
     else
@@ -32,14 +32,14 @@ class AccountController < ApplicationController
         redirect_to blood_pressure_treatment_path
       
       else # not signed in but given a reading - go to home page
-        redirect_to home_account_path
+        redirect_to account_home_path
       end
     end 
   end
   
   def readings_due 
     # first check if have started giving readings this session by using the :reading_counter variable
-    if session[:reading_counter] # if started giving readings already then increment to next time slot
+    if session[:reading_counter] != nil # if started giving readings already then increment to next time slot
       if session[:ampm_for_bp_entry] == "am"
         session[:ampm_for_bp_entry] = "pm"
       else
@@ -62,9 +62,9 @@ class AccountController < ApplicationController
     session[:reading_counter] = 1 # set :reading_counter so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
     if ((7-((session[:date_for_bp_entry] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
-      redirect_to restart_account_path
+      redirect_to account_restart_path
     else
-      redirect_to readings_due_account_path
+      redirect_to account_readings_due_path
     end
   end
   
@@ -80,11 +80,19 @@ class AccountController < ApplicationController
     end
   end
   
+  def submit_readings
+    
+  end
+  
   
   private
   
   def set_last_average_bp
     @last_average_bp = active_user.average_bps.last
+  end
+  
+  def set_batch_average_bp_count
+    @batch_average_bp_count = batch_average_bp_count
   end
 
 end

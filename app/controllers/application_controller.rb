@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
   
   def set_date_ampm
-    if !session[:date]
+    if session[:date] == nil
       session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
       if DateTime.now.seconds_since_midnight < 50400 #now 2pm is the start of pm!
         session[:ampm] = "am"
@@ -36,6 +36,14 @@ class ApplicationController < ActionController::Base
       session[:date_for_bp_entry] = session[:date]
       session[:ampm_for_bp_entry] = session[:ampm]
     end
+  end
+  
+  def reset_session
+    session[:temp_user_id] = nil #kill the temp_user in the session so the router doesn't rediscover it after signing out.
+    session[:date] = nil
+    session[:ampm] = nil
+    session[:reading_counter] = nil
+    redirect_to root_path
   end
   
   def get_temp_user
@@ -63,11 +71,7 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource)
-    if batch_average_bp_count > 0 # this is just a count of the number of BPs associated with the user
-      static_pages_sign_in_msg_path
-    else
-      new_current_bp_path
-    end
+    account_router_path
   end
   
   #return the number of average bp readings in the set

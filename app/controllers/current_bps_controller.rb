@@ -87,7 +87,7 @@ class CurrentBpsController < ApplicationController
       @average_bp.ampm = @current_bps[0].ampm
       @average_bp.save
     end
-      redirect_to router_account_path
+      redirect_to account_router_path
   end 
 
   def signup_bp_migration
@@ -101,7 +101,7 @@ class CurrentBpsController < ApplicationController
       respond_to do |format|
         if @average_bp.save
           Notifier.sign_up(current_user, @average_bp.ampm).deliver #send sign_up email
-          format.html { redirect_to display_bp_current_bps_path, notice: 'Welcome to HomeBloodPressure.co.uk' }
+          format.html { redirect_to account_home_path, notice: 'Welcome to HomeBloodPressure.co.uk' }
         else
           Notifier.sign_up(current_user, nil).deliver #send sign_up email
           format.html { render action: 'new' }

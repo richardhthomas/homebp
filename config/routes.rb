@@ -6,8 +6,6 @@ Homebp::Application.routes.draw do
   
   get "/blood_pressure_treatment" => 'current_bps#landing_page'  
   
-  get "account/home"
-  
   resources :current_bps do
     collection do
       #get 'display_bp'
@@ -25,6 +23,15 @@ Homebp::Application.routes.draw do
   resources :messages
   
   devise_for :users, :controllers => {:registrations => "registrations"}
+  
+  namespace :account do
+    get 'home'
+    get 'router'
+    get 'readings_due'
+    get 'is_bp_set_completable'
+    get 'restart'
+    get 'submit_readings'
+  end
   
   namespace :admin do
     get "menu", :controller => "admin"

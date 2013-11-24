@@ -12,7 +12,7 @@
 	<% end %>
 	</div>
 	
-	<% if session[:reading_counter] %> <!-- This identifies if the user has already entered some readings during this session-->
+	<% if session[:reading_counter] != nil %> <!-- This identifies if the user has already entered some readings during this session-->
 		<p>Thank you for entering your recent blood pressure readings.</p>
 		<% if old_bp_datetime == "" %>
 			<p>Now it's time to take an up to date pair of readings.</p>
@@ -24,11 +24,11 @@
 	<% end %>
 	
 	<% if old_bp_datetime == "" %>
-		<%= link_to 'Next', new_current_bps_path %>
+		<%= link_to 'Next', new_current_bp_path %>
 	<% else %>
 		<p>Some blood pressure readings are overdue. You can enter these into your account now if you have made a note of them. It is important to take a pair of blood pressure readings every morning and evening for 4 days. This set of readings must span no more than a week, otherwise you will need to restart. This ensures that you get an accurate and up to date measure of whether your blood pressure is too high. Do you have a pair of blood pressure readings from <%= old_bp_datetime %> that you need to enter into your account?</p>
-		<%= link_to 'No', is_bp_set_completable_path %>
-		<%= link_to 'Yes', new_current_bps_path %>
+		<%= link_to 'No', account_is_bp_set_completable_path %>
+		<%= link_to 'Yes', new_current_bp_path %>
 	<% end %>
 
 </div>

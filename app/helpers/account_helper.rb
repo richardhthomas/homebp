@@ -1,14 +1,14 @@
 module AccountHelper
   def old_bp_datetime
-    if session[:date] == session[:date_for_bp_entry] && session[:ampm] == session[:ampm_for_bp_entry]
+    if (session[:date] == session[:date_for_bp_entry]) && (session[:ampm] == session[:ampm_for_bp_entry])
       ""
-    elsif session[:date] - session[:date_for_bp_entry] > 1
+    elsif (session[:date] - session[:date_for_bp_entry]).to_i > 1
       if session[:ampm_for_bp_entry] == "am"
-        "the morning of" + session[:date_for_bp_entry]
+        "the morning of " + session[:date_for_bp_entry].to_s
       else
-        "the evening of" + session[:date_for_bp_entry]
+        "the evening of " + session[:date_for_bp_entry].to_s
       end
-    elsif session[:date] - session[:date_for_bp_entry] == 1
+    elsif (session[:date] - session[:date_for_bp_entry]).to_i == 1
       if session[:ampm_for_bp_entry] == "am"
         "yesterday morning"
       else
@@ -21,9 +21,9 @@ module AccountHelper
   
   def bp_warning_message(current_average_bp)
     if current_average_bp.sysbp > 179 or current_average_bp.diabp > 109
-      "Your blood pressure readings were very high. You should see a healthcare professional within the next 24 hours. They will check that they are accurate readings. If they are accurate, you may need to start treatment immediately."
+      "Your last blood pressure readings were very high. You should see a healthcare professional within the next 24 hours. They will check that they are accurate readings. If they are accurate, you may need to start treatment immediately."
     elsif current_average_bp.sysbp < 90 or current_average_bp.diabp < 60
-      "Your blood pressure readings were low. This is more common in young women. If you feel well then this is normal. If you are having dizziness, fainting episodes or feel nauseous you should make an appointment to see a healthcare professional."
+      "Your last blood pressure readings were low. This is more common in young women. If you feel well then this is normal. If you are having dizziness, fainting episodes or feel nauseated you should make an appointment to see a healthcare professional."
     end
   end
   
