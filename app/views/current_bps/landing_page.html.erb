@@ -1,12 +1,12 @@
 <div id='main'>
 	<div id='landing_page_bp_treatment'>
 		<div id='heart_bp_monitor_pic'>
-			<%= image_tag("heart_bp_monitor_small.jpg", size: '150x120') %>
+			<%= image_tag("heart_bp_monitor_small.jpg", size: '150x120', :alt => "blood pressure treatment") %>
 		</div>
 		
 		<div id='questions'>
 			<div id='q1'><h3>Are you worried about your blood pressure?</h3></div>
-			<div id='q2'><h3>Do you want to know the best way to treat it?</h3></div>
+			<div id='q2'><h3>Do you want to know the best blood pressure treatment?</h3></div>
 			<div id='q3'><h3>Are you worried about side effects from blood pressure</h3></div>
 			<div id='q4'><h3>medication?</h3></div>
 		</div>
@@ -26,8 +26,8 @@
 			<h2>If so, you've come to the right place...</h2>
 			
 			<p class='more_space'>To make things simple we’ve broken the advice down into three broad groups...</p>
-			<p class='more_space'>First comes information about the lifestyle changes that you can make in order to lower your blood pressure and lead a healthier life. Second is information about complementary healthcare treatments that you may have considered using, such as supplements or acupuncture.</p>
-			<p class='more_space'>And finally is information about the different medications that you might be prescribed by your doctor, or even better, that you may choose to have prescribed yourself, through our easy to use service.</p>
+			<p class='more_space'>First comes information about the lifestyle changes that you can make in order to lower your blood pressure and lead a healthier life. Second is information about complementary healthcare blood pressure treatments that you may have considered using, such as supplements or acupuncture.</p>
+			<p class='more_space'>And finally is information about the different blood pressure treatments that you might be prescribed by your doctor, or even better, that you may choose to have prescribed yourself, through our easy to use service.</p>
 		
 			<h3>Lifestyle</h3>
 				<p>Are you one of the many people who’ve been told at some point that you need to change your lifestyle for the better? Have you found the advice confusing and contradictory?</p>
@@ -70,8 +70,7 @@
 				<p>You may find all the different medications and tablet names to treat high blood pressure confusing. You are not alone, in fact many doctors find it confusing as well.</p>
 				<%= image_tag("tablets_small.jpg", size: "240x160", :class => "picture_right") %>
 				<p>One of the problems is that the same medication can have many different names depending on which brand it is that you use. Different brands of the same medication can be different shapes, and even different colours.</p>
-				<p>In many cases, the medication will have more than one name on it. Usually the brand name is in big writing, and the name of the active ingredient (also known as the generic name) is in much smaller writing.</p>
-				<p>To give you an example that you’ve likely come across before, “Nurofen” is a brand of ibuprofen. This is a common pain-killer that is sold over the counter in the UK. “Nurofen” is the brand name of the drug. “Ibuprofen” is the generic name of the drug. When doctors prescribe, they can choose whether to prescribe using a brand name, or to prescribe using the generic name.</p>
+				<p>In many cases, the medication will have more than one name on it. Usually the brand name is in big writing, and the name of the active ingredient (also known as the generic name) is in much smaller writing. When doctors prescribe, they can choose whether to prescribe using a brand name, or to prescribe using the generic name.</p>
 				
 			<h4>Should I take branded or generic medication?</h4>
 				<p>In the UK you will find doctors often write NHS prescriptions using generic names. This is because the generic tablets tend to be cheaper than the branded versions. This is just the same as own-brand supermarket goods being cheaper than the well known brand names. When you purchase a prescription from us, you will be able to choose whether you want a prescription for a branded medication or a generic one, although you will end up paying more for the brand names, just as you would do in the supermarket.</p>
@@ -86,11 +85,14 @@
 				<p>You may have been prescribed combination tablets in the past. These are tablets that contain more than one active ingredient. You can tell if you’re taking a combination tablet as their name starts with Co-. The advantage of a combination tablet is that it means that you have to take less tablets each day. The disadvantage is that they are often much more expensive than taking each medication separately.</p>
 				
 			<h4>What medications are available to lower my blood pressure?</h4>
-				<p>Drugs are put in groups according to the way that they work on your body. Usually, you shouldn’t take more than one drug from each group. To simplify things for you, we have listed all the common drugs below, ordered into their groups, with both their generic names and their brand names shown.</p>
+				<p>Drugs are put in groups according to the way that they work on your body. We have listed them below with brief details on how they work and any common side effects. Usually, you shouldn’t take more than one drug from each group.</p>
+			
+			<h4>Which drug am I taking?</h4>
+				<p>Are you already taking blood pressure medication? Would you like to know which group of drugs your medication belongs to? Visit our <%= link_to "medication identification wizard",  static_pages_meds_id_wizard_path %>.</p>
 			
 			<% @groups.each do |group| %>
 			<h5><%= group %></h5>
-				
+				<!--
 				<table>
 					<tr>
 						<th>Generic drug name</th>
@@ -103,6 +105,7 @@
 					</tr>
 					<% end %>
 				</table>
+				-->
 				<p class="extra_indent more_space"><%= @medication_explanation[group]%></p>
 			<% end %>
 				
