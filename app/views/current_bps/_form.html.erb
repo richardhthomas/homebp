@@ -1,4 +1,6 @@
 <%= form_for(@current_bp) do |f| %>
+	<%= f.hidden_field :date, {:value => @bp_entry_datetime[:date]} %>
+	<%= f.hidden_field :ampm, {:value => @bp_entry_datetime[:ampm]} %>
 	<div id='input_bp_boxes'>
     	<%= f.text_field(:sysbp) %>
   		<div id='slash'>
@@ -10,6 +12,8 @@
   		</div>
   	</div>
   	
+  	<%= @bp_entry_datetime[:date]%>
+  	
   	<% if @current_bp.errors.any? %>
   		<div id='error_wrapper'>
 			<%= error_messages_for "current_bp", "sysbp" %>
@@ -19,5 +23,7 @@
   	<div id="submit">
 	   	<%= f.submit 'Next', :class => 'button6' %>
 	</div>
+	
+	<%= @bp_entry_datetime[:date]%>
 	
 <% end %>

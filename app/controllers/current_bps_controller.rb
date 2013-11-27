@@ -8,31 +8,36 @@ class CurrentBpsController < ApplicationController
 
   # GET /current_bps/new
   def new
+    set_old_bp_datetime
   end
 
   def new2
+    collect_bp_entry_datetime
     session[:reading_counter] = 2
     if second_bp
       @current_bp = second_bp
     else
       @current_bp = CurrentBp.new
     end
+    set_old_bp_datetime
   end
 
   # POST /current_bps
   # POST /current_bps.json
   def create
     @current_bp = active_user.current_bps.build(current_bp_params)
-    @current_bp.date = session[:date_for_bp_entry]
-    @current_bp.ampm = session[:ampm_for_bp_entry]
+    #@current_bp.date = params[:date]
+    #@current_bp.ampm = params[:ampm]
+
+    collect_bp_entry_datetime
 
     respond_to do |format|
       if @current_bp.save
         if session[:reading_counter] == 2
-          format.html { redirect_to create_average_bp_current_bps_path }
+          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_datetime) }
           format.json { render action: 'show', status: :created, location: @current_bp }
         else
-          format.html { redirect_to new2_current_bps_path }
+          format.html { redirect_to new2_current_bps_path(@bp_entry_datetime) }
         end
       else
         if session[:reading_counter] == 1
@@ -49,13 +54,15 @@ class CurrentBpsController < ApplicationController
   # PATCH/PUT /current_bps/1
   # PATCH/PUT /current_bps/1.json
   def update
+    collect_bp_entry_datetime
+    
     respond_to do |format|
       if @current_bp.update(current_bp_params)
         if session[:reading_counter] == 2
-          format.html { redirect_to create_average_bp_current_bps_path }
+          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_datetime) }
           format.json { head :no_content }
         else
-          format.html { redirect_to new2_current_bps_path }
+          format.html { redirect_to new2_current_bps_path(@bp_entry_datetime) }
         end
       else
         if session[:reading_counter] == 1
@@ -70,6 +77,8 @@ class CurrentBpsController < ApplicationController
   end
   
   def create_average_bp
+    collect_bp_entry_datetime
+    
     @average_current_sysbp = @current_bps.average(:sysbp)
     @average_current_diabp = @current_bps.average(:diabp)
     
@@ -85,9 +94,11 @@ class CurrentBpsController < ApplicationController
       @average_bp.diabp = @average_current_diabp
       @average_bp.date = @current_bps[0].date
       @average_bp.ampm = @current_bps[0].ampm
-      @average_bp.save
+      if @average_bp.save
+        session[:average_bp_given] = 'yes'
+      end
     end
-      redirect_to account_router_path
+      redirect_to account_router_path(@bp_entry_datetime)
   end 
 
   def signup_bp_migration
@@ -132,7 +143,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def set_current_bps
-      @current_bps = active_user.current_bps.where(:date => session[:date_for_bp_entry], :ampm => session[:ampm_for_bp_entry]).order("id")
+      @current_bps = active_user.current_bps.where(:date => @bp_entry_datetime[:date], :ampm => @bp_entry_datetime[:ampm]).order("id")
     end
     
     def first_bp
@@ -146,6 +157,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def collect_first_bp
+      collect_bp_entry_datetime
       session[:reading_counter] = 1
       if first_bp
         @current_bp = first_bp
@@ -176,7 +188,7 @@ class CurrentBpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_bp_params
-      params.require(:current_bp).permit(:sysbp, :diabp)
+      params.require(:current_bp).permit(:sysbp, :diabp, :date, :ampm)
     end
     
     

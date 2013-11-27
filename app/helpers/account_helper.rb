@@ -1,23 +1,4 @@
 module AccountHelper
-  def old_bp_datetime
-    if (session[:date] == session[:date_for_bp_entry]) && (session[:ampm] == session[:ampm_for_bp_entry])
-      ""
-    elsif (session[:date] - session[:date_for_bp_entry]).to_i > 1
-      if session[:ampm_for_bp_entry] == "am"
-        "the morning of " + session[:date_for_bp_entry].to_s
-      else
-        "the evening of " + session[:date_for_bp_entry].to_s
-      end
-    elsif (session[:date] - session[:date_for_bp_entry]).to_i == 1
-      if session[:ampm_for_bp_entry] == "am"
-        "yesterday morning"
-      else
-        "yesterday evening"
-      end
-    else
-      "this morning"
-    end
-  end
   
   def bp_warning_message(current_average_bp)
     if current_average_bp.sysbp > 179 or current_average_bp.diabp > 109

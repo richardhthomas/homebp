@@ -29,7 +29,8 @@ Homebp::Application.routes.draw do
     get 'home'
     get 'router'
     get 'readings_due'
-    get 'is_bp_set_completable'
+    get 'set_bp_entry_datetime'
+    post 'is_bp_set_completable'
     get 'restart'
     get 'submit_readings'
   end

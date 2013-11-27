@@ -35,15 +35,19 @@ class ApplicationController < ActionController::Base
       end
       session[:date_for_bp_entry] = session[:date]
       session[:ampm_for_bp_entry] = session[:ampm]
+      
+      @bp_entry_datetime = {}
+      @bp_entry_datetime[:date] = session[:date]
+      @bp_entry_datetime[:ampm] = session[:ampm]
     end
   end
   
   def reset_session
-    session[:temp_user_id] = nil #kill the temp_user in the session so the router doesn't rediscover it after signing out.
+    session[:temp_user_id] = nil
     session[:date] = nil
     session[:ampm] = nil
     session[:reading_counter] = nil
-    redirect_to root_path
+    session[:average_bp_given] = nil
   end
   
   def get_temp_user
@@ -63,10 +67,7 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_out_path_for(resource_or_scope)
-    session[:temp_user_id] = nil #kill the temp_user in the session so the router doesn't rediscover it after signing out.
-    session[:date] = nil
-    session[:ampm] = nil
-    session[:reading_counter] = nil
+    reset_session
     root_path
   end
   
@@ -98,6 +99,34 @@ class ApplicationController < ActionController::Base
       if @bp_position > 250
         @bp_position = 250
       end
+    end
+  end
+  
+  def set_old_bp_datetime
+    if (session[:date] == @bp_entry_datetime[:date]) && (session[:ampm] == @bp_entry_datetime[:ampm])
+      @old_bp_datetime = ""
+    elsif (session[:date] - @bp_entry_datetime[:date]).to_i > 1
+      if @bp_entry_datetime[:ampm] == "am"
+        @old_bp_datetime = "the morning of " + @bp_entry_datetime[:date].to_s
+      else
+        @old_bp_datetime = "the evening of " + @bp_entry_datetime[:date].to_s
+      end
+    elsif (session[:date] - @bp_entry_datetime[:date]).to_i == 1
+      if @bp_entry_datetime[:ampm] == "am"
+        @old_bp_datetime = "yesterday morning"
+      else
+        @old_bp_datetime = "yesterday evening"
+      end
+    else
+      @old_bp_datetime = "this morning"
+    end
+  end
+  
+  def collect_bp_entry_datetime
+    if @bp_entry_datetime == nil #check this hasn't been set by set_date_ampm already (in which case they are new to the site and there won't be any params)
+      @bp_entry_datetime = {}
+      @bp_entry_datetime[:date] = params[:date]
+      @bp_entry_datetime[:ampm] = params[:ampm]
     end
   end
   
