@@ -1,5 +1,7 @@
 class AccountController < ApplicationController
   before_action :set_date_ampm
+  before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
+  before_action :format_date, only: [:set_bp_entry_datetime, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_batch_average_bp_count, only: [:home, :readings_due]
   before_action :set_last_average_bp, only: [:router, :set_bp_entry_datetime]
@@ -9,7 +11,6 @@ class AccountController < ApplicationController
   end
   
   def router
-    collect_bp_entry_datetime
     if user_signed_in?
       #Check if any readings at all, if not ask to take reading now
       if batch_average_bp_count < 1
@@ -25,7 +26,7 @@ class AccountController < ApplicationController
     
       #so otherwise, readings are due
       else
-        redirect_to account_set_bp_entry_datetime_path(@bp_entry_datetime)
+        redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
       end
       
     else
@@ -39,42 +40,37 @@ class AccountController < ApplicationController
   end
   
   def set_bp_entry_datetime
-    collect_bp_entry_datetime
-    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
     # first check if have started giving readings this session
     if session[:average_bp_given] != nil # if started giving readings already, or has skipped some time slots, then increment to next time slot
-      if @bp_entry_datetime[:ampm] == "am"
-        @bp_entry_datetime[:ampm] = "pm"
+      if @bp_entry_details[:ampm] == "am"
+        @bp_entry_details[:ampm] = "pm"
       else
-        @bp_entry_datetime[:date] += 1
-        @bp_entry_datetime[:ampm] = "am"
+        @bp_entry_details[:date] += 1
+        @bp_entry_details[:ampm] = "am"
       end
     else # otherwise define timeslot based on last reading in the database
       if @last_average_bp.ampm == "am"
-        @bp_entry_datetime[:date] = @last_average_bp.date
-        @bp_entry_datetime[:ampm] = "pm"
+        @bp_entry_details[:date] = @last_average_bp.date
+        @bp_entry_details[:ampm] = "pm"
       else
-        @bp_entry_datetime[:date] = @last_average_bp.date + 1
-        @bp_entry_datetime[:ampm] = "am"
+        @bp_entry_details[:date] = @last_average_bp.date + 1
+        @bp_entry_details[:ampm] = "am"
       end
     end
-    redirect_to account_readings_due_path(@bp_entry_datetime)
+    redirect_to account_readings_due_path(@bp_entry_details)
   end
   
   def readings_due
-    collect_bp_entry_datetime
     set_old_bp_datetime
   end
   
   def is_bp_set_completable
-    collect_bp_entry_datetime
-    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
     session[:average_bp_given] = 'skipped' # set :average_bp_given so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
-    if ((7-((@bp_entry_datetime[:date] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
+    if ((7-((@bp_entry_details[:date] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
       redirect_to account_restart_path
     else
-      redirect_to account_set_bp_entry_datetime_path(@bp_entry_datetime)
+      redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
     end
   end
   
@@ -103,6 +99,10 @@ class AccountController < ApplicationController
   
   def set_batch_average_bp_count
     @batch_average_bp_count = batch_average_bp_count
+  end
+  
+  def format_date # returns date from string (in GET request) back to date
+    @bp_entry_details[:date] = Date.strptime(@bp_entry_details[:date], "%Y-%m-%d")
   end
 
 end

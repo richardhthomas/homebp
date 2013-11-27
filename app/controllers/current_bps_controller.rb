@@ -1,50 +1,33 @@
 class CurrentBpsController < ApplicationController
-  before_filter :set_cache_buster
   before_action :set_date_ampm
-  before_action :collect_first_bp, only: [:new, :landing_page, :how_to_measure_bp]
-  before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
-  #before_action :set_current_bps, only: [:review]
-  before_action :batch_average_bp, only: [:new, :new2]
+  before_action :collect_bp_entry_details, only: [:new, :landing_page, :create_average_bp]
+  before_action :collect_bp, only: [:new, :landing_page]
+  before_action :set_current_bp, only: [:update]
+  before_action :batch_average_bp, only: [:new]
 
   # GET /current_bps/new
   def new
     set_old_bp_datetime
   end
 
-  def new2
-    collect_bp_entry_datetime
-    session[:reading_counter] = 2
-    if second_bp
-      @current_bp = second_bp
-    else
-      @current_bp = CurrentBp.new
-    end
-    set_old_bp_datetime
-  end
-
   # POST /current_bps
   # POST /current_bps.json
   def create
-    @bp_entry_datetime = current_bp_params_datetime_only
+    @bp_entry_details = current_bp_params_datetime_only
     
     @current_bp = active_user.current_bps.build(current_bp_params)
 
     respond_to do |format|
       if @current_bp.save
-        if session[:reading_counter] == 2
-          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_datetime) }
-          format.json { render action: 'show', status: :created, location: @current_bp }
+        if @bp_entry_details[:reading_no] == '2'
+          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_details) }
         else
-          format.html { redirect_to new2_current_bps_path(@bp_entry_datetime) }
+          @bp_entry_details[:reading_no] = '2'
+          format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
       else
-        if session[:reading_counter] == 1
-          landing_page_setup
-          format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
-          format.json { render json: @current_bp.errors, status: :unprocessable_entity }
-        else
-          format.html { render action: 'new2' }
-        end
+        landing_page_setup
+        format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
       end
     end
   end
@@ -52,30 +35,24 @@ class CurrentBpsController < ApplicationController
   # PATCH/PUT /current_bps/1
   # PATCH/PUT /current_bps/1.json
   def update
-    @bp_entry_datetime = current_bp_params_datetime_only
+    @bp_entry_details = current_bp_params_datetime_only
     
     respond_to do |format|
       if @current_bp.update(current_bp_params)
-        if session[:reading_counter] == 2
-          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_datetime) }
-          format.json { head :no_content }
+        if @bp_entry_details[:reading_no] == '2'
+          format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_details) }
         else
-          format.html { redirect_to new2_current_bps_path(@bp_entry_datetime) }
+          @bp_entry_details[:reading_no] = '2'
+          format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
       else
-        if session[:reading_counter] == 1
-          landing_page_setup
-          format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
-          format.json { render json: @current_bp.errors, status: :unprocessable_entity }
-        else
-          format.html { render action: 'new2' }
-        end
+        landing_page_setup
+        format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
       end
     end
   end
   
   def create_average_bp
-    collect_bp_entry_datetime
     set_current_bps
     
     @average_current_sysbp = @current_bps.average(:sysbp)
@@ -97,7 +74,7 @@ class CurrentBpsController < ApplicationController
         session[:average_bp_given] = 'yes'
       end
     end
-      redirect_to account_router_path(@bp_entry_datetime)
+      redirect_to account_router_path(@bp_entry_details)
   end 
 
   def signup_bp_migration
@@ -125,10 +102,6 @@ class CurrentBpsController < ApplicationController
   
   def landing_page
     landing_page_setup
-    # This was a test of date arithmetic
-    #@record = CurrentBp.find(5)
-    #@date = @record.date
-    #@test = (session[:date] - @date).to_i
   end
     
   def how_to_measure_bp
@@ -142,24 +115,18 @@ class CurrentBpsController < ApplicationController
     end
     
     def set_current_bps
-      @current_bps = active_user.current_bps.where(:date => @bp_entry_datetime[:date], :ampm => @bp_entry_datetime[:ampm]).order("id")
+      @current_bps = active_user.current_bps.where(:date => @bp_entry_details[:date], :ampm => @bp_entry_details[:ampm]).order("id")
     end
     
-    def first_bp
+    def check_current_bp
       set_current_bps
-      @current_bps[0]
+      @key = @bp_entry_details[:reading_no].to_i - 1
+      @current_bps[@key]
     end
     
-    def second_bp
-      set_current_bps
-      @current_bps[1]
-    end
-    
-    def collect_first_bp
-      collect_bp_entry_datetime
-      session[:reading_counter] = 1
-      if first_bp
-        @current_bp = first_bp
+    def collect_bp
+      if check_current_bp
+        @current_bp = check_current_bp
       else
         @current_bp = CurrentBp.new
       end
@@ -191,7 +158,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def current_bp_params_datetime_only
-      params.require(:current_bp).permit(:date, :ampm)
+      params.require(:current_bp).permit(:date, :ampm, :reading_no)
     end
     
     

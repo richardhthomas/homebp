@@ -14,11 +14,9 @@
 	
 	<%= session[:date] %><br />
 	<%= session[:ampm] %><br />
-	<%= session[:date_for_bp_entry] %><br />
-	<%= session[:ampm_for_bp_entry] %><br />
 	<%= session[:average_bp_given] %><br />
-	<%= @bp_entry_datetime[:date] %><br />
-	<%= @bp_entry_datetime[:ampm] %>
+	<%= @bp_entry_details[:date] %><br />
+	<%= @bp_entry_details[:ampm] %>
 	
 	<% if session[:average_bp_given] == 'yes' %>
 		<p>Thank you for entering your recent blood pressure readings.</p>
@@ -34,15 +32,15 @@
 	<% end %>
 	
 	<% if @old_bp_datetime == "" %>
-		<%= link_to 'Next', new_current_bp_path(@bp_entry_datetime) %>
+		<%= link_to 'Next', new_current_bp_path(@bp_entry_details) %>
 	<% else %>
 		<p>Some blood pressure readings are overdue. You can enter these into your account now if you have made a note of them.</p>
 		<% if session[:average_bp_given] == nil %>
 			<p>It is important to take a pair of blood pressure readings every morning and evening for 4 days. This set of readings must span no more than a week, otherwise you will need to restart. This ensures that you get an accurate and up to date measure of whether your blood pressure is too high.</p>
 		<% end %>
 		<p>Do you have a pair of blood pressure readings from <%= @old_bp_datetime %> that you need to enter into your account?</p>
-		<%= link_to 'No', account_is_bp_set_completable_path(@bp_entry_datetime), method: :post %>
-		<%= link_to 'Yes', new_current_bp_path(@bp_entry_datetime) %>
+		<%= link_to 'No', account_is_bp_set_completable_path(@bp_entry_details), method: :post %>
+		<%= link_to 'Yes', new_current_bp_path(@bp_entry_details) %>
 	<% end %>
 
 </div>

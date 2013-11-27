@@ -9,11 +9,20 @@
 	<% end %>
 	</div>
 	
-	<% if @old_bp_datetime == "" %>
-		<p>Provide us with some blood pressure readings and we'll answer that question right away!</p><br />
-		<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>
+	<% if @bp_entry_details[:reading_no] == 1 %>
+		<% if @old_bp_datetime == "" %>
+			<p>Provide us with some blood pressure readings and we'll answer that question right away!</p><br />
+			<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>
+		<% else %>
+			<p>Please enter the first blood pressure reading from <%= @old_bp_datetime %> into the boxes below:</p>
+		<% end %>
 	<% else %>
-		<p>Please enter the first blood pressure reading from <%= @old_bp_datetime %> into the boxes below:</p>
+		<p>Thank you.</p>
+		<% if @old_bp_datetime == "" %>
+			<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
+		<% else %>
+			<p>Please enter the second blood pressure reading from <%= @old_bp_datetime %> into the boxes below:</p>
+		<% end %>
 	<% end %>
 	
 	<div id='wizard_input_bp'>	

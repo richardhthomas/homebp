@@ -40,7 +40,6 @@ class ApplicationController < ActionController::Base
     session[:temp_user_id] = nil
     session[:date] = nil
     session[:ampm] = nil
-    session[:reading_counter] = nil
     session[:average_bp_given] = nil
   end
   
@@ -66,6 +65,7 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource)
+    reset_session
     account_router_path
   end
   
@@ -97,17 +97,17 @@ class ApplicationController < ActionController::Base
   end
   
   def set_old_bp_datetime
-    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
-    if (session[:date] == @bp_entry_datetime[:date]) && (session[:ampm] == @bp_entry_datetime[:ampm])
+    @bp_entry_details[:date] = Date.strptime(@bp_entry_details[:date], "%Y-%m-%d")
+    if (session[:date] == @bp_entry_details[:date]) && (session[:ampm] == @bp_entry_details[:ampm])
       @old_bp_datetime = ""
-    elsif (session[:date] - @bp_entry_datetime[:date]).to_i > 1
-      if @bp_entry_datetime[:ampm] == "am"
-        @old_bp_datetime = "the morning of " + @bp_entry_datetime[:date].to_s
+    elsif (session[:date] - @bp_entry_details[:date]).to_i > 1
+      if @bp_entry_details[:ampm] == "am"
+        @old_bp_datetime = "the morning of " + @bp_entry_details[:date].to_s
       else
-        @old_bp_datetime = "the evening of " + @bp_entry_datetime[:date].to_s
+        @old_bp_datetime = "the evening of " + @bp_entry_details[:date].to_s
       end
-    elsif (session[:date] - @bp_entry_datetime[:date]).to_i == 1
-      if @bp_entry_datetime[:ampm] == "am"
+    elsif (session[:date] - @bp_entry_details[:date]).to_i == 1
+      if @bp_entry_details[:ampm] == "am"
         @old_bp_datetime = "yesterday morning"
       else
         @old_bp_datetime = "yesterday evening"
@@ -117,14 +117,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def collect_bp_entry_datetime
-    @bp_entry_datetime = {}
+  def collect_bp_entry_details
+    @bp_entry_details = {}
     if params.has_key?(:date) #check this exists (otherwise they are new to the site and there won't be any params)
-      @bp_entry_datetime[:date] = params[:date]
-      @bp_entry_datetime[:ampm] = params[:ampm]
+      @bp_entry_details[:date] = params[:date]
+      @bp_entry_details[:ampm] = params[:ampm]
+      @bp_entry_details[:reading_no] = params[:reading_no]
     else
-      @bp_entry_datetime[:date] = session[:date]
-      @bp_entry_datetime[:ampm] = session[:ampm]
+      @bp_entry_details[:date] = session[:date]
+      @bp_entry_details[:ampm] = session[:ampm]
+      @bp_entry_details[:reading_no] = '1'
     end
   end
   
