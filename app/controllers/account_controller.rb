@@ -40,6 +40,7 @@ class AccountController < ApplicationController
   
   def set_bp_entry_datetime
     collect_bp_entry_datetime
+    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
     # first check if have started giving readings this session
     if session[:average_bp_given] != nil # if started giving readings already, or has skipped some time slots, then increment to next time slot
       if @bp_entry_datetime[:ampm] == "am"
@@ -67,9 +68,10 @@ class AccountController < ApplicationController
   
   def is_bp_set_completable
     collect_bp_entry_datetime
+    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
     session[:average_bp_given] = 'skipped' # set :average_bp_given so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
-    if ((7-((session[:date_for_bp_entry] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
+    if ((7-((@bp_entry_datetime[:date] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
       redirect_to account_restart_path
     else
       redirect_to account_set_bp_entry_datetime_path(@bp_entry_datetime)

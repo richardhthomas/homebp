@@ -3,7 +3,7 @@ class CurrentBpsController < ApplicationController
   before_action :set_date_ampm
   before_action :collect_first_bp, only: [:new, :landing_page, :how_to_measure_bp]
   before_action :set_current_bp, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_bps, only: [:create_average_bp, :review]
+  #before_action :set_current_bps, only: [:review]
   before_action :batch_average_bp, only: [:new, :new2]
 
   # GET /current_bps/new
@@ -25,11 +25,9 @@ class CurrentBpsController < ApplicationController
   # POST /current_bps
   # POST /current_bps.json
   def create
+    @bp_entry_datetime = current_bp_params_datetime_only
+    
     @current_bp = active_user.current_bps.build(current_bp_params)
-    #@current_bp.date = params[:date]
-    #@current_bp.ampm = params[:ampm]
-
-    collect_bp_entry_datetime
 
     respond_to do |format|
       if @current_bp.save
@@ -54,7 +52,7 @@ class CurrentBpsController < ApplicationController
   # PATCH/PUT /current_bps/1
   # PATCH/PUT /current_bps/1.json
   def update
-    collect_bp_entry_datetime
+    @bp_entry_datetime = current_bp_params_datetime_only
     
     respond_to do |format|
       if @current_bp.update(current_bp_params)
@@ -78,6 +76,7 @@ class CurrentBpsController < ApplicationController
   
   def create_average_bp
     collect_bp_entry_datetime
+    set_current_bps
     
     @average_current_sysbp = @current_bps.average(:sysbp)
     @average_current_diabp = @current_bps.average(:diabp)
@@ -189,6 +188,10 @@ class CurrentBpsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_bp_params
       params.require(:current_bp).permit(:sysbp, :diabp, :date, :ampm)
+    end
+    
+    def current_bp_params_datetime_only
+      params.require(:current_bp).permit(:date, :ampm)
     end
     
     

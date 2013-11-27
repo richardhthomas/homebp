@@ -33,12 +33,6 @@ class ApplicationController < ActionController::Base
       else
         session[:ampm] = "pm"
       end
-      session[:date_for_bp_entry] = session[:date]
-      session[:ampm_for_bp_entry] = session[:ampm]
-      
-      @bp_entry_datetime = {}
-      @bp_entry_datetime[:date] = session[:date]
-      @bp_entry_datetime[:ampm] = session[:ampm]
     end
   end
   
@@ -103,6 +97,7 @@ class ApplicationController < ActionController::Base
   end
   
   def set_old_bp_datetime
+    @bp_entry_datetime[:date] = Date.strptime(@bp_entry_datetime[:date], "%Y-%m-%d")
     if (session[:date] == @bp_entry_datetime[:date]) && (session[:ampm] == @bp_entry_datetime[:ampm])
       @old_bp_datetime = ""
     elsif (session[:date] - @bp_entry_datetime[:date]).to_i > 1
@@ -123,10 +118,13 @@ class ApplicationController < ActionController::Base
   end
   
   def collect_bp_entry_datetime
-    if @bp_entry_datetime == nil #check this hasn't been set by set_date_ampm already (in which case they are new to the site and there won't be any params)
-      @bp_entry_datetime = {}
+    @bp_entry_datetime = {}
+    if params.has_key?(:date) #check this exists (otherwise they are new to the site and there won't be any params)
       @bp_entry_datetime[:date] = params[:date]
       @bp_entry_datetime[:ampm] = params[:ampm]
+    else
+      @bp_entry_datetime[:date] = session[:date]
+      @bp_entry_datetime[:ampm] = session[:ampm]
     end
   end
   
