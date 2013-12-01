@@ -42,20 +42,33 @@ class AccountController < ApplicationController
   def set_bp_entry_datetime
     # first check if have started giving readings this session
     if session[:average_bp_given] != nil # if started giving readings already, or has skipped some time slots, then increment to next time slot
-      if @bp_entry_details[:ampm] == "am"
-        @bp_entry_details[:ampm] = "pm"
-      else
-        @bp_entry_details[:date] += 1
-        @bp_entry_details[:ampm] = "am"
+      @bp_entry_details[:datetime].to_i += 1
+    else # otherwise define the date and ampm slots required in session array and set to first time slot
+      @session_bp_entry_details_date = @last_average_bp.date
+      @session_bp_entry_details_ampm = @last_average_bp.ampm
+      @time_slots_count = ((session[:date] - @last_average_bp.date).to_i) * 2
+      if @last_average_bp.ampm == "am" # add another bp for collection if still need pm reading from date of @last_average_bp
+        @time_slots_count += 1
       end
-    else # otherwise define timeslot based on last reading in the database
-      if @last_average_bp.ampm == "am"
-        @bp_entry_details[:date] = @last_average_bp.date
-        @bp_entry_details[:ampm] = "pm"
-      else
-        @bp_entry_details[:date] = @last_average_bp.date + 1
-        @bp_entry_details[:ampm] = "am"
+      if session[:ampm] == "am" # subtract a bp for collection if only need am readings from today's date
+        @time_slots_count -= 1
       end
+      if @time_slots_count > 13 # limit to 7 days of readings (1 will always have been taken by this point, so 13 rather than 14)
+        @time_slots_count = 13
+      end
+      
+      @time_slots_count.times do |n|
+        if @session_bp_entry_details_ampm == "am"
+          @session_bp_entry_details_ampm = "pm"
+        else
+          @session_bp_entry_details_date += 1
+          @session_bp_entry_details_ampm = "am"
+        end
+        session[:bp_entry_details][n][:date] = @session_bp_entry_details_date
+        session[:bp_entry_details][n][:ampm] = @session_bp_entry_details_ampm
+      end
+      
+      @bp_entry_details[:datetime] = 1
     end
     redirect_to account_readings_due_path(@bp_entry_details)
   end
@@ -67,7 +80,8 @@ class AccountController < ApplicationController
   def is_bp_set_completable
     session[:average_bp_given] = 'skipped' # set :average_bp_given so that on returning to readings_due, the date and ampm are incremented rather than being defined from the last bp again
     @first_average_bp = active_user.average_bps.first
-    if ((7-((@bp_entry_details[:date] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
+    @n = @bp_entry_details[:datetime].to_i
+    if ((7-((session[:bp_entry_details][@n][:date] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
       redirect_to account_restart_path
     else
       redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
