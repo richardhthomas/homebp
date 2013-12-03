@@ -1,6 +1,5 @@
 <%= form_for(@current_bp) do |f| %>
-	<%= f.hidden_field :date, {:value => @bp_entry_details[:date]} %>
-	<%= f.hidden_field :ampm, {:value => @bp_entry_details[:ampm]} %>
+	<%= f.hidden_field :datetime, {:value => @bp_entry_details[:datetime]} %>
 	<%= f.hidden_field :reading_no, {:value => @bp_entry_details[:reading_no]} %>
 	<div id='input_bp_boxes'>
     	<%= f.text_field(:sysbp) %>
@@ -13,7 +12,7 @@
   		</div>
   	</div>
   	
-  	<%= @bp_entry_details[:date]%>
+  	<%= @bp_entry_details[:datetime]%>
   	
   	<% if @current_bp.errors.any? %>
   		<div id='error_wrapper'>

@@ -1,7 +1,6 @@
 class AccountController < ApplicationController
   before_action :set_date_ampm
   before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
-  before_action :format_date, only: [:set_bp_entry_datetime, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_batch_average_bp_count, only: [:home, :readings_due]
   before_action :set_last_average_bp, only: [:router, :set_bp_entry_datetime]
@@ -113,10 +112,6 @@ class AccountController < ApplicationController
   
   def set_batch_average_bp_count
     @batch_average_bp_count = batch_average_bp_count
-  end
-  
-  def format_date # returns date from string (in GET request) back to date
-    @bp_entry_details[:date] = Date.strptime(@bp_entry_details[:date], "%Y-%m-%d")
   end
 
 end

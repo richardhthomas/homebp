@@ -14,8 +14,11 @@ class CurrentBpsController < ApplicationController
   # POST /current_bps.json
   def create
     @bp_entry_details = current_bp_params_datetime_only
+    @n = @bp_entry_details[:datetime].to_i
     
     @current_bp = active_user.current_bps.build(current_bp_params)
+    @current_bp.date = session[:bp_entry_details][@n][:date]
+    @current_bp.ampm = session[:bp_entry_details][@n][:ampm]
 
     respond_to do |format|
       if @current_bp.save
@@ -115,7 +118,8 @@ class CurrentBpsController < ApplicationController
     end
     
     def set_current_bps
-      @current_bps = active_user.current_bps.where(:date => @bp_entry_details[:date], :ampm => @bp_entry_details[:ampm]).order("id")
+      @n = @bp_entry_details[:datetime].to_i
+      @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][@n][:date], :ampm => session[:bp_entry_details][@n][:ampm]).order("id")
     end
     
     def check_current_bp
@@ -154,11 +158,11 @@ class CurrentBpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_bp_params
-      params.require(:current_bp).permit(:sysbp, :diabp, :date, :ampm)
+      params.require(:current_bp).permit(:sysbp, :diabp)
     end
     
     def current_bp_params_datetime_only
-      params.require(:current_bp).permit(:date, :ampm, :reading_no)
+      params.require(:current_bp).permit(:datetime, :reading_no)
     end
     
     

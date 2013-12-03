@@ -18,12 +18,6 @@ class ApplicationController < ActionController::Base
   
   
   private
-
-  def set_cache_buster
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-  end
   
   def set_date_ampm
     if session[:date] == nil
@@ -41,6 +35,7 @@ class ApplicationController < ActionController::Base
     session[:date] = nil
     session[:ampm] = nil
     session[:average_bp_given] = nil
+    session[:bp_entry_details] = nil
   end
   
   def get_temp_user
@@ -97,17 +92,17 @@ class ApplicationController < ActionController::Base
   end
   
   def set_old_bp_datetime
-    @bp_entry_details[:date] = Date.strptime(@bp_entry_details[:date], "%Y-%m-%d")
-    if (session[:date] == @bp_entry_details[:date]) && (session[:ampm] == @bp_entry_details[:ampm])
+    @n = @bp_entry_details[:datetime].to_i
+    if (session[:date] == session[:bp_entry_details][@n][:date]) && (session[:ampm] == session[:bp_entry_details][@n][:ampm])
       @old_bp_datetime = ""
-    elsif (session[:date] - @bp_entry_details[:date]).to_i > 1
-      if @bp_entry_details[:ampm] == "am"
-        @old_bp_datetime = "the morning of " + @bp_entry_details[:date].to_s
+    elsif (session[:date] - session[:bp_entry_details][@n][:date]).to_i > 1
+      if session[:bp_entry_details][@n][:ampm] == "am"
+        @old_bp_datetime = "the morning of " + session[:bp_entry_details][@n][:date].to_s
       else
-        @old_bp_datetime = "the evening of " + @bp_entry_details[:date].to_s
+        @old_bp_datetime = "the evening of " + session[:bp_entry_details][@n][:date].to_s
       end
-    elsif (session[:date] - @bp_entry_details[:date]).to_i == 1
-      if @bp_entry_details[:ampm] == "am"
+    elsif (session[:date] - session[:bp_entry_details][@n][:date]).to_i == 1
+      if session[:bp_entry_details][@n][:ampm] == "am"
         @old_bp_datetime = "yesterday morning"
       else
         @old_bp_datetime = "yesterday evening"
@@ -119,13 +114,13 @@ class ApplicationController < ActionController::Base
   
   def collect_bp_entry_details
     @bp_entry_details = {}
-    if params.has_key?(:date) #check this exists (otherwise they are new to the site and there won't be any params)
-      @bp_entry_details[:date] = params[:date]
-      @bp_entry_details[:ampm] = params[:ampm]
+    if params.has_key?(:datetime) #check this exists (otherwise they are new to the site and there won't be any params)
+      @bp_entry_details[:datetime] = params[:datetime]
       @bp_entry_details[:reading_no] = params[:reading_no]
     else
-      @bp_entry_details[:date] = session[:date]
-      @bp_entry_details[:ampm] = session[:ampm]
+      session[:bp_entry_details][1][:date] = session[:date]
+      session[:bp_entry_details][1][:ampm] = session[:ampm]
+      @bp_entry_details[:datetime] = 1 
       @bp_entry_details[:reading_no] = '1'
     end
   end
