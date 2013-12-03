@@ -16,7 +16,7 @@
 	<%= session[:ampm] %><br />
 	<%= session[:average_bp_given] %><br />
 	<%= @bp_entry_details[:datetime] %><br />
-	
+	<%= session[:bp_entry_details]%>
 	
 	<% if session[:average_bp_given] == 'yes' %>
 		<p>Thank you for entering your recent blood pressure readings.</p>

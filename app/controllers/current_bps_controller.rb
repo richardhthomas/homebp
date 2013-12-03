@@ -17,8 +17,8 @@ class CurrentBpsController < ApplicationController
     @n = @bp_entry_details[:datetime].to_i
     
     @current_bp = active_user.current_bps.build(current_bp_params)
-    @current_bp.date = session[:bp_entry_details][@n][:date]
-    @current_bp.ampm = session[:bp_entry_details][@n][:ampm]
+    @current_bp.date = session[:bp_entry_details][:date][@n]
+    @current_bp.ampm = session[:bp_entry_details][:ampm][@n]
 
     respond_to do |format|
       if @current_bp.save
@@ -119,7 +119,7 @@ class CurrentBpsController < ApplicationController
     
     def set_current_bps
       @n = @bp_entry_details[:datetime].to_i
-      @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][@n][:date], :ampm => session[:bp_entry_details][@n][:ampm]).order("id")
+      @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][:date][@n], :ampm => session[:bp_entry_details][:ampm][@n]).order("id")
     end
     
     def check_current_bp

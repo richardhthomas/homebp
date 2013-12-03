@@ -93,16 +93,16 @@ class ApplicationController < ActionController::Base
   
   def set_old_bp_datetime
     @n = @bp_entry_details[:datetime].to_i
-    if (session[:date] == session[:bp_entry_details][@n][:date]) && (session[:ampm] == session[:bp_entry_details][@n][:ampm])
+    if (session[:date] == session[:bp_entry_details][:date][@n]) && (session[:ampm] == session[:bp_entry_details][:ampm][@n])
       @old_bp_datetime = ""
-    elsif (session[:date] - session[:bp_entry_details][@n][:date]).to_i > 1
-      if session[:bp_entry_details][@n][:ampm] == "am"
-        @old_bp_datetime = "the morning of " + session[:bp_entry_details][@n][:date].to_s
+    elsif (session[:date] - session[:bp_entry_details][:date][@n]).to_i > 1
+      if session[:bp_entry_details][:ampm][@n] == "am"
+        @old_bp_datetime = "the morning of " + session[:bp_entry_details][:date][@n].to_s
       else
-        @old_bp_datetime = "the evening of " + session[:bp_entry_details][@n][:date].to_s
+        @old_bp_datetime = "the evening of " + session[:bp_entry_details][:date][@n].to_s
       end
-    elsif (session[:date] - session[:bp_entry_details][@n][:date]).to_i == 1
-      if session[:bp_entry_details][@n][:ampm] == "am"
+    elsif (session[:date] - session[:bp_entry_details][:date][@n]).to_i == 1
+      if session[:bp_entry_details][:ampm][@n] == "am"
         @old_bp_datetime = "yesterday morning"
       else
         @old_bp_datetime = "yesterday evening"
@@ -118,9 +118,12 @@ class ApplicationController < ActionController::Base
       @bp_entry_details[:datetime] = params[:datetime]
       @bp_entry_details[:reading_no] = params[:reading_no]
     else
-      session[:bp_entry_details][1][:date] = session[:date]
-      session[:bp_entry_details][1][:ampm] = session[:ampm]
-      @bp_entry_details[:datetime] = 1 
+      session[:bp_entry_details] = {}
+      session[:bp_entry_details][:date] = {}
+      session[:bp_entry_details][:ampm] = {}
+      session[:bp_entry_details][:date][0] = session[:date]
+      session[:bp_entry_details][:ampm][0] = session[:ampm]
+      @bp_entry_details[:datetime] = 0 
       @bp_entry_details[:reading_no] = '1'
     end
   end
