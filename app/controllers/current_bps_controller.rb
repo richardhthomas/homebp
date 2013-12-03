@@ -7,7 +7,6 @@ class CurrentBpsController < ApplicationController
 
   # GET /current_bps/new
   def new
-    set_old_bp_datetime
   end
 
   # POST /current_bps

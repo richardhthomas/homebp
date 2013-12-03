@@ -1,9 +1,22 @@
 #content {
   #main {
-    #right_side_boxes_container {
+    #no_button, #yes_button, #next_button, #restart_button {
+      float: left;
+      width: 80px;
+    }
+    
+    #no_button {
+      margin: 0px 20px 0px 240px;
+    }
+    
+    #next_button, #restart_button {
+      margin-left: 300px;
+    }
+    
+    #right_side_boxes_container_long {
       #reading_counter {
         width: 100%;
-        height: 170px;
+        height: 145px;
         float: right;
         margin-top: 20px;
         border-style:solid;
@@ -46,7 +59,7 @@
           .reading_not_taken {
             background-color: #ffffff;
           }
-        }
+        }      
       }
     }
   }

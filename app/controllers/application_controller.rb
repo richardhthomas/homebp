@@ -91,27 +91,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def set_old_bp_datetime
-    @n = @bp_entry_details[:datetime].to_i
-    if (session[:date] == session[:bp_entry_details][:date][@n]) && (session[:ampm] == session[:bp_entry_details][:ampm][@n])
-      @old_bp_datetime = ""
-    elsif (session[:date] - session[:bp_entry_details][:date][@n]).to_i > 1
-      if session[:bp_entry_details][:ampm][@n] == "am"
-        @old_bp_datetime = "the morning of " + session[:bp_entry_details][:date][@n].to_s
-      else
-        @old_bp_datetime = "the evening of " + session[:bp_entry_details][:date][@n].to_s
-      end
-    elsif (session[:date] - session[:bp_entry_details][:date][@n]).to_i == 1
-      if session[:bp_entry_details][:ampm][@n] == "am"
-        @old_bp_datetime = "yesterday morning"
-      else
-        @old_bp_datetime = "yesterday evening"
-      end
-    else
-      @old_bp_datetime = "this morning"
-    end
-  end
-  
   def collect_bp_entry_details
     @bp_entry_details = {}
     if params.has_key?(:datetime) #check this exists (otherwise they are new to the site and there won't be any params)

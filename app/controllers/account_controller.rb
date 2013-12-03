@@ -1,4 +1,5 @@
 class AccountController < ApplicationController
+  before_filter :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
   before_action :set_date_ampm
   before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
@@ -42,6 +43,7 @@ class AccountController < ApplicationController
     # first check if have started giving readings this session
     if session[:average_bp_given] != nil # if started giving readings already, or has skipped some time slots, then increment to next time slot
       @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1
+      @bp_entry_details[:reading_no] = '1'
     else # otherwise define the date and ampm slots required in session array and set to first time slot
       @session_bp_entry_details_date = @last_average_bp.date
       @session_bp_entry_details_ampm = @last_average_bp.ampm
@@ -66,14 +68,13 @@ class AccountController < ApplicationController
         session[:bp_entry_details][:date][n] = @session_bp_entry_details_date
         session[:bp_entry_details][:ampm][n] = @session_bp_entry_details_ampm
       end
-      
       @bp_entry_details[:datetime] = 0
+      @bp_entry_details[:reading_no] = '1'
     end
     redirect_to account_readings_due_path(@bp_entry_details)
   end
   
   def readings_due
-    set_old_bp_datetime
   end
   
   def is_bp_set_completable
@@ -81,22 +82,24 @@ class AccountController < ApplicationController
     @first_average_bp = active_user.average_bps.first
     @n = @bp_entry_details[:datetime].to_i
     if ((7-((session[:bp_entry_details][:date][@n] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
-      redirect_to account_restart_path
+      redirect_to account_restart_needed_path
     else
       redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
     end
   end
   
+  def restart_needed
+  end
+  
   def restart
-    #session[:reading_counter] = nil
-    #session[:date] = nil
-    #session[:ampm] = nil
-    #active_user.average_bps.each do |average_bp|
-    #  average_bp.destroy
-    #end
-    #active_user.current_bps.each do |current_bp|
-    #  current_bp.destroy
-    #end
+    reset_session
+    active_user.average_bps.each do |average_bp|
+      average_bp.destroy
+    end
+    active_user.current_bps.each do |current_bp|
+      current_bp.destroy
+    end
+    redirect_to account_router_path
   end
   
   def submit_readings
