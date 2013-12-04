@@ -1,4 +1,6 @@
 Homebp::Application.routes.draw do
+  root :to => "account#router"
+    
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/tac"
@@ -45,6 +47,8 @@ Homebp::Application.routes.draw do
     end
     root :to => "admin#menu"
   end
+  
+  get '*rest', :to => 'static_pages#redirect'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -99,7 +103,5 @@ Homebp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  
-  root :to => "account#router"
-  
+
 end

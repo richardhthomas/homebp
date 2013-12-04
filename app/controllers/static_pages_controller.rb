@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
   def sign_in_msg
   end
   
+  def redirect
+    redirect_to root_path
+  end
+  
 end
