@@ -11,7 +11,6 @@
 	
 	<% if @bp_entry_details[:reading_no] == '1' %>
 		<% if old_bp_datetime_text == "" %>
-			<p>Provide us with some blood pressure readings and we'll answer that question right away!</p><br />
 			<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>
 		<% else %>
 			<p>Please enter the <span>first</span> blood pressure reading from <span><%= old_bp_datetime_text %></span> into the boxes below:</p>

@@ -27,7 +27,7 @@
 		<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
 	<% end %>
 	
-	<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this <%= time_left %>. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from this site.</p>
+	<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this <span><%= time_left %></span>. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from this site.</p>
 	<!--<p>Some illnesses may also affect what is considered to be a healthy blood pressure. After taking some readings you may need to answer more questions about your health. By doing this you will get more accurate, personalised advice.</p>-->
 	
 	<% if user_signed_in? %>

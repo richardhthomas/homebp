@@ -9,6 +9,9 @@ class AccountController < ApplicationController
   
   def home
     @current_average_bp = active_user.average_bps.last
+    if @current_average_bp == nil
+      redirect_to account_router_path
+    end
   end
   
   def router
