@@ -1,7 +1,8 @@
 class AccountController < ApplicationController
-  before_filter :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
+  before_action :set_cache_buster
+  before_action :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
   before_action :set_date_ampm
-  before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
+  before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable, :restart_needed]
   before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_batch_average_bp_count, only: [:home, :readings_due]
   before_action :set_last_average_bp, only: [:router, :set_bp_entry_datetime]
@@ -14,7 +15,7 @@ class AccountController < ApplicationController
     if user_signed_in?
       #Check if any readings at all, if not ask to take reading now
       if batch_average_bp_count < 1
-        redirect_to new_current_bp_path
+        redirect_to new_current_bp_path(@bp_entry_details)
     
       # check if has full set of bp readings
       elsif batch_average_bp_count >=8
@@ -22,7 +23,7 @@ class AccountController < ApplicationController
     
       #check if they are too early for next reading
       elsif (session[:date] == @last_average_bp.date && session[:ampm] == @last_average_bp.ampm)
-        redirect_to account_home_path
+        redirect_to account_home_path(@bp_entry_details)
     
       #so otherwise, readings are due
       else
@@ -31,7 +32,7 @@ class AccountController < ApplicationController
       
     else
       if batch_average_bp_count < 1 # not signed in and no readings - go to landing page
-        redirect_to blood_pressure_treatment_path
+        redirect_to blood_pressure_treatment_path(@bp_entry_details) # need to pass bp_entry_details here so if user goes back in browser to landing page, they are kept alive.
       
       else # not signed in but given a reading - go to home page
         redirect_to account_home_path
@@ -82,7 +83,7 @@ class AccountController < ApplicationController
     @first_average_bp = active_user.average_bps.first
     @n = @bp_entry_details[:datetime].to_i
     if ((7-((session[:bp_entry_details][:date][@n] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
-      redirect_to account_restart_needed_path
+      redirect_to account_restart_needed_path(@bp_entry_details)
     else
       redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
     end

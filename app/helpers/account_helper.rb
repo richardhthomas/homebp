@@ -48,20 +48,27 @@ module AccountHelper
   end
   
   def time_left
-    @days = (((8 - @batch_average_bp_count).to_f) / 2).ceil
-    if session[:ampm] == 'am'
-      @days -= 1
+    @n = 8 - @batch_average_bp_count
+    if session[:ampm] == "am"
+      @n += 1
     end
-    if @days > 1
+    @days = ((@n.to_f) / 2).ceil
+    
+    if @batch_average_bp_count < 6
       "over the next " + @days.to_s + " days"
-    elsif @days == 1
-      "tomorrow"
-    else
-      if session[:ampm] == 'am'
-        "later today and tomorrow"
+    elsif @batch_average_bp_count == 6
+      if session[:ampm] == "am"
+        "later today and tomorrow morning"
       else
+        "tomorrow"
+      end
+    else
+      if session[:ampm] == "am"
         "later today"
+      else
+        "tomorrow morning"
       end
     end
   end
+  
 end

@@ -1,4 +1,5 @@
 class CurrentBpsController < ApplicationController
+  before_action :set_cache_buster
   before_action :set_date_ampm
   before_action :collect_bp_entry_details, only: [:new, :landing_page, :create_average_bp]
   before_action :collect_bp, only: [:new, :landing_page]

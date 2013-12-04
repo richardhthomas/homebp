@@ -12,6 +12,8 @@
 		</div>
 		
 		<div id='landing_page_content'>
+		
+		<% if !user_signed_in? %>
 		<div id='cta_bp_entry'>
 			<div id='title'>
 				Is my blood pressure too high?
@@ -22,6 +24,7 @@
 			</div>
 			<%= link_to "How do I measure my blood pressure?", how_to_measure_bp_current_bps_path, :class => 'how_to_measure_bp' %>
 		</div>
+		<% end %>
 			
 			<h2>If so, you've come to the right place...</h2>
 			

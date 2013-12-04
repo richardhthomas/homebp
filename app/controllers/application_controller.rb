@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+  
   def set_date_ampm
     if session[:date] == nil
       session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
@@ -94,8 +100,13 @@ class ApplicationController < ActionController::Base
   def collect_bp_entry_details
     @bp_entry_details = {}
     if params.has_key?(:datetime) #check this exists (otherwise they are new to the site and there won't be any params)
-      @bp_entry_details[:datetime] = params[:datetime]
-      @bp_entry_details[:reading_no] = params[:reading_no]
+      @n = params[:datetime].to_i
+      if session[:bp_entry_details][:date][@n] != nil #check session variable exists with :datetime @n, otherwise user has gone back in browser and needs redirecting
+        @bp_entry_details[:datetime] = params[:datetime]
+        @bp_entry_details[:reading_no] = params[:reading_no]
+      else
+        redirect_to account_router_path
+      end
     else
       session[:bp_entry_details] = {}
       session[:bp_entry_details][:date] = {}
