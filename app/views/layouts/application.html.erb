@@ -55,10 +55,10 @@
 	<div id='topmenu'>
 		<% if user_signed_in? %>
 		<div class='topmenucontent'>
-			<%= link_to 'Account home', root_path %>
+			<%= link_to 'Account home', root_path(@bp_entry_details) %>
 		</div>
 		<div class='topmenucontent'>
-			<%= link_to 'Advice', blood_pressure_treatment_path %>
+			<%= link_to 'Advice', blood_pressure_treatment_path(@bp_entry_details) %>
 		</div>
 		<% end %>
 		<!--
