@@ -77,7 +77,9 @@ class CurrentBpsController < ApplicationController
         session[:average_bp_given] = 'yes'
       end
     end
-      redirect_to account_router_path(@bp_entry_details)
+    @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1 # increment time slot
+    @bp_entry_details[:reading_no] = '1'
+    redirect_to account_router_path(@bp_entry_details)
   end 
 
   def signup_bp_migration

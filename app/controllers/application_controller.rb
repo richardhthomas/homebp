@@ -72,7 +72,11 @@ class ApplicationController < ActionController::Base
   
   #return the number of average bp readings in the set
   def batch_average_bp_count
-    active_user.average_bps.count
+    active_user.average_bps.count(:sysbp)
+  end
+  
+  def last_average_bp
+    active_user.average_bps.last
   end
   
   # define the average BP for the current batch of readings as well as the coordinates for the graphic display
@@ -99,7 +103,7 @@ class ApplicationController < ActionController::Base
   
   def collect_bp_entry_details
     @bp_entry_details = {}
-    if params.has_key?(:datetime) #check this exists (otherwise they are new to the site and there won't be any params)
+    if params.has_key?(:datetime) #check to see if params have been passed
       @n = params[:datetime].to_i
       if session[:bp_entry_details][:date][@n] != nil #check session variable exists with :datetime @n, otherwise user has gone back in browser and needs redirecting
         @bp_entry_details[:datetime] = params[:datetime]
@@ -107,10 +111,29 @@ class ApplicationController < ActionController::Base
       else
         redirect_to account_router_path
       end
-    else
+    elsif batch_average_bp_count >= 1 && session[:bp_entry_details] != nil # array established but no params passed so set them up from the database (this will arise if user wanders off to other pages whilst giving BPs)
+      if last_average_bp.ampm == "am"
+        @date_needed = last_average_bp.date
+        @ampm_index_modifier = 1
+      else
+        @date_needed = last_average_bp.date + 1
+        @ampm_index_modifier = 0
+      end
+      session[:bp_entry_details][:date].each_with_index do |value, index|
+        if value == @date_needed
+          @bp_entry_details[:datetime] = index + @ampm_index_modifier
+          # the logic below checks for the situation in which the user triggers this code but we don't want to increment to the next time slot as it is beyond the end of the session array and in the future!
+          if @bp_entry_details[:datetime] > (session[:bp_entry_details][:date].count) - 1 # -1 as array starts from 0
+            @bp_entry_details[:datetime] = (session[:bp_entry_details][:date].count) - 1
+          end
+          break
+        end
+      end
+      @bp_entry_details[:reading_no] = '1'
+    else # new to site so set things up for bp collection now with datetime set to now
       session[:bp_entry_details] = {}
-      session[:bp_entry_details][:date] = {}
-      session[:bp_entry_details][:ampm] = {}
+      session[:bp_entry_details][:date] = []
+      session[:bp_entry_details][:ampm] = []
       session[:bp_entry_details][:date][0] = session[:date]
       session[:bp_entry_details][:ampm][0] = session[:ampm]
       @bp_entry_details[:datetime] = 0 
