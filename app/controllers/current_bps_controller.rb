@@ -74,11 +74,13 @@ class CurrentBpsController < ApplicationController
       @average_bp.date = @current_bps[0].date
       @average_bp.ampm = @current_bps[0].ampm
       if @average_bp.save
-        session[:average_bp_given] = 'yes'
+        @bp_entry_details[:bp_given] = 'yes' # this is used to determine text (GET / URL used so back action in browser is appropriate)
+        session[:average_bp_given] = 'yes' # this is used to determine whether to run set_bp_entry_datetime or not (Session used so is pervasive)
       end
     end
-    # timeslot is not incremented here any more as it is not passed back to the router anyway. So for next reading timeslot is established from the db.
-    redirect_to account_router_path
+    @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1
+    @bp_entry_details[:reading_no] = '1'
+    redirect_to account_router_path(@bp_entry_details)
   end 
 
   def signup_bp_migration
@@ -163,7 +165,7 @@ class CurrentBpsController < ApplicationController
     end
     
     def current_bp_params_datetime_only
-      params.require(:current_bp).permit(:datetime, :reading_no)
+      params.require(:current_bp).permit(:datetime, :reading_no, :bp_given)
     end
     
     

@@ -2,7 +2,7 @@ class AccountController < ApplicationController
   before_action :set_cache_buster
   before_action :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
   before_action :set_date_ampm
-  before_action :collect_bp_entry_details, only: [:set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
+  before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_batch_average_bp_count, only: [:home, :readings_due]
   before_action :set_first_average_bp, only: [:router, :is_bp_set_completable]
@@ -18,7 +18,7 @@ class AccountController < ApplicationController
     if user_signed_in?
       #Check if any readings at all, if not ask to take reading now
       if batch_average_bp_count < 1
-        redirect_to new_current_bp_path
+        redirect_to new_current_bp_path(@bp_entry_details)
     
       # check if has full set of bp readings
       elsif batch_average_bp_count >=8
@@ -34,7 +34,7 @@ class AccountController < ApplicationController
     
       #so otherwise, readings are due
       else
-        redirect_to account_set_bp_entry_datetime_path
+        redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
       end
       
     else
@@ -82,7 +82,8 @@ class AccountController < ApplicationController
   end
   
   def is_bp_set_completable
-    session[:average_bp_given] = 'skipped' # set :average_bp_given so text is appropriate in the view
+    @bp_entry_details[:bp_given] = 'skipped' # this ensures text is appropriate in the view for readings_due
+    session[:average_bp_given] = 'skipped' # this ensures that session[:bp_entry_details] doesn't get redefined
     
     # put blank entry in database for current time slot
     @n = @bp_entry_details[:datetime].to_i
@@ -103,6 +104,9 @@ class AccountController < ApplicationController
   end
   
   def restart_needed
+    if session[:restart_done] == 'yes'
+      redirect_to account_router_path
+    end
   end
   
   def restart
@@ -113,6 +117,7 @@ class AccountController < ApplicationController
     active_user.current_bps.each do |current_bp|
       current_bp.destroy
     end
+    session[:restart_done] = 'yes'
     redirect_to account_router_path
   end
   
