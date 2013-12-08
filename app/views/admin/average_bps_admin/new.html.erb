@@ -1,0 +1,24 @@
+<h1>Creating new average_bp</h1>
+
+<%= form_for(@average_bp, :url => admin_average_bps_path(@average_bp)) do |f| %>
+	<div>
+		<%= f.text_field(:user_id) %>
+		<%= f.date_field(:date) %>
+		<%= f.text_field(:ampm) %>
+    	<%= f.text_field(:sysbp) %>
+  			/
+	    <%= f.text_field(:diabp) %>
+  			mmHg
+  	</div>
+  	
+  	<% if @average_bp.errors.any? %>
+  		<div id='error_wrapper'>
+			<%= error_messages_for "average_bp", "sysbp" %>
+		</div>
+  	<% end %>
+  	
+  	<div id="submit">
+	   	<%= f.submit 'Create' %>
+	</div>
+	
+<% end %>

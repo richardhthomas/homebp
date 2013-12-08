@@ -2,9 +2,25 @@ class Admin::AverageBpsAdminController < Admin::AdminController
   before_action :set_average_bp, only: [:edit, :update, :destroy]
 
   def index
-    @average_bps = AverageBp.all.where("user_id IS NOT NULL").order("user_id")
+    @average_bps = AverageBp.all.where("user_id IS NOT NULL").order("user_id, date, ampm")
   end
-
+  
+  def new
+    @average_bp = AverageBp.new
+  end
+  
+  def create
+    @average_bp = AverageBp.new(new_average_bp_params)
+    
+    respond_to do |format|
+      if @average_bp.save
+        format.html { redirect_to admin_average_bps_path }
+      else
+        format.html { render 'new' }
+      end
+    end
+  end
+  
   def edit
   end
   
@@ -37,6 +53,10 @@ class Admin::AverageBpsAdminController < Admin::AdminController
   
   def average_bp_params
       params.require(:average_bp).permit(:sysbp, :diabp)
+  end
+  
+  def new_average_bp_params
+    params.require(:average_bp).permit(:user_id, :date, :ampm, :sysbp, :diabp)
   end
   
 end

@@ -2,7 +2,7 @@ class Admin::CurrentBpsAdminController < Admin::AdminController
   before_action :set_current_bp, only: [:edit, :update, :destroy]
 
   def index
-    @current_bps = CurrentBp.all.order("user_id")
+    @current_bps = CurrentBp.all.order("user_id, date, ampm")
   end
 
   def edit
