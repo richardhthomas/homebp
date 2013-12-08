@@ -12,9 +12,6 @@
 	<% end %>
 	</div>
 	
-	<%= @bp_entry_details[:datetime] %>
-	<%= @bp_entry_details[:reading_no] %>
-	
 	<% if session[:average_bp_given] == 'yes' %>
 		<p>Thank you for entering your recent blood pressure readings.</p>
 	<% elsif session[:average_bp_given] == 'skipped' %>

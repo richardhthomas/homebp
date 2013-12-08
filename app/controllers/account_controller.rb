@@ -2,9 +2,10 @@ class AccountController < ApplicationController
   before_action :set_cache_buster
   before_action :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
   before_action :set_date_ampm
-  before_action :collect_bp_entry_details, only: [:set_bp_entry_datetime, :readings_due, :is_bp_set_completable, :restart_needed, :home]
+  before_action :collect_bp_entry_details, only: [:set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
   before_action :set_batch_average_bp_count, only: [:home, :readings_due]
+  before_action :set_first_average_bp, only: [:router, :is_bp_set_completable]
   
   def home
     @current_average_bp = active_user.average_bps.last
@@ -17,24 +18,28 @@ class AccountController < ApplicationController
     if user_signed_in?
       #Check if any readings at all, if not ask to take reading now
       if batch_average_bp_count < 1
-        redirect_to new_current_bp_path#(@bp_entry_details)
+        redirect_to new_current_bp_path
     
       # check if has full set of bp readings
       elsif batch_average_bp_count >=8
         redirect_to account_submit_readings_path
+      
+      #check if they need to restart
+      elsif is_restart_needed(last_average_bp.date, last_average_bp.ampm) == true
+        redirect_to account_restart_needed_path
     
       #check if they are too early for next reading
       elsif (session[:date] == last_average_bp.date && session[:ampm] == last_average_bp.ampm)
-        redirect_to account_home_path#(@bp_entry_details)
+        redirect_to account_home_path
     
       #so otherwise, readings are due
       else
-        redirect_to account_set_bp_entry_datetime_path#(@bp_entry_details)
+        redirect_to account_set_bp_entry_datetime_path
       end
       
     else
       if batch_average_bp_count < 1 # not signed in and no readings - go to landing page
-        redirect_to blood_pressure_treatment_path#(@bp_entry_details) # need to pass bp_entry_details here so if user goes back in browser to landing page, they are kept alive.
+        redirect_to blood_pressure_treatment_path
       
       else # not signed in but given a reading - go to home page
         redirect_to account_home_path
@@ -77,7 +82,7 @@ class AccountController < ApplicationController
   end
   
   def is_bp_set_completable
-    session[:average_bp_given] = 'skipped' # set :average_bp_given so that on returning to set_bp_entry_datetime, the session variables are not redfined
+    session[:average_bp_given] = 'skipped' # set :average_bp_given so text is appropriate in the view
     
     # put blank entry in database for current time slot
     @n = @bp_entry_details[:datetime].to_i
@@ -88,12 +93,11 @@ class AccountController < ApplicationController
     
     @first_average_bp = active_user.average_bps.first
     @n = @bp_entry_details[:datetime].to_i
-    if ((7-((session[:bp_entry_details][:date][@n] - @first_average_bp.date).to_i)) * 2) < (8 - batch_average_bp_count)
-      redirect_to account_restart_needed_path#(@bp_entry_details)
+    if is_restart_needed(session[:bp_entry_details][:date][@n], session[:bp_entry_details][:ampm][@n]) == true
+      redirect_to account_restart_needed_path
     else # can continue to gather BPs, but first increment the timeslot
       @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1
       @bp_entry_details[:reading_no] = '1'
-      
       redirect_to account_readings_due_path(@bp_entry_details)
     end
   end
@@ -121,6 +125,28 @@ class AccountController < ApplicationController
   
   def set_batch_average_bp_count
     @batch_average_bp_count = batch_average_bp_count
+  end
+  
+  def set_first_average_bp
+    @first_average_bp = active_user.average_bps.first
+  end
+  
+  def is_restart_needed(date_comparator, ampm_comparator)
+    if @first_average_bp.ampm == 'am'
+      @ampm_adjustment = 0
+    else
+      @ampm_adjustment = 1 # if started readings in pm then allowed an additional collection
+    end
+    
+    if ampm_comparator == 'am'
+      @ampm_adjustment += 1 # if now am then there is an additional collection later in the day
+    end
+    
+    if (12 - (((date_comparator - @first_average_bp.date).to_i) * 2) + @ampm_adjustment) < (8 - batch_average_bp_count) # 12 rather than 14 as first date evaluates as 0 when subtracted.
+      true
+    else
+      false
+    end
   end
 
 end

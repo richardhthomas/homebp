@@ -77,9 +77,8 @@ class CurrentBpsController < ApplicationController
         session[:average_bp_given] = 'yes'
       end
     end
-    @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1 # increment time slot
-    @bp_entry_details[:reading_no] = '1'
-    redirect_to account_router_path(@bp_entry_details)
+    # timeslot is not incremented here any more as it is not passed back to the router anyway. So for next reading timeslot is established from the db.
+    redirect_to account_router_path
   end 
 
   def signup_bp_migration
