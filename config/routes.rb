@@ -36,6 +36,7 @@ Homebp::Application.routes.draw do
   
   namespace :admin do
     get "menu", :controller => "admin"
+    get "layout_test"
     resources :users, :controller => "user_admin"
     resources :current_bps, :controller => "current_bps_admin"
     resources :average_bps, :controller => "average_bps_admin"
