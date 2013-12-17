@@ -22,15 +22,16 @@
 </head>
 <body>
 
-<div id="xcontainer">
-	
-	<div id='xheader_container'>
-	<div id='xheader'>
-
-		<div id='xtopbannertitle'>
+<div id="container">
+  <script>
+	autolayout();
+  </script>
+	<div id='header'>
+		<%= image_tag "topbanner.jpg" %>
+		<div id='topbannertitle'>
 			<%= link_to("HomeBloodPressure.co.uk", root_path) %>
 		</div>
-		<div id='xuser_nav'>
+		<div id='user_nav'>
 			<% if user_signed_in? %>
 				<div id='sign_out'>
 					<%= link_to(destroy_user_session_path, :class => 'button1', :method => :delete) do %>
@@ -49,7 +50,6 @@
     			</div>
   			<% end %>
   		</div>
-	</div>
 	</div>
 	
 	<div id='topmenu'>
