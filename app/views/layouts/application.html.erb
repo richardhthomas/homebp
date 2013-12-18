@@ -49,32 +49,32 @@
     			</div>
   			<% end %>
   		</div>
+  		
+  		<div id='xtopmenu'>
+			
+			<div class='topmenucontent'>
+				<%= link_to 'Account home', root_path(@bp_entry_details) %>
+			</div>
+			<div class='topmenucontent'>
+				<%= link_to 'Advice', blood_pressure_treatment_path(@bp_entry_details) %>
+			</div>
+			
+			<!--
+			<div class='topmenucontent'>
+				<a href=''>My medical details</a>
+			</div>
+			<div class='topmenucontent'>
+				<a href=''>My blood pressure readings</a>
+			</div>
+			<div class='topmenucontent'>
+				<a href=''>My blood test results</a>
+			</div>
+			<div class='topmenucontent'>
+				<a href=''>General advice</a>
+			</div>
+			-->
+		</div>
 	</div>
-	</div>
-	
-	<div id='topmenu'>
-		<% if user_signed_in? %>
-		<div class='topmenucontent'>
-			<%= link_to 'Account home', root_path(@bp_entry_details) %>
-		</div>
-		<div class='topmenucontent'>
-			<%= link_to 'Advice', blood_pressure_treatment_path(@bp_entry_details) %>
-		</div>
-		<% end %>
-		<!--
-		<div class='topmenucontent'>
-			<a href=''>My medical details</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>My blood pressure readings</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>My blood test results</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>General advice</a>
-		</div>
-		-->
 	</div>
 	
 	<!--
@@ -83,11 +83,12 @@
 			<%= breadcrumb %>
 		</div>
 	<% end %>
-	-->
+	
 	
 	<div id='back'>
 		<%= link_to_function "Back", "history.back()" %>
 	</div>
+	-->
 	
 	<div id='content'>
 		<% if flash[:notice] %>

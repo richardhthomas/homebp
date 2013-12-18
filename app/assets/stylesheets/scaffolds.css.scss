@@ -3,7 +3,7 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
+  //line-height: 18px;
   margin: 0px;
 }
 
@@ -119,6 +119,7 @@ a:hover {
 
 #xtopbannertitle {
   float:left;
+  margin-bottom: 5px;
   a {
     font-size:20pt;
     font-weight:bold;
@@ -129,7 +130,6 @@ a:hover {
     }
   }
 }
-
 
 #user_nav {
   float:left;
@@ -157,6 +157,9 @@ a:hover {
 #xuser_nav {
   float:right;
   font-size:8pt;
+  border-left: 1px solid #ffffff;
+  padding-left: 15px;
+  margin-bottom: 5px;
   #sign_in {
     width: 70px;
     float: left;
@@ -177,6 +180,7 @@ a:hover {
 .button1 {
   display:block;
   text-align:center;
+  line-height: 18px;
   padding:3px 6px 3px 6px;
   border:1px solid #033076;
   -webkit-border-radius:7px;
@@ -299,6 +303,32 @@ a.button2:hover {
           color-stop(0.93, #F0F6FF),
           color-stop(1, #FFFFFF)
         );
+      }
+    }
+  }
+}
+
+#xtopmenu {
+  float:right;
+  background-color:#032F76;
+  padding: 5px 0px 15px 15px;
+  
+  .topmenucontent {
+    float:left;
+    
+    a {
+      display:block;
+      color:#D4E3FC;
+      font-size:12pt;
+      padding:0px 15px 0px 0px;
+      
+      &:link, &:visited {
+        color:#D4E3FC;
+      }
+      
+      &:hover {
+        text-decoration:none;
+        color:#ffffff;
       }
     }
   }
