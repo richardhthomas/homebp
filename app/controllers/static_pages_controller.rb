@@ -13,4 +13,9 @@ class StaticPagesController < ApplicationController
     redirect_to root_path
   end
   
+  def layout_test
+    @current_bp = CurrentBp.new
+    @bp_entry_details = {}
+  end
+  
 end

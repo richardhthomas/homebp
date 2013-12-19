@@ -24,7 +24,6 @@
 
 <div id="xcontainer">
 	
-	<div id='xheader_container'>
 	<div id='xheader'>
 
 		<div id='xtopbannertitle'>
@@ -74,7 +73,7 @@
 			</div>
 			-->
 		</div>
-	</div>
+
 	</div>
 	
 	<!--
@@ -90,19 +89,21 @@
 	</div>
 	-->
 	
-	<div id='content'>
+	<div id='xcontent'>
 		<% if flash[:notice] %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
 		<%= yield %>
 	</div>
 	
+	<!--
 	<div id='bottombar'>
 		<%= link_to 'About us', static_pages_about_path %>
 		<%= link_to 'Contact us', new_message_path %>
 		<%= link_to 'Terms & Conditions', static_pages_tac_path %>
 		<span>&#169; 2013</span>
 	</div>
+	-->
 
 </div>
 
