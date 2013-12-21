@@ -68,7 +68,6 @@
     #strip1 {
       width: 100%;
       background-color: #ffffff;
-      float: left;
     
       #strip1_content {
         width: 450px;
@@ -105,13 +104,13 @@
     #strip2 {
       width: 100%;
       background-color: #D4E3FC;
-      float: left;
       
       #strip2_content {
         width: 60%;
         padding-right: 5%;
         margin-left: auto;
         margin-right: auto;
+        padding-bottom: 30px;
         
         h3 {
           font-size:18pt;
@@ -128,8 +127,7 @@
         }
         
         #input_bp {
-        margin: 10px 25px 20px 35px;
-        float: left;
+        margin: 10px 25px 0px 35px;
         
           #input_bp_boxes {
             float:left;
@@ -138,7 +136,7 @@
         
           #submit {
             float:left;
-            margin: 0px 0px 20px 30px;
+            margin-left: 30px;
           }
         }
       }

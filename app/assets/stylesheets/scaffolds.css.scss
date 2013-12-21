@@ -83,6 +83,7 @@ a:hover {
   font-family: arial, sans-serif;
   font-size: 10pt;
   width: 100%;
+  min-width: 450px;
 }
 
 #header {
@@ -90,8 +91,12 @@ a:hover {
   float:left;
 }
 
+#header_container {
+  padding: 8px;
+  background-color:#032F76;
+}
+
 #xheader {
-  float: left;
   width: 100%;
   background-color:#032F76;
 }
@@ -114,7 +119,8 @@ a:hover {
 
 #xtopbannertitle {
   float:left;
-  margin: 8px 0px 5px 8px;
+  margin-bottom: 5px;
+  
   a {
     font-size:18pt;
     font-weight:bold;
@@ -154,7 +160,8 @@ a:hover {
   font-size:8pt;
   border-left: 1px solid #ffffff;
   padding-left: 15px;
-  margin: 8px 8px 5px 0px;
+  margin-bottom: 5px;
+  
   #sign_in {
     width: 70px;
     float: left;
@@ -308,7 +315,7 @@ a.button2:hover {
   float:right;
   background-color:#032F76;
   padding: 5px 0px 15px 15px;
-  margin: 8px 0px 35px 0px;
+  margin-bottom: 35px;
   
   .topmenucontent {
     float:left;
@@ -329,6 +336,10 @@ a.button2:hover {
       }
     }
   }
+}
+
+.clear_float {
+  clear: both;
 }
 
 #breadcrumb {
