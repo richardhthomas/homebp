@@ -91,13 +91,16 @@ a:hover {
   float:left;
 }
 
-#header_container {
-  padding: 8px;
+#xheader {
+  width: 100%;
+  padding-top: 8px;
   background-color:#032F76;
 }
 
-#xheader {
-  width: 100%;
+#header_content {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   background-color:#032F76;
 }
 

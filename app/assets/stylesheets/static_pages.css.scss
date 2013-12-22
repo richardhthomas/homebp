@@ -104,6 +104,7 @@
     #strip2 {
       width: 100%;
       background-color: #D4E3FC;
+      margin-bottom: 30px;
       
       #strip2_content {
         width: 60%;
@@ -123,11 +124,11 @@
         p {
           font-size:10pt;
           color: #000000;
-          margin: 5px 0px 0px 15px;
+          margin: 5px 0px 0px 25px;
         }
         
         #input_bp {
-        margin: 10px 25px 0px 35px;
+        margin: 10px 0px 0px 55px;
         
           #input_bp_boxes {
             float:left;
@@ -137,6 +138,80 @@
           #submit {
             float:left;
             margin-left: 30px;
+          }
+        }
+      }
+    }
+    
+    #strip3 {
+      width: 100%;
+      background-color: #D4E3FC;
+      margin-bottom: 30px;
+      
+      #strip3_content {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 30px;
+        
+        h3 {
+          font-size:16pt;
+          color: #032F76;
+          font-weight: normal;
+          padding: 20px 0px 0px 0px;
+          margin: 0px;
+        }
+        
+        p {
+          font-size:10pt;
+          color: #000000;
+          margin: 5px 0px 0px 25px;
+        }
+        
+        #links {
+          width: 450px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 30px;
+          
+          .info_links {
+            float: left;
+            width: 130px;
+            
+            &:link, &:visited {
+              color:#000000;
+            }
+      
+             &:hover {
+              text-decoration:none;
+              color:#000000;
+              background-color: #e7f0fd;
+            }
+            
+            .link_title {
+              display: block;
+              background-color: #032F76;
+              padding: 3px;
+              
+              .link_title_content {
+                display: block;
+                width: 100%;
+                background-color: #032F76;
+                font-size: 12pt;
+                color: #ffffff;
+                text-align: center;
+              }
+            }
+            
+            img {
+              margin: 9px;
+            }
+            
+            .link_text {
+              font-size:10pt;
+              color: #000000;
+              margin: 0px 5px 0px 5px;
+            }
           }
         }
       }
