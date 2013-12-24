@@ -48,18 +48,30 @@
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h3>Information and advice</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</p>
-			<div id='links'>
-				<%= link_to(root_path, :class => 'info_links') do %>
-					<span class='link_title'><span class='link_title_content'>What is blood pressure?</span></span>
-					<%= image_tag("heart_bp_monitor_small.jpg", size: '118x100') %>
-					<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed</span>
-				<% end %>
-			</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</p>
+		</div>
+		
+		<div id='links'>
+			<%= link_to(root_path, :class => 'info_link') do %>
+				<span id='link_title_1'><span id='link_title_content_1'>What is blood pressure?</span></span>
+				<%= image_tag("heart_bp_monitor_small.jpg", size: '118x100') %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
+			<%= link_to(root_path, :class => 'info_link') do %>
+				<span id='link_title_2'><span id='link_title_content_2'>Measuring blood pressure?</span></span>
+				<%= image_tag("woman_taking_bp_small.jpg", size: '118x100') %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
+			<%= link_to(root_path, :class => 'info_link') do %>
+				<span id='link_title_3'><span id='link_title_content_3'>Treating blood pressure?</span></span>
+				<%= image_tag("tablets_small.jpg", size: '118x100') %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
 			
 			<div class='clear_float'>
 			</div>
-			
+		
 		</div>
+	
 	</div>
 </div>
