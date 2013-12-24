@@ -2,9 +2,9 @@ body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  //font-size: 100%;
   //line-height: 18px;
-  margin: 0px;
+  //margin: 0px;
 }
 
 p, ol, ul, td {
@@ -74,59 +74,29 @@ a:hover {
 #container {
   font-family: arial, sans-serif;
   font-size: 10pt;
-  width: 950px;
-  float:left;
-  visibility: hidden;
-}
-
-#xcontainer {
-  font-family: arial, sans-serif;
-  font-size: 10pt;
   width: 100%;
   min-width: 550px;
 }
 
 #header {
-  position:relative;
-  float:left;
-}
-
-#xheader {
   width: 100%;
   padding-top: 8px;
-  background-color:#032F76;
+  background-color:#033076;
 }
 
 #header_content {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background-color:#032F76;
+  background-color:#033076;
 }
 
 #topbannertitle {
-  position:absolute;
-  top:18px;
-  left:35px;
-  
-  a {
-    font-size:20pt;
-    font-weight:bold;
-    
-    &:link, &:hover, &:visited {
-      color:#033076;
-      text-decoration:none;
-    }
-  }
-}
-
-#xtopbannertitle {
   float:left;
-  margin-bottom: 5px;
+  margin: 0px 50px 5px 0px;
   
   a {
-    font-size:18pt;
-    font-weight:bold;
+    font-size:2em;
     
     &:link, &:hover, &:visited {
       color:#ffffff;
@@ -136,31 +106,8 @@ a:hover {
 }
 
 #user_nav {
-  float:left;
-  position:absolute;
-  top:15px;
-  left:780px;
-  font-size:8pt;
-  #sign_in {
-    width: 70px;
-    float: left;
-  }
-  #sign_up {
-    width: 70px;
-    float: left;
-    margin-left: 12px;
-  }
-  #sign_out {
-    width: 90px;
-    margin: -5px 0px 0px 62px;
-    float: left;
-    line-height: 14px;
-  }
-}
-
-#xuser_nav {
   float:right;
-  font-size:8pt;
+  font-size:0.8em;
   border-left: 1px solid #ffffff;
   padding-left: 15px;
   margin-bottom: 5px;
@@ -181,6 +128,34 @@ a:hover {
     line-height: 14px;
   }
 }
+
+#topmenu {
+  float:right;
+  background-color:#032F76;
+  padding: 5px 0px 15px 15px;
+  margin-bottom: 35px;
+  
+  .topmenucontent {
+    float:left;
+    
+    a {
+      display:block;
+      color:#D4E3FC;
+      font-size:1.2em;
+      padding:0px 15px 0px 0px;
+      
+      &:link, &:visited {
+        color:#D4E3FC;
+      }
+      
+      &:hover {
+        text-decoration:none;
+        color:#ffffff;
+      }
+    }
+  }
+}
+
 
 .button1 {
   display:block;
@@ -232,7 +207,7 @@ a.button2:hover {
 }
 
 .button6 {
-  font-size:12pt;
+  font-size:1.2em;
   padding:7px 20px 7px 20px;
 }
 
@@ -260,86 +235,6 @@ a.button2:hover {
   border: 0px;
 }
 
-#topmenu {
-  width:950px;
-  height:30px;
-  float:left;
-  background-color:#032F76;
-  background-image: linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
-  background-image: -o-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
-  background-image: -moz-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
-  background-image: -webkit-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
-  background-image: -ms-linear-gradient(bottom, #033076 75%, #D4E3FC 93%, #FFFFFF 100%);
-  background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.75, #033076),
-    color-stop(0.93, #D4E3FC),
-    color-stop(1, #FFFFFF)
-  );
-
-  .topmenucontent {
-    float:left;
-    
-    a {
-      display:block;
-      border-right:1px solid #ffffff;
-      color:#ffffff;
-      font-size:10pt;
-      padding:7px 15px 4px 15px;
-      
-      &:link, &:visited, &:hover {
-        color:#ffffff;
-      }
-      
-      &:hover {
-        text-decoration:none;
-        background-color:#6882AD;
-        background-image: linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-        background-image: -o-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-        background-image: -moz-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-        background-image: -webkit-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-        background-image: -ms-linear-gradient(bottom, #6882AD 75%, #F0F6FF 93%, #FFFFFF 100%);
-        background-image: -webkit-gradient(
-          linear,
-          left bottom,
-          left top,
-          color-stop(0.75, #6882AD),
-          color-stop(0.93, #F0F6FF),
-          color-stop(1, #FFFFFF)
-        );
-      }
-    }
-  }
-}
-
-#xtopmenu {
-  float:right;
-  background-color:#032F76;
-  padding: 5px 0px 15px 15px;
-  margin-bottom: 35px;
-  
-  .topmenucontent {
-    float:left;
-    
-    a {
-      display:block;
-      color:#D4E3FC;
-      font-size:12pt;
-      padding:0px 15px 0px 0px;
-      
-      &:link, &:visited {
-        color:#D4E3FC;
-      }
-      
-      &:hover {
-        text-decoration:none;
-        color:#ffffff;
-      }
-    }
-  }
-}
 
 .clear_float {
   clear: both;
@@ -397,11 +292,9 @@ a.button2:hover {
 
 
 #bottombar {
-  width:950px;
-  margin:30px 0px 10px 0px;
-  font-size:8pt;
+  margin:0px 0px 10px 0px;
+  font-size:1em;
   text-align:center;
-  float:left;
 }
 
 #bottombar a {

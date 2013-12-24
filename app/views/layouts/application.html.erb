@@ -22,15 +22,15 @@
 </head>
 <body>
 
-<div id="xcontainer">
+<div id="container">
 	
-	<div id='xheader'>
+	<div id='header'>
 	<div id='header_content'>
 
-		<div id='xtopbannertitle'>
+		<div id='topbannertitle'>
 			<%= link_to("HomeBloodPressure.co.uk", root_path) %>
 		</div>
-		<div id='xuser_nav'>
+		<div id='user_nav'>
 			<% if user_signed_in? %>
 				<div id='sign_out'>
 					<%= link_to(destroy_user_session_path, :class => 'button1', :method => :delete) do %>
@@ -50,14 +50,22 @@
   			<% end %>
   		</div>
   		
-  		<div id='xtopmenu'>
-			
+  		<div id='topmenu'>
+			<% if user_signed_in? %>
 			<div class='topmenucontent'>
 				<%= link_to 'Account home', root_path(@bp_entry_details) %>
 			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Advice', blood_pressure_treatment_path(@bp_entry_details) %>
 			</div>
+			<% else %>
+			<div class='topmenucontent'>
+				<%= link_to 'Features', root_path %>
+			</div>
+			<div class='topmenucontent'>
+				<%= link_to 'Contact', new_message_path %>
+			</div>
+			<% end %>
 			
 			<!--
 			<div class='topmenucontent'>
@@ -94,21 +102,19 @@
 	</div>
 	-->
 	
-	<div id='xcontent'>
+	<div id='content'>
 		<% if flash[:notice] %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
 		<%= yield %>
-	</div>
-	
-	<!--
+	</div>	
+
 	<div id='bottombar'>
 		<%= link_to 'About us', static_pages_about_path %>
 		<%= link_to 'Contact us', new_message_path %>
 		<%= link_to 'Terms & Conditions', static_pages_tac_path %>
 		<span>&#169; 2013</span>
 	</div>
-	-->
 
 </div>
 

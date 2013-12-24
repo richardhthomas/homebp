@@ -62,8 +62,8 @@
   }
 }
 
-#xcontent {
-  #xmain {
+#content {
+  #main {
   
     #strip1 {
       width: 100%;
@@ -77,26 +77,26 @@
         
       
         h2 {
-          font-size:22pt;
+          font-size:2.2em;
           color: #033076;
           font-weight: normal;
           margin: 20px 0px 0px 0px;
         }
       
         h3, h4 {
-          font-size: 16pt;
+          font-size: 1.6em;
           font-weight: normal;
           margin: 0px 0px 0px 30px;
         }
       
         h3 {
           color: #1464F6;
-          margin-top: 10px;
+          margin-top: 16px;
         }
       
         h4 {
           color: #3D8AF7;
-          margin-top: 3px;
+          margin-top: 8px;
         }
       }
     }
@@ -114,7 +114,7 @@
         padding-bottom: 30px;
         
         h3 {
-          font-size:18pt;
+          font-size:1.8em;
           color: #0844A4;
           font-weight: normal;
           padding: 20px 0px 0px 0px;
@@ -122,9 +122,9 @@
         }
         
         p {
-          font-size:10pt;
+          font-size:1em;
           color: #000000;
-          margin: 5px 0px 0px 25px;
+          margin: 15px 0px 0px 25px;
         }
         
         #input_bp {
@@ -155,7 +155,7 @@
         padding-bottom: 30px;
         
         h3 {
-          font-size:16pt;
+          font-size:1.6em;
           color: #032F76;
           font-weight: normal;
           padding: 20px 0px 0px 0px;
@@ -163,9 +163,9 @@
         }
         
         p {
-          font-size:10pt;
+          font-size:1em;
           color: #000000;
-          margin: 5px 0px 0px 25px;
+          margin: 15px 0px 0px 25px;
         }
       }
         
@@ -217,12 +217,12 @@
             
           #link_title_1, #link_title_2, #link_title_3 {
             display: block;
-            padding: 3px 15px 3px 15px;
+            padding: 5px 15px 5px 15px;
               
             #link_title_content_1, #link_title_content_2, #link_title_content_3 {
               display: block;
               width: 100%;
-              font-size: 12pt;
+              font-size: 1.2em;
               color: #ffffff;
               text-align: center;
             }
@@ -257,7 +257,8 @@
           }
             
           .link_text {
-            font-size:10pt;
+            font-size:1em;
+            line-height: 14px;
             color: #000000;
             margin: 0px 5px 0px 5px;
           }
