@@ -80,6 +80,27 @@ class ApplicationController < ActionController::Base
     active_user.average_bps.last
   end
   
+  # the 3 methods below are here rather than in current_bps_controller so that they are accessed from the info pages as well.
+  def set_current_bps
+    @n = @bp_entry_details[:datetime].to_i
+    @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][:date][@n], :ampm => session[:bp_entry_details][:ampm][@n]).order("id")
+  end
+    
+  def check_current_bp
+    set_current_bps
+    @key = @bp_entry_details[:reading_no].to_i - 1
+    @current_bps[@key]
+  end
+    
+  def collect_bp
+    if check_current_bp
+      @current_bp = check_current_bp
+    else
+      @current_bp = CurrentBp.new
+    end
+  end
+  
+  
   # define the average BP for the current batch of readings as well as the coordinates for the graphic display
   def batch_average_bp
     @bp_batch = active_user.average_bps

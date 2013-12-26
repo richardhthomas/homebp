@@ -1,13 +1,18 @@
 Homebp::Application.routes.draw do
   root :to => "account#router"
+  
+  get "/blood_pressure_treatment" => 'info#landing_page'
+  
+  namespace :info do
+    get 'what_is_blood_pressure'
+    get 'measuring_blood_pressure'
+    get 'treating_blood_pressure'
+  end
     
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/tac"
   get "static_pages/meds_id_wizard"
-  get "/test" => "static_pages#layout_test"
-
-  get "/blood_pressure_treatment" => 'current_bps#landing_page'  
   
   resources :current_bps do
     collection do

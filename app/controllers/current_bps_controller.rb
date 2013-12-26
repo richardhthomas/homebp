@@ -120,25 +120,6 @@ class CurrentBpsController < ApplicationController
       @current_bp = CurrentBp.find(params[:id])
     end
     
-    def set_current_bps
-      @n = @bp_entry_details[:datetime].to_i
-      @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][:date][@n], :ampm => session[:bp_entry_details][:ampm][@n]).order("id")
-    end
-    
-    def check_current_bp
-      set_current_bps
-      @key = @bp_entry_details[:reading_no].to_i - 1
-      @current_bps[@key]
-    end
-    
-    def collect_bp
-      if check_current_bp
-        @current_bp = check_current_bp
-      else
-        @current_bp = CurrentBp.new
-      end
-    end
-    
     def landing_page_setup
       @drugs = Drug.all
       @medications = Hash.new { |hash, key| hash[key] = Hash.new }
