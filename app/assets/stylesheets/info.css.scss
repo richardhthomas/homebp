@@ -44,6 +44,7 @@
       
       #strip2_content {
         width: 60%;
+        max-width: 670px;
         padding-right: 5%;
         margin-left: auto;
         margin-right: auto;
@@ -86,6 +87,7 @@
       
       #strip3_content {
         width: 90%;
+        max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
@@ -95,6 +97,14 @@
           color: #032F76;
           font-weight: normal;
           padding: 20px 0px 0px 0px;
+          margin: 0px;
+        }
+        
+        h4 {
+          font-size:1.2em;
+          color: #032F76;
+          font-weight: normal;
+          padding: 20px 0px 0px 25px;
           margin: 0px;
         }
         

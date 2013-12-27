@@ -1,4 +1,4 @@
-class InfoController < ApplicationController
+class Info::InfoController < ApplicationController
   before_action :set_cache_buster
   before_action :set_date_ampm
   before_action :collect_bp_entry_details, only: [:landing_page, :measuring_blood_pressure, :treating_blood_pressure, :what_is_blood_pressure]

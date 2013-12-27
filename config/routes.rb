@@ -1,12 +1,18 @@
 Homebp::Application.routes.draw do
   root :to => "account#router"
   
-  get "/blood_pressure_treatment" => 'info#landing_page'
+  get "/blood_pressure_treatment" => 'info/info#landing_page'
   
-  namespace :info do
+  namespace :info, :controller => "info" do
     get 'what_is_blood_pressure'
     get 'measuring_blood_pressure'
     get 'treating_blood_pressure'
+    
+    scope '/measuring', :controller => "measuring" do
+      get 'how_do_i_measure_my_blood_pressure'
+      get 'when_should_i_measure_my_blood_pressure'
+      get 'how_do_i_choose_a_blood_pressure_machine'
+    end
   end
     
   get "static_pages/home"
