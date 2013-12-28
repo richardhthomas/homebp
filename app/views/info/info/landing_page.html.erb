@@ -9,39 +9,31 @@
 	
 	<div id='strip2'>
 		<div id='strip2_content'>
-			<h3>Is my blood pressure too high?</h3>
-			<p>Enter some blood pressure readings and we'll answer that question right away!</p>
-			<div id='input_bp'>
-				<%= render 'current_bps/form' %>
-				
-				<div class='clear_float'>
-				</div>
-				
-			</div>
+			<%= render 'info/is_my_bp_too_high' %>
 		</div>
 	</div>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h3>Information and advice</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</p>
+			<p>By using this site you’ll be getting clear information about your blood pressure. You’ll get up to date personalised advice from UK GPs. You’ll be able to use this information whenever you want, without the hassle of having to get an appointment at your doctors.</p>
 		</div>
 		
 		<div id='links'>
 			<%= link_to(info_what_is_blood_pressure_path, :class => 'info_link') do %>
 				<span id='link_title_1'><span id='link_title_content_1'>What is blood pressure?</span></span>
-				<%= image_tag("heart_bp_monitor_small.jpg", size: '118x100') %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<%= image_tag("heart_bp_monitor_small.jpg") %>
+				<span class='link_text'>What am I measuring? What do the numbers mean? What is the normal range for me? Find out more here…</span>
 			<% end %>
 			<%= link_to(info_measuring_blood_pressure_path, :class => 'info_link') do %>
 				<span id='link_title_2'><span id='link_title_content_2'>Measuring blood pressure</span></span>
-				<%= image_tag("woman_taking_bp_small.jpg", size: '118x100') %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<%= image_tag("woman_taking_bp_small.jpg") %>
+				<span class='link_text'>How do I measure my blood pressure? When should I measure it? How do I choose a blood pressure machine? Find out more here…</span>
 			<% end %>
 			<%= link_to(info_treating_blood_pressure_path, :class => 'info_link') do %>
 				<span id='link_title_3'><span id='link_title_content_3'>Treating blood pressure</span></span>
-				<%= image_tag("tablets_small.jpg", size: '118x100') %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<%= image_tag("tablets_small.jpg") %>
+				<span class='link_text'>How should I change my diet? Which supplements help? What is the best medication for me? Find out more here...</span>
 			<% end %>
 			
 			<div class='clear_float'>

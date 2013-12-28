@@ -1,0 +1,46 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h2>Find out more about your blood pressure</h2>
+			<h3>FREE advice from UK GPs.</h3>
+			<h4>Online. Anytime.</h4>
+		</div>
+	</div>
+	
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h3>What is blood pressure?</h3>
+			<h4>Use this site to find out more about your blood pressure</h4>
+			<p>By using this site you’ll be presented with clear information about your blood pressure. You’ll be able to see this information whenever you want without having to wait for an appointment. The advice is written by experienced UK trained GPs and will be based on your personal blood pressure readings. You’ll be able to read about what this may mean about your lifestyle and can get help to decide whether you may need treatment.</p>
+		</div>
+		
+		<div id='links'>
+			<%= link_to(info_how_do_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+				<span id='link_title_1'><span id='link_title_content_1'>What am I measuring?</span></span>
+				<%= image_tag("woman_apple_small_2.jpg") %>
+				<span class='link_text'>Your blood pressure is a measure of the pressure in your arteries. This gives you an idea of how hard your heart is having to work to pump blood around your body - find out more here...</span>
+			<% end %>
+			<%= link_to(info_when_should_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+				<span id='link_title_2'><span id='link_title_content_2'>What do the numbers mean?</span></span>
+				<%= image_tag("relaxation_small.jpg") %>
+				<span class='link_text'>Both numbers are important; they measure the pressure in your arteries at the highest and lowest points of your pulse. Find out more here...</span>
+			<% end %>
+			<%= link_to(info_how_do_i_choose_a_blood_pressure_machine_path, :class => 'info_link') do %>
+				<span id='link_title_3'><span id='link_title_content_3'>What is the normal range?</span></span>
+				<%= image_tag("tablets_small.jpg") %>
+				<span class='link_text'>The definition of normal blood pressure depends on whether you are on treatment or have any other medical conditions. Find out more here…</span>
+			<% end %>
+			
+			<div class='clear_float'>
+			</div>
+		
+		</div>
+	
+	</div>
+</div>

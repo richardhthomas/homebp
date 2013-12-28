@@ -1,0 +1,46 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h2>Your choice of blood pressure treatment</h2>
+			<h3>FREE advice from UK GPs.</h3>
+			<h4>Online. Anytime.</h4>
+		</div>
+	</div>
+	
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h3>Treating blood pressure</h3>
+			<h4>How can HomeBloodPressure.co.uk help me treat my blood pressure?</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</p>
+		</div>
+		
+		<div id='links'>
+			<%= link_to(info_how_do_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+				<span id='link_title_1'><span id='link_title_content_1'>Lifestyle options</span></span>
+				<%= image_tag("woman_apple_small_2.jpg") %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
+			<%= link_to(info_when_should_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+				<span id='link_title_2'><span id='link_title_content_2'>Complementary therapy</span></span>
+				<%= image_tag("relaxation_small.jpg") %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
+			<%= link_to(info_how_do_i_choose_a_blood_pressure_machine_path, :class => 'info_link') do %>
+				<span id='link_title_3'><span id='link_title_content_3'>Medication</span></span>
+				<%= image_tag("tablets_small.jpg") %>
+				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+			<% end %>
+			
+			<div class='clear_float'>
+			</div>
+		
+		</div>
+	
+	</div>
+</div>

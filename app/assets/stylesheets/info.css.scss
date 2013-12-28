@@ -6,14 +6,14 @@
       background-color: #ffffff;
     
       #strip1_content {
-        width: 450px;
+        width: 550px;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
         
       
         h2 {
-          font-size:2.2em;
+          font-size:2em;
           color: #033076;
           font-weight: normal;
           margin: 20px 0px 0px 0px;
@@ -168,7 +168,9 @@
             #link_title_content_1, #link_title_content_2, #link_title_content_3 {
               display: block;
               width: 100%;
+              min-height: 32px;
               font-size: 1.2em;
+              line-height: 16px;
               color: #ffffff;
               text-align: center;
             }
@@ -200,13 +202,14 @@
             
           img {
             margin: 10px 16px 10px 16px;
+            height: 100px;
+            width: 118px;
           }
             
           .link_text {
             font-size:1em;
             line-height: 14px;
             color: #000000;
-            margin: 0px 5px 0px 5px;
           }
         }
       }

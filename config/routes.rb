@@ -8,10 +8,49 @@ Homebp::Application.routes.draw do
     get 'measuring_blood_pressure'
     get 'treating_blood_pressure'
     
-    scope '/measuring', :controller => "measuring" do
+    scope '/measuring', :controller => "info" do
       get 'how_do_i_measure_my_blood_pressure'
       get 'when_should_i_measure_my_blood_pressure'
       get 'how_do_i_choose_a_blood_pressure_machine'
+    end
+    
+    scope '/what', :controller => "info" do
+      get 'what_am_i_measuring'
+      get 'what_do_the_numbers_mean'
+      get 'what_is_the_normal_range_for_me'
+    end
+    
+    scope '/treatment', :controller => "info" do
+      get 'lifestyle_options'
+      get 'complementary_therapy'
+      get 'medication'
+      
+      scope '/lifestyle', :controller => "info" do
+        get 'diet'
+        get 'exercise'
+        get 'smoking'
+      end
+      
+      scope '/complementary', :controller => "info" do
+        get 'supplements'
+        get 'acupuncture'
+        get 'herbal'
+      end
+      
+      scope '/medication', :controller => "info" do
+        get 'when_is_medication_recommended'
+        get 'why_do_i_need_to_take_more_than_one_medication'
+        get 'how_can_i_reduce_the_risk_of_side_effects'
+        get 'what_are_the_different_medication_options_for_me'
+        
+        scope '/options', :controller => "info" do
+          get 'calcium_channel_blockers'
+          get 'ace_inhibitors'
+          get 'diuretics'
+          get 'a2rbs'
+          get 'beta_blockers'
+        end
+      end
     end
   end
     
