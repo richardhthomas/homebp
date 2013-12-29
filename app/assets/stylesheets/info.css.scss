@@ -214,5 +214,52 @@
         }
       }
     }
+    
+    #strip4 {
+      width: 100%;
+      background-color: #D4E3FC;
+      margin-bottom: 30px;
+      
+      #strip4_content {
+        width: 90%;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 30px;
+        
+        #text {
+          width: auto;
+          
+          h3 {
+            font-size:1.6em;
+            color: #032F76;
+            font-weight: normal;
+            padding: 20px 0px 0px 0px;
+            margin: 0px;
+          }
+        
+          h4 {
+            font-size:1.2em;
+            color: #032F76;
+            font-weight: normal;
+            padding: 20px 0px 0px 25px;
+            margin: 0px;
+          }
+        
+          p {
+            font-size:1em;
+            color: #000000;
+            padding: 15px 0px 0px 25px;
+            }
+          }
+        
+        #graphic {
+          float: right;
+          width: 200px;
+          border: 2px solid #000000;
+          height: 500px;
+        }
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@ class Info::InfoController < ApplicationController
   before_action :collect_bp_entry_details
   before_action :collect_bp
   
-  def landing_page
+  def home_page
   end
   
   

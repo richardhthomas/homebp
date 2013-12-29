@@ -164,7 +164,4 @@ class CurrentBpsController < ApplicationController
     end
   end
   
-  def choosing_a_monitor
-  end
-  
 end

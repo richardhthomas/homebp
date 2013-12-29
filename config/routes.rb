@@ -1,9 +1,10 @@
 Homebp::Application.routes.draw do
   root :to => "account#router"
   
-  get "/blood_pressure_treatment" => 'info/info#landing_page'
+  #get "/blood_pressure_treatment" => 'info/info#home_page'
   
   namespace :info, :controller => "info" do
+    get 'home_page'
     get 'what_is_blood_pressure'
     get 'measuring_blood_pressure'
     get 'treating_blood_pressure'
@@ -54,7 +55,7 @@ Homebp::Application.routes.draw do
     end
   end
     
-  get "static_pages/home"
+  get "static_pages/features"
   get "static_pages/about"
   get "static_pages/tac"
   get "static_pages/meds_id_wizard"
@@ -65,7 +66,6 @@ Homebp::Application.routes.draw do
       #patch 'update_bp'
       get 'signup_bp_migration'
       get 'create_average_bp'
-      #get 'choosing_a_monitor'
       get 'how_to_measure_bp'
     end
   end

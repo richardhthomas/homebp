@@ -56,9 +56,12 @@
 				<%= link_to 'Account home', root_path(@bp_entry_details) %>
 			</div>
 			<div class='topmenucontent'>
-				<%= link_to 'Advice', blood_pressure_treatment_path(@bp_entry_details) %>
+				<%= link_to 'Advice', info_home_page_path %>
 			</div>
 			<% else %>
+			<div class='topmenucontent'>
+				<%= link_to 'Home', info_home_page_path %>
+			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Features', root_path %>
 			</div>

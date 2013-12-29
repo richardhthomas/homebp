@@ -1,4 +1,40 @@
 <div id='main'>
+	
+	<% if !user_signed_in? %>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h2>The best blood pressure treatment</h2>
+			<h3>FREE advice from UK GPs.</h3>
+			<h4>Online. Anytime.</h4>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip4'>
+		<div id='strip4_content'>
+						<div id='graphic'>
+				
+			</div>
+			<div id='text'>
+				<% if bp_warning_message(@current_average_bp) %>
+				<p id='warning_msg'><%= bp_warning_message(@current_average_bp) %></p>
+			<% end %>
+	
+			<% if !bp_warning_message(@current_average_bp) %>
+				<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
+			<% end %>
+	
+			<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this <span><%= time_left %></span>. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from this site.</p>
+			</div>
+			
+
+			
+			
+		</div>
+	</div>
+	
+	
+	
 	<h1>Is my blood pressure too high?</h1>
 	
 	<% if user_signed_in? %>
@@ -10,11 +46,9 @@
 		<div id='average_bp'>
 			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
 		</div>
-		<% if user_signed_in? %>
-			<div id='reading_counter'>
-				<%= render :partial => 'reading_counter' %>
-			</div>
-		<% end %>	
+		<div id='reading_counter'>
+			<%= render :partial => 'reading_counter' %>
+		</div>	
 	<% end %>
 	</div>
 	

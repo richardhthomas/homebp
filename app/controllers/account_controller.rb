@@ -39,7 +39,7 @@ class AccountController < ApplicationController
       
     else
       if batch_average_bp_count < 1 # not signed in and no readings - go to landing page
-        redirect_to blood_pressure_treatment_path
+        redirect_to info_home_page_path
       
       else # not signed in but given a reading - go to home page
         redirect_to account_home_path

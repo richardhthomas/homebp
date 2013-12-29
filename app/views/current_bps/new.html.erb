@@ -1,6 +1,47 @@
 <div id='main'>
-	<h1>Is my blood pressure too high?</h1>
+	<% if !user_signed_in? %>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h2>The best blood pressure treatment</h2>
+			<h3>FREE advice from UK GPs.</h3>
+			<h4>Online. Anytime.</h4>
+		</div>
+	</div>
+	<% end %>
 	
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<h3>Is my blood pressure too high?</h3>
+			
+			<% if @bp_entry_details[:reading_no] == '1' %>
+				<% if old_bp_datetime_text == "" %>
+					<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>
+				<% else %>
+					<p>Please enter the <span>first</span> blood pressure reading from <span><%= old_bp_datetime_text %></span> into the boxes below:</p>
+				<% end %>
+			<% else %>
+				<p>Thank you.</p>
+				<% if old_bp_datetime_text == "" %>
+					<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
+				<% else %>
+					<p>Please enter the <span>second</span> blood pressure reading from <span><%= old_bp_datetime_text %></span> into the boxes below:</p>
+				<% end %>
+			<% end %>
+			
+			<div id='input_bp'>
+				<%= render 'current_bps/form' %>
+				
+				<div class='clear_float'>
+				</div>
+				
+				<div style='height:200px;'>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+		
 	<div id='right_side_boxes_container_long'>
 	<% if !@average_sysbp.nil? %>
 		<div id='average_bp'>
@@ -8,30 +49,5 @@
 		</div>
 	<% end %>
 	</div>
-	
-	<% if @bp_entry_details[:reading_no] == '1' %>
-		<% if old_bp_datetime_text == "" %>
-			<p>Whilst seated and relaxed, please take a blood pressure reading for us now and enter it in the boxes below:</p>
-		<% else %>
-			<p>Please enter the <span>first</span> blood pressure reading from <span><%= old_bp_datetime_text %></span> into the boxes below:</p>
-		<% end %>
-	<% else %>
-		<p>Thank you.</p>
-		<% if old_bp_datetime_text == "" %>
-			<p>Please stay seated and relaxed for at least 1 minute, then take a second reading and enter it in the boxes below:</p>
-		<% else %>
-			<p>Please enter the <span>second</span> blood pressure reading from <span><%= old_bp_datetime_text %></span> into the boxes below:</p>
-		<% end %>
-	<% end %>
-	
-	<div id='wizard_input_bp'>	
-		<%= render 'form' %>
-	</div>
-
-	<div style='height:300px;'>
-	</div>
-	
-	<h4>How do I measure my blood pressure?</h4>
-	<p>If you need advice on how to measure your blood pressure, please see our <%= link_to "blood pressure measurement guide.", how_to_measure_bp_current_bps_path %></p>
 
 </div>
