@@ -29,9 +29,9 @@ a:hover {
 }
 
 #notice {
-  float:left;
+  //float:left;
   width: 300px;
-  margin: 10px 313px 10px 300px;
+  margin: 10px auto 10px auto;
   padding: 5px 10px 5px 10px;
   border-style:solid;
   border-width:2px;
@@ -123,10 +123,12 @@ a:hover {
     margin-left: 12px;
   }
   #sign_out {
-    width: 90px;
-    margin: -5px 0px 0px 62px;
+    width: 90px;;
     float: left;
-    line-height: 14px;
+    
+    a {
+      line-height: 14px;
+    }
   }
 }
 

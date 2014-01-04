@@ -1,14 +1,15 @@
 <div id='main'>
 	
-	<% if !user_signed_in? %>
 	<div id='strip1'>
 		<div id='strip1_content'>
-			<h2>The best blood pressure treatment</h2>
-			<h3>FREE advice from UK GPs.</h3>
-			<h4>Online. Anytime.</h4>
+			<% if !user_signed_in? %>
+				<h2>The best blood pressure treatment</h2>
+				<h3>FREE advice from UK GPs.</h3>
+				<h4>Online. Anytime.</h4>
+			<% end %>
 		</div>
 	</div>
-	<% end %>
+	
 	
 	<div id='strip4'>
 		<div id='strip4_content'>
@@ -44,62 +45,14 @@
 	
 	<div id='strip5'>
 		<div id='strip5_content'>
-			<%= render :partial => 'devise/registrations/new' %>
+			<% if user_signed_in? %>
+				<p id='return_notice'>Please come back to HomeBloodPressure.co.uk <span><%= when_next_bp_reading(@current_average_bp.ampm) %></span> to take another pair of blood pressure readings.</p>
+			<% else %>
+				<%= render :partial => 'devise/registrations/new' %>
+			<% end %>
 		</div>
 	</div>
-	
-	
-	
-	<h1>Is my blood pressure too high?</h1>
-	
-	<% if user_signed_in? %>
-		<div id='right_side_boxes_container_long'>
-	<% else %>
-		<div id='right_side_boxes_container_short'>
-	<% end %>
-	<% if !@average_sysbp.nil? %>
-		<div id='average_bp'>
-			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
-		</div>
-		<div id='reading_counter'>
-			<%= render :partial => 'reading_counter' %>
-		</div>	
-	<% end %>
-	</div>
-	
-	<% if bp_warning_message(@current_average_bp) %>
-		<p id='warning_msg'><%= bp_warning_message(@current_average_bp) %></p>
-	<% end %>
-
-	
-	<% if !bp_warning_message(@current_average_bp) %>
-		<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
-	<% end %>
-	
-	<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this <span><%= time_left %></span>. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from this site.</p>
-	<!--<p>Some illnesses may also affect what is considered to be a healthy blood pressure. After taking some readings you may need to answer more questions about your health. By doing this you will get more accurate, personalised advice.</p>-->
-	
-	<% if user_signed_in? %>
-		<p class='big_notice'>Please come back to HomeBloodPressure.co.uk <span><%= when_next_bp_reading(@current_average_bp.ampm) %></span> to take another pair of blood pressure readings.</p>
-	<% end %>
-	
-	<% if !user_signed_in? %>
-		<p>Sign up so you can check your blood pressure over the next 4 days.</p>
 		
-		<div id='sign_up_partial'>
-			<%= render :partial => 'devise/registrations/new' %>
-		</div>
-		
-		<div id='sign_up_benefits'>
-			<ul>
-				<li>You will receive free personalised advice on how best to control your blood pressure.</li>
-				<li>If you need to take medication, then you can choose to use our service to receive it. You’ll find out just how cheap and easy it is to get prescriptions delivered to your door.</li>
-				<li>You won't waste any more time waiting at the doctor's.</li>
-			</ul>
-		</div>
-		
-	<% end %>
-	
 </div>
 
 
