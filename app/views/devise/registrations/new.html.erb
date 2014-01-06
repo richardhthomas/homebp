@@ -1,24 +1,19 @@
 <div id='main'>
-	<div id='sign_up'>
-		<div id='heart_bp_monitor_pic'>
-			<%= image_tag("heart_bp_monitor_small.jpg", size: '150x120') %>
+	
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<% if !user_signed_in? %>
+				<h2>The best blood pressure treatment</h2>
+				<h3>FREE advice from UK GPs.</h3>
+				<h4>Online. Anytime.</h4>
+			<% end %>
 		</div>
-		
-		<div id='questions'>
-			<div id='q1'><h3>Are you worried about your blood pressure?</h3></div>
-			<div id='q2'><h3>Do you want to know the best way to treat it?</h3></div>
-			<div id='q3'><h3>Are you worried about side effects from blood pressure</h3></div>
-			<div id='q4'><h3>medication?</h3></div>
-		</div>
-		
-		<div style="height:150px;"></div>
-		
-		<h2>If so, you've come to the right place...</h2>
 	</div>
 	
-	<div style ="float:left; height:300px; width:220px;"></div>
-	
-	<div id='sign_up_partial'>
-		<%= render :partial => 'devise/registrations/new' %>
+	<div id='strip5'>
+		<div id='strip5_content'>
+			<%= render :partial => 'devise/registrations/new' %>
+		</div>
 	</div>
+	
 </div>

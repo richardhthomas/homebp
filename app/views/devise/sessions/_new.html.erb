@@ -1,8 +1,7 @@
-<div id='title'>
-	Sign in
-</div>
-
 <div id='nav_form'>
+	
+	<h4>Sign in</h4>
+	
 	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 		<table>
 			<tr>
@@ -21,7 +20,7 @@
 
 		<div id='sign_in_button'>
   			<button type='submit' class='button4'>
-  				<%= image_tag("padlock.gif", size: '12x16', :class => 'borderless_img') %>
+  				<%= image_tag("padlock.gif", size: '9x12', :class => 'borderless_img') %>
   				Sign in
   			</button>
   		</div>
