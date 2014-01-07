@@ -1,43 +1,52 @@
 <div id='main'>
-	<h1>Contact us</h1>
 	
-	<p>Please use the form below to contact us with any queries. However, be aware that although we frequently check for messages, this service is not able to provide any emergency medical advice. If you are feeling seriously unwell then please seek medical attention with your local doctor and do not await a response from us.</p>
-	
-	<div id='contact_us'>
-	
-	<div id='title'>
-		Contact us
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<% if !user_signed_in? %>
+				<h2>The best blood pressure treatment</h2>
+				<h3>FREE advice from UK GPs.</h3>
+				<h4>Online. Anytime.</h4>
+			<% end %>
+		</div>
 	</div>
 	
-	<div id='contact_form'>
-	<%= form_for @message do |f| %>
-	<table>
-		<tr>
-			<td><%= f.label :name %></td>
-			<td><%= f.text_field :name %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :email %></td>
-			<td><%= f.text_field :email %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :content, "Message" %></td>
-			<td><%= f.text_area :content, :rows => 5 %></td>
-		</tr>
-	</table>
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h3>Contact us</h3>
+			
+			<p>Please use the form below to contact us with any queries. However, be aware that although we frequently check for messages, this service is not able to provide any emergency medical advice. If you are feeling seriously unwell then please seek medical attention with your local doctor and do not await a response from us.</p>
+
+			<div id='nav_form'>
+				<%= form_for @message do |f| %>
+					<table>
+						<tr>
+							<td><%= f.label :name %></td>
+							<td><%= f.text_field :name %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :email %></td>
+							<td><%= f.text_field :email %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :content, "Message" %></td>
+							<td><%= f.text_area :content, :rows => 5 %></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><%= f.submit "Send Message", :class => 'button4' %></td>
+						</tr>
+					</table>
   
-	  <% if @message.errors.any? %>	
-	    	<div id="error_explanation">
-				<%= error_messages_for "message" %>
+	  				<% if @message.errors.any? %>	
+	    				<div id="error_explanation">
+							<%= error_messages_for "message" %>
+						</div>
+  					<% end %>
+				<% end %>
 			</div>
-  	<% end %>
-  
-  	<div id="submit">
-		<%= f.submit "Send Message", :class => 'button4' %>
+
+		</div>
 	</div>
-	</div>
-<% end %>
-</div>
 </div>
 
 

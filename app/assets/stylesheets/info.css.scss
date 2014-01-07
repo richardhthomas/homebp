@@ -255,8 +255,12 @@
             color: #000000;
             padding: 15px 0px 0px 25px;
             
-            span {
+            .bigger {
               font-size: 1.2em;
+            }
+            
+            .bold {
+              font-weight: bold;
             }
           }
             
@@ -422,6 +426,10 @@
           font-size:1em;
           color: #000000;
           padding: 15px 0px 0px 25px;
+          
+          .bold {
+            font-weight: bold;
+          }
         }
         
         #return_notice {
@@ -430,12 +438,14 @@
           padding: 25px 0px 0px 0px;
           max-width: 500px;
           margin: 0px 3% 0px 10%;
+          text-align: center;
         }
         
         #yes_no_buttons {
           width: 180px;
           margin-left: auto;
           margin-right: auto;
+          padding: 20px 200px 0px 0px;
         }
         
         #no_button, #yes_button {
@@ -443,14 +453,19 @@
           width: 80px;
         }
         
-        #no_button {
-          margin-right: 20px;
+        #yes_button {
+          margin-left: 20px; 
         }
         
         #next_button, #restart_button {
           width: 80px;
           margin-left: auto;
           margin-right: auto;
+          padding: 20px 200px 0px 0px;
+        }
+        
+        #restart_button {
+          padding: 20px 0px 0px 0px;
         }
       }
     }
@@ -471,10 +486,10 @@
       
       td {
         padding: 0px 20px 5px 0px;
+        vertical-align: top;
       }
       
       #tac_msg {
-        vertical-align: top;
         
         td {
           font-size: 0.9em;
@@ -515,6 +530,15 @@
         
       #error_explanation {
         margin-left: 40px;
+      }
+      
+      #message_content, #admin_message_content {
+        width: 450px;
+        font-size: 1em;
+      }
+      
+      #send_button {
+        margin: 20px 0px 20px 200px;
       }
     }
   }

@@ -1,14 +1,29 @@
 <div id='main'>
-	<h1>Home</h1>
-	<p>This page should act as a hub to the rest of the site, aimed at those who aren't yet signed-up. So I think we should have details about the service, links to useful information (on our site), a link to the BP wizard etc</p><br />
-	<p>Currently you will land here after logging in, but this will not be the case in future - I need to develop the logic to determine where you need to be sent after logging in (i.e. is a BP reading due or not)</p>
+	
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h2>The best blood pressure treatment</h2>
+			<h3>FREE advice from UK GPs.</h3>
+			<h4>Online. Anytime.</h4>
+		</div>
+	</div>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h3>Features</h3>
+			<p>You'll get clear information about your blood pressure.</p>
+			<p>You’ll get up to date, personalised advice from UK GPs.</p>
+			<p>You’ll be able to use this information whenever you want, without the hassle of having to get an appointment at your doctors.</p>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip5'>
+		<div id='strip5_content'>
+			<%= render :partial => 'devise/registrations/new' %>
+		</div>
+	</div>
+	<% end %>
+	
 </div>
 
-<%= #@last_bp[0].date
-%>
-
-<%= #@last_bp[0].ampm 
-%>
-
-<%= #@last_bp[0].sysbp 
-%>

@@ -8,36 +8,26 @@
 </head>
 <body>
 
-<div id="xcontainer">
+<div id="container">
 
-	<div id='xheader'>
-		<div id='xtopbannertitle'>
+	<div id='header'>
+	<div id='header_content'>
+		
+		<div id='topbannertitle'>
 			<%= link_to("HomeBloodPressure.co.uk", root_path) %>
 		</div>
-	</div>
 	
 	<div id='topmenu'>
 		<div class='topmenucontent'>
 			<%= link_to 'Admin menu', admin_root_path %>
 		</div>
-		<!--
-		<div class='topmenucontent'>
-			<a href=''>My account details</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>My medical details</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>My blood pressure readings</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>My blood test results</a>
-		</div>
-		<div class='topmenucontent'>
-			<a href=''>General advice</a>
-		</div>
-		-->
 	</div>
+	
+	<div class='clear_float'>
+	</div>
+	
+	</div>
+	</div>	
 	
 	<div id='back'>
 		<%= link_to_function "Back", "history.back()" %>
@@ -47,7 +37,20 @@
 		<% if flash[:notice] %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
-		<%= yield %>
+		
+		<div id='main'>
+		<div id='strip1'>
+			<div id='strip1_content'>
+			</div>
+		</div>
+		
+		<div id='strip3'>
+			<div id='strip3_content'>
+				<%= yield %>
+			</div>
+		</div>
+		</div>
+		
 	</div>
 
 </div>

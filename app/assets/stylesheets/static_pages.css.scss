@@ -1,63 +1,36 @@
-#main {
-  
-  #about_us {
+#content{
+  #main {
+    #strip3 {
+      
+      #strip3_content {
+        
+        .name {
+          float: left;
+          font-size:1.2em;
+          color: #032F76;
+          margin-top: 5px;
+        }
+          
+        .qualifications {
+          float: left;
+          color: #032F76;
+          margin: 5px 0px 0px 10px;
+          font-size: 0.8em;
+        }
+          
+        .gmc_no {
+          font-size: 0.8em;
+          margin: 0px 0px 0px 25px;
+        }
     
-    .about_us_box {
-      float: left;
-      width: 380px;
-      height: 150px;
-      margin: 10px 0px 10px 40px;
-      padding: 10px;
-      border-style:solid;
-      border-width:2px;
-      border-color:#033076;
-      -webkit-border-radius:10px;
-      -moz-border-radius:10px;
-      border-radius:10px;
-      background-color:#ffffff;
-  
-      h3 {
-        font-size: 16pt;
-        color: #0844a4;
-        font-weight: normal;
-        margin: 5px 0px 0px 10px;
+        .content {
+          margin: 0px 0px 30px 25px;
+        }
+        
+        .indent {
+          margin-left: 50px;
+        }
       }
-  
-      .content {
-        margin: 10px;
-      }
-    
-      .qualifications {
-        font-size: 10pt;
-        margin: 0px 0px 0px 10px;
-      }
-    
-      .gmcno {
-        font-size: 8pt;
-        margin: 0px 0px 0px 10px;
-      }
-    }
-    
-    .indent {
-      padding-left: 30px;
-      font-weight: bold; 
-    }
-  }
-  
-  
-  #tac {
-    
-    h3 {
-      font-size: 16pt;
-      color: #0844a4;
-      font-weight: normal;
-      margin: 30px 0px 10px 0px;
-    }
-
-    h4 {
-      font-size: 12pt;
-      margin-bottom: 5px;
-      font-weight: bold;
     }
   }
 }
