@@ -29,8 +29,8 @@ class CurrentBpsController < ApplicationController
           format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
       else
-        landing_page_setup
-        format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
+        #landing_page_setup
+        format.html { render action: 'new' } #Rails.application.routes.recognize_path(request.referer)[:action] }
       end
     end
   end
@@ -49,8 +49,8 @@ class CurrentBpsController < ApplicationController
           format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
       else
-        landing_page_setup
-        format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
+        #landing_page_setup
+        format.html { render action: 'new' } #Rails.application.routes.recognize_path(request.referer)[:action] }
       end
     end
   end

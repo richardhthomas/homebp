@@ -1,43 +1,61 @@
 <div id='main'>
-	<h1>Is my blood pressure too high?</h1>
 	
-	<div id='right_side_boxes_container_long'>
-	<% if !@average_sysbp.nil? %>
-		<div id='average_bp'>
-			<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+	<div id='strip1'>
+		<div id='strip1_content'>
 		</div>
-		<div id='reading_counter'>
-			<%= render :partial => 'reading_counter' %>
-		</div>	
-	<% end %>
 	</div>
 	
-	<% if @bp_entry_details[:bp_given] == 'yes' %>
-		<p>Thank you for entering your recent blood pressure readings.</p>
-	<% elsif @bp_entry_details[:bp_given] == 'skipped' %>
-		<p>OK. It is important to try to take a pair of blood pressure readings every morning and evening for 4 days. Don't worry if you miss the occasional reading, but the set must span no more than a week, otherwise you will need to restart. This ensures that you get an accurate and up to date measure of your blood pressure so you will know if it is too high.</p>
-	<% else %>
-		<p><span>Welcome back <%= current_user.email %></span></p>
-		<p>It's time to record some more blood pressure readings. Taking a set of readings over several days will give you an accurate measure of your blood pressure. From an accurate measure you'll get reliable advice. That way you will know whether your blood pressure really is too high.</p>
-	<% end %>
+	<div id='strip4'>
+		<div id='strip4_content'>
+			
+			<div id='graphic'>
+				<% if !@average_sysbp.nil? %>
+					<div id='average_bp'>
+						<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
+					</div>
+					<div id='reading_counter'>
+						<%= render :partial => 'reading_counter' %>
+					</div>	
+				<% end %>
+			</div>
+			
+			<div id='text'>
+				<% if @bp_entry_details[:bp_given] == 'yes' %>
+					<p>Thank you for entering your recent blood pressure readings.</p>
+				<% elsif @bp_entry_details[:bp_given] == 'skipped' %>
+					<p>OK. It is important to try to take a pair of blood pressure readings every morning and evening for 4 days. Don't worry if you miss the occasional reading, but the set must span no more than a week, otherwise you will need to restart. This ensures that you get an accurate and up to date measure of your blood pressure so you will know if it is too high.</p>
+				<% else %>
+					<p><span>Welcome back <%= current_user.email %></span></p>
+					<p>It's time to record some more blood pressure readings. Taking a set of readings over several days will give you an accurate measure of your blood pressure. From an accurate measure you'll get reliable advice. That way you will know whether your blood pressure really is too high.</p>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
 	
-	<% if old_bp_datetime_text == "" && @bp_entry_details[:bp_given] != nil %>
-		<p>Now it's time to take an up to date pair of readings.</p>
-	<% end %>
+	<div id='strip5'>
+		<div id='strip5_content'>
+			<% if old_bp_datetime_text == "" && @bp_entry_details[:bp_given] != nil %>
+				<p>Now it's time to take an up to date pair of readings.</p>
+			<% end %>
 	
-	<% if old_bp_datetime_text == "" %>
-		<div id='next_button'>
-			<%= link_to 'Next', new_current_bp_path(@bp_entry_details), :class => 'button1 button2' %>
+			<% if old_bp_datetime_text == "" %>
+				<div id='next_button'>
+					<%= link_to 'Next', new_current_bp_path(@bp_entry_details), :class => 'button1 button2' %>
+				</div>
+			<% else %>
+				<p>Do you have a pair of blood pressure readings from <span><%= old_bp_datetime_text %></span> that you need to enter into your account?</p>
+				<div id='yes_no_buttons'>
+					<div id='no_button'>
+						<%= link_to 'No', account_is_bp_set_completable_path(@bp_entry_details), method: :post, :class => 'button1' %>
+					</div>
+					<div id='yes_button'>
+						<%= link_to 'Yes', new_current_bp_path(@bp_entry_details), :class => 'button1 button2' %>
+					</div>
+				</div>
+			<% end %>
 		</div>
-	<% else %>
-		<p>Do you have a pair of blood pressure readings from <span><%= old_bp_datetime_text %></span> that you need to enter into your account?</p>
-		<div id='no_button'>
-			<%= link_to 'No', account_is_bp_set_completable_path(@bp_entry_details), method: :post, :class => 'button1' %>
-		</div>
-		<div id='yes_button'>
-			<%= link_to 'Yes', new_current_bp_path(@bp_entry_details), :class => 'button1 button2' %>
-		</div>
-	<% end %>
+	</div>
 
 </div>
 

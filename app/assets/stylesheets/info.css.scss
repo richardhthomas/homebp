@@ -76,6 +76,10 @@
             float:left;
             margin-left: 30px;
           }
+          
+          #error_explanation {
+            margin-bottom: 20px;
+          }
         }
       }
     }
@@ -134,7 +138,7 @@
           &:hover {
             text-decoration:none;
             color:#000000;
-            background-color: #e7f0fd;
+            background-color: #ffffff;
               
             #link_title_1 {
               background-color: #033076;
@@ -250,6 +254,10 @@
             font-size:1em;
             color: #000000;
             padding: 15px 0px 0px 25px;
+            
+            span {
+              font-size: 1.2em;
+            }
           }
             
           #feature_1 {
@@ -423,6 +431,27 @@
           max-width: 500px;
           margin: 0px 3% 0px 10%;
         }
+        
+        #yes_no_buttons {
+          width: 180px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        #no_button, #yes_button {
+          float: left;
+          width: 80px;
+        }
+        
+        #no_button {
+          margin-right: 20px;
+        }
+        
+        #next_button, #restart_button {
+          width: 80px;
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
     }
     
@@ -452,10 +481,9 @@
         }
       }
       
-      #tac_error_msg {
-        float:left;
+      #tac_error_msg p{
         text-align: center;
-        margin: 5px 0px 5px 0px;
+        margin: 5px 0px 10px 0px;
         color: #ff0000;
       }
       
@@ -468,13 +496,11 @@
       }
         
       #forgot_pwd_button {
-        float: left;
         padding: 10px 0px 20px 50px;
         font-size: 10pt;
       }
         
       #change_pwd_button {
-        float: left;
         padding: 10px 0px 20px 90px;
         font-size: 10pt;
       }
@@ -488,7 +514,6 @@
       }
         
       #error_explanation {
-        width: 390px;
         margin-left: 40px;
       }
     }

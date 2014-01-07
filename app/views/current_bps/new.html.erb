@@ -1,13 +1,14 @@
 <div id='main'>
-	<% if !user_signed_in? %>
+	
 	<div id='strip1'>
 		<div id='strip1_content'>
-			<h2>The best blood pressure treatment</h2>
-			<h3>FREE advice from UK GPs.</h3>
-			<h4>Online. Anytime.</h4>
+			<% if !user_signed_in? %>
+				<h2>The best blood pressure treatment</h2>
+				<h3>FREE advice from UK GPs.</h3>
+				<h4>Online. Anytime.</h4>
+			<% end %>
 		</div>
 	</div>
-	<% end %>
 	
 	<div id='strip2'>
 		<div id='strip2_content'>
@@ -39,15 +40,6 @@
 			</div>
 			
 		</div>
-	</div>
-	
-		
-	<div id='right_side_boxes_container_long'>
-	<% if !@average_sysbp.nil? %>
-		<div id='average_bp'>
-		<%= render :partial => 'account/average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
-		</div>
-	<% end %>
 	</div>
 
 </div>

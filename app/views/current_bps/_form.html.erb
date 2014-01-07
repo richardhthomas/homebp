@@ -12,14 +12,16 @@
   		</div>
   	</div>
   	
-  	<% if @current_bp.errors.any? %>
-  		<div id='error_wrapper'>
-			<%= error_messages_for "current_bp", "sysbp" %>
-		</div>
-  	<% end %>
-  	
   	<div id="submit">
 	   	<%= f.submit 'Next', :class => 'button6' %>
 	</div>
+	
+	<div class='clear_float'></div>
+	
+	<% if @current_bp.errors.any? %>
+  		<div id='error_explanation'>
+			<%= error_messages_for "current_bp", "sysbp" %>
+		</div>
+  	<% end %>
 	
 <% end %>
