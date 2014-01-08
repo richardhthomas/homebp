@@ -6,14 +6,14 @@
       background-color: #ffffff;
     
       #strip1_content {
-        width: 550px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-bottom: 30px;
+        //width: 550px;
+        //margin-left: auto;
+        //margin-right: auto;
+        //padding-bottom: 30px;
         padding-left: 5%;   
       
         h2 {
-          font-size:2em;
+          font-size:2.4em;
           color: #033076;
           font-weight: normal;
           margin: 20px 0px 0px 0px;
@@ -22,17 +22,21 @@
         h3, h4 {
           font-size: 1.6em;
           font-weight: normal;
-          margin: 0px 0px 0px 30px;
+          //margin: 0px 0px 0px 30px;
+          float: left;
+          margin-top: 16px;
         }
       
         h3 {
           color: #1464F6;
-          margin-top: 16px;
+          //margin-top: 16px;
+          margin-left: 30px;
         }
       
         h4 {
           color: #3D8AF7;
-          margin-top: 8px;
+          //margin-top: 8px;
+          margin-left:10px;
         }
       }
     }
@@ -43,12 +47,14 @@
       margin-bottom: 30px;
       
       #strip2_content {
-        width: 60%;
-        max-width: 670px;
-        padding-right: 5%;
-        margin-left: auto;
-        margin-right: auto;
+        //width: 60%;
+        //max-width: 670px;
+        //padding-right: 5%;
+        //margin-left: auto;
+        //margin-right: auto;
         padding-bottom: 30px;
+        padding-left: 5%;
+        padding-top: 10px; 
         
         h3 {
           font-size:1.8em;
@@ -469,6 +475,13 @@
         }
       }
     }
+    
+        
+    #strip1, #strip2, #strip3, #strip4, #strip5 {
+      max-width: 1000px;
+      margin: 0px auto 30px auto;
+    }
+    
     
     #nav_form {
       padding: 20px 0px 0px 6%;
