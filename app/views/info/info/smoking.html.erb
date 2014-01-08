@@ -1,0 +1,28 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Your lifestyle can improve your blood pressure</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>How does smoking affect my blood pressure?</h2>
+			<p>Text about general effects of smoking on BP</p>
+			<h3>Why stopping smoking will help you anyway</h3>
+			<p>Text about general effects of smoking and how these are a negative influence on the same outcomes as high BP.</p>
+		</div>
+	
+	</div>
+</div>

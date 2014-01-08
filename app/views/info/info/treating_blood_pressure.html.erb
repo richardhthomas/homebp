@@ -4,6 +4,7 @@
 			<h1>Your choice of blood pressure treatment</h1>
 			<p id='first'>FREE advice from UK GPs.</p>
 			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
 		</div>
 	</div>
 	
@@ -23,20 +24,20 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_how_do_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+			<%= link_to(info_lifestyle_options_path, :class => 'info_link') do %>
 				<span id='link_title_1'><span id='link_title_content_1'>Lifestyle options</span></span>
 				<%= image_tag("woman_apple_small_2.jpg") %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<span class='link_text'>Text containing the sorts of questions people may have about how lifestle changes can improve their blood pressure.</span>
 			<% end %>
-			<%= link_to(info_when_should_i_measure_my_blood_pressure_path, :class => 'info_link') do %>
+			<%= link_to(info_complementary_therapy_path, :class => 'info_link') do %>
 				<span id='link_title_2'><span id='link_title_content_2'>Complementary therapy</span></span>
 				<%= image_tag("relaxation_small.jpg") %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<span class='link_text'>Text containing the sorts of questions people may have about how complementary therapies may improve their blood pressure.</span>
 			<% end %>
-			<%= link_to(info_how_do_i_choose_a_blood_pressure_machine_path, :class => 'info_link') do %>
+			<%= link_to(info_medication_path, :class => 'info_link') do %>
 				<span id='link_title_3'><span id='link_title_content_3'>Medication</span></span>
 				<%= image_tag("tablets_small.jpg") %>
-				<span class='link_text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</span>
+				<span class='link_text'>Text containing the sorts of questions people may have about medications such as how they work, side effects, which is best.</span>
 			<% end %>
 			
 			<div class='clear_float'>

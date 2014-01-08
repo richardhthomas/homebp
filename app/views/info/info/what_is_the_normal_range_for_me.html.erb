@@ -1,0 +1,26 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Find out more about your blood pressure</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>What is the normal blood pressure range for me?</h2>
+			<p>Text about the factors that can influence the normal BP range and some examples of normal ranges.</p>
+		</div>
+	
+	</div>
+</div>

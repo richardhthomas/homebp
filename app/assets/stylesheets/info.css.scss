@@ -230,7 +230,7 @@
     #strip4 {
       width: 100%;
       background-color: #D4E3FC;
-      margin-bottom: 30px;
+      //margin-bottom: 30px;
       
       #strip4_content {
         width: 90%;
@@ -241,22 +241,6 @@
         
         #text {
           width: auto;
-          
-          h3 {
-            font-size:1.6em;
-            color: #032F76;
-            font-weight: normal;
-            padding: 20px 0px 0px 0px;
-            margin: 0px;
-          }
-        
-          h4 {
-            font-size:1.2em;
-            color: #032F76;
-            font-weight: normal;
-            padding: 20px 0px 0px 25px;
-            margin: 0px;
-          }
         
           p {
             font-size:1em;
@@ -421,7 +405,7 @@
       width: 100%;
       min-height: 370px;
       background-color: #D4E3FC;
-      margin-bottom: 30px;
+      //margin-bottom: 30px;
       
       #strip5_content {
         width: 90%;
@@ -489,7 +473,7 @@
       padding: 20px 0px 0px 6%;
       max-width: 400px;
       
-      h4 {
+      h2 {
         font-size:1.6em;
         color: #0844A4;
         padding: 0px 0px 15px 0px;

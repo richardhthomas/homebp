@@ -1,0 +1,30 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Your lifestyle can improve your blood pressure</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>How can my diet help my blood pressure?</h2>
+			<h3>What can I eat to help my blood pressure?</h3>
+			<p>Text about dietary factors.</p>
+			<br />
+			<h3>What about the things that I drink?</h3>
+			<p>Text about drink.</p>
+		</div>
+	
+	</div>
+</div>

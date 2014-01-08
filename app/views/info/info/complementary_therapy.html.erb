@@ -1,0 +1,48 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Your choice of blood pressure treatment</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>Complementary therapy for high blood pressure</h2>
+			<p>Text skimming surface of various complementary therapy treatments... or nothing... or site promotion...</p>
+		</div>
+		
+		<div id='links'>
+			<%= link_to(info_supplements_path, :class => 'info_link') do %>
+				<span id='link_title_1'><span id='link_title_content_1'>Supplements</span></span>
+				<%= image_tag("woman_apple_small_2.jpg") %>
+				<span class='link_text'>Text containing the sorts of questions people may have about how supplements can improve their blood pressure.</span>
+			<% end %>
+			<%= link_to(info_acupuncture_path, :class => 'info_link') do %>
+				<span id='link_title_2'><span id='link_title_content_2'>Acupuncture</span></span>
+				<%= image_tag("relaxation_small.jpg") %>
+				<span class='link_text'>Text containing the sorts of questions people may have about how acupuncture may improve their blood pressure.</span>
+			<% end %>
+			<%= link_to(info_herbal_remedies_path, :class => 'info_link') do %>
+				<span id='link_title_3'><span id='link_title_content_3'>Herbal remedies</span></span>
+				<%= image_tag("tablets_small.jpg") %>
+				<span class='link_text'>Text containing the sorts of questions people may have about how herbal remedies may improve their blood pressure.</span>
+			<% end %>
+			
+			<div class='clear_float'>
+			</div>
+		
+		</div>
+	
+	</div>
+</div>
