@@ -10,30 +10,31 @@
         //margin-left: auto;
         //margin-right: auto;
         //padding-bottom: 30px;
-        padding-left: 5%;   
+        padding: 50px 0px 20px 5%;   
       
-        h2 {
-          font-size:2.4em;
+        h1 {
+          font-size:2.5em;
           color: #033076;
           font-weight: normal;
-          margin: 20px 0px 0px 0px;
+          //margin: 20px 0px 0px 0px;
         }
       
-        h3, h4 {
-          font-size: 1.6em;
-          font-weight: normal;
+        #first, #second {
+          font-family: arial, verdana, helvetica, sans-serif;
+          font-size: 1.35em;
+          //font-weight: normal;
           //margin: 0px 0px 0px 30px;
           float: left;
-          margin-top: 16px;
+          margin-top: 20px;
         }
       
-        h3 {
+        #first {
           color: #1464F6;
           //margin-top: 16px;
           margin-left: 30px;
         }
       
-        h4 {
+        #second {
           color: #3D8AF7;
           //margin-top: 8px;
           margin-left:10px;
@@ -54,13 +55,13 @@
         //margin-right: auto;
         padding-bottom: 30px;
         padding-left: 5%;
-        padding-top: 10px; 
+        padding-top: 30px; 
         
-        h3 {
+        h2 {
           font-size:1.8em;
-          color: #0844A4;
+          color: #033076;
           font-weight: normal;
-          padding: 20px 0px 0px 0px;
+          //padding: 20px 0px 0px 0px;
           margin: 0px;
         }
         
@@ -71,7 +72,7 @@
         }
         
         #input_bp {
-        margin: 10px 0px 0px 55px;
+        margin: 15px 0px 0px 25px;
         
           #input_bp_boxes {
             float:left;
@@ -102,17 +103,17 @@
         margin-right: auto;
         padding-bottom: 30px;
         
-        h3 {
-          font-size:1.6em;
-          color: #032F76;
+        h2 {
+          font-size:1.8em;
+          color: #033076;
           font-weight: normal;
           padding: 20px 0px 0px 0px;
           margin: 0px;
         }
         
-        h4 {
+        h3 {
           font-size:1.2em;
-          color: #032F76;
+          color: #0844a4;
           font-weight: normal;
           padding: 20px 0px 0px 25px;
           margin: 0px;
@@ -131,7 +132,7 @@
         margin-right: auto;
         padding-bottom: 30px;
           
-        .info_link {
+        a.info_link {
           float: left;
           width: 150px;
           margin: 0px 10px 0px 10px;
@@ -218,8 +219,9 @@
             
           .link_text {
             font-size:1em;
-            line-height: 14px;
+            line-height: 16px;
             color: #000000;
+            display: block;
           }
         }
       }
