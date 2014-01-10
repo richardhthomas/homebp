@@ -34,6 +34,7 @@ class Admin::MessagesAdminController < Admin::AdminController
       @last_ampm = "am"
     end
       #search for all users who have an average_bp recorded but without a reading for the last time slot
+    
       #format them into a suitable bcc list
     Notifier.chase_user_for_bp(@emails).deliver
     redirect_to admin_menu_path, notice: "Message sent!"
