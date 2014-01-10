@@ -49,4 +49,8 @@ class Notifier < ActionMailer::Base
     @content = admin_message.content
     mail subject: admin_message.subject, bcc: admin_message.email
   end
+  
+  def chase_user_for_bp(emails)
+    mail subject: "Is your blood pressure too high?", bcc: emails 
+  end
 end
