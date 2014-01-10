@@ -1,0 +1,30 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Your choice of blood pressure treatment</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>Calcium channel blockers</h2>
+			<h3>Benefits</h3>
+			<p>Text about benefits of these meds.</p>
+			<br />
+			<h3>Side effects</h3>
+			<p>Text about possible side effects of these meds.</p>
+		</div>
+	
+	</div>
+</div>

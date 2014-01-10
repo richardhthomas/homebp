@@ -1,0 +1,50 @@
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Your choice of blood pressure treatment</h1>
+			<p id='first'>FREE advice from UK GPs.</p>
+			<p id='second'>Online. Anytime.</p>
+			<div class='clear_float'></div>
+		</div>
+	</div>
+	
+	<% if !user_signed_in? %>
+	<div id='strip2'>
+		<div id='strip2_content'>
+			<%= render 'info/is_my_bp_too_high' %>
+		</div>
+	</div>
+	<% end %>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<h2>What are the best medication options for me?</h2>
+			<p>General text about different groups of medications and info re generic vs branded.</p>
+		</div>
+		
+		<div id='links'>
+			<%= link_to(info_calcium_channel_blockers_path, :class => 'info_link_vertical') do %>
+				<span id='link_title_1'><span id='link_title_content_1'>Calcium channel blockers</span></span>
+				<span class='link_text'>Text containing the sorts of questions people may have about calcium channel blockers.</span>
+			<% end %>
+			<%= link_to(info_ace_inhibitors_path, :class => 'info_link_vertical') do %>
+				<span id='link_title_2'><span id='link_title_content_2'>ACE inhibitors</span></span>
+				<span class='link_text'>Text containing the sorts of questions people may have about ACE inhibitors.</span>
+			<% end %>
+			<%= link_to(info_a2rbs_path, :class => 'info_link_vertical') do %>
+				<span id='link_title_3'><span id='link_title_content_3'>A2RBs</span></span>
+				<span class='link_text'>Text containing the sorts of questions people may have about A2RBs.</span>
+			<% end %>
+			<%= link_to(info_diuretics_path, :class => 'info_link_vertical') do %>
+				<span id='link_title_4'><span id='link_title_content_4'>Diuretics</span></span>
+				<span class='link_text'>Text containing the sorts of questions people may have about diuretics.</span>
+			<% end %>
+			<%= link_to(info_beta_blockers_path, :class => 'info_link_vertical') do %>
+				<span id='link_title_5'><span id='link_title_content_5'>Beta blockers</span></span>
+				<span class='link_text'>Text containing the sorts of questions people may have about beta blockers.</span>
+			<% end %>
+		
+		</div>
+	
+	</div>
+</div>

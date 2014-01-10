@@ -131,12 +131,24 @@
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
-          
+        
         a.info_link {
           float: left;
           width: 150px;
           margin: 0px 10px 0px 10px;
+        }
+        
+        a.info_link_vertical {
+          margin: 0px 0px 15px 0px;
+          
+          .link_text {
+            margin: 5px 0px 0px 5px;
+          }
+        }
+          
+        a.info_link, a.info_link_vertical {
           padding: 5px;
+          display: block;
             
           &:link, &:visited {
             color:#000000;
@@ -170,13 +182,30 @@
                 background-color: #0C59CF;
               }
             }
+            
+            #link_title_4 {
+              background-color: #1464F6;
+                
+              #link_title_content_4 {
+                background-color: #1464F6;
+              }
+            }
+            
+            #link_title_5 {
+              background-color: #3d8af7;
+                
+              #link_title_content_5 {
+                background-color: #3d8af7;
+              }
+            }
           }
             
-          #link_title_1, #link_title_2, #link_title_3 {
+          #link_title_1, #link_title_2, #link_title_3, #link_title_4, #link_title_5 {
             display: block;
             padding: 5px 15px 5px 15px;
+            max-width: 120px;
               
-            #link_title_content_1, #link_title_content_2, #link_title_content_3 {
+            #link_title_content_1, #link_title_content_2, #link_title_content_3, #link_title_content_4, #link_title_content_5 {
               display: block;
               width: 100%;
               min-height: 32px;
@@ -208,6 +237,22 @@
               
             #link_title_content_3 {
               background-color: #0844A4;
+            }
+          }
+          
+          #link_title_4 {
+            background-color: #0C59CF;
+              
+            #link_title_content_4 {
+              background-color: #0C59CF;
+            }
+          }
+          
+          #link_title_5 {
+            background-color: #1464F6;
+              
+            #link_title_content_5 {
+              background-color: #1464F6;
             }
           }
             

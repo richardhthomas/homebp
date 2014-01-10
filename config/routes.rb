@@ -36,16 +36,16 @@ Homebp::Application.routes.draw do
         get 'herbal_remedies'
       
         #medication
-        get 'when_is_medication_recommended'
+        #get 'when_is_medication_recommended'
         get 'why_do_i_need_to_take_more_than_one_medication'
         get 'how_can_i_reduce_the_risk_of_side_effects'
-        get 'what_are_the_different_medication_options_for_me'
+        get 'what_are_the_best_medication_options_for_me'
         
           #medication options
           get 'calcium_channel_blockers'
           get 'ace_inhibitors'
-          get 'diuretics'
           get 'a2rbs'
+          get 'diuretics'
           get 'beta_blockers'
   end
     
