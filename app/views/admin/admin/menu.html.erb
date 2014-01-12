@@ -8,4 +8,5 @@
 		<p>A list of the average of each pair of readings. These are deleted after a full set has been taken. Readings can be edited or deleted. New readings can also be created for testing purposes.</p>
 	<%= link_to("Mail all users", new_admin_message_path) %>
 		<p>Send an email to all users. Be careful!!!</p>
+	<%= link_to("Mail all users missing readings", send_chase_user_for_bp_admin_messages_path, :method => :post) %>
 </div>
