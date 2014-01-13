@@ -89,7 +89,7 @@ Homebp::Application.routes.draw do
         get 'new_individual'
       end
       collection do
-        post 'send_chase_user_for_bp'
+        post 'chase_user_for_bp'
       end
     end
     root :to => "admin#menu"
