@@ -33,7 +33,7 @@ Homebp::Application.routes.draw do
         #complementary
         get 'supplements'
         get 'acupuncture'
-        get 'herbal_remedies'
+        #get 'herbal_remedies'
       
         #medication
         #get 'when_is_medication_recommended'
