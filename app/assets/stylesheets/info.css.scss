@@ -120,7 +120,7 @@
         }
         
         p {
-          font-size:1em;
+          font-size:1.1em;
           color: #000000;
           margin: 15px 0px 0px 25px;
         }
@@ -208,9 +208,9 @@
             #link_title_content_1, #link_title_content_2, #link_title_content_3, #link_title_content_4, #link_title_content_5 {
               display: block;
               width: 100%;
-              min-height: 32px;
-              font-size: 1.2em;
-              line-height: 16px;
+              min-height: 54px;
+              font-size: 1.4em;
+              line-height: 18px;
               color: #ffffff;
               text-align: center;
             }
@@ -266,7 +266,8 @@
             font-size:1em;
             line-height: 16px;
             color: #000000;
-            display: block;
+            //display: block;
+            display: none;
           }
         }
       }
