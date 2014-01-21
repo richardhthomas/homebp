@@ -2,35 +2,38 @@
 	<div id='strip1'>
 		<div id='strip1_content'>
 			<h1>How you can measure your blood pressure</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
+			<p id='first'>Measure your blood pressure</p>
+			<p id='second'>Sign up to get free advice from UK GPs</p>
+			<p id='third'>Get prescriptions delivered to your door</p>
 			<div class='clear_float'></div>
 		</div>
 	</div>
 	
-	<% if !user_signed_in? %>
-	<div id='strip2'>
-		<div id='strip2_content'>
-			<%= render 'info/is_my_bp_too_high' %>
-		</div>
-	</div>
-	<% end %>
-	
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h2>How do I measure my blood pressure?</h2>
-			<p>You only need to complete a few simple steps to get an accurate reading.</p>
-			<br />
+			<p>Follow these simple steps to measure your blood pressure at home. Then sign up to our free service and you can find out what you need to do next.
+			<% if !user_signed_in? %>
+				<%= link_to 'Find out more.', static_pages_features_path %>
+			<% end %>
+			</p>
+			
 			<h3>Make sure you are sat comfortably</h3>
 			<p>Sit down and relax for five minutes before you check your blood pressure. Uncross your legs and put your feet on the floor. Wear loose clothing that allows access to your arm. If you need to use the toilet then do it before taking your blood pressure. If you’ve just had a cup of coffee or a cigarette then give it thirty minutes before you measure.</p>
-			<br />
+			
 			<h3>Choose an arm</h3>
 			<p>The first time you measure your blood pressure, you should try both arms if possible. If one arm gives a reading that is more than 20 higher than the other on either figure then use that arm from now on. If not, use whichever arm is more comfortable.  Use the same arm each time from now on.</p>
-			<br />
+			
 			<h3>Take a reading</h3>
 			<p>Roll up your sleeve. If your sleeve forms a tight band around your upper arm then you may need to remove your outer clothing. Take a reading by following the instructions that came with the monitor. Try to remain quiet and still whilst taking the reading.</p>
 			<p>When the machine has taken your reading, it will display two numbers. Record these numbers on the website. The bigger one is your systolic blood pressure. The lower one is your diastolic blood pressure. They are both equally important. The machine may also display a solitary number. This is your pulse. You do not need to record this.</p>
 			<p>Wait a minute and then repeat the process. Taking two readings will give a more accurate measure of your blood pressure. The site will prompt you to do this.</p>
+			<div id='any_questions'>
+				<%= link_to(new_message_path, :class => 'button4') do %>
+					Any questions?
+					<span>Contact us here</span>
+				<% end %>
+			</div>
 		</div>
 	
 	</div>

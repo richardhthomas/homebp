@@ -117,7 +117,7 @@ a:hover {
   font-size:0.8em;
   border-left: 1px solid #ffffff;
   padding-left: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   
   #sign_in {
     width: 70px;
@@ -216,10 +216,11 @@ a.button7:hover {
   cursor:pointer;
   &:hover {
     background-color:#92d36e;
+    text-decoration:none;
   }
   
   span {
-    font-size: 14pt;
+    font-size: 1.2em;
   }
 }
 
@@ -237,15 +238,16 @@ a.button7:hover {
   -moz-border-radius:7px;
   border-radius:7px;
   background-color:#e7f0fd;
-  font-size: 12pt;
+  font-size: 1.1em;
   cursor:pointer;
   &:hover {
     background-color:#ffffff;
+    text-decoration:none;
   }
 }
 
 .button5 {
-  font-size: 10pt;
+  font-size: 1em;
 }
 
 .borderless_img {
@@ -276,6 +278,6 @@ a.button7:hover {
 }
 
 #bottombar a {
-  margin:0px 20px 0px 0px;
+  margin:0px 2% 0px 0px;
   color:#000000;
 }

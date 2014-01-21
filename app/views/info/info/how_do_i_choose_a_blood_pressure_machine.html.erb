@@ -2,27 +2,31 @@
 	<div id='strip1'>
 		<div id='strip1_content'>
 			<h1>How you can measure your blood pressure</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
+			<p id='first'>Measure your blood pressure</p>
+			<p id='second'>Sign up to get free advice from UK GPs</p>
+			<p id='third'>Get prescriptions delivered to your door</p>
 			<div class='clear_float'></div>
 		</div>
 	</div>
 	
-	<% if !user_signed_in? %>
-	<div id='strip2'>
-		<div id='strip2_content'>
-			<%= render 'info/is_my_bp_too_high' %>
-		</div>
-	</div>
-	<% end %>
-	
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h2>How do I choose a blood pressure machine?</h2>
+			<p>We’ll help you choose the blood pressure machine that is right for you. Then you’ll get clear advice on how to use it. Once you sign up to our free service, we’ll do all the hard work to help you get the most accurate reading of your blood pressure.
+			<% if !user_signed_in? %>
+				<%= link_to 'Find out more.', static_pages_features_path %>
+			<% end %>
+			</p>
 			<p>There are many different blood pressure monitors to choose from. You don’t need to spend a lot of money to get an accurate one. You should choose one that measures your blood pressure around your upper arm. Blood pressure monitors that go around the wrist are not accurate enough. This is because the readings on wrist monitors change with the position of your arm. Other methods of home blood pressure monitoring have not been validated yet.</p>
 			<p>When choosing a blood pressure monitor, it is important to buy one that has a cuff that fits you. If you have a larger figure you may need to buy a large or extra large cuff separately. You can tell whether the cuff fits you as they have marks showing their normal size range on them.</p>
 			<p>Generally the more expensive monitors have extra memory functions compared to the cheaper ones. They may also be more compact or made of better quality materials. Although these may be nice to have, they are not essential. The more expensive monitors are not any more accurate than the cheaper ones.</p>
 			<p>The <%= link_to 'British Hypertension Society', 'http://www.bhsoc.org//index.php?cID=246', :target => '_blank' %> checks the accuracy of monitors and has a list of approved monitors.</p>
+			<div id='any_questions'>
+				<%= link_to(new_message_path, :class => 'button4') do %>
+					Any questions?
+					<span>Contact us here</span>
+				<% end %>
+			</div>
 		</div>
 	
 	</div>
