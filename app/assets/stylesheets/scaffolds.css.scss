@@ -1,3 +1,8 @@
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+
 body {
   background-color: #fff;
   //color: #333;
@@ -29,7 +34,7 @@ a:hover {
 }
 
 #notice {
-  width: 300px;
+  width: 280px;
   margin: 10px auto 10px auto;
   padding: 5px 10px 5px 10px;
   border-style:solid;
@@ -118,6 +123,7 @@ a:hover {
   border-left: 1px solid #ffffff;
   padding-left: 15px;
   margin-bottom: 10px;
+  margin-left: 15px;
   
   #sign_in {
     width: 70px;
@@ -151,7 +157,7 @@ a:hover {
       display:block;
       color:#D4E3FC;
       font-size:1.2em;
-      padding:0px 15px 0px 0px;
+      padding:0px 0px 0px 15px;
       
       &:link, &:visited {
         color:#D4E3FC;
@@ -253,7 +259,6 @@ a.button7:hover {
 .borderless_img {
   border: 0px;
 }
-
 
 .clear_float {
   clear: both;

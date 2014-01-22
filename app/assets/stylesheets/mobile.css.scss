@@ -1,0 +1,50 @@
+@media (max-width: 450px) {
+  #topmenu {
+    margin-bottom: 15px;
+  }
+  
+  #content {
+    #main {
+      #strip1 {
+        #strip1_content {
+          padding: 30px 5% 0px 5%;  
+          
+          h1 {
+            font-size:2em;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+        
+@media (min-width: 950px) {
+  #content {
+    #main {
+      #strip1 {
+        #strip1_content {
+          #first, #second, #third {
+            float: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 450px) {
+  #content {
+    #main {
+      #strip4 {
+        #strip4_content {
+          #graphic {
+            float: right;
+            padding-right: 10px;
+            padding-left: 4%;
+          }
+        }
+      }
+    }
+  }
+}
