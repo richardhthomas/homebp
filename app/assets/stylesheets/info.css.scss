@@ -86,7 +86,7 @@
     
     #strip3 {
       width: 100%;
-      background-color: #D4E3FC;
+      background-color: #e7f0fd;
       margin-bottom: 30px;
       padding-bottom: 20px;
       
@@ -135,30 +135,23 @@
         }
       }
         
-      #links, #links_2 {
-        //width: 540px;
+      #links {
         width: 90%;
-        max-width: 600px;
+        max-width: 550px;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
         
-        a.info_link1, a.info_link2 {
-          //float: left;
-          //width: 150px;
+        a.info_link1, a.info_link2, a.info_link_slim {
           min-height: 120px;
           margin: 0px 0px 40px 0px;
         }
         
-        a.info_link_vertical {
-          margin: 0px 0px 15px 0px;
-          
-          .link_text {
-            margin: 5px 0px 0px 5px;
-          }
+        a.info_link_slim {
+          min-height: 60px;
         }
           
-        a.info_link1, a.info_link2, a.info_link_vertical {
+        a.info_link1, a.info_link2, a.info_link_slim {
           padding: 5px;
           display: block;
             
@@ -179,9 +172,8 @@
           #link_title {
             display: block;
             padding: 10px 10px 10px 10px;
-            //max-width: 120px;
             font-size: 1.6em;
-            line-height: 18px;
+            line-height: 22px;
             color: #033076;
           }
          
@@ -218,10 +210,6 @@
           }
         }
       }
-      
-      #links_2 {
-        width: 360px;
-      }
     }
     
     #strip4 {
@@ -242,10 +230,10 @@
             font-size: 1.1em;
             color: #000000;
             padding: 15px 0px 0px 3%;
-            
-            .bigger {
-              font-size: 1.3em;
-            }
+          }
+          
+          .bigger {
+            font-size: 1.3em;
           }
         }
         
@@ -415,7 +403,7 @@
     #strip5 {
       width: 100%;
       min-height: 370px;
-      background-color: #D4E3FC;
+      background-color: #e7f0fd;
       //margin-bottom: 30px;
       
       #strip5_content {

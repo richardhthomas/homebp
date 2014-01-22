@@ -8,44 +8,36 @@
 		</div>
 	</div>
 	
-	<% if !user_signed_in? %>
-	<div id='strip2'>
-		<div id='strip2_content'>
-			<%= render 'info/is_my_bp_too_high' %>
-		</div>
-	</div>
-	<% end %>
-	
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h2>What are the best medication options for me?</h2>
 			<p>In the same way that there is no magic ‘normal’ blood pressure range for everyone, it probably won’t surprise you to learn that there isn’t a magic medication that is also the best for everyone. If you suffer from other medical conditions you will find that some medications are more or less effective. Doctors have also found that your age and your ethnic background influence how effective some medications are.</p>
 			<p>By using HomeBloodPressure.co.uk you will get advice about the best medication options for you based on your own medical details.</p>
-			<br />
+			
 			<h3>What medications are available?</h3>
 			<p>There are a huge number of different medications available to treat high blood pressure. They are split into groups based on how they work inside your body. The most common groups are listed below.</p>
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_calcium_channel_blockers_path, :class => 'info_link_vertical') do %>
-				<span id='link_title_1'><span id='link_title_content_1'>Calcium channel blockers</span></span>
-				<span class='link_text'>These are often a first choice treatment for treating high blood pressure. Find out more here...</span>
+			<%= link_to(info_calcium_channel_blockers_path, :class => 'info_link_slim') do %>
+				<span id='link_title'>Calcium channel blockers</span>
+				<span class='link_text'>These are often a first choice treatment for treating high blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_ace_inhibitors_path, :class => 'info_link_vertical') do %>
-				<span id='link_title_2'><span id='link_title_content_2'>ACE inhibitors</span></span>
-				<span class='link_text'>These are also sometimes a first choice treatment. Find out more here...</span>
+			<%= link_to(info_ace_inhibitors_path, :class => 'info_link_slim') do %>
+				<span id='link_title'>ACE inhibitors</span>
+				<span class='link_text'>These are also sometimes a first choice treatment... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_a2rbs_path, :class => 'info_link_vertical') do %>
-				<span id='link_title_3'><span id='link_title_content_3'>A2RBs</span></span>
-				<span class='link_text'>These are mostly used if people get side effects from using an ACE inhibitor. Find out more here...</span>
+			<%= link_to(info_a2rbs_path, :class => 'info_link_slim') do %>
+				<span id='link_title'>A2RBs</span>
+				<span class='link_text'>These are mostly used if people get side effects from using an ACE inhibitor... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_diuretics_path, :class => 'info_link_vertical') do %>
-				<span id='link_title_4'><span id='link_title_content_4'>Diuretics</span></span>
-				<span class='link_text'>These tend to be used as an additional treatment with other blood pressure medication. Find out more here...</span>
+			<%= link_to(info_diuretics_path, :class => 'info_link_slim') do %>
+				<span id='link_title'>Diuretics</span>
+				<span class='link_text'>These tend to be used as an additional treatment with other blood pressure medication... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_beta_blockers_path, :class => 'info_link_vertical') do %>
-				<span id='link_title_5'><span id='link_title_content_5'>Beta blockers</span></span>
-				<span class='link_text'>These are mostly used as an addition to other medications if your blood pressure isn’t already well controlled. Find out more here...</span>
+			<%= link_to(info_beta_blockers_path, :class => 'info_link_slim') do %>
+				<span id='link_title'>Beta blockers</span>
+				<span class='link_text'>These are mostly used as an addition to other medications if your blood pressure isn’t already well controlled... <span class='more'>find out more.</span></span>
 			<% end %>
 		
 		</div>

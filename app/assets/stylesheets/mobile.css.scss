@@ -15,6 +15,30 @@
           }
         }
       }
+      
+      #strip2 {
+        #strip2_content {
+          h2 {
+            font-size: 1.6em;
+          }
+        }
+      }
+      
+      #strip3 {
+        #strip3_content {
+          h2 {
+            font-size: 1.6em;
+          }
+        }
+        
+        #links {
+          a.info_link1, a.info_link2, a.info_link_slim {
+            #link_title {
+              font-size:1.3em;
+            }
+          }
+        }
+      }
     }
   }
 }
