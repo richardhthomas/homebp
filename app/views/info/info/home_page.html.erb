@@ -2,16 +2,18 @@
 	<div id='strip1'>
 		<div id='strip1_content'>
 			<h1>The best blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
+			<p>Use our site to measure and treat your blood pressure in the comfort of your own home. Get free personalised advice about your blood pressure at any time, night or day. If you need them, get prescriptions delivered to your doorstep at a very reasonable price. And all this without having to spend hours on the telephone, or waiting at the GP surgery. Giving you more time to spend doing the things that you enjoy.</p>
 		</div>
 	</div>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
 		<div id='strip2_content'>
-			<%= render 'info/is_my_bp_too_high' %>
+			<%= render 'info/promo' %>
+			<div id='text'>
+				<%= render 'info/is_my_bp_too_high' %>
+			</div>
+			
 		</div>
 	</div>
 	<% end %>
@@ -19,23 +21,22 @@
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h2>Information and advice</h2>
-			<p>By using this site you’ll get clear information about your blood pressure. You’ll get up to date personalised advice from UK GPs. You’ll be able to use this information whenever you want, without the hassle of having to get an appointment at your doctors.</p>
 		</div>
 		
 		<div id='links'>
 			<%= link_to(info_what_is_blood_pressure_path, :class => 'info_link1') do %>
 				<%= image_tag("heart_bp_monitor_small.jpg") %>
-				<span id='link_title'>What is blood pressure?</span>
-				<span class='link_text'>It is a measure of the pressure in your arteries... <span class='more'>find out more.</span></span>
+				<span class='link_title'>What is blood pressure?</span>
+				<span class='link_text'>It's a measure of the pressure in your arteries... <span class='more'>find out more.</span></span>
 			<% end %>
 			<%= link_to(info_measuring_blood_pressure_path, :class => 'info_link2') do %>
 				<%= image_tag("woman_taking_bp_small.jpg") %>
-				<span id='link_title'>Measuring blood pressure</span>
+				<span class='link_title'>Measuring blood pressure</span>
 				<span class='link_text'>Using a home blood pressure machine is a good way to measure your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
 			<%= link_to(info_treating_blood_pressure_path, :class => 'info_link1') do %>
 				<%= image_tag("tablets_small.jpg") %>
-				<span id='link_title'>Treating blood pressure</span>
+				<span class='link_title'>Treating blood pressure</span>
 				<span class='link_text'>As well as medications, there are some changes you can make yourself... <span class='more'>find out more.</span></span>
 			<% end %>
 		

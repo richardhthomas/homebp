@@ -56,7 +56,7 @@ a:hover {
 
 #input_bp{
   .field_with_errors {
-    float: left;
+    //float: left;
   }
 }
 
@@ -85,19 +85,20 @@ a:hover {
   font-size: 10pt;
   width: 100%;
   min-width: 320px;
+  max-width: 1000px;
+  margin: 0px auto 0px auto;
 }
 
 #header {
   width: 100%;
-  max-width: 1000px;
-  margin: 0px auto 0px auto;
+  //max-width: 1000px;
+  //margin: 0px auto 0px auto;
   padding-top: 8px;
   background-color:#033076;
 }
 
 #header_content {
   width: 90%;
-  //max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   background-color:#033076;

@@ -1,22 +1,16 @@
 <%= form_for(@current_bp) do |f| %>
 	<%= f.hidden_field :datetime, {:value => @bp_entry_details[:datetime]} %>
 	<%= f.hidden_field :reading_no, {:value => @bp_entry_details[:reading_no]} %>
-	<div id='input_bp_boxes'>
-    	<%= f.text_field(:sysbp) %>
-  		<div id='slash'>
-  			/
-  		</div>
-	    <%= f.text_field(:diabp) %>
-  		<div id='mmhg'>
-  			mmHg
-  		</div>
-  	</div>
-  	
-  	<div id="submit">
-	   	<%= f.submit 'Next', :class => 'button6' %>
-	</div>
 	
-	<div class='clear_float'></div>
+	<table>
+		<tr>
+			<td><%= f.text_field(:sysbp) %></td>
+			<td id='slash'>/</td>
+			<td><%= f.text_field(:diabp) %></td>
+			<td id='mmhg'>mmHg</td>
+			<td id='submit'><%= f.submit 'Next', :class => 'button6' %></td>
+		</tr>
+	</table>
 	
 	<% if @current_bp.errors.any? %>
   		<div id='error_explanation'>

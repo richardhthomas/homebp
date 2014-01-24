@@ -27,31 +27,8 @@
       border-radius:7px;
       background-color:#033076;
       color:#ffffff;
-      font-size: 14pt;
+      font-size: 1.5em;
       text-align: center;
+      line-height: 22px;
       padding: 5px 8px 8px 8px;
     }
-
-#input_bp_boxes {
-  #current_bp_sysbp, #current_bp_diabp {
-    width: 70px;
-    padding: 5px;
-    font-size: 1.2em;
-    float: left;
-    border-style:solid;
-    border-width:2px;
-    border-color:#033076;
-  }
-
-  #slash {
-    float: left;
-    font-size: 1.4em;
-    padding: 10px 10px 0px 10px;
-  }
-
-  #mmhg {
-    float: left;
-    font-size: 0.8em;
-    padding: 10px 0px 0px 10px;
-  }
-}

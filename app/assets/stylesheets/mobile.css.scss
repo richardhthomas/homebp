@@ -33,23 +33,9 @@
         
         #links {
           a.info_link1, a.info_link2, a.info_link_slim {
-            #link_title {
+            .link_title {
               font-size:1.3em;
             }
-          }
-        }
-      }
-    }
-  }
-}
-        
-@media (min-width: 950px) {
-  #content {
-    #main {
-      #strip1 {
-        #strip1_content {
-          #first, #second, #third {
-            float: left;
           }
         }
       }
@@ -65,7 +51,17 @@
           #graphic {
             float: right;
             padding-right: 10px;
-            padding-left: 4%;
+            padding-left: 6%;
+          }
+        }
+      }
+      
+      #strip2 {
+        #strip2_content {
+          #graphic {
+            float: right;
+            padding-right: 10px;
+            padding-left: 6%;
           }
         }
       }
