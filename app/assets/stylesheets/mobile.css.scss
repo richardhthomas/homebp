@@ -7,7 +7,7 @@
     #main {
       #strip1 {
         #strip1_content {
-          padding: 30px 5% 0px 5%;  
+          padding: 30px 5% 30px 5%;  
           
           h1 {
             font-size:2em;
@@ -18,8 +18,10 @@
       
       #strip2 {
         #strip2_content {
-          h2 {
-            font-size: 1.6em;
+          #text {
+            h2 {
+              font-size: 1.6em;
+            }
           }
         }
       }

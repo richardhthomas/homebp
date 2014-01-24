@@ -6,11 +6,11 @@
 		<tr>
 			<td><%= f.text_field(:sysbp) %></td>
 			<td id='slash'>/</td>
-			<td><%= f.text_field(:diabp) %></td>
-			<td id='mmhg'>mmHg</td>
-			<td id='submit'><%= f.submit 'Next', :class => 'button6' %></td>
+			<td><%= f.text_field(:diabp) %><span id='mmhg'>mmHg</span></td>
+			<td colspan='3' id='submit'><%= f.submit "Get advice about\r\nyour blood pressure", :class => 'button6' %></td>
 		</tr>
 	</table>
+	
 	
 	<% if @current_bp.errors.any? %>
   		<div id='error_explanation'>
