@@ -1,12 +1,6 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Find out more about your blood pressure</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	
+	<%= render 'info/what_is_bp_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
@@ -19,8 +13,6 @@
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<h2>What is blood pressure?</h2>
-			<h3>Use HomeBloodPressure.co.uk to find out more about your blood pressure</h3>
-			<p>By using this site you’ll be getting clear information about your blood pressure. You’ll get up to date personalised advice from UK GPs. You’ll be able to use this information whenever you want, without the hassle of having to get an appointment at your doctors.</p>
 		</div>
 		
 		<div id='links'>

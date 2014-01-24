@@ -1,29 +1,27 @@
 <div id='main'>
+	
 	<div id='strip1'>
 		<div id='strip1_content'>
 			<h1>How you can measure your blood pressure</h1>
-			<p id='first'>Use a home blood pressure monitor</p>
-			<p id='second'>Get free advice from UK GPs</p>
-			<p id='third'>Have a prescription delivered to your door</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
-	
-	<div id='strip3'>
-		<div id='strip3_content'>
-			<h2>When should I measure my blood pressure?</h2>
 			<p>Follow our instructions to know when to take your readings at home. Then sign up to our free service to receive automatic reminders to measure your blood pressure. Let us do the hard work and work out your average blood pressure. Then use our service to find out what you need to do next.
 			<% if !user_signed_in? %>
 				<%= link_to 'Find out more.', static_pages_features_path %>
 			<% end %>
 			</p>
+		</div>
+	</div>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<div id='welcome'>
+				<h2>When should I measure my blood pressure?</h2>
+			</div>
+			<%= render 'info/questions' %>
+			<div id='text'>
+			
 			<p>You should measure your blood pressure each morning and evening. On each occasion you should take two readings one minute apart. Our website will help you keep track of this with email reminders and clear instructions. Then we’ll do the hard work for you, and work out what your average blood pressure is.</p>
 			<p>Your blood pressure varies from hour to hour so one or two readings can be misleading. Doctors recommend taking a set of readings over at least 4 days to get a reliable measurement. By using HomeBloodPressure.co.uk you will be guided through taking your readings step by step so you can be sure you’ve got an accurate measurement. By taking the average of a lot of readings HomeBloodPressure.co.uk is able to give you a more reliable measure of your blood pressure than any single reading.</p>
-			<div id='any_questions'>
-				<%= link_to(new_message_path, :class => 'button4') do %>
-					Any questions?<br />
-					<span>Ask us here</span>
-				<% end %>
+
 			</div>
 		</div>
 	
