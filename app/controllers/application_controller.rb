@@ -83,7 +83,9 @@ class ApplicationController < ActionController::Base
   # the 3 methods below are here rather than in current_bps_controller so that they are accessed from the info pages as well.
   def set_current_bps
     @n = @bp_entry_details[:datetime].to_i
-    @current_bps = active_user.current_bps.where(:date => session[:bp_entry_details][:date][@n], :ampm => session[:bp_entry_details][:ampm][@n]).order("id")
+    ampm = session[:bp_entry_details][:ampm][@n]
+    date = session[:bp_entry_details][:date][@n]
+    @current_bps = active_user.current_bps.for_date_and_ampm(date, ampm)
   end
     
   def check_current_bp
