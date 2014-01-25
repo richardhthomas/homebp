@@ -58,29 +58,23 @@ class CurrentBpsController < ApplicationController
   def create_average_bp
     set_current_bps
     
-    @average_current_sysbp = @current_bps.average(:sysbp)
-    @average_current_diabp = @current_bps.average(:diabp)
+    current_average_bp = active_user.average_bps.for_date_and_ampm(@current_bps[0].date, @current_bps[0].ampm).take 
     
-    @current_average_bp = active_user.average_bps.where(:date => @current_bps[0].date, :ampm => @current_bps[0].ampm).take #holds current average bp if one has already been created
-    
-    if !@current_average_bp.nil? # detects if already have an average bp, so can be overwritten in the case that user has gone back and altered values
-      @current_average_bp.sysbp = @average_current_sysbp
-      @current_average_bp.diabp = @average_current_diabp
-      @current_average_bp.save
-    else # create average bp
-      @average_bp = active_user.average_bps.build
-      @average_bp.sysbp = @average_current_sysbp
-      @average_bp.diabp = @average_current_diabp
-      @average_bp.date = @current_bps[0].date
-      @average_bp.ampm = @current_bps[0].ampm
-      if @average_bp.save
-        @bp_entry_details[:bp_given] = 'yes' # this is used to determine text (GET / URL used so back action in browser is appropriate)
+    blood_pressure = current_average_bp || active_user.average_bps.build
+    blood_pressure.sysbp = @current_bps.average(:sysbp)
+    blood_pressure.diabp = @current_bps.average(:diabp)
+    if blood_pressure.new_record?
+      blood_pressure.date = @current_bps[0].date
+      blood_pressure.ampm = @current_bps[0].ampm
+      if blood_pressure.valid?
+        bp_entry_details[:bp_given] = 'yes' # this is used to determine text (GET / URL used so back action in browser is appropriate)
         session[:average_bp_given] = 'yes' # this is used to determine whether to run set_bp_entry_datetime or not (Session used so is pervasive)
       end
     end
-    @bp_entry_details[:datetime] = @bp_entry_details[:datetime].to_i + 1
-    @bp_entry_details[:reading_no] = '1'
-    redirect_to account_router_path(@bp_entry_details)
+    blood_pressure.save
+    bp_entry_details[:datetime] = bp_entry_details[:datetime].to_i + 1
+    bp_entry_details[:reading_no] = '1'
+    redirect_to account_router_path(bp_entry_details)
   end 
 
   def signup_bp_migration
