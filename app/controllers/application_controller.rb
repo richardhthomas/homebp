@@ -95,13 +95,9 @@ class ApplicationController < ActionController::Base
   end
     
   def collect_bp
-    if check_current_bp
-      @current_bp = check_current_bp
-    else
-      @current_bp = CurrentBp.new
-    end
+    @current_bp = check_current_bp ||
+        CurrentBp.new(sysbp: session[:sysbp], diabp: session[:diabp])
   end
-  
   
   # define the average BP for the current batch of readings as well as the coordinates for the graphic display
   def batch_average_bp
