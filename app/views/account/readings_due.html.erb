@@ -28,7 +28,7 @@
 			</div>
 			
 			<div id='text'>
-				<% if @bp_entry_details[:bp_given] == 'skipped' %>
+				<% if @last_reading.skipped? %>
 					<p>Ideally try to take a pair of blood pressure readings every morning and evening for 4 days. Don't worry if you miss the occasional reading, but the set must span no more than a week, otherwise you will need to restart. This ensures that you get an accurate and up to date measure of your blood pressure so you will know if it is too high.</p>
 				<% elsif @bp_entry_details[:bp_given] == nil %>
 					<p>It's time to record some more blood pressure readings. Taking a set of readings over several days will give you an accurate measure of your blood pressure. From an accurate measure we'll give you reliable advice. That way you will know whether your blood pressure really is too high.</p>

@@ -7,4 +7,8 @@ class CurrentBp < ActiveRecord::Base
   def self.for_date_and_ampm(date, ampm)
     where(:date => date, :ampm => ampm).order("id")
   end
+
+  def skipped?
+    sysbp.blank? && diabp.blank?
+  end
 end

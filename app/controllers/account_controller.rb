@@ -79,6 +79,7 @@ class AccountController < ApplicationController
   end
   
   def readings_due
+    @last_reading = ....
   end
   
   def is_bp_set_completable
