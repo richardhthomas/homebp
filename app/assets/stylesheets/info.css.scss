@@ -17,13 +17,19 @@
           color: #033076;
           font-weight: normal;
           line-height: 35px;
-          margin: 0px 0px 10px 0px;
+          margin: 0px;
         }
         
         p {
           font-size:1.1em;
-          color: #000000;
-          margin: 15px 5px 0px 3%;
+          line-height: 20px;
+          color: #0844a4;
+          margin: 15px 5px 10px 3%;
+        }
+        
+        a {
+          font-size:1.2em;
+          margin: 0px 5px 0px 3%;
         }
       }
     }

@@ -1,16 +1,10 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
 		<div id='strip2_content'>
+			<%= render 'info/promo' %>
 			<%= render 'info/is_my_bp_too_high' %>
 		</div>
 	</div>
@@ -18,27 +12,30 @@
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Treating blood pressure</h2>
-			<h3>How can HomeBloodPressure.co.uk help me treat my blood pressure?</h3>
-			<p>This site will tell you what the options are for treating your blood pressure. You’ll be able to see the benefits and disadvantages of any treatments that you may choose. By choosing to use our prescription delivery service you will get your prescriptions delivered to your door. You will be able to arrange to monitor your own blood pressure at a time that is convenient for you. You’ll be the one in charge of your treatment.</p>
+			<div id='welcome'>
+				<h2>Treating blood pressure</h2>
+			</div>
+			
+			<div id='text'>
 			<h3>Why is medication often recommended?</h3>
 			<p>Although it is very important that you try to lead as healthy a lifestyle as possible, in many cases you need to do more than that. The earlier and more effectively you treat your blood pressure, the more good it does you. This means in the majority of cases where you have high blood pressure, you are best off to start taking medication sooner rather than later.</p>
+			</div>
 		</div>
 		
 		<div id='links'>
 			<%= link_to(info_lifestyle_options_path, :class => 'info_link1') do %>
 				<%= image_tag("woman_apple_small_3.jpg") %>
-				<span id='link_title'>Lifestyle options</span>
+				<span class='link_title'>Lifestyle options</span>
 				<span class='link_text'>You can improve your blood pressure by making some small lifestyle changes... <span class='more'>find out more.</span></span>
 			<% end %>
 			<%= link_to(info_complementary_therapy_path, :class => 'info_link2') do %>
 				<%= image_tag("acupuncture_small.jpg") %>
-				<span id='link_title'>Complementary therapy</span>
+				<span class='link_title'>Complementary therapy</span>
 				<span class='link_text'>Some people try supplements or acupuncture to help their blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
 			<%= link_to(info_medication_path, :class => 'info_link1') do %>
 				<%= image_tag("tablets_small.jpg") %>
-				<span id='link_title'>Medication</span>
+				<span class='link_title'>Medication</span>
 				<span class='link_text'>You can choose from lots of different medications to help with your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
 			
