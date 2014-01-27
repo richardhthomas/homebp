@@ -1,16 +1,10 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
 		<div id='strip2_content'>
+			<%= render 'info/promo' %>
 			<%= render 'info/is_my_bp_too_high' %>
 		</div>
 	</div>
@@ -18,8 +12,9 @@
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Lifestyle options for treating blood pressure</h2>
-			<p>You can usually make some small changes to your lifestyle that will improve your blood pressure. The good news is that these changes tend to improve your health in general so you’ve nothing to lose!</p>
+			<div id='welcome'>
+				<h2>Lifestyle options for treating blood pressure</h2>
+			</div>
 		</div>
 		
 		<div id='links'>

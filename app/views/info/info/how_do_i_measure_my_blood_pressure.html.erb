@@ -1,15 +1,6 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>How you can measure your blood pressure</h1>
-			<p>Follow these simple steps to measure your blood pressure at home. Sign up and use our free service to record your blood pressure measurements. Get personalised advice from UK GPs. Then get your prescriptions delivered to your door if you need them.
-			<% if !user_signed_in? %>
-				<%= link_to 'Find out more.', static_pages_features_path %>
-			<% end %>
-			</p>
-		</div>
-	</div>
+	<%= render 'info/measuring_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>

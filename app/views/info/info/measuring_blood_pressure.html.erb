@@ -1,15 +1,6 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>How you can measure your blood pressure</h1>
-			<p>You’ll be able to follow simple instructions on how to measure your blood pressure. You’ll be able to easily record your blood pressure measurements. You’ll get reminders of when you need to next check your blood pressure. We’ll do all the hard work for you by calculating a running average of your blood pressure readings. You'll then get free personalised advice!
-			<% if !user_signed_in? %>
-				<%= link_to 'Find out more.', static_pages_features_path %>
-			<% end %>
-			</p>
-		</div>
-	</div>
+	<%= render 'info/measuring_bp_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>

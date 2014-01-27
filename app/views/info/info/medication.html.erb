@@ -1,16 +1,10 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
 		<div id='strip2_content'>
+			<%= render 'info/promo' %>
 			<%= render 'info/is_my_bp_too_high' %>
 		</div>
 	</div>
@@ -18,8 +12,10 @@
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Medication</h2>
-			<p>There are many different medications to treat high blood pressure. The right one for you will depend on a number of factors. This is where we can help. By using HomeBloodPressure.co.uk you will get advice about the best medication options for you, based on your medical details.</p>	
+			<div id='welcome'>
+				<h2>Medication</h2>
+			<p>There are many different medications to treat high blood pressure. The right one for you will depend on a number of factors. This is where we can help. By using HomeBloodPressure.co.uk you will get advice about the best medication options for you, based on your medical details.</p>
+			</div>	
 		</div>
 		
 		<div id='links'>

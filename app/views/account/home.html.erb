@@ -1,12 +1,6 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<% if !user_signed_in? %>
-			<div id='strip1_content'>
-				<h1>The best blood pressure treatment</h1>
-			</div>
-		<% end %>
-	</div>
+	<%= render 'info/generic_title' %>
 	
 	
 	<div id='strip4'>
@@ -30,11 +24,12 @@
 				<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
 			<% end %>
 	
+			<% if user_signed_in? %>
 			<p>...However, to get a more accurate picture of what your blood pressure is like you need to take more readings like this <span class='bold'><%= time_left %></span>. This is because your blood pressure will vary from hour to hour, so one or two readings can be misleading. By taking more readings, you will get more accurate advice from us.</p>
-			
-			<% if !user_signed_in? %>
-				<p id='feature_1'>You can be guided through this process by us... we'll make it easy.</p>
-				<p id='feature_2'>You can control your own blood pressure at home.</p>
+			<% else %>
+			<p>...Next you need to sign up to our free service. Then you’ll be able to use our simple site to measure your blood pressure over the next four days. We’ll do all the hard work for you. After four days, you’ll have the most accurate home blood pressure reading possible.</p>
+			<p id='feature_2'>Sign up below to start measuring your blood pressure at home.</p>
+			<p>Why do I need to measure my blood pressure over four days? <%= link_to 'Find out here...', info_when_should_i_measure_my_blood_pressure_path %></p>
 			<% end %>
 			</div>
 

@@ -1,15 +1,6 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>How you can measure your blood pressure</h1>
-			<p>Follow our instructions to know when to take your readings at home. Then sign up to our free service to receive automatic reminders to measure your blood pressure. Let us do the hard work and work out your average blood pressure. Then use our service to find out what you need to do next.
-			<% if !user_signed_in? %>
-				<%= link_to 'Find out more.', static_pages_features_path %>
-			<% end %>
-			</p>
-		</div>
-	</div>
+	<%= render 'info/measuring_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>

@@ -1,21 +1,21 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>How does exercise help my blood pressure?</h2>
+			<div id='welcome'>
+				<h2>How does exercise help my blood pressure?</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<p>In the past you may have found the advice about exercise very confusing. This is because we actually know very little about the effects of exercise on your blood pressure. There is not much good evidence that exercise helps your blood pressure.</p>
 			<p>This ignores all the other benefits of exercise on your physical and mental health. It can help you lose weight which is known to help lower blood pressure. Exercise also helps with your coordination and strength and can be sociable and fun if you choose the right activity.</p>
 			
 			<h3>What exercise do I need to do?</h3>
 			<p>The current best advice about exercise and blood pressure is that if you exercise for 50 to 60 minutes,  3 or 4 times a week, it probably helps to lower your blood pressure.</p>
+			</div>
 		</div>
 	
 	</div>

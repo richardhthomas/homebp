@@ -1,21 +1,21 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Diuretics</h2>
+			<div id='welcome'>
+				<h2>Diuretics</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<h3>Benefits</h3>
 			<p>These days diuretics are most commonly used as a second line or additional treatment for blood pressure. They will lower your blood pressure and also protect you from some of the conditions that high blood pressure can cause. However, for most people they aren’t as effective as calcium channel blockers or ACE inhibitors.</p>
 			
 			<h3>Side effects</h3>
 			<p>You may know diuretics as “water tablets”. Unsurprisingly their common side effects include making you pass urine more often. However, with most diuretics used to treat high blood pressure, this tends to wear off over a week or two. If you are taking diuretics then your kidney function should be monitored by a blood test.</p>
+			</div>
 		</div>
 	
 	</div>

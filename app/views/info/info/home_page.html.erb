@@ -1,10 +1,5 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>The best blood pressure treatment</h1>
-			<p>Use our site to measure and treat your blood pressure in the comfort of your own home. Get free personalised advice about your blood pressure at any time, night or day. If you need them, get prescriptions delivered to your doorstep at a very reasonable price. And all this without having to spend hours on the telephone, or waiting at the GP surgery. Giving you more time to spend doing the things that you enjoy.</p>
-		</div>
-	</div>
+	<%= render 'info/generic_title' %>
 	
 	<% if !user_signed_in? %>
 	<div id='strip2'>
@@ -17,7 +12,7 @@
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<div id='text'>
+			<div id='welcome'>
 				<h2>Information and advice</h2>
 			</div>
 		</div>

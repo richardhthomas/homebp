@@ -1,17 +1,17 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>How can acupuncture help my blood pressure?</h2>
+			<div id='welcome'>
+				<h2>How can acupuncture help my blood pressure?</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<p>Although you may wish to try acupuncture to see if it helps with your blood pressure, at the moment we do not know whether it is helpful.</p>
+			</div>
 		</div>
 
 	</div>

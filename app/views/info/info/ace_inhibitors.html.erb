@@ -1,21 +1,21 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>ACE inhibitors</h2>
+			<div id='welcome'>
+				<h2>ACE inhibitors</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<h3>Benefits</h3>
 			<p>If you are under 55 and not from an African or Caribbean background then these are likely to be the first choice medication for you. They are also often the first choice in people with diabetes. In these groups of people they are one of the most effective medications at preventing the bad effects of high blood pressure.</p>
 			
 			<h3>Side effects</h3>
 			<p>The most common side effect that you may get is a dry cough. If you are started on these medications you need to have blood tests to monitor your kidney function. Although these drugs usually protect the kidneys in people with high blood pressure, on rare occasions they can make them worse. Sometimes when you first start taking them, these medications can make you feel dizzy, but this usually gets better after you’ve been taking them for a couple of days.</p>
+			</div>
 		</div>
 	
 	</div>

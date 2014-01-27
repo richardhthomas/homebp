@@ -1,14 +1,11 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>The best blood pressure treatment</h1>
-		</div>
-	</div>
+	<%= render 'info/generic_title' %>
 
 	<% if !user_signed_in? %>
 	<div id='strip2'>
 		<div id='strip2_content'>
+			<%= render 'info/promo' %>
 			<%= render :partial => 'devise/registrations/new' %>
 		</div>
 	</div>
@@ -16,6 +13,7 @@
 
 	<div id='strip3'>
 		<div id='strip3_content'>
+			<div id='text'>
 			<h2>Features and benefits</h2>
 			<h3>Are you fed up of having to wait at the doctors to have your blood pressure monitored?</h3>
 			<p>By using this site, you’ll be able to measure your own blood pressure at home. You’ll have a safe place to store the readings. You’ll be able to see when your next reading is due. You’ll be able to see whether your blood pressure needs treating. And you’ll be able to do it at a time and place that suits you.</p>
@@ -37,6 +35,7 @@
 			<br />
 			<h3>Do you want picking up your prescription to be as easy as a click of your mouse and a knock at your door?</h3>
 			<p>When you decide to use our prescription service, you’ll find out just how cheap and easy it’ll be to get your medication. For a price comparable to only three month’s prescription charges you’ll be able to get your prescription delivered to your doorstep or your local pharmacy. We’re so confident that you’ll love our service that we’ll give you a 100% money back guarantee if you’re not completely satisfied.</p>
+			</div>
 		</div>
 	</div>
 	

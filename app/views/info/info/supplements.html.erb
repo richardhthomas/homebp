@@ -1,17 +1,17 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Which supplements can help treat my blood pressure?</h2>
+			<div id='welcome'>
+				<h2>Which supplements can help treat my blood pressure?</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<p>You may wish to try supplements to control your blood pressure. Unfortunately calcium and magnesium supplements have not been shown to have a clinically significant effect on your blood pressure. And contrary to popular belief, potassium supplements have no effect on your blood pressure at all.</p>
+			</div>
 		</div>
 
 	</div>

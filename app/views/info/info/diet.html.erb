@@ -1,16 +1,15 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>How can my diet help my blood pressure?</h2>
+			<div id='welcome'>
+				<h2>How can my diet help my blood pressure?</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<p>If you have high blood pressure, then there are two simple things that you can change that will help lower it. They are to lose some weight, and reduce the amount of salt in your diet.</p>
 			
 			<h3>What can I eat to help my blood pressure?</h3>
@@ -21,6 +20,7 @@
 			<h3>What about the things that I drink?</h3>
 			<p>The best thing that you can do to help with your blood pressure is to cut down the amount of alcohol that you drink. This can also help you to lose weight which will also help with your blood pressure.</p>
 			<p>Another drink that can affect your blood pressure is coffee. However as long as you drink it in moderation it is unlikely to be harmful. “In moderation” means less than 5 cups a day.</p>
+			</div>
 		</div>
 	
 	</div>

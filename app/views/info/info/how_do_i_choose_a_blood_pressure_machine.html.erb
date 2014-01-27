@@ -1,15 +1,6 @@
 <div id='main'>
 	
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>How you can measure your blood pressure</h1>
-			<p>We’ll help you choose the blood pressure machine that is right for you. Then you’ll get clear advice on how to use it. Once you sign up to our free service, we’ll do all the hard work to help you get the most accurate picture of your blood pressure.
-			<% if !user_signed_in? %>
-				<%= link_to 'Find out more.', static_pages_features_path %>
-			<% end %>
-			</p>
-		</div>
-	</div>
+	<%= render 'info/measuring_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>

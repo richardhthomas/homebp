@@ -1,21 +1,21 @@
 <div id='main'>
-	<div id='strip1'>
-		<div id='strip1_content'>
-			<h1>Your choice of blood pressure treatment</h1>
-			<p id='first'>FREE advice from UK GPs.</p>
-			<p id='second'>Online. Anytime.</p>
-			<div class='clear_float'></div>
-		</div>
-	</div>
+	<%= render 'info/treating_bp_title' %>
 	
 	<div id='strip3'>
 		<div id='strip3_content'>
-			<h2>Beta blockers</h2>
+			<div id='welcome'>
+				<h2>Beta blockers</h2>
+			</div>
+			
+			<%= render 'info/questions' %>
+			
+			<div id='text'>
 			<h3>Benefits</h3>
 			<p>These days beta-blockers are generally only added to other medications if your blood pressure hasn’t already come down. Just like diuretics, we know they work but in most people they are less effective than calcium channel blockers or ACE inhibitors.</p>
 			
 			<h3>Side effects</h3>
 			<p>The most common side effect is feeling tired. This is worse at higher doses so can sometimes be relieved by reducing the dose.</p>
+			</div>
 		</div>
 	
 	</div>
