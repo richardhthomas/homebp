@@ -3,6 +3,8 @@ Homebp::Application.routes.draw do
   
   #get "/blood_pressure_treatment" => 'info/info#home_page'
   
+  #get 'info/:id', to: 'info#show'
+  
   namespace :info, :controller => "info" do
     get 'home_page'
     
@@ -60,7 +62,6 @@ Homebp::Application.routes.draw do
       #patch 'update_bp'
       get 'signup_bp_migration'
       get 'create_average_bp'
-      get 'how_to_measure_bp'
     end
   end
   
