@@ -19,24 +19,21 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_what_are_the_best_medication_options_for_me_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('what-are-the-best-medication-options-for-me'), :class => 'info_link1') do %>
 				<%= image_tag("tablets_small.jpg") %>
 				<span class='link_title'>What are the best medication options for me?</span>
 				<span class='link_text'>You can choose from several different types of medication... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_how_can_i_reduce_the_risk_of_side_effects_path, :class => 'info_link2') do %>
+			<%= link_to(info_path('how-can-i-reduce-the-risk-of-side-effects'), :class => 'info_link2') do %>
 				<%= image_tag("risk_v_reward_small.jpg") %>
 				<span class='link_title'>How can I reduce the risk of side effects?</span>
 				<span class='link_text'>Using this website can reduce the risk of side effects... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_why_do_i_need_to_take_more_than_one_medication_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('why-do-i-need-to-take-more-than-one-medication'), :class => 'info_link1') do %>
 				<%= image_tag("multiple_pills_small_2.jpg") %>
 				<span class='link_title'>Why do I need to take more than one medication?</span>
 				<span class='link_text'>Medications often work together to provide extra benefit... <span class='more'>find out more.</span></span>
 			<% end %>
-			
-			<div class='clear_float'>
-			</div>
 		
 		</div>
 	

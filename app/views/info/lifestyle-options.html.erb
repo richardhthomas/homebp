@@ -18,24 +18,21 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_diet_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('diet'), :class => 'info_link1') do %>
 				<%= image_tag("woman_apple_small_3.jpg") %>
 				<span class='link_title'>Food and drink</span>
 				<span class='link_text'>Your diet can help lower your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_exercise_path, :class => 'info_link2') do %>
+			<%= link_to(info_path('exercise'), :class => 'info_link2') do %>
 				<%= image_tag("man_running_small_3.jpg") %>
 				<span class='link_title'>Exercise</span>
 				<span class='link_text'>If you exercise regularly you will get numerous health benefits... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_smoking_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('smoking'), :class => 'info_link1') do %>
 				<%= image_tag("ashtray_small.jpg") %>
 				<span class='link_title'>Smoking</span>
 				<span class='link_text'>Smoking affects your health in many ways... <span class='more'>find out more.</span></span>
 			<% end %>
-			
-			<div class='clear_float'>
-			</div>
 		
 		</div>
 	

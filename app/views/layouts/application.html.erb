@@ -57,14 +57,14 @@
 				<%= link_to 'Account home', root_path %>
 			</div>
 			<div class='topmenucontent'>
-				<%= link_to 'Advice', info_home_page_path %>
+				<%= link_to 'Advice', info_path('home-blood-pressure') %>
 			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Contact', new_message_path %>
 			</div>
 			<% else %>
 			<div class='topmenucontent'>
-				<%= link_to 'Home', info_home_page_path %>
+				<%= link_to 'Home', info_path('home-blood-pressure') %>
 			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Features', static_pages_features_path %>

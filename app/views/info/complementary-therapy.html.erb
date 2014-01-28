@@ -18,19 +18,16 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_supplements_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('supplements'), :class => 'info_link1') do %>
 				<%= image_tag("multiple_pills_small_2.jpg") %>
 				<span class='link_title'>Supplements</span>
 				<span class='link_text'>Some supplements claim to be able to help lower your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_acupuncture_path, :class => 'info_link2') do %>
+			<%= link_to(info_path('acupuncture'), :class => 'info_link2') do %>
 				<%= image_tag("acupuncture_small.jpg") %>
 				<span class='link_title'>Acupuncture</span>
 				<span class='link_text'>Acupuncture has been used to try to lower blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			
-			<div class='clear_float'>
-			</div>
 		
 		</div>
 	

@@ -18,17 +18,17 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_what_is_blood_pressure_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('what-is-blood-pressure'), :class => 'info_link1') do %>
 				<%= image_tag("heart_bp_monitor_small.jpg") %>
 				<span class='link_title'>What is blood pressure?</span>
 				<span class='link_text'>It's a measure of the pressure in your arteries... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_measuring_blood_pressure_path, :class => 'info_link2') do %>
+			<%= link_to(info_path('measuring-blood-pressure'), :class => 'info_link2') do %>
 				<%= image_tag("woman_taking_bp_small.jpg") %>
 				<span class='link_title'>Measuring blood pressure</span>
 				<span class='link_text'>Using a home blood pressure machine is a good way to measure your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_treating_blood_pressure_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('treating-blood-pressure'), :class => 'info_link1') do %>
 				<%= image_tag("tablets_small.jpg") %>
 				<span class='link_title'>Treating blood pressure</span>
 				<span class='link_text'>As well as medications, there are some changes you can make yourself... <span class='more'>find out more.</span></span>

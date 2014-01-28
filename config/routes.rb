@@ -5,7 +5,6 @@ Homebp::Application.routes.draw do
   
   get 'info/:id', to: 'info#show', as: 'info'
   
-    
   get "static_pages/features"
   get "static_pages/about"
   get "static_pages/tac"

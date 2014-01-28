@@ -23,25 +23,22 @@
 		</div>
 		
 		<div id='links'>
-			<%= link_to(info_lifestyle_options_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('lifestyle-options'), :class => 'info_link1') do %>
 				<%= image_tag("woman_apple_small_3.jpg") %>
 				<span class='link_title'>Lifestyle options</span>
 				<span class='link_text'>You can improve your blood pressure by making some small lifestyle changes... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_complementary_therapy_path, :class => 'info_link2') do %>
+			<%= link_to(info_path('complementary-therapy'), :class => 'info_link2') do %>
 				<%= image_tag("acupuncture_small.jpg") %>
 				<span class='link_title'>Complementary therapy</span>
 				<span class='link_text'>Some people try supplements or acupuncture to help their blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			<%= link_to(info_medication_path, :class => 'info_link1') do %>
+			<%= link_to(info_path('medication'), :class => 'info_link1') do %>
 				<%= image_tag("tablets_small.jpg") %>
 				<span class='link_title'>Medication</span>
 				<span class='link_text'>You can choose from lots of different medications to help with your blood pressure... <span class='more'>find out more.</span></span>
 			<% end %>
-			
-			<div class='clear_float'>
-			</div>
-		
+
 		</div>
 	
 	</div>
