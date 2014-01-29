@@ -37,7 +37,7 @@ class Admin::MessagesAdminController < Admin::AdminController
     @bcc_array = []
     @users = User.all
     @users.each do |user|
-      if user.has_reading_from_last_7_days?
+      if user.average_bps.exists_for_last_7_days?
         if !user.average_bps.exists?(:date => @last_date, :ampm => @last_ampm) #no need to check for bp from current time slot, as a blank date and ampm entry is put in the database when a reading is missed, so it isn't possible for a user to have a reading from the current time slot and not have an entry in the database from the previous time slot.
           @bcc_array.push(user.email)
         end
@@ -45,7 +45,7 @@ class Admin::MessagesAdminController < Admin::AdminController
     end
     @emails = @bcc_array.join(", ")
 
-    #Notifier.chase_user_for_bp(@emails).deliver
-    #redirect_to admin_menu_path, notice: "Message sent!"
+    Notifier.chase_user_for_bp(@emails).deliver
+    redirect_to admin_menu_path, notice: "Message sent!"
   end
 end
