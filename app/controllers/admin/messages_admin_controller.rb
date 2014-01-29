@@ -44,8 +44,14 @@ class Admin::MessagesAdminController < Admin::AdminController
       end
     end
     @emails = @bcc_array.join(", ")
-
-    Notifier.chase_user_for_bp(@emails).deliver
-    redirect_to admin_menu_path, notice: "Message sent!"
+    
+    if @emails != ""
+      Notifier.chase_user_for_bp(@emails).deliver
+      notice = 'Message sent!'
+    else
+      notice = 'No messages to send!'
+    end
+    
+    redirect_to admin_menu_path, notice: notice
   end
 end
