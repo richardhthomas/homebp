@@ -9,5 +9,9 @@ class User < ActiveRecord::Base
   has_many :average_bps
   
   accepts_nested_attributes_for :current_bps
+  
+  def self.has_reading_from_last_7_days?
+    average_bps.where("date > ?", 7.days.ago).exists?
+  end
 
 end
