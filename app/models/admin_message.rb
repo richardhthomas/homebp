@@ -7,5 +7,5 @@ class AdminMessage
   attribute :greeting
   
   validates_presence_of :subject
-  validates_length_of :content, :maximum => 500
+  validates_length_of :content, :maximum => 1500
 end
