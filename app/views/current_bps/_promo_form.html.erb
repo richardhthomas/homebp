@@ -7,7 +7,10 @@
 			<td><%= f.text_field(:sysbp) %></td>
 			<td id='slash'>/</td>
 			<td><%= f.text_field(:diabp) %><span id='mmhg'>mmHg</span></td>
-			<td colspan='3' id='submit'><%= f.submit "Get advice about\r\nyour blood pressure", :class => 'button6', :onclick => "ga('send', 'event', 'Button', 'BP-entered');"%></td>
+			<td colspan='3' id='submit'>
+				<%= f.submit "Get advice about\r\nyour blood pressure",
+				:class => 'button6',
+				:onclick => "ga('send', 'event', 'Button', 'BP-entered');mixpanel.track('BP-entered');" %></td>
 		</tr>
 	</table>
 	
