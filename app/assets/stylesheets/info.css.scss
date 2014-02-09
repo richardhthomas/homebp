@@ -107,10 +107,12 @@
         }
         
         #graphic {
-          //float: right;
+          float: right;
           width: 210px;
           margin: 0px auto 30px auto;
           padding-top: 10px;
+          padding-right: 10px;
+          padding-left: 6%;
           
           #promo {
             width: 100%;
@@ -202,10 +204,12 @@
       }
       
       #graphic {
-        //float: right;
+        float: right;
         width: 210px;
         margin: 0px auto 30px auto;
         padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 6%;
           
         #questions {
           width: 100%;
@@ -348,10 +352,12 @@
         }
         
         #graphic {
-          //float: right;
+          float: right;
           width: 200px;
           margin: 0px auto 0px auto;
           padding-top: 10px;
+          padding-right: 10px;
+          padding-left: 6%;
           
           #average_bp {
             position: relative;

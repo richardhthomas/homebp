@@ -45,15 +45,15 @@
   }
 }
 
-@media (min-width: 450px) {
+@media (max-width: 450px) {
   #content {
     #main {
       #strip4 {
         #strip4_content {
           #graphic {
-            float: right;
-            padding-right: 10px;
-            padding-left: 6%;
+            float: none;
+            padding-right: 0px;
+            padding-left: 0%;
           }
         }
       }
@@ -61,9 +61,9 @@
       #strip2 {
         #strip2_content {
           #graphic {
-            float: right;
-            padding-right: 10px;
-            padding-left: 6%;
+            float: none;
+            padding-right: 0px;
+            padding-left: 0%;
           }
         }
       }
@@ -71,9 +71,9 @@
       #strip3 {
         #strip3_content {
           #graphic {
-            float: right;
-            padding-right: 10px;
-            padding-left: 6%;
+            float: none;
+            padding-right: 0px;
+            padding-left: 0%;
           }
         }
       }
