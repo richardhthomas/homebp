@@ -8,9 +8,12 @@
 			<td id='slash'>/</td>
 			<td><%= f.text_field(:diabp) %><span id='mmhg'>mmHg</span></td>
 			<td colspan='3' id='submit'>
-				<%= f.submit "Get advice about\r\nyour blood pressure",
-				:class => 'button6',
-				:onclick => "ga('send', 'event', 'Button', 'BP-entered');mixpanel.track('BP-entered');" %></td>
+				<button type='submit' class='button6' onClick="ga('send', 'event', 'Button', 'BP-entered');mixpanel.track('BP-entered');">
+  				Get advice about
+  				<br />
+  				your blood pressure
+  				</button>
+			</td>
 		</tr>
 	</table>
 	
