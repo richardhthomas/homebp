@@ -67,6 +67,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
+    mixpanel-ruby (1.2.0)
     multi_json (1.8.0)
     orm_adapter (0.4.0)
     pg (0.17.0)
@@ -152,6 +153,7 @@ DEPENDENCIES
   dynamic_form
   jbuilder (~> 1.2)
   jquery-rails
+  mixpanel-ruby
   pg
   postmark-rails
   rails (= 4.0.0)

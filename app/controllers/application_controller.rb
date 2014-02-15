@@ -25,6 +25,12 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
   
+  def set_mixpanel
+    tracker = Mixpanel::Tracker.new("fa8043818be4dcbcce69f785817e7927")
+    active_user
+    tracker_id = current_user.id || session[:temp_user_id]
+  end
+  
   def set_date_ampm
     if session[:date] == nil
       session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)

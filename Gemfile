@@ -69,3 +69,6 @@ gem 'activerecord-session_store'
 
 # provides a package of security features
 gem 'secure_headers'
+
+# mixpanel
+gem 'mixpanel-ruby'
