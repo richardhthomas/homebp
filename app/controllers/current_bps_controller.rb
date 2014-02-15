@@ -26,7 +26,6 @@ class CurrentBpsController < ApplicationController
           format.html { redirect_to create_average_bp_current_bps_path(@bp_entry_details) }
         else
           @bp_entry_details[:reading_no] = '2'
-          set_mixpanel
           tracker.track(tracker_id, 'BP given')
           format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
@@ -86,12 +85,11 @@ class CurrentBpsController < ApplicationController
   end 
 
   def signup_bp_migration
-    set_mixpanel
     tracker.track(tracker_id, 'sign-up')
     tracker.alias(current_user.id, session[:temp_user_id])
     tracker.people.set(tracker_id, {
       '$email'        => current_user.email,
-      'sign-up date'  => session[:date]
+      'sign-up date'  => Time.now.to_formatted_s(:db)
     })
     
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take
