@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
   
   def tracker_id
-    active_user.id
+    user_signed_in? ? current_user.email : get_temp_user.id
   end
   
   def set_date_ampm

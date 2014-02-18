@@ -85,8 +85,8 @@ class CurrentBpsController < ApplicationController
   end 
 
   def signup_bp_migration
+    tracker.alias(current_user.email, session[:temp_user_id])
     tracker.track(tracker_id, 'sign-up')
-    tracker.alias(current_user.id, session[:temp_user_id])
     tracker.people.set(tracker_id, {
       '$email'        => current_user.email,
       'sign-up date'  => Time.now.to_formatted_s(:db)
