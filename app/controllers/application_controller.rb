@@ -25,13 +25,13 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
   
-  def tracker
-    Mixpanel::Tracker.new("fa8043818be4dcbcce69f785817e7927")
-  end
+#  def tracker
+#    Mixpanel::Tracker.new("fa8043818be4dcbcce69f785817e7927")
+#  end
   
-  def tracker_id
-    user_signed_in? ? current_user.email : get_temp_user.id
-  end
+#  def tracker_id
+#    user_signed_in? ? current_user.email : get_temp_user.id
+#  end
   
   def set_date_ampm
     if session[:date] == nil

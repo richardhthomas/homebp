@@ -27,6 +27,44 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 <!-- end Mixpanel -->
   
+  <!-- Send data to mixpanel -->
+  <% if flash[:alias] %>
+  	<script>
+  		mixpanel.alias('<%= flash[:alias] %>');
+  	</script>
+  <% end %>
+  
+  <% if flash[:identify] %>
+  	<script>
+  		mixpanel.identify('<%= flash[:identify] %>');
+  	</script>
+  <% end %>
+  
+  <% if flash[:people] %>
+  	<% properties = "" %>
+	<% flash[:people].each do |property, value| %>
+		<% properties += " '" + property + "': '" + value + "'," %>
+	<% end %>
+	<% properties = properties[0...-1] %>
+  	<script>
+  		mixpanel.people.set({<%= properties %>});
+  	</script>
+  <% end %>
+  
+  <% if flash[:event] %>
+	<% properties = "" %>
+	<% if flash[:event_properties] %>
+		<% flash[:event_properties].each do |property, value| %>
+			<% properties += " '" + property + "': '" + value + "'," %>
+		<% end %>
+		<% properties = properties[0...-1] %>
+	<% end %>
+  	<script>
+		mixpanel_event = "'<%= flash[:event] %>'" + ", {<%= properties %> }";
+		mixpanel.track(mixpanel_event);
+  	</script>
+  <% end %>
+  
 </head>
 <body>
 
