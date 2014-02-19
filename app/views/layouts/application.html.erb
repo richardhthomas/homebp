@@ -28,6 +28,12 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 <!-- end Mixpanel -->
   
   <!-- Send data to mixpanel -->
+  <% if flash[:clear_cookie] %>
+  	<script>
+  		mixpanel.cookie.clear();
+  	</script>
+  <% end %>
+  
   <% if flash[:alias] %>
   	<script>
   		mixpanel.alias('<%= flash[:alias] %>');
@@ -41,27 +47,24 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
   <% end %>
   
   <% if flash[:people] %>
-  	<% properties = "" %>
-	<% flash[:people].each do |property, value| %>
-		<% properties += " '" + property + "': '" + value + "'," %>
-	<% end %>
-	<% properties = properties[0...-1] %>
   	<script>
-  		mixpanel.people.set({<%= properties %>});
+		mixpanel.people.set({
+			'$email': 		'<%= flash[:people][:email] %>',
+			'sign-up date': '<%= flash[:people][:sign_up_date] %>'
+		});
+		mixpanel.identify('<%= flash[:identify] %>');
   	</script>
   <% end %>
   
   <% if flash[:event] %>
-	<% properties = "" %>
-	<% if flash[:event_properties] %>
-		<% flash[:event_properties].each do |property, value| %>
-			<% properties += " '" + property + "': '" + value + "'," %>
-		<% end %>
-		<% properties = properties[0...-1] %>
-	<% end %>
   	<script>
-		mixpanel_event = "'<%= flash[:event] %>'" + ", {<%= properties %> }";
-		mixpanel.track(mixpanel_event);
+  		var propertiesString = "<%= flash[:event_properties] %>";
+  		var propertiesArray = propertiesString.split(",");
+  		var propertiesHash = new Array();
+  		for (var i = 0; i < propertiesArray.length; i = i + 2) {
+    		propertiesHash[propertiesArray[i]] = propertiesArray[i+1];
+		}
+		mixpanel.track("<%= flash[:event] %>", propertiesHash);
   	</script>
   <% end %>
   

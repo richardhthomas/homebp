@@ -25,14 +25,6 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
   
-#  def tracker
-#    Mixpanel::Tracker.new("fa8043818be4dcbcce69f785817e7927")
-#  end
-  
-#  def tracker_id
-#    user_signed_in? ? current_user.email : get_temp_user.id
-#  end
-  
   def set_date_ampm
     if session[:date] == nil
       session[:date] = Date.today #.to_s(:db) Removed this to allow date arithmetic (Was converting to string - not sure why I did this)
@@ -71,11 +63,13 @@ class ApplicationController < ActionController::Base
   
   def after_sign_out_path_for(resource_or_scope)
     reset_session
+    flash[:clear_cookie] = true
     root_path
   end
   
   def after_sign_in_path_for(resource)
     reset_session
+    flash[:identify] = current_user.email
     account_router_path
   end
   

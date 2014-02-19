@@ -28,9 +28,7 @@ class CurrentBpsController < ApplicationController
           @bp_entry_details[:reading_no] = '2'
           status = user_signed_in? ? 'signed in' : 'signed out'
           flash[:event] = 'BP given'
-          flash[:event_properties] = {
-            'signed in?' => status
-          }
+          flash[:event_properties] = 'signed in?,' + status
           format.html { redirect_to new_current_bp_path(@bp_entry_details) }
         end
       else
@@ -91,18 +89,10 @@ class CurrentBpsController < ApplicationController
   def signup_bp_migration
     flash[:alias] = current_user.email
     flash[:identify] = current_user.email
-    flash[:people] = {
-      '$email'        => current_user.email,
-      'sign-up date'  => Time.now.to_formatted_s(:db)
-    }
+    flash[:people] = {}
+    flash[:people][:email] = current_user.email
+    flash[:people][:sign_up_date] = Time.now.to_formatted_s(:db)
     flash[:event] = 'sign-up'
-    
-    #tracker.alias(current_user.email, session[:temp_user_id])
-    #tracker.track(tracker_id, 'sign-up')
-    #tracker.people.set(tracker_id, {
-    #  '$email'        => current_user.email,
-    #  'sign-up date'  => Time.now.to_formatted_s(:db)
-    #})
     
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take
     if !@current_average_bp.nil? #checks whether an average BP has been created before migrating readings to new user account
