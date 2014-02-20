@@ -91,7 +91,7 @@ class CurrentBpsController < ApplicationController
     flash[:identify] = current_user.email
     flash[:people] = {}
     flash[:people][:email] = current_user.email
-    flash[:people][:sign_up_date] = Time.now.to_formatted_s(:db)
+    flash[:people][:created] = Time.now.to_formatted_s(:db)
     flash[:event] = 'sign-up'
     
     @current_average_bp = get_temp_user.average_bps.where(:date => session[:date], :ampm => session[:ampm]).take

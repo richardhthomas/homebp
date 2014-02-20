@@ -28,13 +28,7 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 <!-- end Mixpanel -->
   
   <!-- Send data to mixpanel -->
-  <% if flash[:clear_cookie] %>
-  	<script>
-  		mixpanel.cookie.clear();
-  	</script>
-  <% end %>
-  
-  <% if flash[:alias] %>
+    <% if flash[:alias] %>
   	<script>
   		mixpanel.alias('<%= flash[:alias] %>');
   	</script>
@@ -50,7 +44,7 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
   	<script>
 		mixpanel.people.set({
 			'$email': 		'<%= flash[:people][:email] %>',
-			'sign-up date': '<%= flash[:people][:sign_up_date] %>'
+			'$created': '<%= flash[:people][:created] %>'
 		});
 		mixpanel.identify('<%= flash[:identify] %>');
   	</script>
