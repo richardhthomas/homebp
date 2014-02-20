@@ -87,7 +87,7 @@ class CurrentBpsController < ApplicationController
   end 
 
   def signup_bp_migration
-    flash[:alias] = current_user.email
+    #flash[:alias] = current_user.email
     flash[:identify] = current_user.email
     flash[:people] = {}
     flash[:people][:email] = current_user.email
