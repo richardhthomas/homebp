@@ -1,38 +1,12 @@
-HomeBloodPressure
+HomeBloodPressure v2.0
 
-Ruby version 2.0.0p47
-
+Ruby version 2.0.0p353
 Rails 4
 
-SQLite 3
+Postgres
 Devise
 Dynamic form
 
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This was the first version to develop a web of information pages.
+The CSS is not yet responsive.
+The logic is basically unchanged from v1.0
