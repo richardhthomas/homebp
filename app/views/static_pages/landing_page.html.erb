@@ -1,1 +1,113 @@
-Landing page text
+<div id='main'>
+	<div id='strip1'>
+		<div id='strip1_content'>
+			<h1>Measurement of blood pressure</h1>
+			<p>Sign up and you'll get clear instructions on how to take a measurement of your blood pressure...</p>
+			<p>Then you will get personalised advice from UK GPs!</p>
+		</div>
+	</div>
+	
+	<div id='strip2'>
+		<div id='strip2_content'>
+			
+			<div id='graphic_landing_page'>
+				<div id='sign_up'>
+					<div id='title'>
+						No more waiting at the doctor's
+					</div>
+					<div id='nav_form'>
+
+						<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :onsubmit => "return checktc();"}) do |f| %>
+						<table>
+							<tr>
+								<td class='label'><%= f.label :email %></td>
+								<td><%= f.email_field :email, :autofocus => true %></td>
+							</tr>
+							<tr>
+								<td class='label'><%= f.label :password %></td>
+								<td><%= f.password_field :password %></td>
+							</tr>
+							<tr>
+								<td class='label'><%= f.label :password_confirmation, 'Confirm password' %></td>
+								<td><%= f.password_field :password_confirmation %></td>
+							</tr>
+						</table>
+						<table>
+							<tr id='tac_msg'>
+								<td><%= check_box_tag 'tac' %></td>
+								<td>Please tick this box to confirm you accept our <%= link_to('terms and conditions', static_pages_tac_path) %></td>
+							</tr>
+						</table>
+						<% if resource.errors.any? %>
+						<div id="error_explanation">
+							<%= error_messages_for resource %>
+						</div>
+						<% end %>
+						<div id='tac_error_msg'>
+						</div>
+  						<div id='sign_up_button'>
+  							<button type='submit' class='button3' onClick="ga('send', 'event', 'Button', 'Sign-up');">
+  								<span>Get advice about your blood pressure</span>
+  							</button>
+  						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			
+			<div id='text_landing_page'>
+				<h2><span>1.</span> Measure your blood pressure</h2>
+				<h2><span>2.</span> Get personalised advice from UK GPs</h2>
+				<h2><span>3.</span> Have prescriptions delivered to your door</h2>
+			</div>
+			
+			<%= image_tag('arrow-right-blue.gif', size: '500x100') %>
+			
+		</div>
+	</div>
+	
+	<div id='strip3'>
+		<div id='strip3_content'>
+			<div id='text_landing_page'>
+				<div class='section'>
+					<%= image_tag("tech_not_copyright_cleared_small.jpg", size: '300x210', :class => 'left') %>
+					<h2>Take your health into the 21st century</h2>
+					<p>You may be wondering how it’s possible to treat blood pressure on-line without having to see a doctor or nurse. This is because the most recent guidelines have made the treatment of blood pressure much more simple.</p>
+				</div>
+				<div class='clear_float'></div>
+				<div class='section'>
+					<%= image_tag("house_not_copyright_cleared_small.jpeg", size: '300x210', :class => 'right') %>
+					<h2>You can do it all from home</h2>
+					<p>These guidelines also recommend that you measure your blood pressure at home rather than at the surgery. This will give you a more accurate idea of how high your blood pressure is. Then by answering a few simple questions, you’ll be able to see which medications are suitable for you.</p>
+				</div>
+				<div class='clear_float'></div>
+				<div class='section'>
+					<%= image_tag("clock_not_copyright_cleared_small.jpg", size: '250x250', :class => 'left') %>
+					<h2>You will save time</h2>
+					<p>This will save you time. This will be more convenient for you. This will also free up time for your doctor to deal with more complex problems.</p>
+				</div>
+				<div class='clear_float'></div>
+				<div class='section'>
+					<%= image_tag("measurement_close_up.jpg", size: '320x210', :class => 'right') %>
+					<h2>Accurately measure your blood pressure</h2>
+					<p>You can follow our simple instructions to get a highly accurate measurement of your blood pressure. You can securely store your readings in your on-line account for access any time, anywhere.</p>
+				</div>
+				<div class='clear_float'></div>
+				<div class='section'>
+					<%= image_tag("graphic_close_up.jpg", size: '320x210', :class => 'left') %>
+					<h2>Quickly see how high your blood pressure is</h2>
+					<p>You can clearly see how high your blood pressure is. You can get personalised advice from experienced UK GPs to help lower your blood pressure. You can even get prescriptions delivered to your door!</p>
+				</div>
+				<div class='clear_float'></div>
+				<div class='section'>
+					<%= image_tag("ask_close_up.jpg", size: '320x210', :class => 'right') %>
+					<h2>Got a question? Ask a doctor!</h2>
+					<p>You will find answers to most of your questions on our extensive, friendly information pages. If you have any other questions for us you can just ask at the click of a button!</p>
+				</div>
+				<div class='clear_float'></div>
+			</div>
+			
+		</div>
+	</div>
+	
+</div>
