@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
     @bp_batch = active_user.average_bps
     @average_sysbp = @bp_batch.average(:sysbp)
     @average_diabp = @bp_batch.average(:diabp)
-    if !@average_sysbp.nil?
+    if ! @average_sysbp.nil?
       @sys_position = 70 + ((170 - @average_sysbp)*3)
       @dia_position = 70 + ((110 - @average_diabp)*4)
       if @sys_position < @dia_position

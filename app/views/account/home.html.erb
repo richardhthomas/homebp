@@ -1,12 +1,11 @@
 <div id='main'>
 	
-	<%= render 'info/generic_title' %>
-	
+	<%= render 'info/account_title' %>
 	
 	<div id='strip4'>
 		<div id='strip4_content'>
 			<div id='graphic'>
-				<% if !@average_sysbp.nil? %>
+				<% if ! @average_sysbp.nil? %>
 					<div id='average_bp'>
 						<%= render :partial => 'average_bp', :locals => {:avsys => @average_sysbp, :avdia => @average_diabp, :bppos => @bp_position} %>
 					</div>
@@ -20,7 +19,7 @@
 				<p id='warning_msg'><%= bp_warning_message(@current_average_bp) %></p>
 			<% end %>
 	
-			<% if !bp_warning_message(@current_average_bp) %>
+			<% if ! bp_warning_message(@current_average_bp) %>
 				<p><%= average_bp_message(@average_sysbp, @average_diabp) %></p>
 			<% end %>
 	

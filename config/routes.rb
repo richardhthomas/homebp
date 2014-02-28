@@ -1,5 +1,5 @@
 Homebp::Application.routes.draw do
-  root :to => "account#router"
+  root :to => "static_pages#landing_page"
   
   #get "/blood_pressure_treatment" => 'info/info#home_page'
   
@@ -8,12 +8,10 @@ Homebp::Application.routes.draw do
   get "static_pages/features"
   get "static_pages/about"
   get "static_pages/tac"
-  get "static_pages/meds_id_wizard"
+  get "measurement-of-blood-pressure", to: "static_pages#landing_page", as: 'landing_page'
   
   resources :current_bps do
     collection do
-      #post 'review'
-      #patch 'update_bp'
       get 'signup_bp_migration'
       get 'create_average_bp'
     end

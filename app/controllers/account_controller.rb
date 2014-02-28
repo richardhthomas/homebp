@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   before_action :set_cache_buster
-  before_action :authenticate_user!, only: [:set_bp_entry_datetime, :readings_due, :restart_needed, :submit_readings]
+  before_action :authenticate_user!
   before_action :set_date_ampm
   before_action :collect_bp_entry_details, only: [:router, :set_bp_entry_datetime, :readings_due, :is_bp_set_completable]
   before_action :batch_average_bp, only: [:home, :readings_due]
@@ -15,62 +15,54 @@ class AccountController < ApplicationController
   end
   
   def router
-    if user_signed_in?
-      #Check if any readings at all, if not ask to take reading now
-      if batch_average_bp_count < 1
-        redirect_to new_current_bp_path(@bp_entry_details)
+    #Check if any readings at all
+    if batch_average_bp_count < 1
+      redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
     
-      # check if has full set of bp readings
-      elsif batch_average_bp_count >=8
-        redirect_to account_submit_readings_path
+    # check if has full set of bp readings
+    elsif batch_average_bp_count >=8
+      redirect_to account_submit_readings_path
       
-      #check if they need to restart
-      elsif is_restart_needed(last_average_bp.date, last_average_bp.ampm) == true
-        redirect_to account_restart_needed_path
+    #check if they need to restart
+    elsif is_restart_needed(last_average_bp.date, last_average_bp.ampm) == true
+      redirect_to account_restart_needed_path
     
-      #check if they are too early for next reading
-      elsif (session[:date] == last_average_bp.date && session[:ampm] == last_average_bp.ampm)
-        redirect_to account_home_path
+    #check if they are too early for next reading
+    elsif (session[:date] == last_average_bp.date && session[:ampm] == last_average_bp.ampm)
+      redirect_to account_home_path
     
-      #so otherwise, readings are due
-      else
-        redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
-      end
-      
+    #so otherwise, readings are due
     else
-      if batch_average_bp_count < 1 # not signed in and no readings - go to landing page
-        redirect_to info_path('home-blood-pressure')
-      
-      else # not signed in but given a reading - go to home page
-        redirect_to account_home_path
-      end
-    end 
+      redirect_to account_set_bp_entry_datetime_path(@bp_entry_details)
+    end
   end
   
   def set_bp_entry_datetime
     if session[:average_bp_given] == nil # if not started giving readings define the date and ampm slots required in session array and set to first time slot
-      @session_bp_entry_details_date = last_average_bp.date
-      @session_bp_entry_details_ampm = last_average_bp.ampm
-      @time_slots_count = ((session[:date] - last_average_bp.date).to_i) * 2
-      if last_average_bp.ampm == "am" # add another bp for collection if still need pm reading from date of @last_average_bp
-        @time_slots_count += 1
-      end
-      if session[:ampm] == "am" # subtract a bp for collection if only need am readings from today's date
-        @time_slots_count -= 1
-      end
-      if @time_slots_count > 13 # limit to 7 days of readings (1 will always have been taken by this point, so 13 rather than 14)
-        @time_slots_count = 13
-      end
-      
-      @time_slots_count.times do |n|
-        if @session_bp_entry_details_ampm == "am"
-          @session_bp_entry_details_ampm = "pm"
-        else
-          @session_bp_entry_details_date += 1
-          @session_bp_entry_details_ampm = "am"
+      if batch_average_bp_count != 0
+        @session_bp_entry_details_date = last_average_bp.date
+        @session_bp_entry_details_ampm = last_average_bp.ampm
+        @time_slots_count = ((session[:date] - last_average_bp.date).to_i) * 2
+        if last_average_bp.ampm == "am" # add another bp for collection if still need pm reading from date of @last_average_bp
+          @time_slots_count += 1
         end
-        session[:bp_entry_details][:date][n] = @session_bp_entry_details_date
-        session[:bp_entry_details][:ampm][n] = @session_bp_entry_details_ampm
+        if session[:ampm] == "am" # subtract a bp for collection if only need am readings from today's date
+          @time_slots_count -= 1
+        end
+        if @time_slots_count > 13 # limit to 7 days of readings (1 will always have been taken by this point, so 13 rather than 14)
+          @time_slots_count = 13
+        end
+      
+        @time_slots_count.times do |n|
+          if @session_bp_entry_details_ampm == "am"
+            @session_bp_entry_details_ampm = "pm"
+          else
+            @session_bp_entry_details_date += 1
+            @session_bp_entry_details_ampm = "am"
+          end
+          session[:bp_entry_details][:date][n] = @session_bp_entry_details_date
+          session[:bp_entry_details][:ampm][n] = @session_bp_entry_details_ampm
+        end
       end
       @bp_entry_details[:datetime] = 0
       @bp_entry_details[:reading_no] = '1'

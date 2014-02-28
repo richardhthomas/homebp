@@ -2,15 +2,6 @@
 	
 	<%= render 'info/generic_title' %>
 
-	<% if !user_signed_in? %>
-	<div id='strip2'>
-		<div id='strip2_content'>
-			<%= render 'info/promo' %>
-			<%= render :partial => 'devise/registrations/new' %>
-		</div>
-	</div>
-	<% end %>
-
 	<div id='strip3'>
 		<div id='strip3_content'>
 			<div id='text'>

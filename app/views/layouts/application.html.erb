@@ -71,7 +71,7 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 	<div id='header_content'>
 
 		<div id='topbannertitle'>
-			<%= link_to("HomeBloodPressure.co.uk", root_path) %>
+			<%= link_to("HomeBloodPressure.co.uk", account_router_path) %>
 		</div>
 		<div id='user_nav'>
 			<% if user_signed_in? %>
@@ -87,26 +87,16 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 				<div id='sign_in'>
     				<%= link_to(image_tag("padlock.gif", size: '9x12', :class => 'borderless_img') + " Sign in", new_user_session_path, :class => 'button1') %>
     			</div>
-    			<div id='sign_up'>
-    				<%= link_to("Sign up", new_user_registration_path, :class => 'button1 button2') %>
-    			</div>
   			<% end %>
   		</div>
   		
   		<div id='topmenu'>
 			<% if user_signed_in? %>
 			<div class='topmenucontent'>
-				<%= link_to 'Account home', root_path %>
+				<%= link_to 'Home', account_router_path %>
 			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Advice', info_path('home-blood-pressure') %>
-			</div>
-			<div class='topmenucontent'>
-				<%= link_to 'Contact', new_message_path %>
-			</div>
-			<% else %>
-			<div class='topmenucontent'>
-				<%= link_to 'Home', info_path('home-blood-pressure') %>
 			</div>
 			<div class='topmenucontent'>
 				<%= link_to 'Features', static_pages_features_path %>
@@ -124,19 +114,6 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 	</div>
 	</div>
 	
-	<!--
-	<% if user_signed_in? %>
-		<div id='breadcrumb'>
-			<%= breadcrumb %>
-		</div>
-	<% end %>
-	
-	
-	<div id='back'>
-		<%= link_to_function "Back", "history.back()" %>
-	</div>
-	-->
-	
 	<div id='content'>
 		<% if flash[:notice] %>
 			<div id="notice"><%= notice %></div>
@@ -145,10 +122,12 @@ mixpanel.init("fa8043818be4dcbcce69f785817e7927");</script>
 	</div>	
 
 	<div id='bottombar'>
-		<%= link_to 'About us', static_pages_about_path %>
-		<%= link_to 'Contact us', new_message_path %>
-		<%= link_to 'Terms & Conditions', static_pages_tac_path %>
-		<span>&#169; 2013</span>
+		<% if user_signed_in? %>
+			<%= link_to 'About us', static_pages_about_path %>
+			<%= link_to 'Contact us', new_message_path %>
+			<%= link_to 'Terms & Conditions', static_pages_tac_path %>
+			<span>&#169; 2014</span>
+		<% end %>
 	</div>
 
 </div>

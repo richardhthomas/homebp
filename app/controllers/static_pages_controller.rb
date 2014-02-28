@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   
   def features
-    #@last_bp = active_user.average_bps.limit(1).order('id desc')
   end
 
   def about
@@ -12,6 +11,9 @@ class StaticPagesController < ApplicationController
   
   def redirect
     redirect_to root_path
+  end
+  
+  def landing_page
   end
   
 end
