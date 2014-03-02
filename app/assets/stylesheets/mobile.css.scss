@@ -80,3 +80,56 @@
     }
   }
 }
+
+@media (max-width: 730px) {
+  #content {
+    #main {
+      #strip2 {
+        #strip2_content {
+          #text_landing_page {
+            table {
+              #arrow {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #content {
+    #main {
+      #strip2 {
+        #strip2_content {
+          #graphic_landing_page {
+            float: none;
+            padding-left: 0%;
+          }
+        }
+      }
+      
+      #strip3 {
+        #strip3_content {
+          #text_landing_page {
+            .section {
+              .image_left {
+                float: none;
+                padding: 0px 0px 20px 0px;
+                margin: 0px auto 0px auto;
+              }
+              
+              .image_right {
+                float: none;
+                padding: 0px 0px 20px 0px;
+                margin: 0px auto 0px auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
