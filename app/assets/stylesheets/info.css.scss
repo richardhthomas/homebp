@@ -188,7 +188,7 @@
 
         #graphic_landing_page {
           float: right;
-          width: 320px;
+          width: 288px;
           margin: 0px auto 30px auto;
           padding-top: 10px;
           padding-right: 0px;
@@ -214,7 +214,7 @@
               border-radius:7px;
               background-color:#4c7a34;
               color:#ffffff;
-              font-size: 1.5em;
+              font-size: 1.4em;
               text-align: center;
               line-height: 22px;
               padding: 5px 8px 8px 8px;
@@ -301,13 +301,13 @@
           }
           
           .image_right {
-            width: 320px;
+            width: 288px;
             float: right;
             padding: 0px 0px 20px 40px;
           }
         
           .image_left {
-            width: 320px;
+            width: 288px;
             float: left;
             padding: 0px 40px 20px 0px;
           }
@@ -705,7 +705,7 @@
       }
       
       #sign_up_button {
-        width: 260px;
+        width: 240px;
         margin: 10px auto 20px auto;
       }
       
@@ -744,6 +744,7 @@
         
         span {
           font-weight: bold;
+          font-size: 1.1em;
         }
       }
     }
