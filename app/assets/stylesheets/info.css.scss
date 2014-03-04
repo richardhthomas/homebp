@@ -171,8 +171,8 @@
             font-size:1.8em;
             color: #033076;
             font-weight: normal;
-            height: 45px;
             line-height: 35px;
+            padding-bottom: 10px;
             
             img {
               width: 100%;
@@ -186,7 +186,7 @@
           }
         }
 
-        #graphic_landing_page {
+        #graphic_landing_page, #graphic_sign_up {
           float: right;
           width: 288px;
           margin: 0px auto 30px auto;
@@ -221,6 +221,11 @@
               padding: 5px 8px 8px 8px;
             }
           }
+        }
+        
+        #graphic_sign_up {
+          float: none;
+          width: 288px;
         }
       }
     }
@@ -668,7 +673,7 @@
     }
     
     #nav_form, #contact_form {
-      padding: 20px 0px 0px 3%;
+      padding: 20px 3% 0px 3%;
       
       h2 {
         font-size:1.8em;
@@ -729,7 +734,7 @@
       }
         
       #error_explanation {
-        margin-left: 40px;
+        //margin-left: 40px;
       }
       
       #message_content, #admin_message_content {

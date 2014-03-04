@@ -1,19 +1,23 @@
+<div id='graphic_sign_up'>
+				<div id='sign_up'>
+					<div id='title'>
+						No more waiting at the doctor's
+					</div>
+
 <div id='nav_form'>
-
-	<h2>Sign up</h2>
-
+	
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :onsubmit => "return checktc();"}) do |f| %>
 	<table>
 		<tr>
-			<td><%= f.label :email %></td>
+			<td class='label'><%= f.label :email %></td>
 			<td><%= f.email_field :email, :autofocus => true %></td>
 		</tr>
 		<tr>
-			<td><%= f.label :password %></td>
+			<td class='label'><%= f.label :password %></td>
 			<td><%= f.password_field :password %></td>
 		</tr>
 		<tr>
-			<td><%= f.label :password_confirmation, 'Confirm password' %></td>
+			<td class='label'><%= f.label :password_confirmation, 'Confirm password' %></td>
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
 	</table>
@@ -31,11 +35,13 @@
 	<div id='tac_error_msg'>
 	</div>
   	<div id='sign_up_button'>
-  		<button type='submit' class='button3' onClick="ga('send', 'event', 'Button', 'Sign-up');">
-  			<span>Sign up</span>
-  			<br />
-  			Control your blood pressure at home
+  		<button type='submit' class='button3 button8' onClick="ga('send', 'event', 'Button', 'Sign-up');">
+  			<span>Get instant advice about your blood pressure</span>
   		</button>
   	</div>
 	<% end %>
+	<p><span>FREE</span> 30 day trial</p>
+	<p>No obligation</p>
+</div>
+</div>
 </div>
