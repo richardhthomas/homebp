@@ -23,17 +23,6 @@
               font-size: 1.6em;
             }
           }
-          
-          #text_landing_page {
-            td {
-              font-size:1.6em;
-              line-height: 25px;
-            }
-          
-            .number {
-              font-size: 2em;
-            }
-          }
         }
       }
       
@@ -85,59 +74,6 @@
             float: none;
             padding-right: 0px;
             padding-left: 0%;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 680px) {
-  #content {
-    #main {
-      #strip2 {
-        #strip2_content {
-          #text_landing_page {
-            table {
-              #arrow {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 680px) {
-  #content {
-    #main {
-      #strip2 {
-        #strip2_content {
-          #graphic_landing_page {
-            float: none;
-            padding-left: 0%;
-          }
-        }
-      }
-      
-      #strip3 {
-        #strip3_content {
-          #text_landing_page {
-            .section {
-              .image_left {
-                float: none;
-                padding: 0px 0px 20px 0px;
-                margin: 0px auto 0px auto;
-              }
-              
-              .image_right {
-                float: none;
-                padding: 0px 0px 20px 0px;
-                margin: 0px auto 0px auto;
-              }
-            }
           }
         }
       }

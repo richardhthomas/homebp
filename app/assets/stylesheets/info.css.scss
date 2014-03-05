@@ -13,7 +13,7 @@
         padding: 40px 0px 40px 0px;   
       
         h1 {
-          font-family: Baskerville, serif;
+          //font-family: Baskerville, serif;
           font-size:2.8em;
           color: #033076;
           font-weight: normal;
@@ -163,70 +163,6 @@
             }
           }
         }
-        
-        #text_landing_page {
-          //max-height: 270px;
-          
-          td {
-            font-size:1.8em;
-            color: #033076;
-            font-weight: normal;
-            line-height: 35px;
-            padding-bottom: 10px;
-            
-            img {
-              width: 100%;
-              height: 150px;
-            }
-          }
-          
-          .number {
-            font-size: 3em;
-            padding-right: 10px;
-          }
-        }
-
-        #graphic_landing_page, #graphic_sign_up {
-          float: right;
-          width: 288px;
-          margin: 0px auto 30px auto;
-          padding-top: 10px;
-          padding-right: 0px;
-          padding-left: 6%;
-          
-          #sign_up {
-            width: 100%;
-            //height: 400px;
-            padding-bottom: 20px;
-            border-style:solid;
-            border-width:5px;
-            border-color:#4c7a34;
-            -webkit-border-radius:14px;
-            -moz-border-radius:14px;
-            border-radius:14px;
-            background-color:#dfedd6;
-            
-            #title {
-              border-style:solid;
-              border-width:2px;
-              border-color:#4c7a34;
-              -webkit-border-radius:7px;
-              -moz-border-radius:7px;
-              border-radius:7px;
-              background-color:#4c7a34;
-              color:#ffffff;
-              font-size: 1.4em;
-              text-align: center;
-              line-height: 22px;
-              padding: 5px 8px 8px 8px;
-            }
-          }
-        }
-        
-        #graphic_sign_up {
-          float: none;
-          width: 288px;
-        }
       }
     }
     
@@ -282,44 +218,7 @@
             }
           }
         }
-      }
-      
-      #text_landing_page {
-        padding-top: 1px;
-        
-        .section {
-          margin-top: 80px;
-          
-          h2 {
-            font-family: Baskerville, serif;
-            font-size:1.6em;
-            color: #033076;
-            font-weight: normal;
-            line-height: 25px;
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-          }
-        
-          p {
-            font-size:1.1em;
-            color: #000000;
-            margin: 15px 0px 0px 0px;
-          }
-          
-          .image_right {
-            width: 288px;
-            float: right;
-            padding: 0px 0px 20px 40px;
-          }
-        
-          .image_left {
-            width: 288px;
-            float: left;
-            padding: 0px 40px 20px 0px;
-          }
-        }
-      }
-      
+      }   
       
       #graphic {
         float: right;
@@ -701,6 +600,7 @@
         td {
           padding-top: 10px;
           font-size: 0.9em;
+          line-height: 16px;
         }
       }
       
