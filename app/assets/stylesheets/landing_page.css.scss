@@ -86,8 +86,6 @@
           padding: 30px 0px 10px 0px;
           
           .title {
-            min-height: 70px;
-            
             h2 {
               font-size:1.8em;
               color: #033076;
@@ -107,7 +105,7 @@
           img {
             display: block;
             width: 288px;
-            height: 200px;
+            height: 230px;
             margin: 20px auto 20px auto;
           }
         }
@@ -116,7 +114,7 @@
       #box3 {
         .box_content {
           img {
-            width: 200px;
+            width: 230px;
           }
         }
       }
@@ -130,10 +128,14 @@
       #main {
         #box1, #box2, #box3 {
           width: 32%;
-          min-height: 700px;
+          min-height: 710px;
           
           .box_content {
             width: 85%;
+            
+            .title {
+              min-height: 70px;
+            }
           }
         }
         
@@ -143,6 +145,10 @@
         
         #box4 {
           .box_content {
+            .title {
+              min-height: 50px;
+            }
+            
             img {
               float: right;
               margin: 0px 0px 20px 20px;
@@ -171,11 +177,17 @@
         }
         
         #box1, #box2 {
-          min-height: 680px;
+          min-height: 720px;
         }
         
         #box3, #box4 {
-          min-height: 730px;
+          min-height: 740px;
+          
+          .box_content {
+            .title {
+              min-height: 50px;
+            }
+          }
         }
       }
     }
