@@ -13,7 +13,6 @@ class StaticPagesController < ApplicationController
     redirect_to root_path
   end
   
-  def landing_page
-  end
+
   
 end
