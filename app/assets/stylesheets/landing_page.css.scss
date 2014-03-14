@@ -118,6 +118,25 @@
           }
         }
       }
+      
+      #bottom_strip {
+        width: 100%;
+        background-color: #D4E3FC;
+        margin-bottom: 30px;
+        
+        #bottom_strip_content {
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          padding-bottom: 40px;
+          padding-top: 30px;
+ 
+          #sign_up_button {
+            width: 288px;
+            margin: 0px auto 0px auto;
+          }
+        }
+      }
     }
   }
 }
