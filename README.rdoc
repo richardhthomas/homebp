@@ -1,6 +1,6 @@
 HomeBloodPressure v2.2
 
-Ruby version 2.0.0p353
+Ruby version 2.0.0p451
 
 Rails 4
 
@@ -11,3 +11,8 @@ Dynamic form
 Changes made to make site work only with a signed in user.
 New landing page created with sign-up form.
 Main site nav improved to be more consistent.
+Started making changes to allow multiple landing pages:
+'measurement-of-blood-pressure' view exists in static_pages and is root of site.
+Also exists in new landing_pages folder which will contain a collection of
+landing pages. These will use the landing_page layout which will include the
+meta-tag needed to stop Google indexing duplicate content.
