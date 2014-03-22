@@ -13,6 +13,27 @@
         #strip2_content {
           #text_landing_page {
             td {
+              font-size:1.6em;
+              color: #033076;
+              font-weight: normal;
+              line-height: 30px;
+              padding-bottom: 10px;
+            }
+            
+            .number {
+              font-size: 1.7em;
+              padding-right: 10px;
+            }
+            
+            #button {
+              width: 250px;
+              margin: 0px auto 0px auto;
+              font-size: 1.7em;
+            }
+          }
+          
+          #text_find_out_more_page {
+            td {
               font-size:1.8em;
               color: #033076;
               font-weight: normal;
@@ -69,6 +90,28 @@
           
           #graphic_sign_up {
             float: none;
+          }
+        }
+      }
+      
+      #strip3 {
+        #strip3_content {
+          #text {
+            #conversation {
+              margin-left: 6%;
+            }
+            
+            p {
+              .black {
+                color: #000000;
+                font-size: 1.2em;
+              }
+              
+              .italic {
+                color: #000000;
+                font-style: italic;
+              }
+            }
           }
         }
       }

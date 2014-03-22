@@ -1,4 +1,4 @@
-HomeBloodPressure v2.2
+HomeBloodPressure v2.2.1
 
 Ruby version 2.0.0p451
 
@@ -8,11 +8,8 @@ Postgres
 Devise
 Dynamic form
 
-Changes made to make site work only with a signed in user.
-New landing page created with sign-up form.
-Main site nav improved to be more consistent.
-Started making changes to allow multiple landing pages:
-'measurement-of-blood-pressure' view exists in static_pages and is root of site.
-Also exists in new landing_pages folder which will contain a collection of
-landing pages. These will use the landing_page layout which will include the
-meta-tag needed to stop Google indexing duplicate content.
+Completed work to allow multiple landing pages (See v2.2) - this time focused
+around treatment orientated keywords.
+Landing page is a marketing page with simple 'find out more' button
+Second page contains sign-up.
+Main app logic remains unchanged from previous versions

@@ -1,7 +1,8 @@
 Homebp::Application.routes.draw do
-  root :to => "static_pages#measurement-of-blood-pressure"
+  root :to => "static_pages#blood-pressure-treatment"
   
-  get 'measurement-of-blood-pressure', to: 'landing_pages#measurement-of-blood-pressure'
+  get 'blood-pressure-treatment', to: 'landing_pages#blood-pressure-treatment'
+  get 'find-out-more', to: 'landing_pages#find-out-more', as: 'find_out_more'
   
   get 'info/:id', to: 'info#show', as: 'info'
   
