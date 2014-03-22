@@ -96,6 +96,8 @@
       
       #strip3 {
         #strip3_content {
+          padding-bottom: 0px;
+          
           #text {
             #conversation {
               margin-left: 6%;
@@ -141,7 +143,7 @@
         
           p {
             font-size:1.1em;
-            color: #000000;
+            color: #444444;
             padding-bottom: 15px;
           }
           
@@ -262,7 +264,7 @@
       #main {
         #strip2 {
           #strip2_content {
-            #text_landing_page {
+            #text_find_out_more_page {
               table {
                 #arrow {
                   display: none;
@@ -288,7 +290,7 @@
       #main {
         #strip2 {
           #strip2_content {
-            #text_landing_page {
+            #text_find_out_more_page {
               td {
                 font-size:1.6em;
                 line-height: 25px;
