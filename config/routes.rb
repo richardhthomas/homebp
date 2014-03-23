@@ -1,8 +1,8 @@
 Homebp::Application.routes.draw do
-  root :to => "static_pages#blood-pressure-treatment"
+  root :to => "static_pages#send_to_landing_page"
   
-  get 'blood-pressure-treatment', to: 'landing_pages#blood-pressure-treatment'
-  get 'find-out-more', to: 'landing_pages#find-out-more', as: 'find_out_more'
+  get 'l/:id', to: 'landing_pages#show', as: 'l'
+  post 'find-out-more', to: 'landing_pages#find_out_more', as: 'find_out_more'
   
   get 'info/:id', to: 'info#show', as: 'info'
   

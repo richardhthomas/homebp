@@ -1,8 +1,8 @@
 <div id='main'>
 	<div id='strip1'>
 		<div id='strip1_content'>
-			<h1>Blood Pressure Treatment</h1>
-			<p id='landing_page_subtitle'>Get advice on treating your blood pressure from experienced UK GPs</p>
+			<h1><%= @title.titleize %></h1>
+			<p id='landing_page_subtitle'>Get advice on <%= @title %> from experienced UK GPs</p>
 		</div>
 	</div>
 	
@@ -43,9 +43,15 @@
 						<td>Get prescriptions delivered to your door</td>
 					</tr>
 				</table>
+				<%= form_tag find_out_more_path do %>
+				<%= hidden_field_tag :title, @title %>
 				<div id='button'>
-					<%= link_to 'Find out more...', find_out_more_path, :class => 'button3 button8' %>
+					<%= submit_tag 'Find out more...',
+						:class => 'button3 button8',
+						:onclick => "ga('send', 'event', 'Button', 'Find out more');"%>
 				</div>
+				<% end %>
+				
 			</div>
 		</div>
 	</div>
