@@ -4,11 +4,12 @@ class LandingPagesController < ApplicationController
   
   def show
     heading = params[:id].tr('-', ' ')
-    @title = I18n.t heading, default: heading
+    @title = t("." + heading + ".title", default: heading)
+    @subtitle = t("." + heading + ".subtitle", default: heading)
   end
   
   def find_out_more
-    heading = params[:title]
-    @title = I18n.t heading, default: heading
+    @title = params[:title]
+    @subtitle = params[:subtitle]
   end
 end

@@ -41,6 +41,21 @@ en:
           other: ""
         body:    "Please check the following:"
   
-  how to blood pressure: how to treat blood pressure
-  how to bp: how to treat BP
-  how to hypertension: how to treat hypertension
+  landing_pages:
+    show:
+      blood pressure at home monitor:
+        title: monitor blood pressure at home
+        subtitle: how to monitor blood pressure at home
+      monitor bp at home:
+        title:
+        subtitle: how to monitor bp at home
+      how to blood pressure:
+        title: how to treat blood pressure
+        subtitle:
+      how to bp:
+        title: how to treat BP
+        subtitle: something else
+      how to hypertension:
+        title: how to treat hypertension
+        subtitle:
+  
