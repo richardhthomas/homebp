@@ -50,7 +50,7 @@
 				<div id='button'>
 					<%= submit_tag 'Find out more...',
 						:class => 'button3 button8',
-						:onclick => "ga('send', 'event', 'Button', 'Find out more');"%>
+						:onclick => "ga('send', 'event', 'Button', 'Find out more');".html_safe %>
 				</div>
 				<% end %>
 				<p>No more waiting at the doctors'</p>
