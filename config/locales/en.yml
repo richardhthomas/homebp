@@ -49,13 +49,24 @@ en:
       monitor bp at home:
         title:
         subtitle: how to monitor bp at home
+      home hypertension treatment:
+        title:
+        subtitle: hypertension treatment at home
+      home hypertension measurement:
+        title:
+        subtitle: hypertension measurement at home
       how to blood pressure:
         title: how to treat blood pressure
-        subtitle:
-      how to bp:
-        title: how to treat BP
-        subtitle: something else
-      how to hypertension:
-        title: how to treat hypertension
-        subtitle:
-  
+        subtitle: how to treat your blood pressure
+      hypertension at home monitor:
+        title: monitor hypertension at home
+        subtitle: how to monitor hypertension at home
+      measure blood pressure:
+        title:
+        subtitle: how to measure blood pressure
+      measure bp:
+        title:
+        subtitle: how to measure bp
+      measure hypertension:
+        title:
+        subtitle: how to measure hypertension
